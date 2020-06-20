@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border=1 rules=all> 
+        <caption>title</caption>
+        <thead>
+            <!--align 单元格中文本水平对齐方式
+                        left center right 
+                    valign 单元格中文本垂直对齐方式
+                        top middle bottom
+            -->
+            <tr>
+                <th>head_1</th>
+                <th>head_2</th>
+                <th>head_3</th>
+            </tr>
+        </thead>
+        <tbody align="center">
+            <tr>
+                <!--colspan 合并同一行单元格，需要把被合并的单元格删掉
+                        属性值为要合并的单元格数
+                    rowspan
+                -->
+                <td>cell_1</td>
+                <td colspan=2>cell_2</td>
+            </tr>
+            <tr>
+                <td>cell_1</td>
+                <td>cell_2</td>
+                <td rowspan=2>cell_3</td>
+            </tr>
+            <tr>
+                <td>cell_1</td>
+                <td>cell_2</td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</body>
+</html>
