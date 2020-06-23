@@ -21,6 +21,11 @@
 - 标签（标记） 以尖括号的方式，包裹的一对或者是一个单词，让普通文本能够具备更多的特性的结构
 
   - 常用标签（一般通过单词或者用途来称呼每一个标签）
+
+    - `<div></div>` 区块分割 普通块标签
+      
+    - `<span></span>` 普通内联标签
+      
     - `<b></b>` 可以让当前包裹的文本加粗
 
     - `<i></i>`  可以让当前文本倾斜
@@ -111,9 +116,9 @@
           <dd></dd>
       </dl>
       ```
-    
+
     - 表格
-    
+
       ```html
       <!--caption 表格标题
       	thead 表头
@@ -138,9 +143,9 @@
           <caption>title</caption>
           <thead>
               <!--align 单元格中文本水平对齐方式
-      					left center right 
-      				valign 单元格中文本垂直对齐方式
-      					top middle bottom
+      				left center right 
+      			valign 单元格中文本垂直对齐方式
+      				top middle bottom
       		-->
           	<tr align valign>
               	<th>head_1</th>
@@ -170,11 +175,74 @@
           <tfoot></tfoot>
       </table>
       ```
+      
+    - form 表示一组表单的容器
+    
+      ```html
+        <!--h4 ~2014-->
+        <!--action 表示表单提交的地址
+        	method 指定表单提交的方式
+        	enctype 指定表单内容的组合方式
+        -->
+        <form action="" method="GET" enctype="">
+            <!--inline-block表示某个表单控件
+        		type 只当当前input表单控件的类型
+        			text 普通文本输入
+        			password 密码输入
+        			radio 单选
+        			checkbox 复选
+        			file 上传文件域
+        			hidden 隐藏域
+        			submit 提交按钮
+        			reset 重置按钮
+        			button 普通按钮
+        		name 提交给后台的字段名（复选框name值后面必须跟[]
+        		value 表示 值
+        			文本框、密码框表示默认值
+        			单选、复选框 表示被选中时提交给后台的字段值
+        			按钮 当前按钮显示的文字
+        		size 表示长度
+        			用于文本框、密码框 按照字符个数计算
+        		maxlength 表示内容的最大长度
+        			用于文本框、密码框
+        		checked 表示默认被选中
+        			用于单选框、复选框
+        		readonly 只读
+        		disabled 禁用-->
+            <input type="text" name="uid" value="001">
+            <!--inline-block表示文本域表单空间
+        			rows 指定行数
+        			cols 指定列数-->
+            <textarea></textarea>
+            <!--inline-block表示下拉列表表单控件
+        			name 在select标签中
+        			value 在option标签中（如果未设置value，会将option中的内容作为value值
+        			size 表示同时显示几个选项
+        			mutiple 表示多选
+        			selected 表示下拉选项的默认选中状态-->
+            <select name="name[]" size="2">
+                <option value=""></option>
+                <option value="" selected></option>
+            </select>
+            <!--表示按钮控件-->
+            <button></button>
+            <!--表示某个表单的标题-->
+            <label for="male">男</label>
+            <input type="radio" id="male">
+            <!--表示表单控件的分组-->
+            <fieldset>
+            </fieldset>
+        </form>
+      ```
     
     - $\cdots$
+
   - 开始标签 结束标签 对于特定的内容需要设置特殊样式，可以把内容放置到开始标签和结束标签的中间，结束标签在单词前会多一个斜杠
+
   - 编辑器的快捷键 标签名+tab键可以快速创建标签结构
+
   - 普通标签对于文本内容的多个空格和换行是不识别的
+
   - 标签分类
     - 按照写法
       - 单标签  `<hr>`
@@ -186,6 +254,7 @@
         - `<div></div>`
       - inline-block
         - `<img>`
+    
   - 标签的嵌套
     - 标签内容可以是其他标签
     - 块标签一般可以互相嵌套 块标签中可以嵌套行标签 行标签中不能直接嵌套块标签 行标签可以随意嵌套
