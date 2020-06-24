@@ -1,0 +1,134 @@
+.highlight {
+    background-image: url(../img/intro_1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    overflow: hidden;
+    height: 386px;
+    padding-top: 215px;
+}
+
+.text-group {
+    margin-left: 395px;
+    /* left: 395px;
+    bottom: 386px; */
+}
+
+.title span{
+    display: inline-block;
+    font-size: 105px;
+    font-family: "San Francisco Display thin";
+    transform: skew(-10deg);
+}
+
+.title span:nth-child(1) {
+    color: #35a2ff;
+}
+
+.title span:nth-child(2) {
+    color: #f15844;
+}
+
+.title span:nth-child(3) {
+    color: #ffcb30;
+}
+
+.title span:nth-child(4) {
+    color: #45a972;
+}
+
+.highlight .sub-title,.highlight .des{
+    color: #f3f3f3;
+}
+
+.highlight .sub-title {
+    font-family: "San Francisco Display thin";
+    font-size: 32px;
+    transform: skew(-10deg);
+}
+
+.highlight .des {
+    font-family: '宋体';
+    font-size: 18px;
+    letter-spacing: 38px;
+}
+
+/* 主体 */
+main {
+    width: 100%;
+}
+
+/* 公司介绍 */
+.intro {
+    width: 1320px;
+    height: 720px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.left-img {
+    display: inline-block;
+    width: 460px;
+    height: 720px;
+    margin-left: 44px;
+    margin-top: 35px;
+}
+
+.right-text {
+    float: right;
+    margin-right: 113px;
+    margin-top: 30px;
+}
+
+.text {
+    text-align: right;
+    margin-top: 47px;
+}
+
+.text p{
+    line-height: 21px;
+    font-size: 14px;
+    color: #585858;
+}
+
+.text-2 {
+    margin-top: 21px;
+}
+
+/* 图片列表 */
+.img-list {
+    width: 100%;
+}
+
+.list-title {
+    margin: 0 auto;
+    width: 499px;
+    height: 59px;
+    margin-top: 107px;
+}
+
+.img-list .img-1 {
+    width: 370px;
+    height: 277px;
+}
+
+.img-list ul {
+    width: 1863px;
+    height: 241px;
+    margin: 75px auto 241px auto;
+}
+
+.img-list ul li {
+    float: left;
+    margin-left: 2.6px;
+    transition: all .3s ease;
+}
+
+.img-list ul li img {
+    vertical-align: middle;
+}
+
+.img-list ul li:hover {
+    margin-top: 21px;
+    transition: all .5s ease;
+}
