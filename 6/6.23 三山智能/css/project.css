@@ -1,0 +1,314 @@
+@font-face {
+    font-family: 'SourceHanSansCN-Regular';
+    src: url('../font/SourceHanSansCN-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'SourceHanSansCN-Medium';
+    src: url('../font/SourceHanSansCN-Medium.ttf');
+}
+
+.highlight {
+    background-image: url(../img/project/pro-1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 601px;
+    width: 100%;
+    margin-bottom: 78px;
+}
+
+/* 主体 */
+main {
+    width: 100%;
+}
+
+.project-container {
+    width: 1320px;
+    margin: 0 auto;
+}
+
+.pro-title {
+    width: 100%;
+}
+
+.pro-title img {
+    display: block;
+    margin: 45px auto 0;
+}
+
+ /* 第一栏 */
+.project-1 {
+    width: 100%;
+}
+
+.icon-link {
+    height: 364px;
+    width: 1262px;
+    margin: 51px auto 109px;
+}
+
+.icon-link li {
+    float: left;
+    margin-left: 151.6px;
+    margin-bottom: 129px;
+}
+
+.icon-link li:nth-child(1), .icon-link li:nth-child(7) {
+    margin-left: 0;
+}
+
+.icon-link li a {
+    height: 84px;
+    width: 84px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+}
+
+.icon-link li:nth-child(1) a {
+    background-image: url(../img/project/icon-1.png);
+}
+
+.icon-link li:nth-child(2) a {
+    background-image: url(../img/project/icon-2.png);
+}
+
+.icon-link li:nth-child(3) a {
+    background-image: url(../img/project/icon-3.png);
+}
+
+.icon-link li:nth-child(4) a {
+    background-image: url(../img/project/icon-4.png);
+}
+
+.icon-link li:nth-child(5) a {
+    background-image: url(../img/project/icon-5.png);
+}
+
+.icon-link li:nth-child(6) a {
+    background-image: url(../img/project/icon-6.png);
+}
+
+.icon-link li:nth-child(7) a {
+    background-image: url(../img/project/icon-7.png);
+}
+
+.icon-link li:nth-child(8) a {
+    background-image: url(../img/project/icon-8.png);
+}
+
+.icon-link li:nth-child(9) a {
+    background-image: url(../img/project/icon-9.png);
+}
+
+.icon-link li:nth-child(10) a  {
+    background-image: url(../img/project/icon-10.png);
+}
+
+.icon-link li:nth-child(11) a  {
+    background-image: url(../img/project/icon-11.png);
+}
+
+.icon-link li:nth-child(12) a  {
+    background-image: url(../img/project/icon-12.png);
+}
+
+.icon-link a {
+    text-decoration: none;
+    color: #3f3f3f;
+    font-size: 18px;
+    font-family: 'SourceHanSansCN-Medium';
+}
+
+.icon-link span {
+    text-align: center;
+    display: block;
+    width: 110px;
+    line-height: 24px;
+    position: relative;
+    top: 106px;
+    left: -13px;
+}
+
+/* 第二栏 */
+.project-2 {
+    width: 100%;
+    height: 1017px;
+    background-image: url(../img/project/pro-3.png);
+    background-repeat: no-repeat;
+    background-position: -20px -122px;
+    overflow: hidden;
+}
+
+.img-list {
+    width: 1320px;
+    margin: 48px auto 0;
+}
+
+.img-list li {
+    width: 300px;
+    height: 350px;
+    float: left;
+    background-color: #fff;
+    border-bottom: 2px solid #2365d3;
+    margin-right: 32px;
+    margin-bottom: 44px;
+}
+
+.img-list li:nth-child(4), .img-list li:nth-child(8) {
+    margin-right: 0;
+}
+
+.img-list a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-family: 'SourceHanSansCN-Regular';
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.img-list a img {
+    vertical-align: middle;
+}
+
+.up {
+    width: 300px;
+    height: 220px;
+    background-color: #2365d3;
+    position: absolute;
+    z-index: 1;
+    top: 350px;
+    transition: all .4s ease;
+}
+
+.img-list a:hover {
+    color: #fff;
+    transition: all .4s ease;
+}
+
+.img-list a:hover .up {
+    top: 130px;
+    transition: all .4s ease;
+}
+
+.img-list .img-title {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 20px 0 18px;
+}
+
+.img-list .text-spacer {
+    width: 30px;
+    height: 2px;
+    background-color: #000;
+    margin: 0 auto;
+}
+
+.img-list a:hover .text-spacer {
+    background-color: #fff;
+    transition: all .4s ease;
+
+}
+
+.img-list p {
+    font-size: 12px;
+    padding: 30px;
+    line-height: 18px; 
+}
+
+.img-list .img-title, .img-list .text-spacer, .img-list p {
+    position: relative;
+    z-index: 9999;
+}
+
+/* 第三栏 */
+.project-3 {
+    width: 100%;
+    height: 1032px;
+    padding-top: 78px;
+}
+
+.project-3 .pro-title img {
+    margin-top: 0;
+}
+
+.case {
+    width: 1130px;
+    height: 685px;
+    margin: 64px auto 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    padding: 41px 60px 0;
+    font-family: 'SourceHanSansCN-Regular';
+}
+
+.case p {
+    padding: 0 9px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.main-case {
+    display: inline-block;
+    width: 297px;
+}
+
+.main-case p {
+    padding: 0 22px;
+}
+
+.case-title {
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    margin-top: 21px;
+    font-weight: normal;
+}
+
+.main-case .case-title {
+    margin-top: 26px;
+}
+
+.main-case .case-spacer {
+    width: 274px;
+    height: 1px;
+    background-color: #ccc;
+    margin: 12px auto 13px;
+}
+
+.case-des {
+    font-size: 14px;
+    color: #646464;
+    line-height: 20px;
+}
+
+.case-spacer {
+    width: 227px;
+    height: 1px;
+    background-color: #ccc;
+    margin: 13px auto 12px;
+}
+
+.case-list {
+    width: 800px;
+    height: 700px;
+    float: right;
+}
+
+.case-list li {
+    width: 225px;
+    overflow: hidden;
+    float: left;
+    margin-right: 60px;
+}
+
+.case-list li:nth-child(3), .case-list li:nth-child(6) {
+    margin-right: 0px;
+}

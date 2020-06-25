@@ -1,4 +1,4 @@
-/* 网页头部 */
+/* 网页头部和导航条 */
 header {
     height: 132px;
     background-color: #f7f7f7;
@@ -71,6 +71,10 @@ nav {
 }
 
 .nav-container ul li a:hover {
+    color: #1f8fee;
+}
+
+.nav-container ul li a.active {
     color: #1f8fee;
 }
 

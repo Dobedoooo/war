@@ -1,0 +1,86 @@
+.highlight {
+    background-image: url(../img/intro_1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    overflow: hidden;
+    height: 386px;
+    padding-top: 215px;
+}
+
+.text-group {
+    margin-left: 395px;
+}
+
+.title span{
+    display: inline-block;
+    font-size: 105px;
+    font-family: "San Francisco Display thin";
+    transform: skew(-10deg);
+}
+
+.title span:nth-child(1) {
+    color: #35a2ff;
+}
+
+.title span:nth-child(2) {
+    color: #f15844;
+}
+
+.title span:nth-child(3) {
+    color: #ffcb30;
+}
+
+.title span:nth-child(4) {
+    color: #45a972;
+}
+
+.highlight .sub-title,.highlight .des{
+    color: #f3f3f3;
+}
+
+.highlight .sub-title {
+    font-family: "San Francisco Display thin";
+    font-size: 32px;
+    transform: skew(-10deg);
+}
+
+.highlight .des {
+    font-family: '宋体';
+    font-size: 18px;
+    letter-spacing: 38px;
+}
+
+/* 主体 */
+.main {
+    width: 100%;
+}
+
+.main-container {
+    height: 1470px;
+    width: 1320px;
+    margin: 0 auto;
+    padding-top: 108px;
+}
+
+.con-title {
+    width: 235px;
+    height: 59px;
+    margin: 0 auto 174px;
+}
+
+.con-map {
+    width: 1215px;
+    height: 677px;
+    margin: 0 auto;
+}
+
+.con-list {
+    margin-top: 31px;
+    margin-left: 69px;
+}
+
+.con-list li {
+    float: left;
+    margin-right: 30px;
+}

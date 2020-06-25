@@ -212,4 +212,10 @@ hgroup {
     text-align: center;
     line-height: 50px;
     margin-top: -53px;
+    transition: all .4s ease;
+}
+
+.img-control:hover .img-des {
+    background-color: #000;
+    transition: all .4s ease;
 }
