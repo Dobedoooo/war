@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'SourceHanSansCN-Regular';
+    src: url('../font/SourceHanSansCN-Regular.ttf');
+}
+
+/* 消除高度塌陷和外边距重合 */
+.clearfix::before, .clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* 大图 */
 .highlight {
     width: 100%;
     height: 593px;
@@ -8,6 +21,7 @@
     color: #fff;
     font-family: "微软雅黑";
     margin: 0 auto;
+    min-width: 1320px;
 }
 
 .banner-title {
@@ -24,50 +38,49 @@
     top: 321px;
 }
 /* 主体 */
-main {
-    background-color: #f8f8f8;
-    height: 1569px;
+/* 校园系统 */
+.campus-container {
+    min-width: 1320px;
+    width: 100%;
+    background-color: #f7f7f7;
 }
 
-.main-container {
+.campus {
     width: 1320px;
     margin: 0 auto;
+    padding-top: 53px;
 }
-
-.main-container::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-/* 校园系统 */
-.campus {
-    width: 100%;
-    float: left;
-}
-
-hgroup {
-    margin-top: 48px;
-    margin-left: 524px;
-}
-
+/* 标题公共样式 */
 .title {
-    font-family: 'San Francisco Display';
+    width: 100%;
+    text-align: center;
+    font-family: 'San Francisco Display Semibold';
     font-size: 36px;
     color: #4a8fe3;
+    font-weight: normal;
 }
 
+/* 副标题公共样式 */
 .sub-title {
+    width: 100%;
+    text-align: center;
+    font-family: 'SourceHanSansCN-Regular';
     font-size: 24px;
     color: #7e7e7e;
-    margin-top: 18px;
-    margin-left: 100px;
+    font-weight: normal;
+    margin: 18px auto 19px;
 }
 
+/* 矩形公共样式 */
 .spacer_3 {
     height: 3px;
     width: 53px;
     background-color: #4a8fe3;
-    margin: 19px auto 33px 650px;
+    margin: 0 auto;
+}
+
+.campus .spacer_3 {
+    margin-bottom: 33px;
 }
 
 .intro a {
@@ -81,6 +94,7 @@ hgroup {
     margin-right: 30px;
     background-color: #fff;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 49px;
 }
 
 .intro-3 {
@@ -88,16 +102,23 @@ hgroup {
 }
 
 .intro h1 {
+    font-family: SourceHanSansCN-Regular;
     color: #162d76;
     font-size: 24px;
     margin: 20px 0 29px 20px;
 }
 
 .intro h1 span {
-    color: #e5e6eb;
+    display: block;
+    float: right;
+    height: 24px;
+    line-height: 24px;
+    font-family: San Francisco Display Regular;
     font-weight: normal;
     font-size: 18px;
-    margin-left: 12px;
+    margin-right: 25px;
+    letter-spacing: 1px;
+    opacity: .2;
 }
 
 .intro img {
@@ -112,17 +133,19 @@ hgroup {
 
 /* 服务系统 */
 .service-container {
-    float: left;
+    min-width: 1320px;
     width: 100%;
-    height: 469px;
-    margin: 0 auto;
-    margin-top: 49px;
     background-color: #fff;
 }
 
 .service {
+    padding-top: 48px;
     width: 1320px;
     margin: 0 auto;
+}
+
+.service .spacer_3 {
+    margin-bottom: 37px;
 }
 
 .service-box {
@@ -130,7 +153,7 @@ hgroup {
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     font-size: 60px;
-    margin: 0 auto;
+    margin: 0 auto 103px;
     padding-left: 197px;
 }
 
@@ -165,24 +188,16 @@ hgroup {
 
 /* 案例中心 */
 .case-container {
-    float: left;
+    min-width: 1320px;
     width: 100%;
-    height: 1127px;
-    margin-top: 49px;
+    height: 1078px;
     background-color: #f8f8f8;
 }
 
 .case {
     width: 1320px;
     margin: 0 auto;
-}
-
-.case hgroup {
-    margin-left: 550px;
-}
-
-.case .sub-title {
-    margin-left: 90px;
+    padding-top: 76px;
 }
 
 .case .spacer_3 {
@@ -204,6 +219,7 @@ hgroup {
 }
 
 .img-des {
+    font-family: 'SourceHanSansCN-Regular';
     position: relative;
     height: 50px;
     background-color: rgba(0, 0, 0, 0.5);

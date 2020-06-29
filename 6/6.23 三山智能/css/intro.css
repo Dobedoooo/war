@@ -112,6 +112,7 @@ main {
 
 .img-list ul {
     width: 1863px;
+    min-width: 1320px;
     height: 241px;
     margin: 75px auto 241px auto;
 }

@@ -2,7 +2,7 @@
 
 ## CSS概念
 
-**层叠样式表**(Cascading Style Sheets，缩写为**CSS**)，是一种
+**层叠样式表**(Cascading Style Sheets，缩写为**CSS**)，是一种样式表语言，用来描述HTML文档的呈现。CSS描述了在屏幕、纸质、音频等其他媒体上的元素应该如何被渲染的问题。
 
 ## CSS创建
 
@@ -53,7 +53,7 @@
 
   > 选择当前样式规则要控制的标签
 
-  - 格式
+  - 格式 选择器 {样式}
 
   - 选择器分类
 
@@ -212,6 +212,12 @@
       border-bottom-color: ;
       border-left-color: ;
       border: 1px red solid;
+      /* 边框圆角CSS3 */
+      border-radius: ;
+      border-top-left-radius: ;
+      border-top-right-radius: ;
+      border-bottom-left-radius: ;
+      border-bottom-right-radius: ;
       ```
       
     - margin 外边距
@@ -258,6 +264,7 @@
       		解决：
       			给父元素设置高度
       			父元素添加元素设置属性 clear: both;
+      			给父元素设置overflow: hidden;
       	属性值
       		right
       		left
@@ -265,10 +272,149 @@
       float: left;
       ```
 
-    - background-color 背景颜色
+    - background 背景属性
 
       ```css
+      /* 背景颜色 */
       background-color: red;
+    /* 背景图片 */
+      background-image: url();
+      /* 背景图片重复方式
+      	repeat 默认值 全部重复
+      	no-repeat 不重复
+      	repeat-x 在x轴重复
+      	repeat-y 在y轴重复
+      */
+      background-repeat: ;
+      /* 背景图片位置
+      	left right top bottom center两两组合可以确定九个位置，如果只设置一个值，另一个值默认为center
+      	水平偏移数值 垂直偏移数值
+      	水平偏移百分比 垂直偏百分比
+      */
+      background-position: ;
+      /* background-attachment
+      	设置当前背景图片是否要固定到窗口的某个位置
+      */、
+      background-attachment： ；
+      /* 所有的属性都可以整合到background属性中 */
+      ```
+      
+    - opacity 不透明度
+
+      ```css
+      /* 0 ~ 1
+      	元素内部的子元素和文本也会继承不透明度
+      */
+      opacity: ;
+      ```
+
+    - overflow
+
+      ```css
+      /* 处理超出容器范围后的显示效果
+      	visible 始终可见
+      	hidden 超出后隐藏
+      	scroll 超出后出现滚动条（ie始终显示滚动条）
+      	auto 超出后出现滚动条，不超出时不出现
+      */
+      overflow: ;
+      /* 单独控制不同方向的overflow属性 */
+      overflow-x: ;
+      overflow-y: ;
+      ```
+
+    - display
+
+      ```css
+      /* 转换元素的特性
+      	block
+      	inline
+      	inline-block
+      	none
+      */
+    display: ;
+      ```
+      
+    - table 相关
+
+      ```css
+      /* border-collapse用来设置表格的边框和单元格的边框的重合方式
+      	separate 默认值 每个单元格拥有独立的边框
+      	collapse 共享边框
+      */
+      border-collapse: ;
+      /* table-layout定义了用于布局表格单元格，行和列的算法
+      	auto 默认值 内容撑开
+      	fixed 固定值
+      */
+      table-layout: ;
+      ```
+
+    - position 定位
+
+      ```css
+      /* position用于指定一个元素在文档中的定位方式。top，right，bottom 和 left 属性则决定了该元素的最终位置。
+      	static 默认值
+      	relative 相对定位
+      		1.元素开启相对定位以后，如果不设置偏移量(offset)元素不会发生任何变化
+              2.相对定位是相对于元素自身在文档流中的位置进行定位（它原来的位置）
+              3.相对定位会提升元素的层级（覆盖其他元素）
+              4. 相对定位不会是元素脱离文档流，不会改变元素性质（块、内联）
+      	absolute 绝对定位
+      		1.不设置偏移量，元素位置不会发生变化（注意：只是位置不变，其他元素会视他不见）
+              2.开启绝对定位后，元素会从文档流中脱离
+              3.绝对定位会改变元素的性质，行内变成块，块的宽高被内容撑开(没有设置宽高时)
+              4.绝对定位会使元素提升一个层级
+              5.绝对定位元素是相对于其包含块进行定位的
+      		包含块(containing block)
+              	正常情况下：
+                  	包含块是离当前元素最近的祖先 块 元素
+                  绝对定位的包含块：
+                  	离该元素最近的开启了定位(position不是static)的祖先元素
+                      如果所有祖先元素都没有开启定位，则根据根元素<html></html>进行定位,根元素就是他的包含块
+      			html(根元素，初始包含块)
+      	fixed 固定定位
+      		固定定位也是一种绝对定位，大部分特点都和绝对定位一样
+              不同的是固定定位永远参照于浏览器的视口进行定位
+      */
+      positon: ;
+      /* z-index开启了定位的元素可以使用
+      	*/
+      z-index: ;
+      ```
+
+      - 使用场合
+        - 如果需要某个元素相对于窗口固定，固定定位
+        - 某个元素有多个子元素需要重叠显示，绝对定位 + 相对定位
+        - 页面布局不适合使用文档流方式，元素比较零散，分布没有规律，绝对定位 + 相对定位
+
+    - min-width max-width min-height max-height
+
+      ```css
+      /* 分别设置元素宽高在自动适应的情况下变化的范围 */
+      min-width: ;
+      max-width: ;
+      min-height: ;
+      max-height: ;
+      ```
+
+    - visibility
+
+      ```css
+      /* visibility 
+      	visible
+      	hidden 等价于opacity: 0;
+      	collapse
+      */
+      ```
+
+    - cursor
+
+      ```css
+      /* 设置光标的类型（如果有），在鼠标指针悬停在元素上时显示相应样式。 
+      	pointer 手*/
+      cursor: ;
+      
       ```
 
       
@@ -285,8 +431,16 @@
 
   ```css
   /* 
-  
+  	
   */
   ```
 
-- margin-top bug 
+- margin-top bug  
+
+  > 某个元素如果
+  >
+  > 1. 没有上边框
+  > 2. 没有上内边距
+  > 3. 第一个子元素没有浮动
+  >
+  > 那么为此子元素设置的margin-top会作用到该元素上
