@@ -1,0 +1,409 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding-top: 30px !important;
+    height: 1000px;
+}
+
+/* 导航开始 */
+.nav {
+    width: 100%;
+    background-color: #222;
+    border-bottom: 1px solid #080808;
+    z-index: 9999;
+    top: 0;
+    margin-bottom: 20px;
+}
+
+.nav .container {
+    background-color: #222;
+}
+
+.navbar-brand {
+    color: #9d9d9d;
+}
+
+.nav-container {
+    border-top: 1px solid #101010;
+    box-sizing: border-box;
+    margin: 0 -15px;
+    box-shadow: inset 0 1px 0 #393939;
+    overflow: hidden;
+    display: block;
+    height: 304px;
+    transition: all .35s ease;
+}
+
+.show {
+    border-width: 0;
+    height: 0px;
+}
+
+.nav-left, .nav-right{
+    margin: 7.5px 0;
+    padding-left: 0;
+    list-style: none;
+    font-size: 14px;
+}
+
+.nav-left {
+    margin-top: 7.5px;
+}
+
+.nav-left li, .nav-right li {
+    position: relative; 
+}
+
+.nav li a {
+    color: #9d9d9d;
+    padding: 10px 15px;
+    line-height: 20px;
+    display: block;
+}
+
+
+@media (min-width: 768px) {
+    .nav {
+        height: 42px;
+        box-sizing: content-box;
+    }
+
+    .navbar-brand  {
+        height: 42px;
+        line-height: 42px;
+        padding: 0 15px;
+        margin-left: -15px;
+    }
+
+    .nav-container {
+        height: auto;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        margin: 0 0 -7.5px 0;
+    }
+
+    .nav-left {
+        position: relative;
+        float: left;
+        margin: 0;
+        height: 42px;
+    }
+    
+    .nav-left li, .nav-right li {
+        display: inline;
+    }
+
+    .nav-left li a, .nav-right li a {
+        padding: 11px 15px;
+        float: left;
+    } 
+    
+    .nav-right {
+        float: right;
+        margin: 0;
+        margin-right: -15px;
+        height: 42px;
+    }
+    
+    .nav-right a {
+        float: right;
+        margin: 0;
+    }
+}
+
+.nav a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-left li:last-child a::after {
+    content: "";
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    background-color: #d9534f;
+    border: 1px solid #d9534f;
+    border-radius: 50%;
+    right: 5px;
+    top: 10px;
+}
+
+.nav .menu {
+    float: right;
+    width: 44px;
+    height: 34px;
+    background-color: transparent;
+    border: 1px solid #333;
+    padding: 9px 10px;
+    margin: 8px 15px 8px 0;
+    border-radius: 4px;
+}
+
+.nav .menu:hover {
+    background-color: #333;
+}
+
+.nav .menu span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #fff;
+    margin-top: 4px;
+}
+
+.nav .menu span:first-child {
+    margin-top: 0;
+}
+
+.nav .menu:foucs ~ .collapse {
+    display: block;
+    background-color: #515151;
+}
+/* 导航结束 */
+
+/* banner开始 */
+.banner {
+    padding: 60px 0 80px;
+    background: linear-gradient(45deg, #020031, #6d3353);
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.banner::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../img/banner.png) repeat 50%;
+    opacity: .4;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+.banner h1 {
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.banner h2 {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 1.25;
+}
+
+.banner p {
+    margin: 30px 0 15px;
+    line-height: 1.25;
+    padding-top: 2px;
+}
+
+.banner p a:first-child {
+    padding: 13px 35px 17px;
+}
+
+.banner p a {
+    box-shadow: inset 0 -4px 0 #23527c;
+    border: 0;
+    transition: all .2s ease-in-out;
+}
+
+.banner ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.banner ul li a {
+    color: hsla(0, 0%, 100%, .5);
+    transition: all .2s ease-in-out;
+}
+
+.banner ul li a:hover {
+    color: hsla(0, 0%, 100%);
+}
+
+@media (min-width: 768px) {
+    .banner {
+        padding: 90px 0 110px;
+    }
+
+    .banner h1 {
+        font-size: 90px;
+    }
+
+    .banner h2 {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 992px) {
+    /* .banner {
+        padding: 90px 0 110px;
+    } */
+
+    .banner h1 {
+        font-size: 100px;
+    }
+
+    .banner h2 {
+        font-size: 30px;
+    }
+}
+/* banner结束 */
+
+/* 主体开始 */
+.main-title {
+    width: 60%;
+    margin: 60px auto 40px;
+    text-align: center;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eee;
+}
+
+.main-title h2 {
+    letter-spacing: -1px;
+}
+
+.main-title p {
+    font-weight: 200;
+}
+
+@media (min-width: 768px) {
+    .main-title h2 {
+        font-size: 42px;
+    }
+}
+
+.row .thumbnail {
+    margin: 0 auto 30px;
+    border: 1px solid #ddd;
+    padding: 4px;
+    text-align: center;
+    max-width: 310px;
+    height: 360px;
+}
+
+@media (min-width: 992px) {
+    .row .thumbnail {
+        height: 352px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .row .thumbnail {
+        height: 336px;
+    }
+}
+
+.row .thumbnail a:hover {
+    text-decoration: none;
+}
+
+.row p {
+    color: #555;
+}
+
+.row .thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+.row .thumbnail .caption {
+    height: 200px;
+    overflow: hidden;
+}
+/* 主体结束 */
+
+/* 底部开始 */
+footer {
+    margin: 70px 0 0;
+    padding: 30px 0;
+    border-top: 1px solid #e5e5e5;
+    color: #777;
+}
+
+footer h4 {
+    color: #563d7c;
+    font-size: 16px;
+}
+
+footer .up p { 
+    color: #777;
+}
+
+footer .about > div {
+    height: 110px;
+    margin-bottom: 10px;
+}
+
+footer a {
+    color: #777;
+}
+
+footer .copy {
+    font-size: 13px;
+}
+
+footer .copy li {
+    padding: 0;
+}
+
+footer a:hover {
+    color: inherit;
+}
+
+footer .copy ul > li + li::before {
+    content: "|";
+    color: #ccc;
+    padding: 0 10px;
+}
+/* 底部结束 */
+/* 2top开始 */
+.totop {
+    position: fixed;
+    background-color: #777;
+    width: 46px;
+    height: 46px;
+    color: #eee;
+    font-size: 40px;
+    line-height: 46px;
+    text-align: center;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0;
+    font-weight: normal;
+    z-index: 9998;
+    transition: all .2s ease-in-out;
+}
+
+.vanish {
+    opacity: .8;
+}
+
+.totop:hover {
+    background-color: #333;
+    color: #eee;
+}
+
+.totop:visited {
+    color :#eee;
+}
+
+@media (min-width: 992px){
+    .totop {
+        bottom: 100px;
+    }
+}
+/* 2top结束 */

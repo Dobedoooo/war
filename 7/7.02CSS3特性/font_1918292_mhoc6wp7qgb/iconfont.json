@@ -1,0 +1,16 @@
+{
+  "id": "1918292",
+  "name": "123",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11372669",
+      "name": "阿里鱼",
+      "font_class": "aliyu",
+      "unicode": "e8b0",
+      "unicode_decimal": 59568
+    }
+  ]
+}

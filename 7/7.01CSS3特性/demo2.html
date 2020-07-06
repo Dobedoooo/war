@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .scene {
+            width: 500px;
+            height: 500px;
+            border: 1px crimson solid;
+            /* 元素在宽高不定的容器中水平垂直居中2 */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -250px;
+            margin-top: -250px;
+            
+            perspective: 500px;
+            /* perspective-origin: left bottom; */
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 150px;
+            /* background-color: rgba(200, 200, 200, .5); */
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 2s;
+            cursor: pointer;
+            /* backface-visibility: hidden; */
+        }
+
+        .box:hover {
+            transform: rotate3d(1, 1, 0, 360deg);
+        }
+
+        .box .face {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-shadow: 0 0 15px 1px rgba(255, 255, 255, 1);
+            /* opacity: .3; */
+        }
+
+        .box .face:first-child {
+            transform: translateX(-100px) rotateY(90deg);  
+            background-color: crimson;
+        }
+
+        .box .face:nth-child(2) {
+            transform: translateY(-100px) rotateX(90deg);
+            background-color: #1abc9c;
+        }
+
+        .box .face:nth-child(3) {
+            transform: translateY(100px) rotateX(90deg);
+            background-color: #3498db;
+        }
+
+        .box .face:nth-child(4) {
+            transform: translateX(100px) rotateY(90deg);
+            background-color: #9b59b6;
+        }
+
+        .box .face:nth-child(5) {
+            transform: translateZ(-100px);
+            background-color: #f1c40f;
+        }
+
+        .box .face:nth-child(6) {
+            transform: translateZ(100px);
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="box">
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+        </div>
+    </div>
+</body>
+</html>

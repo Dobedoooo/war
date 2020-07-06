@@ -173,6 +173,7 @@ main {
     overflow: hidden;
     position: relative;
     z-index: 2;
+    transition: all .4s ease;
 }
 
 .img-list a img {
@@ -186,17 +187,16 @@ main {
     position: absolute;
     z-index: 1;
     top: 350px;
-    transition: all .4s ease;
+    transition: all .4s ease-in-out;
 }
 
 .img-list a:hover {
     color: #fff;
-    transition: all .4s ease;
 }
 
 .img-list a:hover .up {
     top: 130px;
-    transition: all .4s ease;
+    transition: all .4s ease-in-out;
 }
 
 .img-list .img-title {

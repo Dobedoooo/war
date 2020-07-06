@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes  rotate{
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-90px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fire {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-300px);
+            }
+        }
+
+        .item {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: crimson;
+            margin: 0 auto;
+            animation: rotate .3s linear 3;
+            border-radius: 10px;
+            /* animation-name: ; */
+            /* animation-duration: ; */
+            /* animation-timing-function: ; */
+            /* animation-delay: ; */
+            /* animation-iteration-count: ; */
+            /* animation-play-state: ; */
+            /* animation-fill-mode: ; */
+            z-index: 1;
+        }
+
+        /* .item1, .item2 {
+            position: absolute;
+            width: 70px;
+            background-color: #000;
+            height: 30px;
+        }
+
+        .item1 {
+        }
+
+        .item2 {
+            top: 70px;
+        } */
+
+        /* .frag {
+            width: 475px;
+            height: 444px;
+            background-image: url(frag.png);
+            position: absolute;
+            top: 0;
+            left: 300px;
+        }
+
+        .fire {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            position: absolute;
+            animation: fire .3s infinite;
+            top: 49px;
+            left: 910px;
+            animation-delay: 1.5s;
+        } */
+
+        body {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body> 
+    <div class="item">
+        <div class="item1"></div>
+        <div class="item2"></div>
+    </div>
+    <div class="frag"></div>
+    <div class="fire"></div>
+</body>
+</html>

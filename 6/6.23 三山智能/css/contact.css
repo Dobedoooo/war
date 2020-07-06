@@ -6,6 +6,7 @@
     overflow: hidden;
     height: 386px;
     padding-top: 215px;
+    min-width: 1320px;
 }
 
 .text-group {
@@ -54,6 +55,7 @@
 /* 主体 */
 .main {
     width: 100%;
+    min-width: 1320px;
 }
 
 .main-container {

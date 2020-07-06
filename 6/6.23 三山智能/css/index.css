@@ -208,6 +208,10 @@
     margin-left: 72px;
 }
 
+.img-group a:active {
+    text-decoration: none;
+}
+
 .img-control {
     float: left;
     margin-right: 52px;
@@ -232,6 +236,7 @@
 }
 
 .img-control:hover .img-des {
-    background-color: #000;
+    /* background-color: #000; */
+    backdrop-filter: blur(3px);
     transition: all .4s ease;
 }

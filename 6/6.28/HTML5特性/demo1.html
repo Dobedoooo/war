@@ -5,21 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div p:last-child {
-            background-color:red;
+        body {
+            background-color: #f1f1f1;
         }
+        .box1 {
+            width: 240px;
+            height: 70px;
+            background-color: #fff;
+            margin: 100px auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all .15s ease;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+        }
+
+        .box1:hover {
+            transform: rotateY(15deg);
+            box-shadow: 10px 0px 15px rgba(0, 0, 0, .3);
+        }
+
+        /* .box1:active {
+            margin-top: 110px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+            transition: all .15s ease;
+        } */
     </style>
 </head>
 <body>
-    <div>
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
+    <div class="box1">
+        Please
     </div>
 </body>
 </html>

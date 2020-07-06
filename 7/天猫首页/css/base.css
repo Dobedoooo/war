@@ -1,0 +1,13 @@
+/* 公共样式 */
+* {
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.clearfix::before,
+.clearfix::after {
+    display: table;
+    clear: both;
+    content: '';
+}
+

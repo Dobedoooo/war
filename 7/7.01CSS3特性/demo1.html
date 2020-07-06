@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .scene {
+            width: 600px;
+            height: 600px;
+            border: 1px violet solid;
+            /* 元素在宽高不定的容器中水平垂直居中1 */
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            /* 透视 */
+            perspective: 500px;
+        }
+        
+        .item {
+            width: 200px;
+            height: 200px;
+            background-color: crimson ;
+            transition: all .3s;
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 0;
+        }
+
+        .scene .item:hover{
+            /* transform: translateZ(100px);
+             */
+            /* transform: rotate3d(0, 0, 1, 30deg); */
+            transform: scaleZ(2);
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div>       
+    </div>
+</body>
+</html>

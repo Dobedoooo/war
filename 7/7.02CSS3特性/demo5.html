@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box1 {
+            width: 1200px;
+            height: auto;
+            margin: 0 auto;
+            background-color: #ccc;
+        }
+
+        .clearfix::before, .clearfix::after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .item1, .item2 {
+            width: 540px;
+            height: 360px;
+            float: left;
+            background-color: crimson;
+            position: relative;
+        }
+
+        .item2 {
+            float: right;
+            background-color: coral;
+        }
+
+        .inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .inner::after {
+            content: "1200 × 360";
+            color: aliceblue;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .box1 {
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+                background-color: #ccc;
+            }
+
+            .item1, .item2{
+                width: 45%;
+                height: auto;
+                padding-top: 30%;
+            }
+
+            .inner::after {
+                content: "45% × 30%";
+            }
+        }
+
+        @media screen and (max-width: 960px) {
+            .box1 {
+                width: 720px;
+            }
+
+            .inner::after {
+                content: "324px × 216px";
+            }
+        }
+
+        @media screen and (max-width: 720px ){
+            .box1 {
+                width: 600px;
+            }
+
+            .item1, .item2 {
+                width: 90%;
+                padding-top: 60%;
+                float: none;
+                margin: 0 auto;
+            }
+
+            .item2 {
+                margin-top: 10px;
+            }
+
+            .inner::after {
+                content: "540px × 360px";
+            }
+        }
+
+        @media screen and (max-width: 600px){
+            .box1 {
+                width: 100%;
+            }
+
+            .inner::after {
+                content: "90% × 60%";
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box1 clearfix">
+        <div class="item1" id="screen">
+            <div class="inner"></div>
+        </div>
+        <div class="item2"></div>
+    </div>
+    <script type="text/javascript">
+        var ele = document.getElementById('screen')
+        var width = window.getComputedStyle(ele, null).width;
+        var height = window.getComputedStyle(ele, null).height;
+        document.write(width +" × " + height);
+    </script>
+</body>
+</html>
