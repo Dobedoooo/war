@@ -1,5 +1,6 @@
 body {
     height: 1000px;
+    overflow-x: hidden !important;
 }
 
 /* 导航开始 */
@@ -109,9 +110,10 @@ b {
     line-height: 20px;
     top: 33px;
     display: none;
+    z-index: 9999;
 }
 
-/* 购物车 */
+/* 收藏夹 */
 .collect {
     width: 84px;
 }
@@ -237,7 +239,7 @@ b {
     margin-top: 5px;
     width: 175px;
     height: 175px;
-    background: url(../img/TB1vJ0POwTqK1RjSZPhXXXfOFXa-175-215.png);
+    background: url(../img/index/TB1vJ0POwTqK1RjSZPhXXXfOFXa-175-215.png);
 }
 
 .qr-container span {
@@ -258,7 +260,7 @@ b {
     margin: 0 15px;
     line-height: 35px;
     text-indent: -9999px;
-    background: url(../img/TB1W.19bG67gK0jSZFHXXa9jVXa-145-30.jpg) center bottom no-repeat;
+    background: url(../img/index/TB1W.19bG67gK0jSZFHXXa9jVXa-145-30.jpg) center bottom no-repeat;
 }
 
 .qr:hover .qr-container {
@@ -273,13 +275,18 @@ b {
     .r-nav li:last-child {
         display: none;
     }
+
+    .nav-container nav {
+        left: 0;
+    }
 }
 /* 导航结束 */
 
-/* header开始 */
-header {
+/* 搜索框开始 */
+.search-area {
     width: 100%;
     min-width: 982px;
+    padding-top: 38px;
 }
 
 .header {
@@ -290,7 +297,6 @@ header {
 .header form {
     width: 625px;
     margin: 0 auto;
-    margin-top: 38px;
     border: solid #ff0036 2px;
     border-right: none;
     font-size: 0;
@@ -318,4 +324,225 @@ header {
     letter-spacing: 5px;
     cursor: pointer;
 }
-/* header结束 */
+@media (max-width: 1260px) {
+    .header form {
+        width: 410px;
+    }
+
+    .header form input {
+        width: 276px;
+    }
+}
+/* 搜索框结束 */
+
+/* 目录开始 */
+.category {
+    width: 100%;
+    min-width: 982px;
+    margin-top: 52px;
+}
+
+.cate-nav-con {
+    width: 100%;
+    border-bottom: 1.5px solid #ff0036;
+}
+
+.cate-nav {
+    width: 1260px;
+    margin: 0 auto;
+    position: relative;
+    height: 35.5px;
+    padding-left: 200px;
+}
+
+.logo {
+    width: 240px;
+    height: 130px;
+    position: absolute;
+    top: -129px;
+    left: -20px;
+}
+
+.tmall-item-1 img, .tmall-item-2 img {
+    width: 100px;
+    height: 30px;
+    margin-top: 3px;
+}
+
+.cate-nav a {
+    padding: 0 8px;
+    color: #333;
+    float: left;
+}
+
+.cate-nav a:not([class*=tmall-item]) {
+    line-height: 35px;
+}
+
+.cate-nav a:hover {
+    color: #ff0036;
+}
+
+.show-con {
+    width: 100%;
+    background-color: #fe3839;
+}
+
+.show {
+    width: 1260px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.cate, .cate a {
+    position: relative;
+    color: #fff;
+}
+
+.show .list {
+    position: relative;
+    z-index: 3;
+    height: 500px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, .55);
+}
+
+.show .list li[class^=list-item] {
+    height: 31.2px;
+    line-height: 31.2px;
+}
+
+.show .list li:hover {
+    background-color: #fff;
+    font-weight: 700;
+}
+
+.show .list div[class^=item] {
+    position: absolute;
+    width: 852px;
+    height: 500px;
+    background-color: crimson;
+    top: 0;
+    left: 200px;
+    display: none;
+}
+
+.list-item-1:hover, .list-item-1:hover a {
+    color: #e54077;
+}   
+
+.list li[class^=list-item]:hover > div[class^=item] {
+    display: block;
+}
+
+.list-item-2:hover, .list-item-2:hover a {
+    color: #427def;
+}
+
+.list-item-3:hover, .list-item-3:hover a {
+    color: #6347ed;
+}
+
+.list-item-4:hover, .list-item-4:hover a {
+    color: #e54077;
+}
+
+.list-item-5:hover, .list-item-5:hover a {
+    color: #6347ed;
+}
+
+.list-item-6:hover, .list-item-6:hover a {
+    color: #427def;
+}
+
+.list-item-7:hover, .list-item-7:hover a {
+    color: #fa5c5c;
+}
+
+.list-item-8:hover, .list-item-8:hover a {
+    color: #f7a831;
+}
+
+.list-item-9:hover, .list-item-9:hover a {
+    color: #f7a831;
+}
+
+.list-item-10:hover, .list-item-10:hover a {
+    color: #427def;
+}
+
+.list-item-11:hover, .list-item-11:hover a {
+    color: #dd2727;
+}
+
+.list-item-12:hover, .list-item-12:hover a {
+    color: #427def;
+}
+
+.list-item-13:hover, .list-item-13:hover a {
+    color: #f7a831;
+}
+
+.list-item-14:hover, .list-item-14:hover a {
+    color: #3bc7b0;
+}
+
+.list-item-15:hover, .list-item-15:hover a {
+    color: #dd2727;
+}
+
+.list-item-16:hover, .list-item-16:hover a {
+    color: #3bc7b0;
+}
+
+.show .list a {
+    font-size: 14px;
+}
+
+.show .list i {
+    opacity: .5;
+    margin: 0 8px 0 14px;
+}
+
+.show .cate .list-title i {
+    margin: 0 10px 0 15.5px;
+}
+
+.show .list span {
+    display: inline-block;
+    width: 10px;
+    height: 19px;
+    text-align: right;
+    line-height: 31.2px;
+}
+
+.cate .list-title {
+    position: absolute;
+    background-color: #ff0036;
+    width: 200px;
+    height: 36px;
+    top: -36px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+.show .banner {
+    position: absolute;
+    top: 0;
+    margin-left: 75px;
+}
+
+@media (max-width: 1260px) {
+    .cate-nav, .show {
+        width: 982px;
+    }
+
+    .suning {
+        display: none;
+    }
+
+    .show .list div[class^=item] {
+        width: 782px;
+    }
+}
+/* 目录结束 */
