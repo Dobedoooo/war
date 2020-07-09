@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成绩等级查询</title>
+    <style>
+        #box {
+            width: 98%;
+            height: 100%;
+            background-color: crimson;
+            color: #fff;
+            text-align: center;
+            line-height: 500px;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body id="box">
+    <!-- <div></div> -->
+    <script>
+        var grade = prompt('请输入分数(0 - 100)');
+
+        var box = document.getElementById('box');
+
+        if(grade < 0 || grade > 100) {
+            grade = prompt('成绩范围必须在0 - 100之间');
+        }
+        if (grade >= 90) {
+            box.innerHTML = '优秀';
+        } else if(grade >= 70) {
+            box.innerHTML = '良好';
+        } else if(grade >= 60) {
+            box.innerHTML = '及格';
+        } else if(grade >= 40) {
+            box.innerHTML = '不及格';
+        } else {
+            box.innerHTML = '叫家长';
+        }
+        // if else 可以替代 switch
+        // switch 也可以替代 if else 在很多情况比较繁琐
+        // 当判断某种范围时用if，当判断单个值时用switch
+        // 各个条件满足的情况不可重复，放置造成不可预期后果
+
+    </script>
+</body>
+</html>

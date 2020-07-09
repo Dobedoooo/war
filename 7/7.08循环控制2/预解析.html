@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js程序在真正执行之前,先交给浏览器预解析
+        // 解释型 编译型语言区别
+        // 解释型 直接运行在指定的环境中 javascript ->浏览器(v8引擎) php nodejs ->vu引擎 python
+        // 运行速度较慢,编写代码的效率高
+        // 编译型语言 将源代码->编译器(编译成二进制文件)->可执行环境 运行速度较快,编写代码的效率慢
+        // 预解析 javascript 交给v8引擎进行解释执行之前,会进行预解析
+            // for(var j = 0; j < 10; j++) {
+            //     console.log(i);
+            // }
+
+            // for(var i = 0; i < 10; i++) {
+            //     console.log(i);
+            // }
+            // abc
+        // 1.预解析语法的问题,如果有问题直接报错,终止程序执行 (不同浏览器对语法错误的定于有差别)
+            // console.log(a);
+            // var a = 10;
+            // console.log(a);
+        // 2.预解析 var 定义的变量,预先给这些变量留下存储的空间,真正给变量赋值的时候是在运行程序的时候
+            // fn();
+            // function fn() {
+            //     alert('函数');
+            // }
+        // 3.预解析函数,将整个函数的内容解析到内存中
+            // fn();
+            // var fn = function() {
+            //     alert('字面量')
+            // }
+        // 字面量方式定义的函数,不能在任意地点调用
+        // 如果想在任意地点调用函数,使用关键字的方式定义函数
+        // 如果想减轻内存的压力,使用字面量的方式定义函数,但是差别不大
+        // 4.预解析时会依次解析script标签对中的内容,并且依次执行 解析1->执行2->解析2->执行2
+        // 要想调用其他标签对里的变量或函数,一定要提前定义
+
+        // 总结 函数的意义 函数的定义(对象的方法没讲) 函数的调用(事件调用没讲) 函数的参数 return 作用域(全局,局部,块)(let)) 作用域链
+        // 函数变种用法 嵌套 递归 回调
+        // 函数如何作为类去使用 箭头函数
+        // var a = 10;
+        function fn1() {
+              var a = 0;
+              function fn2() {   
+                ++a;   
+                alert(a);
+             }  
+            return fn2;  
+        } 
+        fn1()();  
+        var newFn = fn1();  
+        newFn();  
+        newFn(); 
+    </script>
+    <!-- <script>
+        var b = 10;
+    </script>
+    <script>
+        console.log(a + b);
+    </script> -->
+</body>
+</html>

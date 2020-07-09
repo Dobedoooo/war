@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //数组去重
+        var arr = [32, 1, 2, 3, 1, 2, 3, 200, 4, 5, 7, 23, 4];
+        console.log(typeof arr);
+        function Deduplication(array) {
+            for(let i = 0; i < array.length; i++) {
+                for(let j = i + 1; j < array.length; j++) {
+                    if(array[i] == array[j]) {
+                        delete array[j];
+                    }
+                }
+            }
+        }
+        // Deduplication(arr);
+        // for(let i = 0; i < arr.length; i++) {
+        //     console.log(arr[i]);
+        // }
+        //找最大值
+        function max(array) {
+            let temp_max = array[0];
+            for(let i = 0; i < array.length; i++) {
+                if(temp_max < array[i]) {
+                    temp_max = array[i];
+                }
+            }
+            return temp_max;
+        }
+
+        console.log(max(arr));
+        
+        //插排
+    </script>
+</body>
+</html>

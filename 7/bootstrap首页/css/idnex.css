@@ -26,19 +26,20 @@ body {
 }
 
 .nav-container {
-    border-top: 1px solid #101010;
     box-sizing: border-box;
     margin: 0 -15px;
     box-shadow: inset 0 1px 0 #393939;
     overflow: hidden;
     display: block;
-    height: 304px;
+    height: 0px;
     transition: all .35s ease;
+    border-top: 1px solid #101010;
+    border-width: 0;
 }
 
 .show {
-    border-width: 0;
-    height: 0px;
+    height: 304px;
+    border-width: 1px;
 }
 
 .nav-left, .nav-right{

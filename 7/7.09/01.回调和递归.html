@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 回调
+            // function loop(times, func) {
+            //     for(let i = 0; i < times; i++) {
+            //         func('当前循环次数:' + i);
+            //     }
+            // }
+
+            // function foo(index) {
+            //     console.log(index);
+            // }
+
+            // loop(10,foo)
+        // 递归
+        // 递归实现阶乘
+        function jc(depth) {
+            if(depth - 1 > 0) {
+                return depth * jc(depth - 1);
+            } else {
+                return 1;
+            }
+        }
+
+        console.log(jc(5));
+    </script>
+</body>
+</html>

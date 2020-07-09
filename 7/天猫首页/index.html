@@ -27,7 +27,7 @@
                         <a href="javascript:;" class="u">已卖出的宝贝</a>
                     </div>
                 </li>
-                <li><a href="javascript:;" class="r-cell"><i class="fa fa-shopping-cart red-icon"></i>购物车</a></li>
+                <li><a href="javascript:;" class="r-cell cart"><i class="fa fa-shopping-cart red-icon"></i>购物车</a></li>
                 <li><a href="javascript:;" class="r-cell u collect-link">收藏夹<b></b></a>
                     <div class="collect">
                         <a href="javascript:;" class="u">收藏的宝贝</a>
@@ -42,7 +42,7 @@
                         <span class="tri"></span>
                     </div>
                 </li>
-                <li><a href="javascript:;" class="r-cell ">淘宝网</a></li>
+                <li><a href="javascript:;" class="r-cell tb">淘宝网</a></li>
                 <li><a href="javascript:;" class="r-cell u sup-link">商家支持<b></b></a>
                     <div class="sup">
                         <div>
@@ -70,15 +70,15 @@
                             <ul>
                                 <li><a href="javascript:;" class="u">天猫超市</a></li>
                                 <li><a href="javascript:;" class="u">喵鲜生</a></li>
-                                <li><a href="javascript:;" class="u">科技新品</a></li>
-                                <li><a href="javascript:;" class="u">女装新品</a></li>
+                                <li><a href="javascript:;" class="u">科技新品<i class="green"   ></i></a></li>
+                                <li><a href="javascript:;" class="u">女装新品<i class="red"></i></a></li>
                                 <li><a href="javascript:;" class="u">酷玩街</a></li>
-                                <li><a href="javascript:;" class="u">内衣新品</a></li>
+                                <li><a href="javascript:;" class="u">内衣新品<i class="red"></i></a></li>
                                 <li><a href="javascript:;" class="u">试美妆</a></li>
                                 <li><a href="javascript:;" class="u">运动新品</a></li>
-                                <li><a href="javascript:;" class="u">时尚先生</a></li>
+                                <li><a href="javascript:;" class="u">时尚先生<i class="red"></i></a></li>
                                 <li><a href="javascript:;" class="u">精明妈咪</a></li>
-                                <li><a href="javascript:;" class="u">吃乐会</a></li>
+                                <li><a href="javascript:;" class="u">吃乐会<i class="green" ></i></a></li>
                                 <li><a href="javascript:;" class="u">企业采购</a></li>
                                 <li><a href="javascript:;" class="u">会员积分</a></li>
                                 <li><a href="javascript:;" class="u">天猫国际</a></li>
@@ -90,18 +90,18 @@
                             <ul>
                                 <li><a href="javascript:;" class="u">美妆</a></li>
                                 <li><a href="javascript:;" class="u">电器</a></li>
-                                <li><a href="javascript:;" class="u">女装</a></li>
-                                <li><a href="javascript:;" class="u">男装</a></li>
+                                <li><a href="javascript:;" class="u">女装<i class="red"></i></a></li>
+                                <li><a href="javascript:;" class="u">男装<i class="red"></i></a></li>
                                 <li><a href="javascript:;" class="u">女鞋</a></li>
                                 <li><a href="javascript:;" class="u">男鞋</a></li>
-                                <li><a href="javascript:;" class="u">内衣</a></li>
+                                <li><a href="javascript:;" class="u">内衣<i class="red"></i></a></li>
                                 <li><a href="javascript:;" class="u">箱包</a></li>
                                 <li><a href="javascript:;" class="u">运动</a></li>
                                 <li><a href="javascript:;" class="u">母婴</a></li>
                                 <li><a href="javascript:;" class="u">家装</a></li>
                                 <li><a href="javascript:;" class="u">医药</a></li>
                                 <li><a href="javascript:;" class="u">食品</a></li>
-                                <li><a href="javascript:;" class="u">配饰</a></li>
+                                <li><a href="javascript:;" class="u">配饰<i class="green"   ></i></a></li>
                                 <li><a href="javascript:;" class="u">汽车</a></li>
                             </ul>
                         </div>
@@ -120,11 +120,26 @@
         </nav>
     </div>
     <!-- 导航结束 -->
+    <!-- 滚动到一定高度出现的导航条 开始 -->
+    <div class="nav-bar">
+        <div class="nav-bar-con">
+            <div class="nav-bar-logo"></div>
+            <div class="search-bar">
+                <form action="#">
+                    <input type="text" id="nav-text" class="nav-text" onkeydown="Keydown2()">
+                    <label for="nav-text" class="nav-placehd">搜索 天猫 商品/品牌/店铺</label>
+                    <button type="submit">搜索</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 滚动到一定高度出现的导航条 结束-->
     <!-- 搜索框开始 -->
     <header class="search-area">
         <div class="header">
             <form action="#">
-                <input type="text" placeholder="搜索 天猫 商品/品牌/店铺">
+                <input type="text" title="请输入搜索文字" id="text" onkeydown="Keydown()">
+                <label for="text" class="placehd">搜索 天猫 商品/品牌/店铺</label>
                 <button type="submit">搜索</button>
             </form>
         </div>
@@ -134,7 +149,7 @@
     <div class="category">
         <div class="cate-nav-con">
             <div class="cate-nav">
-                <img src="./img/index/logo.png" alt="理想生活上天猫" class="logo">
+                <a href="javascript:;"><img src="./img/index/logo.gif" alt="理想生活上天猫" class="logo"></a>
                 <a href="javascript:;"  class="tmall-item-1">
                     <img src="./img/index/tmallMarket.png" alt="天猫超市">
                 </a>
@@ -151,7 +166,7 @@
                 <a href="javascript:;" class="suning">苏宁易购</a>
             </div>
         </div>
-        <div class="show-con">
+        <div id="show-con">
             <div class="show">
                 <div class="cate">
                     <div class="list-title"><i class="iconfont icon-liebiao"></i>商品分类</div>
@@ -159,16 +174,86 @@
                         <li class="list-item-1"><i class="iconfont icon-qunzi"></i><a href="javascript:;">女装</a><span>/</span><a href="javascript:;">内衣</a>
                             <div class="item-1"></div>
                         </li>
-                        <li class="list-item-2"><i class="iconfont icon-txuzhuanhuan"></i><a href="javascript:;">男装</a><span>/</span><a href="javascript:;">运动户外</a>
+                        <li class="list-item-2"><i class="iconfont icon-txuzhuanhuan" style="font-size: 14px;"></i><a href="javascript:;">男装</a><span>/</span><a href="javascript:;">运动户外</a>
                             <div class="item-2"></div>
                         </li>
                         <li class="list-item-3"><i class="iconfont icon-xie"></i><a href="javascript:;">女鞋</a><span>/</span><a href="javascript:;">男鞋</a><span>/</span><a href="javascript:;">箱包</a>
-                            <div class="item-3"></div>
+                            <div class="item-3">
+                                <div class="word-con">
+                                    <div class="item-con">
+                                        <div class="item-title">推荐女鞋<i class="fa fa-angle-right"></i></div>
+                                        <div class="a-con">
+                                            <a href="javascript:;" class="color-3">潮流过膝靴</a><a href="javascript:;" class="color-3">气质百搭裸靴</a><a href="javascript:;">永远的帆布鞋</a><a href="javascript:;" class="color-3">流行松糕底</a><a href="javascript:;">英伦牛津鞋</a>
+                                            <div class="spacer"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item-con">
+                                        <div class="item-title">潮流男鞋<i class="fa fa-angle-right"></i></div>
+                                        <div class="a-con">
+                                            <a href="javascript:;" class="color-3">商场同款</a><a href="javascript:;" class="color-3">休闲鞋</a><a href="javascript:;">正装皮鞋</a><a href="javascript:;">休闲皮鞋</a><a href="javascript:;" class="color-3">板鞋</a><a href="javascript:;" class="color-3">户外休闲</a><a href="javascript:;">帆布鞋</a><br><a href="javascript:;" class="color-3">运动休闲</a><a href="javascript:;">乐福鞋</a><a href="javascript:;" class="color-3">豆豆鞋</a><a href="javascript:;" class="color-3">布洛克</a><a href="javascript:;" class="color-3">帆船鞋</a><a href="javascript:;">布鞋</a>
+                                            <div class="spacer"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item-con">
+                                        <div class="item-title">女单鞋<i class="fa fa-angle-right"></i></div>
+                                        <div class="a-con">
+                                            <a href="javascript:;" class="color-3">单鞋</a><a href="javascript:;">小白鞋</a><a href="javascript:;" class="color-3">商场同款</a><a href="javascript:;">帆布鞋</a><a href="javascript:;" class="color-3">深口单鞋</a><a href="javascript:;">浅口单鞋</a><a href="javascript:;" class="color-3">平底单鞋</a><br><a href="javascript:;" class="color-3">高跟单鞋</a><a href="javascript:;" class="color-3">坡跟单鞋</a><a href="javascript:;">豆豆鞋</a><a href="javascript:;">乐福鞋</a><a href="javascript:;">牛津鞋</a>
+                                            <div class="spacer"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item-con">
+                                        <div class="item-title">特色鞋<i class="fa fa-angle-right"></i></div>
+                                        <div class="a-con">
+                                            <a href="javascript:;">妈妈鞋</a><a href="javascript:;" class="color-3">大码女鞋</a><a href="javascript:;" class="color-3">小码女鞋</a><a href="javascript:;">女内增高</a><a href="javascript:;" class="color-3">男内增高</a><a href="javascript:;">软轻风</a><a href="javascript:;" class="color-3">爸爸鞋</a><br><a href="javascript:;" class="color-3">大码男鞋</a><a href="javascript:;">小码男鞋</a>
+                                            <div class="spacer"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item-con">
+                                        <div class="item-title">潮流女包<i class="fa fa-angle-right"></i></div>
+                                        <div class="a-con">
+                                            <a href="javascript:;" class="color-3">新品推荐</a><a href="javascript:;" class="color-3">商场同款</a><a href="javascript:;" class="color-3">女士钱包</a><a href="javascript:;">单肩包</a><a href="javascript:;">斜挎包</a><a href="javascript:;">手提包</a><a href="javascript:;">手拿包</a><br><a href="javascript:;">腰包</a><a href="javascript:;">胸包</a><a href="javascript:;">化妆包</a>
+                                            <div class="spacer"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item-con">
+                                        <div class="item-title">精品男包<i class="fa fa-angle-right"></i></div>
+                                        <div class="a-con">
+                                            <a href="javascript:;" class="color-3">男士钱包</a><a href="javascript:;">收纳包</a><a href="javascript:;">胸包</a><a href="javascript:;" class="color-3">腰包</a><a href="javascript:;">手拿包</a><a href="javascript:;" class="color-3">手提包</a><a href="javascript:;">斜挎包</a><a href="javascript:;">单肩包</a><br><a href="javascript:;">商场同款</a><a href="javascript:;">新品推荐</a>
+                                            <div class="spacer"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item-con">
+                                        <div class="item-title">功能箱包<i class="fa fa-angle-right"></i></div>
+                                        <div class="a-con">
+                                            <a href="javascript:;" class="color-3">旅行箱</a><a href="javascript:;">万向轮箱</a><a href="javascript:;">旅行袋</a><a href="javascript:;" class="color-3">女士双肩包</a><a href="javascript:;">男士双肩包</a><a href="javascript:;">韩版双肩包</a><br><a href="javascript:;">铆钉双肩包</a><a href="javascript:;">女士钱包</a><a href="javascript:;">男士钱包</a><a href="javascript:;" class="color-3">大容量</a><a href="javascript:;" class="color-3">印花</a>
+                                            <div class="spacer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="logo-con">
+                                    <a href="javascript:;"><img src="https://img.alicdn.com/bao/uploaded/TB1Nza1LFXXXXbDXFXXSutbFXXX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/bao/uploaded/TB1tBlBMXXXXXXaXFXXSutbFXXX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="https://img.alicdn.com/tps/i4/TB1hp9WPpXXXXbZXFXXSutbFXXX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="https://img.alicdn.com/tps/i4/TB1ZCmFPpXXXXbpaXXXSutbFXXX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="https://img.alicdn.com/tps/i4/TB1HTKLPpXXXXXEaXXXSutbFXXX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/bao/uploaded/T1gwebFcFbXXb1upjX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/bao/uploaded/T1GKWaFd4eXXb1upjX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/bao/uploaded/T1b98VFgJiXXb1upjX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="https://img.alicdn.com/tps/i4/TB1PCq3PpXXXXcAXpXXSutbFXXX.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/tps/i3/TB1LX3bLVXXXXcLXXXXXpJt1pXX-1000-500.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/tps/i2/TB1BoYYLVXXXXaZXVXXXpJt1pXX-1000-500.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/tps/i4/TB1XkMXLVXXXXXHXpXXXpJt1pXX-1000-500.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/tps/i4/TB1jL24LVXXXXXRXFXXXpJt1pXX-1000-500.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/tps/i1/TB16Jn1LVXXXXc8XFXXXpJt1pXX-1000-500.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/tps/i3/TB1_QH3LVXXXXaYXFXXXpJt1pXX-1000-500.jpg_170x120q30.jpg"></a>
+                                    <a href="javascript:;"><img src="//img.alicdn.com/tps/i1/TB1ryEcLVXXXXaFXXXXXpJt1pXX-1000-500.jpg_170x120q30.jpg"></a>
+                                </div>
+                            </div>
                         </li>
                         <li class="list-item-4"><i class="iconfont icon-kouhong"></i><a href="javascript:;">美妆</a><span>/</span><a href="javascript:;">个人护理</a>
                             <div class="item-4"></div>
                         </li>
-                        <li class="list-item-5"><i class="iconfont icon-diamonds"></i><a href="javascript:;">腕表</a><span>/</span><a href="javascript:;">眼镜</a><span>/</span><a href="javascript:;">珠宝首饰</a>
+                        <li class="list-item-5"><i class="iconfont icon-diamonds" style="font-size: 15px;"></i><a href="javascript:;">腕表</a><span>/</span><a href="javascript:;">眼镜</a><span>/</span><a href="javascript:;">珠宝首饰</a>
                             <div class="item-5"></div>
                         </li>
                         <li class="list-item-6"><i class="iconfont icon-shouji1"></i><a href="javascript:;">手机</a><span>/</span><a href="javascript:;">数码</a><span>/</span><a href="javascript:;">电脑办公</a>
@@ -189,7 +274,7 @@
                         <li class="list-item-11"><i class="iconfont icon-jiajujiancai"></i><a href="javascript:;">家具建材</a>
                             <div class="item-11"></div>
                         </li>
-                        <li class="list-item-12"><i class="iconfont icon-fuwu"></i><a href="javascript:;">汽车</a><span>/</span><a href="javascript:;">配件</a><span>/</span><a href="javascript:;">用品</a>
+                        <li class="list-item-12"><i class="iconfont icon-fuwu" style="font-size: 13px;"></i><a href="javascript:;">汽车</a><span>/</span><a href="javascript:;">配件</a><span>/</span><a href="javascript:;">用品</a>
                             <div class="item-12"></div>
                         </li>
                         <li class="list-item-13"><i class="iconfont icon-jiafang"></i><a href="javascript:;">家纺</a><span>/</span><a href="javascript:;">家饰</a><span>/</span><a href="javascript:;">鲜花</a>
@@ -203,31 +288,689 @@
                         </li>
                         <li class="list-item-16"><i class="iconfont icon-yingyinguangpan"></i><a href="javascript:;">图书音像</a>
                             <div class="item-16"></div>
-                        </li>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+                        </li>   
                     </ul>
                 </div>
                 <div class="banner">
-                    <img src="./img/index/banner1.webp" alt="banner1">
+                    <a href="javascript:;"><img class="active"  src="./img/index/banner1.webp" alt="banner1"></a> 
+                    <a href="javascript:;"><img src="./img/index/banner2.webp" alt="banner2"></a> 
+                    <a href="javascript:;"><img src="./img/index/banner3.jpg" alt="banner3"></a> 
+                    <a href="javascript:;"><img src="./img/index/banner4.webp" alt="banner4"></a> 
+                    <a href="javascript:;"><img src="./img/index/banner5.webp" alt="banner5"></a> 
+                    <a href="javascript:;"><img src="./img/index/banner6.jpg" alt="banner6"></a> 
+                    <ul class="roll-bar">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
     <!-- 目录结束 -->
+    <!-- 侧边导航开始 -->
+    <ul class="aside-nav">
+        <li class="aside-title">导航</li>
+        <li><a href="javascript:;">天猫超市</a></li>
+        <li><a href="javascript:;">天猫国际</a></li>
+        <li><a href="javascript:;">美丽人生</a></li>
+        <li><a href="javascript:;">潮电酷玩</a></li>
+        <li><a href="javascript:;">居家生活</a></li>
+        <li><a href="javascript:;">打造爱巢</a></li>
+        <li><a href="javascript:;">户外出行</a></li>
+        <li><a href="javascript:;">猜你喜欢</a></li>
+        <li class="totop"><a href="#top"><i class="fa fa-angle-up"></i>顶部</a></li>
+    </ul>
+    <!-- 侧边导航结束 -->
+    <!-- logo展示区开始 -->
+    <div class="show-logos">
+        <div class="logos-con">
+            <div class="big-img">
+                <div class="sale">
+                    <div class="head">
+                        <span class="cn">品牌闪购</span>
+                        <span class="en">BRAND SALE</span>
+                        <a href="javascript:;" class="more">更多</a>
+                    </div>
+                    <a href="javascript:;" class="body">
+                        <img src="https://img.alicdn.com/tps/i4/TB17qddaOERMeJjSspiSuvZLFXa.jpg_320x5000q100.jpg_.webp">
+                    </a>
+                </div>
+                <div class="channel">
+                    <div class="head">
+                        <span class="cn">聚名品</span>
+                        <span class="en">LUXURY CHANNEL</span>
+                        <a href="javascript:;" class="more">更多</a>
+                    </div>
+                    <a href="javascript:;" class="body">
+                        <img src="https://img.alicdn.com/tps/i4/TB1fbhiawoQMeJjy0FnSuv8gFXa.jpg_490x490q100.jpg_.webp">
+                    </a>
+                </div>
+                <div class="activity">
+                    <div class="head">
+                        <span class="cn">品牌活动</span>
+                        <span class="en">BRAND ACTIVITY</span>
+                        <a href="javascript:;" class="more">更多</a>
+                    </div>
+                    <a href="javascript:;" class="body">
+                        <img src="https://img.alicdn.com/tps/i4/TB1d.gpK.Y1gK0jSZFCSuwwqXXa.jpg_490x490q100.jpg_.webp">
+                    </a>
+                </div>
+            </div>
+            <ul class="sm-logo">
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="https://img.alicdn.com/i2/2/TB1ilbUHpXXXXb8XXXXSutbFXXX.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>Schneider Electric/施耐德</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="https://img.alicdn.com/i2/2/TB1TJNTPXXXXXcqXVXXSutbFXXX.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>ENFINITAS/蓝臻</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="https://img.alicdn.com/i2/2/TB1a3bVRXXXXXbfXFXXXXXXXXXX?abtest=&pos=3&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>GATEMAN</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1gD8NhDlYBeNjSszcXXbwhFXa?abtest=&pos=4&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥200</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1_aF7pG6qK1RjSZFmXXX0PFXa?abtest=&pos=5&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>ROYAL CANIN/皇家</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1PrRDyQL0gK0jSZFtXXXQCXXa?abtest=&pos=6&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>LEAGUE OF LEGENDS/英雄联盟</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1Im97lVT7gK0jSZFpXXaTkpXa?abtest=&pos=7&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥65</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/imgextra/i4/928417138/O1CN019OFNEK22bFcXdLUb5_!!928417138.png_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥200</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1KH4GQpXXXXb_apXXSutbFXXX.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>scout</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1pwpNhfBNTKJjy1zdXXaScpXa?abtest=&pos=10&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>Neato Robotics</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1_kq7j1SSBuNjy0FlXXbBpVXa?abtest=&pos=11&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥100</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1nJxqJXXXXXchapXXSutbFXXX.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥1000</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1sM7GSXXXXXb3aXXXXXXXXXXX?abtest=&pos=13&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥60</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1ytKieRWD3KVjSZKPXXap7FXa?abtest=&pos=14&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>帕尔玛之水</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1m4azzeH2gK0jSZFEXXcqMpXa?abtest=&pos=15&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>AMERICAN TOURISTER/美旅</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1R1K4GFmWBuNjSspdSuvugXXa.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>双心</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/T25cAwXGhXXXXXXXXX-1785908005.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>hot topic</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1igurtrSYBuNjSspfXXcZCpXa?abtest=&pos=18&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>BARNEYS NEW YORK</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1gOvrmZLJ8KJjy0FnXXcFDpXa?abtest=&pos=19&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>Herschel</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1gOvrmZLJ8KJjy0FnXXcFDpXa?abtest=&pos=19&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥900</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1aA5EcMsSMeJjSspeXXa77VXa?abtest=&pos=21&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥180</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB11204ueL2gK0jSZFmXXc7iXXa?abtest=&pos=22&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥30</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1G5bXD9BYBeNjy0FeSuvnmFXa.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>febreze</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1XcHYHpXXXXXmXXXXSutbFXXX.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>STOKKE</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1lnhJq9BYBeNjy0FeXXbnmFXa?abtest=&pos=25&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥210</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1CAsYJpXXXXbuXpXXwu0bFXXX.png_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥40</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB16oQ2IVXXXXXuXXXXSutbFXXX.jpg_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>Crest/佳洁士</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1Qvu9DoH1gK0jSZSyXXXtlpXa?abtest=&pos=28&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥50</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-item">
+                    <div class="brand-img">
+                        <img src="//img.alicdn.com/i2/2/TB1Ul00mlfH8KJjy1XbXXbLdXXa?abtest=&pos=29&abbucket=&acm=09042.1003.1.1200415&scm=1007.13029.131809.100200300000000_100x150q100.jpg_.webp">
+                    </div>
+                    <a href="javascript:;" class="brand-mask">
+                        <div class="coupon">
+                            <span>优惠券 ￥30</span>
+                        </div>
+                        <div class="enter">
+                            <span>点击进入</span>
+                        </div>
+                    </a>
+                </li>
+                <li href="javascript:;" class="brand-fresh">
+                    <a href="javascript:;">
+                        <i class="fa fa-sync"></i>
+                        <span>换一批</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- logo展示区结束 -->
+    <!-- 天猫超市开始 -->
+    <div class="mart"></div>
+    <!-- 天猫超市结束 -->
+    <!-- 天猫国际开始 -->
+    <div class="hk"></div>
+    <!-- 天猫国际结束 -->
+    <!-- 美丽人生开始 -->
+    <div class="beauty"></div>
+    <!-- 美丽人生结束 -->
+    <!-- 苦点抄完开始 -->
+    <div class="elec"></div>
+    <!-- 苦点抄完结束 -->
+    <!-- 居家生活开始 -->
+    <div class="grocery"></div>
+    <!-- 居家生活结束 -->
+    <!-- 打造爱巢开始 -->
+    <div class="home"></div>
+    <!-- 打造爱巢结束 -->
+    <!-- 户外出行开始 -->
+    <div class="outdoor"></div>
+    <!-- 户外出行结束 -->
+    <!-- 猜你喜欢开始 -->
+    <div class="like"></div>
+    <!-- 猜你喜欢结束 -->
+    <!-- 底部开始 -->
+    <footer class="bot">
+        <div class="tmall-ensure">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+        <div class="tmall-desc">
+            <dl class="ensure">
+                <dt>购物指南</dt>
+                <dd>
+                    <a href="javascript:;">免费注册</a> 
+                    <a href="javascript:;">开通支付宝</a> 
+                    <a href="javascript:;">支付宝支付</a> 
+                </dd>
+                
+            </dl>
+            <dl class="beginner">
+                <dt>天猫保障</dt>
+                <dd>
+                    <a href="javascript:;">发票保障</a> 
+                    <a href="javascript:;">售后规则</a> 
+                    <a href="javascript:;">缺货赔付</a> 
+                </dd>
+               
+            </dl>
+            <dl class="payment">
+                <dt>支付方式</dt>
+                <dd>
+                    <a href="javascript:;">快捷支付</a> 
+                    <a href="javascript:;">信用卡</a> 
+                    <a href="javascript:;">余额宝</a> 
+                    <a href="javascript:;">蚂蚁花呗</a> 
+                    <a href="javascript:;">货到付款</a> 
+                </dd>
+                
+            </dl>
+            <dl class="seller">
+                <dt>商家服务</dt>
+                <dd>
+                    <a href="javascript:;">天猫规则</a> 
+                    <a href="javascript:;">商家入驻</a> 
+                    <a href="javascript:;">商家中心</a> 
+                    <a href="javascript:;">天猫智库</a> 
+                    <a href="javascript:;">物流服务</a> 
+                    <a href="javascript:;">喵言喵语</a> 
+                    <a href="javascript:;">运营服务</a> 
+                </dd>
+            </dl>
+            <dl class="mobile">
+                <dt>手机天猫</dt>
+                <dd>
+                    <a href="javascript:;">
+                        <img src="//img.alicdn.com/tfscom/TB14MWoNhjaK1RjSZFAwu2dLFXa.png">
+                    </a>
+                </dd>
+            </dl>
+        </div>
+        <div class="tmall-copyright">
+            <div class="footer-info">
+                <a href="javascript:;">关于天猫</a>
+                <a href="javascript:;">帮助中心</a>
+                <a href="javascript:;">开放平台</a>
+                <a href="javascript:;">诚聘英才</a>
+                <a href="javascript:;">联系我们</a>
+                <a href="javascript:;">网站合作</a>
+                <a href="javascript:;">法律声明</a>
+                <a href="javascript:;">隐私政策</a>
+                <a href="javascript:;">知识产权</a>
+                <a href="javascript:;">廉政举报</a>
+                <a href="javascript:;">规则意见征集</a>
+            </div>
+            <div class="footer-link">
+                <a href="javascript:;">阿里巴巴集团</a>|
+                <a href="javascript:;">淘宝网</a>|
+                <a href="javascript:;">天猫</a>|
+                <a href="javascript:;">聚划算</a>|
+                <a href="javascript:;">全球速卖通</a>|
+                <a href="javascript:;">阿里巴巴国际交易市场</a>|
+                <a href="javascript:;">1688</a>|
+                <a href="javascript:;">阿里妈妈</a>|
+                <a href="javascript:;">飞猪</a>|
+                <a href="javascript:;">阿里云计算</a>|
+                <a href="javascript:;">Alios</a>|
+                <a href="javascript:;">阿里通信</a>|
+                <a href="javascript:;">万网</a>|
+                <a href="javascript:;">高德</a>|
+                <a href="javascript:;">UC</a>|
+                <a href="javascript:;">友盟</a>|
+                <a href="javascript:;">虾米</a>|
+                <a href="javascript:;">钉钉</a>|
+                <a href="javascript:;">支付宝</a>|
+                <a href="javascript:;">阿里安全</a>
+            </div>
+            <div class="footer-copyright">
+                增值电信业务经营许可证： <a href="javascript:;">浙B2-20110446</a>
+                <span style="margin-right: 65px;">市场名称登记证：工商网市字3301004119号</span>
+                <span>出版物网络交易平台服务经营备案证： 新出发浙备字第001号</span>
+                <br>
+                <span style="margin-right: 65px;">互联网违法和不良信息举报电话：0571-81683755 blxxjb@alibaba-inc.com</span>
+                互联网药品信息服务资质证书编号：<a href="javascript:;">浙-（经营性）-2017-0005</a>
+                <a href="javascript:;">
+                    <img src="//img.alicdn.com/tps/TB1yEqRPXXXXXXPXpXXXXXXXXXX-20-20.png" style="position:relative;top:5px;vertical-align:baseline;">
+                    浙公网安备 33010002000120号
+                </a>
+                <br>
+                <span style="margin-right: 65px;">医疗器械网络交易服务第三方平台备案：（浙）网械平台备字[2018]第00002号</span>
+                <span style="margin-right: 65px;">互联网药品交易服务资格证书：国A20150001</span>
+                <br>
+                <span style="margin-right: 65px;">浙江省网络食品销售第三方平台提供者备案：浙网食A33010002</span>
+                <a href="javascript:;">12318举报</a>
+                <div>© 2003-2020 TMALL.COM 版权所有</div>
+                <p>
+                    <a style="margin-right: 10px" href="javascript:;">
+                        <img src="//img.alicdn.com/tfs/TB1MQX3cBr0gK0jSZFnXXbRRXXa-65-70.gif" style="width: 30px;height: 30px">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="//img.alicdn.com/tps/i1/TB13mgzHXXXXXbjXVXXzby4IVXX-80-30.jpg">
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="serv">wormholesource011015096064.center.na61.production</div>
+    </footer>
+    <!-- 底部结束 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        // 出现导航条
+        $(window).scroll(function() {
+            if($(document).scrollTop() > 780) {
+                $('.nav-bar').addClass("vanish");
+            } else {
+                $('.nav-bar').removeClass("vanish");
+            }
+        })
+        // 出现侧边导航
+        $(window).scroll(function() {
+            if($(document).scrollTop() > 700) {
+                $('.aside-nav').addClass("appear");
+            } else {
+                $('.aside-nav').removeClass("appear");
+            }
+        })
+        // 输入任意文本搜索框 placehd 消失回不来
+        var input = document.getElementById('text');
+        var placehd = document.querySelector('.placehd');
+        input.onkeydown = function Keydown() {
+            placehd.style.display = 'none';
+        }
+        
+        var input_2 = document.getElementById('nav-text');
+        var placehd_2 = document.querySelector('.nav-placehd');
+        input_2.onkeydown = function Keydown2() {
+            placehd_2.style.display = 'none';
+        }
+
+        // 轮播图 加 目录背景颜色自适应
+        function slideshow() {
+            var container = document.getElementById('show-con');
+            var box = document.querySelector('.banner');
+            imgs = box.getElementsByTagName('img');
+
+            current = 0;
+
+            function slideOff() {
+                imgs[current].className = '';
+                container.className = '';
+            }
+
+            function slideOn() {
+                imgs[current].className = 'active';
+                container.className = 'bg' + (current + 1);
+            }
+
+            function change() {
+                slideOff();
+                current++;
+                if(current >= imgs.length) {
+                    current = 0;
+                }
+                slideOn();
+            }
+
+            // 每4s切换图片
+            var slideon = setInterval(change, 4000);
+
+            // // 鼠标移入停止事件
+            // box.onmouseover = function() {
+            //     clearInterval(slideon);
+            // }
+
+            // // 鼠标移出继续
+            // box.onmouseout = function() {
+            //     sldieon = setInterval(change, 1000);
+            // }
+        }
+
+        slideshow();
+    </script>
 </body>
 </html>

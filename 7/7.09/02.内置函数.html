@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ECMAscript 内置的顶层函数
+
+        // String(); 将任何类型的数据都转换为字符串（强制转换）
+        // Number(); 强制将某些类型的数据转换成数值类型 布尔类型 true 1 / false 0
+        // 字符串 -> 数值类型 NaN 必须是包含合法数值类型的字符串才能转换成数值
+        // boolean(); 强制将所有的数据类型转换为布尔值 0 -> flase ''/"" -> false null/undefined -> false
+        // 判断一个值是否是 NaN
+        // isNaN();
+
+        // parseInt( , 进制2 ~ 32); parseFloat();
+        // 转换规则比 Number() 强大
+            // var str = "s124e";
+            // console.log(parseInt(str));
+        var str = 'ff';
+        console.log(parseInt(str, 16));
+    </script>
+</body>
+</html>
