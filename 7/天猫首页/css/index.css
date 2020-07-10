@@ -612,11 +612,12 @@ b {
     display: none;
 }
 
-.list .list-item-3 .item-3 .word-con{
+.list .word-con{
     height: 100%;
     width: 643px;
     padding: 19px 30px;
     float: left;
+    overflow: hidden;
 }
 
 .word-con .item-con {
@@ -633,8 +634,7 @@ b {
     line-height: 22px;
     height: 22px;
     float: left;
-    /* background-color: crimson; */
-    text-align: justify;
+    text-align-last: justify;
 }
 
 .item-con i {
@@ -648,7 +648,7 @@ b {
 
 .item-con .a-con {
     float: left;
-    width: 492px;
+    width: 493px;
     line-height: 22px;
     /* background-color: orange; */
 }
@@ -663,16 +663,12 @@ b {
     color: #666;
     height: 22px;
     line-height: 22px;
-    margin-left: 13px;
+    margin-left: 10px;
     font-weight: normal;
 }
 
-a.color-3 {
-    color: #6347ed !important;
-}
-
-.item-con .a-con a:hover {
-    color: #6347ed;
+.item-1 .spacer, .item-2 .spacer {
+    margin-bottom: 8px;
 }
 
 .logo-con {
@@ -683,7 +679,7 @@ a.color-3 {
     padding: 10px;
 }
 
-.logo-con a {
+.item-3 .logo-con a {
     float: left;
     width: 93px;
     height: 47px;
@@ -693,80 +689,84 @@ a.color-3 {
     background-color: #fff;
 }
 
-.logo-con a img {
+.item-3 .logo-con a img {
     width: 73px;
 }
 
-.logo-con a img:hover {
+.item-3 .logo-con a img:hover {
     opacity: .8;
 }
 
-.list-item-1:hover, .list-item-1:hover > a {
-    color: #e54077;
+.item-2 .logo-con img {
+    width: 189px;
+}
+
+a.color-1, .item-1 a:hover, .list-item-1:hover, .list-item-1:hover > a {
+    color: #e54077 !important;
 }   
 
 .list li[class^=list-item]:hover > div[class^=item] {
     display: block;
 }
 
-.list-item-2:hover, .list-item-2:hover > a {
-    color: #427def;
+a.color-2, .item-2 a:hover, .list-item-2:hover, .list-item-2:hover > a {
+    color: #427def !important;
 }
 
-.list-item-3:hover, .list-item-3:hover > a {
-    color: #6347ed;
+a.color-3, .item-3 a:hover, .list-item-3:hover, .list-item-3:hover > a {
+    color: #6347ed !important;
 }
 
-.list-item-4:hover, .list-item-4:hover > a {
-    color: #e54077;
+a.color-4, .item-4 a:hover, .list-item-4:hover, .list-item-4:hover > a {
+    color: #e54077 !important;
 }
 
-.list-item-5:hover, .list-item-5:hover > a {
-    color: #6347ed;
+a.color-5, .item-5 a:hover, .list-item-5:hover, .list-item-5:hover > a {
+    color: #6347ed !important;
 }
 
-.list-item-6:hover, .list-item-6:hover > a {
-    color: #427def;
+a.color-6, .item-6 a:hover, .list-item-6:hover, .list-item-6:hover > a {
+    color: #427def !important;
 }
 
-.list-item-7:hover, .list-item-7:hover > a {
-    color: #fa5c5c;
+a.color-7, .item-7 a:hover, .list-item-7:hover, .list-item-7:hover > a {
+    color: #fa5c5c !important;
 }
 
-.list-item-8:hover, .list-item-8:hover > a {
-    color: #f7a831;
+a.color-8, .item-8 a:hover, .list-item-8:hover, .list-item-8:hover > a {
+    color: #f7a831 !important;
 }
 
-.list-item-9:hover, .list-item-9:hover > a {
-    color: #f7a831;
+a.color-9, .item-9 a:hover, .list-item-9:hover, .list-item-9:hover > a {
+    color: #f7a831 !important;
 }
 
-.list-item-10:hover, .list-item-10:hover > a {
-    color: #427def;
+a.color-10, .item-10 a:hover, .list-item-10:hover, .list-item-10:hover > a {
+    color: #427def !important;
 }
 
-.list-item-11:hover, .list-item-11:hover > a {
-    color: #dd2727;
+a.color-11, .item-11 a:hover, .list-item-11:hover, .list-item-11:hover > a {
+    color: #dd2727 !important;
 }
 
-.list-item-12:hover, .list-item-12:hover > a {
-    color: #427def;
+a.color-12, .item-12 a:hover, .list-item-12:hover, .list-item-12:hover > a {
+    color: #427def !important;
 }
 
-.list-item-13:hover, .list-item-13:hover > a {
-    color: #f7a831;
+a.color-13, .item-13 a:hover, .list-item-13:hover, .list-item-13:hover > a {
+    color: #f7a831 !important;
 }
 
-.list-item-14:hover, .list-item-14:hover > a {
-    color: #3bc7b0;
+a.color-14, .item-14 a:hover, .list-item-14:hover, .list-item-14:hover > a {
+    color: #3bc7b0 !important;
 }
 
-.list-item-15:hover, .list-item-15:hover > a {
-    color: #dd2727;
+a.color-15, .item-15 a:hover, .list-item-15:hover, .list-item-15:hover > a {
+    color: #dd2727 !important;
 }
 
-.list-item-16:hover, .list-item-16:hover > a {
-    color: #3bc7b0;
+a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
+    color: #3bc7b0 !important;
 }
 
 .show .list a {
@@ -849,9 +849,7 @@ a.color-3 {
         display: none;
     }
 
-    .show .list div[class^=item] {
-        width: 782px;
-    }
+    /*  */
 }
 /* 目录结束 */
 
@@ -1204,6 +1202,264 @@ a.color-3 {
     }
 }
 /* logo展示区结束 */
+
+/* 天猫超市开始 */
+.mart {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding-top: 20px;
+}
+
+.mart-con {
+    width: 1260px;
+    margin: 0 auto;
+    padding-right: 30px;
+}
+
+.mart-title img {
+    vertical-align: middle;
+    width: 214px;
+    height: 25px;
+}
+
+.mart-body {
+    height: 618px;
+    margin-top: 10px;
+}
+
+.mart-left {
+    position: relative;
+    float: left;
+}
+
+.mart-left:hover a img {
+    opacity: .7;
+}
+
+.mart-left img {
+    height: 618px;
+    transition: opacity .3s ease-out;
+}
+
+.mart-desc {
+    position: absolute;
+    bottom: 20%;
+    height: 64px;
+    vertical-align: middle;
+}
+
+.left-desc {
+    background-color: rgba(0, 0, 0, .9);
+    width: 70px;
+    height: 64px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.left-desc span {
+    display: inline-block;
+    width: 36px;
+}
+
+.right-desc {
+    position: absolute;
+    left: 70px;
+    top: 0;
+    width: 128px;
+    height: 64px;
+    background: rgba(0, 0, 0, .6);
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 0 0 14px;
+}
+
+.right-desc span {
+    display: block;
+    line-height: 24px;
+}
+
+.link-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.link-img img {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    bottom: 15px;
+    right: 15px;
+}
+
+.mart-right {
+    width: 995px;
+    height: 618px;
+    float: left;
+}
+
+.grid {
+    width: 484px;
+    height: 301px;
+    margin-left: 13px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    float: left;
+    padding: 10px;
+}
+
+.grid-con {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .09);
+}
+
+.tabs li {
+    width: 232px;
+    height: 57px;
+    float: left;
+    text-align: center;
+    line-height: 57px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.tabs li:hover {
+    background-color: #00b262;
+    color: #fff;
+}
+
+.selected {
+    background-color: #00b262 !important;
+    color: #fff;
+}
+
+.tab-item-1, .tab-item-2 {
+    position: relative;
+    top: 57px;
+    display: block;
+    width: 464px;
+    height: 224px;
+}
+
+.tab-item-1:hover img, .tab-item-2:hover img {
+    opacity: .7;
+}
+
+.tab-desc {
+    position: absolute;
+    top: 96px;
+    z-index: 1;
+    height: 87px;
+    width: 291px;
+    background: url(https://img.alicdn.com/tfs/TB1AnTXewMPMeJjy1XcXXXpppXa-290-87.png) no-repeat;
+    background-position: 0 center;
+}
+
+.tab-img {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+
+.desc-title {
+    margin-left: 26px;
+    margin-top: 16px;
+}
+
+.desc-title img {
+    width: 23px;
+    height: 23px;
+    vertical-align: middle;
+    margin-top: -10px;
+}
+
+.desc-title span {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #00b262;
+    margin-left: 8px;
+}
+
+.desc-text {
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 26px;
+    letter-spacing: 1px;
+    color: #000;
+    margin-top: 10px;
+}
+
+.grid ~ a {
+    display: block;
+    width: 235px;
+    height: 301px;
+    background-color: #fff;
+    margin: 0 0 15px 13px;
+    float: left;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.grid ~ a img {
+    width: 185px;
+    height: 185px;
+    margin-top: 20px;
+}
+
+.right-item-name {
+    width: 135px;
+    height: 40px;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    margin: 8px auto;
+    overflow: hidden;
+}
+
+.right-item-price {
+    font-size: 18px;
+    color: #ff0036;
+    line-height: 18px;
+    margin: 10px auto;
+}
+
+.grid ~ a:hover {
+    border: 1px solid #ff0036;
+}
+
+.grid ~ a:hover img {
+    opacity: .7;
+}
+/* 天猫超市结束 */
+
+.main-end {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px 0 20px 0;
+}
+
+.end-con {
+    width: 1260px;
+    padding-right: 30px;
+    margin: 0 auto;
+}
+
+.end-icon {
+    width: 80px;
+    height: 45px;
+    text-align: center;
+    margin: 0 auto;
+    background: url(//img.alicdn.com/tps/TB1wQDAPXXXXXXgaFXXXXXXXXXX-62-35.png) no-repeat;
+    background-size: cover;
+}
 
 /* 底部开始 */
 .bot {

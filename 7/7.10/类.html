@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function myArr(arr1, arr2, arr3, arr4, arr5) {
+            this.array = [arr1, arr2, arr3, arr4, arr5];
+            this.order = function(array) {
+                let current, preIndex;
+                for(let i = 0; i < array.length; i++) {
+                    current = array[i];
+                    preIndex = i - 1;
+                    while(preIndex >= 0 && array[preIndex] > current) {
+                        array[preIndex + 1] = array[preIndex];
+                        preIndex--;
+                    }
+                    array[++preIndex] = current;
+                }
+                return array;
+            }
+        }
+
+        var arr = new myArr(1, 3, 2);
+        console.log(arr.order);
+    </script>
+</body>
+</html>

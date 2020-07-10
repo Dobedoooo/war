@@ -8,13 +8,15 @@
 <body>
     <script>
         //数组去重
-        var arr = [32, 1, 2, 3, 1, 2, 3, 200, 4, 5, 7, 23, 4];
-        console.log(typeof arr);
+        var arr = [32, 1, 2, 3, 1, 2, 3, 200, 4, 5, 7, 23, 4, 1];
         function Deduplication(array) {
             for(let i = 0; i < array.length; i++) {
                 for(let j = i + 1; j < array.length; j++) {
                     if(array[i] == array[j]) {
-                        delete array[j];
+                        for (k = j; k < array.length; k++) {
+                            array[k] = array[k + 1];
+                        }
+                        array.pop();
                     }
                 }
             }
@@ -25,6 +27,10 @@
         // }
         //找最大值
         function max(array) {
+            if(!(array instanceof Array)) {
+                console.error('输入类型错误');
+                return;
+            }
             let temp_max = array[0];
             for(let i = 0; i < array.length; i++) {
                 if(temp_max < array[i]) {
@@ -37,6 +43,39 @@
         console.log(max(arr));
         
         //插排
+        function insertionSort(arr) {
+            var preIndex, current;
+            for(var i = 1; i < arr.length; i++) {
+                preIndex = i - 1;
+                // 待插入的数
+                current = arr[i];
+                // 找到 current 合适的位置，并将数组推后为他空出区域
+                while(preIndex >= 0 && arr[preIndex] > current) {
+                    arr[preIndex + 1] = arr[preIndex];
+                    preIndex--;
+                }
+                // 用 current 覆盖该区域的值
+                arr[++preIndex] = current;
+            }
+            return arr;
+        }
+
+        // insertionSort(arr);
+
+        function insert(arr){
+            var current, preIndex;
+            for(i = 0; i < arr.length; i++) {
+                current = arr[i];
+                preIndex = i - 1;
+                while(preIndex >= 0 && arr[preIndex] > current) {
+                    arr[preIndex + 1] = arr[preIndex];
+                    preIndex--;
+                }
+                arr[++preIndex] = current;
+            }
+            return arr;
+        }
+        console.log(insert(arr));
     </script>
 </body>
 </html>
