@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Person(name, age=12, sex='man') {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.say = function() {
+                console.log(this.name);
+            }
+            this.eat = function() {
+                console.log('吃饭');
+            }
+        }
+
+        function stu(no) {
+            this.no = no;
+            this.sleep = function() {
+                console.log('sleep');
+            }
+        }
+
+        // stu.prototype = new Person('lisi');
+        
+        stu.prototype.play = ()=> {
+            console.log('play');
+        }
+
+        var lisi = new stu(123);
+
+        console.log(lisi instanceof Person);
+        lisi.say();
+        lisi.sleep();
+        lisi.play();
+
+        // function Animal() {
+        //     this.eat = function(food) {
+        //         alert(food);
+        //     }
+        // }
+
+        // function Cat() {}
+        // Cat.prototype = new Animal();
+
+        // var tom = new Cat();
+        // console.log(tom instanceof Animal)
+        // tom.eat('fish');
+
+        // 继承 1.完全继承，继承构造方法中的属性和方法和原型中的属性和方法
+        // 2.部分继承，子类继承父类的原型，只能继承父类原型中的属性和方法
+            // stu.prototype = new Person();
+            // stu.prototype = Person.prototype;
+
+        // 原型链 继承链
+        // 子类构造方法、子类的原型、父类构造方法、父类的原型都有同一个属性
+        // 子类构造方法 -> 子类的原型 -> 父类构造方法 -> 父类的原型 -> 顶层函数
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            function myArr() {
+                for(let i = 0; i < arguments.length; i++) {
+                    this[i] = arguments[i];
+                }
+                this.length = arguments.length;
+                this.order = function() {
+                    for(let i = 0; i < this.length; i++) {
+                        var current, preIndex;
+                        current = this[i];
+                        preIndex = i - 1;
+                        while(preIndex >= 0 && this[preIndex] > current) {
+                            this[preIndex + 1] = this[preIndex];
+                            preIndex--;
+                        }
+                        this[++preIndex] = current;
+                    }
+                    return this;
+                
+                }
+                this.print = function() {
+                    for(let i = 0; i < this.length; i++) {
+                        console.log(this[i]);
+                    }
+                }
+            }
+
+            var arr = new myArr(1, 3, 2);
+
+            arr.order().print();
+        */
+        // this指向对象的地址
+ 
+        // js原型 将属性存到静态区
+
+        function myClass() {
+        }
+        
+        myClass.prototype = {
+            name: 'zhangsan',
+            age: 12
+        }
+
+        var obj = new myClass();
+        console.log(obj.age);
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //类和对象 最根本的写法
+        class person {
+            //构造函数 实例化类时运行的函数
+            constructor(name, age, gender) {
+                var name1 = Symbol();
+                this[name1] = name;
+                this.age = age;
+                this.gender = gender;
+                this.say = ()=> {
+                console.log(this[name1]);
+                }
+            }
+            
+        }
+
+        class stu extends person {
+            constructor(name, age, gender) {
+                super(name, age, gender);
+            }
+        }
+
+        var zhangsan = new stu('zhangsan', 12, 'female');
+
+        // console.log(zhangsan.name);
+        // zhangsan.say();
+        // 但还是会用函数构造类，某些浏览器不支持新的语法
+        // 通过新语法写的程序 需要编译成任何浏览器都能识别的语法
+
+        // 遍历对象
+        obj = {
+            name: 'zs',
+            age: 20,
+            gender: 'man'
+        }
+
+        for(var i in obj) {
+            console.log(obj[i]);
+        } 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置对象练习</title>
+</head>
+<body>
+    <script>
+        /*
+            Object 对象
+            属性：
+                1.constructor 对构造函数的引用  
+                2.prototype 对函数对象的原型引用
+                    是函数对象的默认属性
+                    可以将对象的共有属性存放到原型上，也可以实现继承
+            方法：
+        */
+        // 1.Object.assign(obj1, obj2, obj3, ...)
+        //  用于对象的拼接，将 obj2, obj3, ... 拼接到对象 obj1 上，并返回 obj1 ，其他对象不变
+        var obj1 = {
+            name: '张三'
+        };
+        var obj2 = {
+            age: 12
+        };
+        var obj3 = {
+            sleep: function() {
+                console.log('sleep');
+            }
+        }
+        //拼接
+        Object.assign(obj1, obj2, obj3)
+        //输出obj1
+        for(var i in obj1) {
+            console.log(obj1[i]);
+        }
+        //输出obj2
+        for(var i in obj2) {
+            console.log(obj2[i]);
+        }
+        //特殊用法：对象拷贝
+        var newObj = Object.assign({}, obj1);
+        for(var i in newObj) {
+            console.log(newObj[i]);
+        }
+
+        //2.Object.is(a, b)
+        //用于判断两个值是否相同,它用来比较两个值是否严格相等,与===类似，但又不完全一样, +0 不等于 -0 NaN 等于 NaN
+        console.log(+0 === -0);
+        console.log(NaN === NaN);
+        console.log(Object.is(+0, -0));
+        console.log(Object.is(NaN, NaN));
+
+        //3.obj.prototype.isPrototypeOf(b);
+        //确定一个对象是否存在于另一个对象的原型链中
+        function a() {
+        }
+        function b() {
+        }
+        b.prototype = new a();
+        var c = new b();
+        console.log(a.prototype.isPrototypeOf(c));
+
+        //4. Object.defineProperty()
+        //直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。如果不指定configurable, writable, enumerable ，则这些属性默认值为false，如果不指定value, get, set，则这些属性默认值为undefined
+        var obj4 = new Object();
+        Object.defineProperty(obj4, 'name', {
+            enumerable: true,
+            writable: false, //是否可修改
+            value: 'zhangsan'
+        });
+        obj4.name = 'lisi';
+        console.log(obj4.name); // zhangsan
+
+        //5. Object.defineProperties()
+        //直接在一个对象上定义一个或多个新的属性或修改现有属性，并返回该对象
+        Object.defineProperties(obj4, {
+            age: {
+                value: 25,
+                enumerable: true,
+                configurable: false //是否可以删除目标属性或是否可以再次修改属性的特性
+            },
+            gender: {
+                enumerable: true,
+                value: 'man'
+            },
+            sleep: {
+                function() {
+                    console.log('sleep');
+                },
+                enumerable: false
+            }
+        })
+        console.log(obj4.age + ',' + obj4.gender);
+
+        //6. Object.freeze(obj)
+        //阻止修改现有属性的特性和值，并阻止添加新属性
+        Object.freeze(obj4);
+        obj4.age = 24;
+        obj4.gender = 'famale';
+        console.log(obj4.age + ',' + obj4.gender);
+
+        //对象的遍历
+        //for in 循环 
+        //循环遍历对象自身的和继承的可枚举属性(不含Symbol属性).
+        for(var i in obj4) {
+            console.log(obj4[i]);
+        }
+
+        // Object.keys(obj)
+        //返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含 Symbol 属性）的键名
+        console.log(Object.keys(obj4));
+
+        // Object.getOwnPropertyNames(obj);
+        //返回一个数组,包含对象自身的所有属性(不含Symbol属性,但是包括不可枚举属性).
+        console.log(Object.getOwnPropertyNames(obj4));
+
+        //Object.getOwnPropertySymbols(obj);
+        //返回一个数组，包含对象自身的所有Symbol属性。
+        var obj5 = {
+            name: 'lisi',
+            age: 20,
+        }
+        var a = Symbol();
+        obj5[a] = 'SymbolValue';
+        console.log(Object.getOwnPropertySymbols(obj5));
+
+        //Reflect.ownKeys(obj);
+        //返回一个数组,包含对象自身的所有属性,不管属性名是Symbol或字符串,也不管是否可枚举.
+        console.log(Reflect.ownKeys(obj5));
+
+        // Object.values(obj)
+        //方法返回一个给定对象自身的所有可枚举属性值的数组，值的顺序与使用for...in循环的顺序相同( 区别在于 for-in 循环枚举原型链中的属性 )。
+        function Obj6() {
+            this.name = 'wangwu';
+        }
+        Obj6.prototype =  {
+            sleep: function() {
+                console.log('sleep');
+            }
+        }
+        var obj6 = new Obj6();
+        var obj7 = {
+            name: 'zhaosi'
+        }
+        obj7.prototype = new Obj6();
+        for(var i in obj7) {
+            console.log(obj7[i]);
+        }
+        console.log(Object.values(obj7));
+
+        /*
+            Math
+        */
+        //Math属性
+        console.log(Math.PI);//返回圆周率
+        console.log(Math.E);//返回圆周率
+        console.log(Math.LN2);//返回 2 的自然对数
+        console.log(Math.LN10);//返回 10 的自然对数
+        console.log(Math.LOG2E);//返回以 2 为底的 e 的对数
+        console.log(Math.LOG10E);//返回以 10 为底的 e 的对数
+        console.log(Math.SQRT1_2);//返回 2 的平方根的倒数
+        console.log(Math.SQRT2);//返回 2 的平方根
+        console.log(Math.abs(-20));//返回绝对值
+        console.log(Math.round(1.88));//返回四舍五入后的整数值
+        console.log(Math.ceil(1.88));//向上取整
+        console.log(Math.floor(1.88));//向下取整
+        console.log(Math.max(1.88, 1.99, 2, 3));//返回最大值
+        console.log(Math.min(1.88, 1.99, 2, 3));//返回最小值
+        console.log(Math.random());//返回一个0~1之间的数字
+        console.log(Math.trunc(1.88));//小数部分去除，返回整数部分
+        console.log(Math.pow(2, 5));//幂运算
+        console.log(Math.sqrt(2));//平方根
+        console.log(Math.sin(Math.PI / 4));//正弦
+        console.log(Math.cos(Math.PI / 4));//余弦
+        console.log(Math.tan(Math.PI / 4));//正切
+        console.log(Math.asin(Math.PI / 4));//反正弦
+        console.log(Math.acos(Math.PI / 4));//反余弦
+        console.log(Math.atan(Math.PI / 4));//反正切
+        var num = 3.1415962654;
+        console.log(num.toFixed(5));//四舍五入为指定小数位数的数字
+        console.log(Math.pow(27, 1/3));//x的y次方根
+
+        /*
+            String
+            属性：
+                length
+        */
+        var str = 'helloworld';
+        console.log(str.charAt(1));//返回下标为参数的子字符串
+        console.log(str.charCodeAt(1));//返回下标为参数的字符的ACSII码
+        console.log(String.fromCharCode(97));//将ACSCII码转化成字符串
+        console.log(str.indexOf('o'));//查找一个字符或者字符串在字符串中第一次出现的位置,未找到则返回-1
+        console.log(str.lastIndexOf('o'));//倒序查找一个字符或者字符串在字符串中第一次出现的位置,返回位置，,未找到则返回-1
+        console.log(str.replace('w', 'W'));//将指定的字符串替换，只能替换第一个,不修改原字符串
+        console.log(str.slice(-10, -5));//字符串截取,包含起始下标，不包含结束下标,不修改原字符串
+        console.log(str.substring(0, 5));//字符串截取，同slice方法，但不识别负数
+        console.log('2020/2/2'.split('/'));//以某一字符串将目标字符串分割
+        console.log('HeLlOWorLd'.toLowerCase());//转化为小写，不修改原字符串
+        console.log('HeLlOWorLd'.toUpperCase());//转化为大写，不修改原字符串
+        console.log(' abc d  '.trim());//将字符串左右空格去除，可用于接收表单数据
+        console.log(str.match('o'));//在字符串内检索指定的值，或找到一个或多个正则表达式的匹配
+        console.log(str.concat('!'));// 用于连接两个或多个字符串,与数组中的concat方法很象，不会修改原字符串
+        console.log(str.padStart(12, ' '));//向字符串开头(padStart)或结尾(padEnd)添加字符，使字符串达到指定的长度。返回在原字符串开头或末尾填充指定的填充字符串直到目标长度所形成的新字符串
+        console.log(str.padEnd(12, '!'));
+
+        /*
+            Array
+                属性：
+                    length 数组中元素的个数
+                    construtor 返回对创建此对象的数组函数的引用 (可以用来判断变量是否为数组）
+        */
+        //1.arr.push(); 向数组的末尾追加元素
+        var arr = [1, 2, 3, 5];
+        arr.push(4, 7);
+        console.log(arr);
+        //2.arr.unshift(); 向数组的开头添加函数
+        arr.unshift(-1, 0);
+        console.log(arr);
+        //3.arr.pop(); 删除末尾的元素
+        arr.pop();
+        console.log(arr);
+        //4.arr.shift(); 开头删除一个元素
+        arr.shift();
+        console.log(arr);
+        //5.arr.splice(位置，删除元素的个数，要追加的元素); 任意位置添加删除
+        arr.splice(1,2,3,4);
+        console.log(arr);
+        //6.arr.join("分隔符") 使用分隔符将数组数据隔开变为字符串
+        console.log(arr.join(4));
+        //7.arr.slice(截取的起始下标,结束下标) 数组的截取，包含起始下标，不包含结束下标
+        console.log(arr.slice(1, 3));
+        //8.arr.concat 多个数组的连接
+        console.log(arr.concat([6, 6, 6]));
+        //9.arr.indexOf(值); 查找某个值在数组中第一次出现的下标,返回值是数据的下标，没有找到则返回-1
+        console.log(arr.concat([6, 6, 6]).indexOf(6));
+        //10.arr.lastIndexOf(值); 倒叙查找某个值在数组中第一次出现的位置
+        console.log(arr.concat([6, 6, 6]).lastIndexOf(6));
+        //11.arr.sort() 数组的排序
+        //如果有参数，这个参数必须是一个函数（回调函数）这个回调函数有两个参数，分别是a，b
+        //a-b 正序，
+        //b-a 倒序，
+        console.log(arr.sort((a, b)=>b-a));
+        //12.arr.forEach() 遍历数组
+        console.log(arr.forEach((value, index)=>{console.log(index, value)}));
+        //13.arr.filter() 过滤（根据条件筛选数组元素）
+        console.log(arr.filter((value, index)=>{return value > 1}));
+        //14.arr.map() 映射 将数组中的所有数据按照条件改变，形成新数组
+        console.log(arr.map((value, index)=>{return value + 1}));
+        //15.arr.some() 判断 根据回调函数的判断条件来选择真假
+        console.log(arr.some((value, index)=>{return value < 1}));
+        //16.arr.every() 判断 根据回调函数的判断条件来选择真假
+        console.log(arr.every((value, index)=>{return value < 1}));
+        //17.arr.reverse() 数组倒序
+        console.log(arr.reverse());
+        //18.Array.from 方法用于将两类对象转为真正的数组：类似数组的对象和可遍历的对象
+        console.log(Array.from({length:3, 0:'a', 1:'b', 2:'c'}));
+        //19.Array.of方法用于将一组值，转换为数组。
+        console.log(Array.of(1, 2, 3));
+        //20.arr.includes() 用于检查数组是否包含某元素，包含返回true，否则返回false
+        console.log(arr.includes(0));
+    </script>
+</body>
+</html>

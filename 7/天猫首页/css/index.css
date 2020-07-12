@@ -606,10 +606,10 @@ b {
     position: absolute;
     width: 852px;
     height: 500px;
-    background-color: #fff;
     top: 0;
     left: 200px;
     display: none;
+    background-color: #fafafa;
 }
 
 .list .word-con{
@@ -618,6 +618,7 @@ b {
     padding: 19px 30px;
     float: left;
     overflow: hidden;
+    background-color: #fff;
 }
 
 .word-con .item-con {
@@ -675,7 +676,6 @@ b {
     float: right;
     width: 209px;
     height: 100%;
-    background-color: #fafafa;
     padding: 10px;
 }
 
