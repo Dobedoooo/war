@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.14作业</title>
+    <link rel="stylesheet" href="./reset200802.css">
+    <link href="https://img.alicdn.com/tfs/TB1XlF3RpXXXXc6XXXXXXXXXXXX-16-16.png" rel="shortcut icon" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .grid {
+            width: 484px;
+            height: 301px;
+            margin-left: 13px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            float: left;
+            padding: 10px;
+        }
+
+        .grid-con {
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .09);
+            overflow: hidden;
+        }
+
+        .tabs li {
+            width: 232px;
+            height: 57px;
+            float: left;
+            text-align: center;
+            line-height: 57px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .tabs li:hover {
+            background-color: #00b262;
+            color: #fff;
+        }
+
+        .selected {
+            background-color: #00b262 !important;
+            color: #fff;
+        }
+
+        .tab-item {
+            position: relative;
+            top: 57px;
+            display: block;
+            width: 464px;
+            height: 224px;
+        }
+
+        .tab-item:hover img {
+            opacity: .7;
+        }
+
+        .tab-desc {
+            position: absolute;
+            top: 96px;
+            z-index: 1;
+            height: 87px;
+            width: 291px;
+            background: url(https://img.alicdn.com/tfs/TB1AnTXewMPMeJjy1XcXXXpppXa-290-87.png) no-repeat;
+            background-position: 0 center;
+        }
+
+        .tab-img {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            right: 30px;
+            top: 10px;
+        }
+
+        .desc-title {
+            margin-left: 26px;
+            margin-top: 16px;
+        }
+
+        .desc-title img {
+            width: 23px;
+            height: 23px;
+            vertical-align: middle;
+            margin-top: -10px;
+        }
+
+        .desc-title span {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #00b262;
+            margin-left: 8px;
+        }
+
+        .desc-text {
+            display: inline-block;
+            font-size: 20px;
+            margin-left: 26px;
+            letter-spacing: 1px;
+            color: #000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="grid-con">
+            <ul class="tabs">
+                <li class="tab">今日疯抢</li>
+                <li class="tab">量贩装</li>
+            </ul>
+            <a class="tab-item" href="javascript:;" style="display: block;">
+                <img class="tab-img" src="https://img.alicdn.com/tfs/TB1_O_LgSrqK1RjSZK9XXXyypXa-400-400.jpg">
+                <div class="tab-desc">
+                    <div class="desc-title">
+                        <img src="https://img.alicdn.com/tfs/TB12RqQewMPMeJjy1XdXXasrXXa-23-23.png">
+                        <span>零食欢乐购</span>
+                    </div>
+                    <div>
+                        <span class="desc-text">爆款直降</span>
+                    </div>
+                </div>
+            </a>
+            <a class="tab-item" href="javascript:;" style="display: none;">
+                <img class="tab-img" src="https://img.alicdn.com/tfs/TB1jNScP6TpK1RjSZKPXXa3UpXa-400-400.jpg">
+                <div class="tab-desc">
+                    <div class="desc-title">
+                        <img src="https://img.alicdn.com/tfs/TB12RqQewMPMeJjy1XdXXasrXXa-23-23.png">
+                        <span>爆款直降</span>
+                    </div>
+                    <div>
+                        <span class="desc-text">粮油调味</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script>
+        var titles = document.querySelectorAll('.tab');
+        var cons = document.querySelectorAll('.tab-item');
+        titles[0].style.background = '#00b262';
+        titles[0].style.color = '#fff';
+        for(let i = 0; i < titles.length; i++) {
+            titles[i].onmouseover = function() {
+                for(var j = 0; j < cons.length; j++) {
+                    titles[j].style.background = '#f1f1f1';
+                    titles[j].style.color = '#000';
+                    cons[j].style.display = 'none';
+                }
+                titles[i].style.background = '#00b262';
+                titles[i].style.color = '#fff';
+                cons[i].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

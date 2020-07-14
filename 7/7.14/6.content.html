@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>现在的内容</div>
+    <script>
+        //对内容的操作
+        var div = document.querySelectorAll('div');
+        div[0].innerHTML = '<span>新的内容</span>'; //innerHTML 可访问，可修改 可以识别标签
+        div[0].innerText = '<span>最新的内容</span>'; //可访问，可修改 输出纯文本，无法识别标签
+    </script>
+</body>
+</html>

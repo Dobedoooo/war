@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //script标签对现在要获取元素的上面
+        //window.onload = function() {}
+        //对属性进行操作
+            //1.HTML自带的属性
+            //2.HTML自定义的属性
+            //3.内存中的属性
+        
+        window.onload = function() {
+            //1.HTML自带属性
+            var link = document.querySelector('a');
+            // console.log(link.href);
+            link.href = 'https://www.baidu.com';
+            link.title = '这是标题';
+            link.innerHTML = '链接';
+            // console.dir(link);
+
+            //2.自定义的属性
+            link.setAttribute('aa', 'bb');
+
+            //3.内存中的属性
+        }
+        
+    </script>
+    <a href="https://www.google.com"></a>
+</body>
+</html>

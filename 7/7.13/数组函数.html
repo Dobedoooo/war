@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = [1, 2, 3];
+        var b = [4, 5, 6];
+        // console.log(a.push(...b));
+        // console.log(...a);
+        a.splice(0, 0, 3);
+        // console.log(a);
+
+        // var stu = [
+        //     {name: 'zhangsan', age: 12, height: 180},
+        //     {name: 'lisi', age: 12, height: 170},
+        //     {name: 'wangwu', age: 12, height: 172},
+        // ];
+        // console.log(stu[0].height);
+        // console.log(stu.sort(function(a, b) {
+        //     return a.height - b.height;
+        // }));
+
+        function randomColor() {
+            return 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' +  Math.floor(Math.random() * 255) + ')';
+        }
+
+        var divs = [
+            {width: 100, height: 50, background: randomColor(), marginTop: 10},
+            {width: 200, height: 50, background: randomColor(), marginTop: 10},
+            {width: 800, height: 50, background: randomColor(), marginTop: 10},
+            {width: 300, height: 50, background: randomColor(), marginTop: 10},
+            {width: 700, height: 50, background: randomColor(), marginTop: 10},
+            {width: 400, height: 50, background: randomColor(), marginTop: 10},
+            {width: 500, height: 50, background: randomColor(), marginTop: 10},
+            {width: 329, height: 50, background: randomColor(), marginTop: 10}
+        ];
+        divs.sort((a, b)=>{
+            return a.width - b.width;
+        })
+        divs.forEach((val, index)=>{
+            var newDiv = document.createElement('div');
+            newDiv.style.width = val.width + 'px';
+            newDiv.style.height = val.height + 'px';
+            newDiv.style.background = val.background;
+            newDiv.style.marginTop = val.marginTop + 'px';
+            document.body.appendChild(newDiv);
+        });
+    </script>
+</body>
+</html>

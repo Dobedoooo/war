@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="one"></div>
+    <div class="one"></div>
+    <div id="four"></div>
+    <script>
+        //dom document object model
+        //对html文档进行一系列操作
+        //1.将html元素转换为 javascript 对象
+        //获取html元素在内存中的地址（数据）
+
+        //通过元素名
+            var arr = [1, 2, 3];
+            var divs = document.getElementsByTagName('div'); //类数组 能通过下标访问有length属性 但不是数组
+                //类数组转换为数组
+                // 1.var newDivs = Array.prototype.slice.call(divs);
+                // 2.Array.from()
+                var newDivs = Array.from(divs);
+            // console.log(newDivs instanceof Array);
+
+        //通过id
+            var fourthDiv = document.getElementById('four');
+
+        //通过类名
+            document.getElementsByClassName('one');
+
+        //通过选择器
+            var one = document.querySelector('.one'); //选第一一个
+            // console.log(one);
+            var ones = document.querySelectorAll('.one');
+            // console.log(ones);
+    </script>
+</body>
+</html>

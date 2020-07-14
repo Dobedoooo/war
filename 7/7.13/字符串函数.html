@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            console.log(String);
+            console.dir(String);
+            console.log(String.prototype);
+            var str = new String('123');
+        */
+
+        var str = 'asjfoidgfasdfoiasdjghasslkhlkihakljhiouhakljhyfva';
+        // function find(str, char) {
+        //     var toArr = str.split('');
+        //     var count = 0;
+        //     for(var i = 0; i < str.length; i++) {
+        //         if(char === toArr[i]) {
+        //             console.log('第' + (count + 1) + '个' + char + '的下标为：' + i);
+        //             count++;
+        //         }
+        //     }
+        //     console.log('共有' + count + '个' + char);
+        // }
+        // find(str, 'a');
+
+        function find2(str, char) {
+            var num = 0;
+            var info = '';
+            var index = 0;
+            while((index=str.indexOf(char, index)) >=0 ) {
+                info+=index + ',';
+                num++;
+                index++;
+            }
+            console.log('一共出现了' + num + '次，出现的位置为：' + info.slice(0, -1));
+        }
+        find2(str ,'a');
+    </script>
+</body>
+</html>

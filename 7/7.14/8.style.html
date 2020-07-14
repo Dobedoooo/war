@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelectorAll('div')[0];
+        //操作CSS样式
+        //内联(优先级最高) 外部（没有优先级） 导入 嵌入（没有优先级）
+
+        //1.改样式，改内联样式最保险
+        //2.获取元素样式，获取什么地方的最保险
+        console.log(getComputedStyle(div, null)['width']);
+        // div.style.background = '#333';
+        div.style.cssText = "width: 300px;";
+    </script>
+</body>
+</html>

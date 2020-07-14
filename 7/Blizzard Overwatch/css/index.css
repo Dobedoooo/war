@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+main {
+    width: 1600px;
+    height: 1004px;
+    background-color: #1c1e26;
+    border: 1px solid #292b33;
+}
+
+.top {
+    height: 24px;
+    color: #8e8f93;
+}
