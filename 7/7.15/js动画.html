@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button {
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+            margin: 50px auto;
+            border-radius: 20px;
+            cursor: pointer;
+            /* transition: all .05s linear; */
+        }
+    </style>
+</head>
+<body>
+    <div class="button"></div>
+    <script src="./aniMath.js"></script>
+    <script>
+        //掌控时间 由快到慢的动画方式
+        //初始值 100 结束值200 阈值5 结束值 > 初始值
+        //第一个50ms 20px 初始值120
+        //第二个50ms 16 136
+        //           13.6 149.6
+        //速度越来越慢
+            // function animate(ele, attr, end) {
+            //     var t = setInterval(function() {
+            //         var start = parseInt(getComputedStyle(ele, null)[attr]);
+            //         console.log(start);
+            //         var speed = end - start > 0 ?Math.ceil((end - start) / 5) : Math.floor((end - start) / 5);
+            //         var val = start + speed;
+            //         ele.style[attr] = val + 'px';
+            //         if(val == end) {
+            //             clearInterval(t);
+            //         }
+            //     }, 30);
+            // }
+
+        var button = document.querySelector('.button');
+            // button.onclick = function() {
+            //     animate(button, 'width', 400);
+            //     animate(button, 'height', 400);
+            // }
+
+        //动画时间可控(需知道四个值) 变化值 change 当前运行时间 time 持续时间duration 初始值begin
+        //思考：用这四个条件实现匀速运动 答案：设定值 =  begin + change * t / d
+            // function animate(ele, attr, end, duration, func) {
+            //     var begin = parseInt(getComputedStyle(ele)[attr]);
+            //     var change = end - begin;
+            //     var time = 0;
+            //     var t = setInterval(function() {
+            //         time += 50;
+            //         ele.style[attr] = func(time, begin, change, duration) + 'px';
+            //         if(time >= duration) {
+            //         ele.style[attr] = end + 'px';
+            //             clearInterval(t);
+            //         }
+            //     }, 30);
+
+            // }
+
+            // button.onclick = function() {
+            //     animate(button, 'width', 400, 3000, Tween.Quad.easeOut);
+            //     animate(button, 'height', 300, 3000, Tween.Quad.easeOut);
+            // }
+        // 一次指定多个属性
+        button.onclick = function() {
+            animate(this, {width: 400, height: 400}, 800, Tween.Back.easeOut);
+        }
+
+        function animate(ele, attrs, duration, func = Tween.Linear) {
+            //初始化参数
+            if(ele.nodeType != 1) {
+                return;
+                console.error('对象类型错误');
+            }
+            var start = {};
+            var change = {};
+            var time = 0;
+
+            //获取每个属性的初始值
+            for (const i in attrs) {
+                start[i] = parseInt(getComputedStyle(ele, null)[i]);
+                change[i] = attrs[i] - start[i];
+            }
+
+            var t = setInterval(function () {
+                time += 50;
+                for (const i in attrs) {
+                    if(time >= duration) {
+                        ele.style[i] = attrs[i] + 'px';
+                        clearInterval(t);
+                    }
+                    ele.style[i] = func(time, start[i], change[i], duration) + 'px';
+                    console.log(ele.style[i]);
+                    
+                }
+            }, 30)
+        }
+    </script>
+</body>
+</html>

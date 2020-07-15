@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <title>UEKbanner轮播图</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            vertical-align: middle;
+            list-style: none;
+        }
+
+        .banner {
+            margin-top: 50px;
+            width: 1920px;
+            height: 390px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .banner-con {
+            width: 11520px;
+            height: 100%;
+            /* margin-left: -0px; */
+            transition: all .3s ease-out;
+        }
+
+        .banner a {
+            display: block;
+            width: 1920px;
+            height: 390px;
+            float: left;
+            overflow: hidden;
+        }
+
+        .banner a:nth-child(1) {
+            background: url(./banner-hyhj.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(2) {
+            background: url(./banner-xtyr.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(3) {
+            background: url(./banner00.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(4) {
+            background: url(./banner2.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(5) {
+            background: url(./banner3.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(6) {
+            background: url(./banner4.jpg) center center no-repeat;
+        }
+
+        .banner-bar {
+            width: 420px;
+            height: 10px;
+            position: absolute;
+            bottom: 11px;
+            left: 750px;
+        }
+
+        .banner-bar li {
+            width: 60px;
+            height: 2px;
+            margin-right: 10px;
+            background-color: rgba(255, 255, 255, .1);
+            float: left;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="banner-con">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+        <ul class="banner-bar">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var imgContainer = document.querySelector('.banner-con');
+        var btns = document.querySelectorAll('.banner-bar li');
+
+        //轮播
+        var num = 1;
+        btns[0].style.backgroundColor = '#2691fd';
+        setInterval(function() {
+            for(var i = 0; i <btns.length; i++) {
+                btns[i].style.backgroundColor = ''
+            }
+            btns[num].style.backgroundColor = '#2691fd';
+            imgContainer.style.marginLeft = '-' + (num * 1920) + 'px';
+            if(num == btns.length - 1) {
+                num = 0;
+            } else {
+                num++;
+            }
+        }, 3000);
+
+        //点击事件
+        for(let i = 0; i < btns.length; i++) {
+            btns[i].onclick = function() {
+                num = i;
+                for(var j = 0; j < btns.length; j++) {
+                    btns[j].style.backgroundColor = '';
+                }
+                this.style.backgroundColor = '#2691fd';
+                imgContainer.style.marginLeft = '-' + (num  * 1920) + 'px';
+            }
+        }
+    </script>
+</body>
+</html>

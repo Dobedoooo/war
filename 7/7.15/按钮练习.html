@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button {
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+            margin: 50px auto;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all .05s ease-out;
+        }
+
+        .button:active {
+            width: 198px;
+            height: 198px;
+        }
+    </style>
+</head>
+<body>
+    <div class="button"></div>
+    <script>
+        var button = document.querySelector('.button');
+        // console.log(getComputedStyle(button).width);
+        //宽高 200 -> 400 -> 200
+        //1.
+            // button.onclick = function() {
+            //     var t = setInterval(function () {
+            //         width = parseInt(getComputedStyle(button).width);
+            //         height = parseInt(getComputedStyle(button).height);
+            //         if(width >= 400) {
+            //             clearInterval(t);
+            //             var t2 = setInterval(function () {
+            //                 width = parseInt(getComputedStyle(button).width);
+            //                 height = parseInt(getComputedStyle(button).height);
+            //                 if(width <= 200) {
+            //                     clearInterval(t2);
+            //                     return;
+            //                 }
+            //                 width -= 5;
+            //                 height -= 5;
+            //                 console.log(width, height);
+            //                 button.style.width = width + 'px';
+            //                 button.style.height = height + 'px';
+            //             }, 60);
+            //         }
+            //         width += 5;
+            //         height += 5;
+            //         console.log(width, height);
+            //         button.style.width = width + 'px';
+            //         button.style.height = height + 'px';
+            //     }, 50);
+            // }
+
+        //2.封装
+        //缺点：1.没办法确定动画时间 2.没办法设置多个属性 3.多次点击问题
+        button.onclick = function() {
+            animate(button, 'width', 400, 5, function() {
+                animate(button, 'width', 200, -5);
+            }); //需求
+            animate(button, 'height', 400, 5, function() {
+                animate(button, 'height', 200, -5);
+            });
+        }
+
+        function animate(ele, attr, end, speed, func) {
+            var t = setInterval(function() {
+                var start = parseInt(getComputedStyle(ele, null)[attr]); //用[] 不能用.
+                var middleVol = start + speed;
+                if(speed > 0) {
+                    if(middleVol > end) {
+                        middleVol = end;
+                        clearInterval(t);
+                        if(func) {
+                            func();
+                        }
+                    }
+                } else {
+                    if(middleVol < end) {
+                        middleVol = end;
+                        clearInterval(t);
+                        if(func) {
+                            func();
+                        }
+                    }
+                }
+                
+                ele.style[attr] = middleVol + 'px';
+            }, 50);
+        }
+    </script>
+</body>
+</html>
