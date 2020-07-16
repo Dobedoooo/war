@@ -35,6 +35,36 @@
              flash 里面 取出来的算法
           */
   
+        function animate(ele, attrs, duration, func = Tween.Linear) {
+            //初始化参数
+            if(ele.nodeType != 1) {
+                return;
+                console.error('对象类型错误');
+            }
+            var start = {};
+            var change = {};
+            var time = 0;
+
+            //获取每个属性的初始值
+            for (const i in attrs) {
+                start[i] = parseInt(getComputedStyle(ele, null)[i]);
+                change[i] = attrs[i] - start[i];
+            }
+
+            var t = setInterval(function () {
+                time += 20;
+                for (const i in attrs) {
+                    if(time >= duration) {
+                        ele.style[i] = attrs[i] + 'px';
+                        clearInterval(t);
+                    }
+                    ele.style[i] = func(time, start[i], change[i], duration) + 'px';
+                    // console.log(ele.style[i]);
+                    
+                }
+            }, 20)
+        }
+
          Tween = {  
             Linear: function(t,b,c,d){ return c*t/d + b; },
             Quad: {

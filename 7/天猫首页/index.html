@@ -120,7 +120,7 @@
         </nav>
     </div>
     <!-- 导航结束 -->
-    <!-- 滚动到一定高度出现的导航条 开始 -->
+    <!-- 滚动到一定高度出现的搜索框 开始 -->
     <div class="nav-bar">
         <div class="nav-bar-con">
             <div class="nav-bar-logo"></div>
@@ -133,7 +133,7 @@
             </div>
         </div>
     </div>
-    <!-- 滚动到一定高度出现的导航条 结束-->
+    <!-- 滚动到一定高度出现的搜索框 结束-->
     <!-- 搜索框开始 -->
     <header class="search-area">
         <div class="header">
@@ -635,14 +635,14 @@
                     </ul>
                 </div>
                 <div class="banner">
-                    <a href="javascript:;"><img class="active"  src="./img/index/banner1.webp" alt="banner1"></a> 
+                    <a href="javascript:;"><img style="opacity: 1;" src="./img/index/banner1.webp" alt="banner1"></a> 
                     <a href="javascript:;"><img src="./img/index/banner2.webp" alt="banner2"></a> 
                     <a href="javascript:;"><img src="./img/index/banner3.jpg" alt="banner3"></a> 
                     <a href="javascript:;"><img src="./img/index/banner4.webp" alt="banner4"></a> 
                     <a href="javascript:;"><img src="./img/index/banner5.webp" alt="banner5"></a> 
                     <a href="javascript:;"><img src="./img/index/banner6.jpg" alt="banner6"></a> 
                     <ul class="roll-bar">
-                        <li></li>
+                        <li style = "background-color: #fff; opacity: 1;"></li>
                         <li></li>
                         <li></li>
                         <li></li>
@@ -1349,22 +1349,45 @@
     <!-- 底部结束 -->
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script>
-        // 出现导航条
-        $(window).scroll(function() {
-            if($(document).scrollTop() > 780) {
-                $('.nav-bar').addClass("vanish");
+        // 滚动出现搜索框v1.0
+        // $(window).scroll(function() {
+        //     if($(document).scrollTop() > 780) {
+        //         $('.nav-bar').addClass("vanish");
+        //     } else {
+        //         $('.nav-bar').removeClass("vanish");
+        //     }
+        // })
+
+        // 滚动出现侧边导航v1.0
+        // $(window).scroll(function() {
+        //     if($(document).scrollTop() > 700) {
+        //         $('.aside-nav').addClass("appear");
+        //     } else {
+        //         $('.aside-nav').removeClass("appear");
+        //     }
+        // })
+
+        // 7.16 滚动出现搜索框和侧边导航v2.0
+        var searchBox = document.querySelector('.nav-bar');
+        var navBox = document.querySelector('.aside-nav');
+        document.onscroll = function() {
+            // console.log(document.documentElement.scrollTop);
+            if(document.documentElement.scrollTop > 780) {
+                searchBox.style.top = 0;
             } else {
-                $('.nav-bar').removeClass("vanish");
+                searchBox.style.top = '-50px';
             }
-        })
-        // 出现侧边导航
-        $(window).scroll(function() {
-            if($(document).scrollTop() > 700) {
-                $('.aside-nav').addClass("appear");
+
+            if(document.documentElement.scrollTop > 700) {
+                navBox.style.width = '36px';
+                navBox.style.height = '370px';
             } else {
-                $('.aside-nav').removeClass("appear");
+                navBox.style.width = 0;
+                navBox.style.height = 0;
             }
-        })
+        }
+        //done
+
         // 输入任意文本搜索框 placehd 消失回不来
         var placehd = document.querySelector('.placehd');
         function Keydown() {
@@ -1377,79 +1400,143 @@
         }
 
         // 轮播图 加 目录背景颜色自适应
-        function slideshow() {
-            var container = document.getElementById('show-con');
-            var box = document.querySelector('.banner');
-            imgs = box.getElementsByTagName('img');
+        // function slideshow() {
+        //     var container = document.getElementById('show-con');
+        //     var box = document.querySelector('.banner');
+        //     imgs = box.getElementsByTagName('img');
 
-            current = 0;
+        //     current = 0;
 
-            function slideOff() {
-                imgs[current].className = '';
-                container.className = '';
-            }
+        //     function slideOff() {
+        //         imgs[current].className = '';
+        //         container.className = '';
+        //     }
 
-            function slideOn() {
-                imgs[current].className = 'active';
-                container.className = 'bg' + (current + 1);
-            }
+        //     function slideOn() {
+        //         imgs[current].className = 'active';
+        //         container.className = 'bg' + (current + 1);
+        //     }
 
-            function change() {
-                slideOff();
-                current++;
-                if(current >= imgs.length) {
-                    current = 0;
+        //     function change() {
+        //         slideOff();
+        //         current++;
+        //         if(current >= imgs.length) {
+        //             current = 0;
+        //         }
+        //         slideOn();
+        //     }
+
+        //     // 每4s切换图片
+        //     var slideon = setInterval(change, 4000);
+        // }
+
+        // slideshow();
+
+        //7.15 轮播图v2.0
+        var imgs = document.querySelectorAll('.banner a img');
+        var container = document.querySelector('#show-con');
+        var num = 1;
+        function sileShow2() {
+            // console.log(imgs);
+            setInterval(function() {
+                for(var i = 0; i < imgs.length; i++) {
+                    imgs[i].style.opacity = '0';
+                    container.classList.remove('bg' + (i + 1));
+                    btns[i].style.backgroundColor = '#000';
+                    btns[i].style.opacity = '.3';
                 }
-                slideOn();
-            }
-
-            // 每4s切换图片
-            var slideon = setInterval(change, 4000);
-
-            // // 鼠标移入停止事件
-            // box.onmouseover = function() {
-            //     clearInterval(slideon);
-            // }
-
-            // // 鼠标移出继续
-            // box.onmouseout = function() {
-            //     sldieon = setInterval(change, 1000);
-            // }
+                imgs[num].style.opacity = '1';
+                container.classList.add('bg' + (num + 1));
+                btns[num].style.backgroundColor = '#fff';
+                btns[num].style.opacity = '1';
+                if(num == imgs.length - 1) {
+                    num = 0;
+                } else {
+                    num++;
+                }
+            }, 4000);
         }
 
-        slideshow();
+        sileShow2();
+        //done
 
-        // 选项卡
-        var item_1 = document.getElementById('item-1');
-        var item_2 = document.getElementById('item-2');
-        var tab_1 = document.getElementById('tab-1');
-        var tab_2 = document.getElementById('tab-2');
+        //7.15 点击切换banner图v1.0
+        var btns = document.querySelectorAll('.roll-bar li');
+        for(let i = 0; i < btns.length; i++) {
+            btns[i].onmouseover = function() {
+                num = i;
+                for(var j = 0; j < btns.length; j++) {
+                    btns[j].style.backgroundColor = '#000';
+                    btns[j].style.opacity = '.3';
+                    imgs[j].style.opacity = '0';
+                    container.classList.remove('bg' + (j + 1));
+                }
+                this.style.backgroundColor = '#fff';
+                this.style.opacity = '1';
+                imgs[i].style.opacity = '1';
+                container.classList.add('bg' + (i + 1));
+            }
+        }
+        //done
+
+        // 选项卡v1.0
+            // var item_1 = document.getElementById('item-1');
+            // var item_2 = document.getElementById('item-2');
+            // var tab_1 = document.getElementById('tab-1');
+            // var tab_2 = document.getElementById('tab-2');
+            
+            // tab_1.onmouseover = function() {
+            //     if(item_1.style.display == 'none') {
+            //         item_1.style.display = 'block';
+            //         item_2.style.display = 'none';
+            //         tab_1.classList.add('selected');
+            //         tab_2.classList.remove('selected');
+            //     }
+            // }
+
+            // tab_2.onmouseover = function() {
+            //     if(item_2.style.display == 'none') {
+            //         item_2.style.display = 'block';
+            //         item_1.style.display = 'none';
+            //         tab_2.classList.add('selected');
+            //         tab_1.classList.remove('selected');
+            //     }
+            // }
+        //done
         
-        tab_1.onmouseover = function() {
-            if(item_1.style.display == 'none') {
-                item_1.style.display = 'block';
-                item_2.style.display = 'none';
-                tab_1.classList.add('selected');
-                tab_2.classList.remove('selected');
+        //7.15 选项卡v2.0
+        var tabs = document.querySelectorAll('.tabs li');
+        var items = document.querySelectorAll('.grid-con a');
+        // console.log(tabs, items);
+        var index = 1;
+        for(let i = 0; i < tabs.length; i++) {
+            tabs[i].onmouseover = function() {
+                index = i;
+                for(var j = 0; j < tabs.length; j++) {
+                    tabs[j].classList.remove('selected');
+                    items[j].style.display = 'none';
+                }
+                this.classList.add('selected');
+                items[i].style.display = 'block';
             }
         }
 
-        tab_2.onmouseover = function() {
-            if(item_2.style.display == 'none') {
-                item_2.style.display = 'block';
-                item_1.style.display = 'none';
-                tab_2.classList.add('selected');
-                tab_1.classList.remove('selected');
+        //每3s切换选项卡
+        setInterval(function() {
+            // console.log(index);
+            for(var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('selected');
+                items[i].style.display = 'none';
             }
-        }
-
-        // if(item_2.style.display == 'block') {
-        //     tab_1.classList.remove('selected');
-        // }
-        // if(item_2.style.display == 'none') {
-        //     tab_2.classList.remove('selected');
-        // }
-        // console.log($('#item-1').css('display'));
+            tabs[index].classList.add('selected');
+            items[index].style.display = 'block';
+            if(index == tabs.length - 1) {
+                index = 0;
+            } else {
+                index++;
+            }
+        }, 3000);
+        //done
     </script>
 </body>
 </html>

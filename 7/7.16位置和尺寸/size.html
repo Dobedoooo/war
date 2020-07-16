@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+            margin-left: 15px;
+            border: 10px solid #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        /*
+            js对html css操作 内容 属性 样式
+            样式：
+                元素位置 元素尺寸
+            js提供了专门操作尺寸和位置的方法
+
+            位置：
+                offsetHeight 获取真正宽高 加边框
+                offsetLeft 与定位元素计算方式相同
+                offsetParent 
+                offTop 与定位元素计算方式相同
+                offWidth 获取真正宽高 加边框
+        */
+       //获取元素
+       var body = document.querySelector('body');
+       var div = document.querySelector('div');
+
+       console.log(getComputedStyle(div, null)['left']);
+       console.log(getComputedStyle(div, null)['width']);
+       console.log(div.offsetLeft);
+       console.log(div.offsetWidth);
+    </script>
+</body>
+</html>

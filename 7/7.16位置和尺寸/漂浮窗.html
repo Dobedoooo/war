@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveLy div</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100px;
+            height: 100px;
+            background-color: crimson;
+            position: absolute;
+        }
+
+        .silence {
+            color: #fff;
+            float: right;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="silence">关闭</div>
+    </div>
+    <script src="../7.15/aniMath.js"></script>
+    <!-- <script>
+        console.log(innerHeight);
+        var num = 1;
+        function go() {
+            var t1 = setInterval(function() {
+                if(innerHeight <= div.offsetTop + div.offsetHeight) {
+                    clearInterval(t1);
+                    var t2 = setInterval(function() {
+                        if(div.offsetTop >= 0) {
+                            num = 1;
+                            div.style.left = parseInt(div.style.left) + (10 * num) + 'px';
+                            div.style.top = parseInt(div.style.top) - (10 * num) + 'px';
+                        num++;
+                        } else {
+                            clearInterval(t2);
+                            div.style.top = 0 + 'px';
+                            num = 1;
+                            var t3 = setInterval(function() {
+                                if(innerWidth <= div.offsetLeft + div.offsetWidth) {
+                                    clearInterval(t3);
+                                } else {
+                                    div.style.left = parseInt(div.style.left) + (10 * num) + 'px';
+                                    div.style.top = (10 * num) + 'px';
+                                    num++;
+                                }
+                                
+                            }, 50)
+                        }
+                        
+                    }, 50)
+                    
+                } else {
+                    div.style.left = (10 * num) + 'px';
+                    div.style.top = (10 * num) + 'px';
+                    num++;
+                }
+                
+            }, 50)
+        }
+        
+        var flag = 0;
+        function move() {
+            setInterval(function() {
+                if(innerHeight < div.offsetTop + div.offsetHeight && div.offsetTop < 0 && innerWidth < div.offsetLeft + div.offsetWidth && div.offsetLeft < 0) {
+                    clearInterval();
+                } else {
+                    if(flag == 0) { //右下
+                        num = 1;
+                        var t1 = setInterval(function() {
+                            if(innerWidth <= div.offsetLeft + div.offsetWidth) {
+                                clearInterval(t1);
+                                div.offsetLeft = innerWidth - div.offsetWidth;
+                                flag = 3;
+                            } else if(innerHeight <= div.offsetTop + div.offsetHeight) {
+                                clearInterval(t1);
+                                div.offsetTop = innerHeight - div.offsetHeight;
+                                flag = 1;
+                            }
+                            div.style.left = (10 * num) + 'px';
+                            div.style.top = (10 * num) + 'px';
+                            num++;
+                        }, 50);
+                    } else if(flag == 1) { //右上
+                        num = 1;
+                        var t2 = setInterval(function() {
+                            if(innerWidth <= div.offsetLeft + div.offsetWidth) {
+                                clearInterval(t2);
+                                div.offsetLeft = innerWidth - div.offsetWidth;
+                                flag = 2;
+                            } else if(div.offsetTop < 0) {
+                                clearInterval(t2);
+                                div.offsetTop = 0;
+                                flag = 0;
+                            }
+                            div.style.left = parseInt(div.style.left) - (10 * num) + 'px';
+                            div.style.top = parseInt(div.style.top) - (10 * num) + 'px';
+                            num++;
+                        }, 50);
+                    } else if(flag == 2) { //左上
+                        num = 1;
+                        var t3 = setInterval(function() {
+                            if(div.offsetTop < 0) {
+                                clearInterval(t3);
+                                div.offsetTop = 0;
+                                flag = 3;
+                            } else if(innerWidth <= div.offsetLeft + div.offsetWidth) {
+                                clearInterval(t3);
+                                div.offsetLeft = innerWidth - div.offsetWidth;
+                                flag = 1;
+                            }
+                            div.style.left = (10 * num) + 'px';
+                            div.style.top = parseInt(div.style.top) - (10 * num) + 'px';
+                            num++;
+                        }, 50);
+                    } else if(flag == 3) { //左下
+                        num = 1;
+                        var t4 = setInterval(function() {
+                            if(div.offsetLeft < 0) {
+                                clearInterval(t4);
+                                div.offsetLeft = 0;
+                                flag = 0;
+                            } else if(innerHeight <= div.offsetTop + div.offsetHeight) {
+                                clearInterval(t4);
+                                div.offsetTop = innerHeight - div.offsetHeight;
+                                flag = 2;
+                            }
+                            div.style.left = parseInt(div.style.left) - (10 * num) + 'px';
+                            div.style.top = (10 * num) + 'px';
+                            num++;
+                        }, 50);
+                    }
+                }
+            }, 50);
+        }
+        move();
+    </script> -->
+    <script>
+        var div = document.querySelector('.container');
+        var shut = document.querySelector('.slience');
+        var speedX = 10;
+        var speedY = 10;
+
+        function move() {
+            offsetX = div.offsetLeft + speedX;
+            offsetY = div.offsetTop + speedY;
+
+            if() {
+                
+            }
+
+            div.style.left = offsetX + 'px';
+            div.style.top = offsetY + 'px';
+        }
+
+        // setInterval(move, 50);
+
+        // shut.onclick = function() {
+
+        // }
+    </script>
+</body>
+</html>

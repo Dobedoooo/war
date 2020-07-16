@@ -3,14 +3,71 @@
     text-decoration: none;
 }
 
-main {
-    width: 1600px;
-    height: 1004px;
-    background-color: #1c1e26;
-    border: 1px solid #292b33;
+html {
+    scroll-behavior: smooth;
 }
 
-.top {
-    height: 24px;
-    color: #8e8f93;
+body {
+    height: 2000px;
 }
+
+.clearfix::before, .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* 头部开始 */
+header {
+    width: 100%;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.header-con {
+    max-width: 1600px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.header-con a {
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, .7);
+    margin-right: 30px;
+    transition: all .2s;
+}
+
+.header-con a:hover {
+    color: #fff;
+}
+
+.left-con a {
+    float: left;
+}
+
+.header-logo {
+    display: block;
+    height: 40px;
+    width: 61.82004px;
+    background-image: url(https://blz.nosdn.127.net/1/fsbnet/icon-sprite.png);
+    background-repeat: no-repeat;
+    background-position: -18px -75px;
+}
+
+a.game {
+    color: #fff;
+    text-shadow: 0 0 15px #fff, 0 0 30px rgba(255,255,255,.3);
+}
+
+.header-angle-down {
+    display: inline-block;
+    width: 14px;
+    height: 7px;
+    background-image: url(https://blz.nosdn.127.net/1/fsbnet/icon-sprite.png);
+    background-position: -147px -131px;
+    background-repeat: no-repeat;
+    margin-left: 2px;
+}
+/* 头部结束 */
