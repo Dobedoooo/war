@@ -886,37 +886,38 @@ a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
     display: inline-block;
     padding-top: 6px;
     padding-left: 5.5px;
+    cursor: pointer;
 }
 
-.aside-nav li:nth-child(2):hover {
+.aside-nav li:nth-child(2):hover, li.item-bg-1 {
     background-color: #64C333;
 }
 
-.aside-nav li:nth-child(3):hover {
+.aside-nav li:nth-child(3):hover, li.item-bg-2 {
     background-color: #000;
 }
 
-.aside-nav li:nth-child(4):hover {
+.aside-nav li:nth-child(4):hover, li.item-bg-3 {
     background-color: #EA5F8D;
 }
 
-.aside-nav li:nth-child(5):hover {
+.aside-nav li:nth-child(5):hover, li.item-bg-4 {
     background-color: #0AA6E8;
 }
 
-.aside-nav li:nth-child(6):hover {
+.aside-nav li:nth-child(6):hover, li.item-bg-5 {
     background-color: #64C333;
 }
 
-.aside-nav li:nth-child(7):hover {
+.aside-nav li:nth-child(7):hover, li.item-bg-6 {
     background-color: #F15453;
 }
 
-.aside-nav li:nth-child(8):hover {
+.aside-nav li:nth-child(8):hover, li.item-bg-7 {
     background-color: #19C8A9;
 }
 
-.aside-nav li:nth-child(9):hover {
+.aside-nav li:nth-child(9):hover, li.item-bg-8 {
     background-color: #000;
 }
 
@@ -932,7 +933,7 @@ a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
     background-color: rgba(0, 0, 0, .3);
 }
 
-.aside-nav .totop a {
+.aside-nav .totop a{
     padding-top: 0;
 }
 
@@ -972,6 +973,16 @@ a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
 .big-img .sale, .big-img .channel, .big-img .activity{
     height: 370px;
     float: left;
+}
+
+.sale img {
+    width: 234px;
+    height: 315px;
+}
+
+.channel img, .activity img {
+    width: 485px;
+    height: 315px;
 }
 
 .big-img .head {
@@ -1021,11 +1032,6 @@ a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
 .big-img .body {
     display: inline-block;
     height: 315px;
-}
-
-.big-img .body img {
-    height: 315px;
-    width: 100%;
 }
 
 .big-img .body:hover {
@@ -1203,11 +1209,15 @@ a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
 }
 /* logo展示区结束 */
 
-/* 天猫超市开始 */
+.js-showimgs {  
+    background-color: #ccc;
+}
+
+/* 主体展示内容开始 */
 .mart {
     width: 100%;
     background-color: #f5f5f5;
-    padding-top: 20px;
+    padding-top: 32px;
 }
 
 .mart-con {
@@ -1232,11 +1242,12 @@ a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
     float: left;
 }
 
-.mart-left:hover a img {
+.mart-left:hover a img, .inter-left a:hover img {
     opacity: .7;
 }
 
 .mart-left img {
+    width: 235px;
     height: 618px;
     transition: opacity .3s ease-out;
 }
@@ -1400,7 +1411,7 @@ a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
 .grid ~ a {
     display: block;
     width: 235px;
-    height: 301px;
+    height: 302px;
     background-color: #fff;
     margin: 0 0 15px 13px;
     float: left;
@@ -1438,7 +1449,112 @@ a.color-16, .item-16 a:hover, .list-item-16:hover, .list-item-16:hover > a {
 .grid ~ a:hover img {
     opacity: .7;
 }
-/* 天猫超市结束 */
+
+.inter-left {
+    float: left;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.inter-left a {
+    position: relative;
+}
+
+.inter-left a > img {
+    width: 235px;
+    height: 301px;
+    vertical-align: middle;
+}
+
+.inter-right {
+    height: 100%;
+    width: 995px;
+    padding-left: 13px;
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.inter-right > a {
+    width: 235px;
+    height: 301px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    text-align: center;
+}
+
+.inter-right > a:hover {
+    border-color: #ff0036;
+}
+
+.right-item-img-special > img {
+    width: 170px;
+    height: 170px;
+    margin-top: 90px;
+}
+
+.right-item-img img {
+    margin-top: 20px;
+    width: 185px;
+    height: 185px;
+}
+
+.right-item-img-special img:hover {
+    opacity: .7;
+}
+
+.right-item-img img:hover {
+    opacity: .7;
+}
+
+.color-mark {
+    display: inline-block;
+    width: 5px;
+    height: 18px;
+    background-color: #333333;
+    vertical-align: middle;
+}
+
+.main-title {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    vertical-align: bottom;
+    margin-left: 10px;
+}
+/* 主体展示内容结束 */
+
+/* 广告开始 */
+.ads {
+    padding-top: 20px;
+    height: 110px;
+    background-color: #f5f5f5;
+}
+
+.ads-con {
+    width: 1260px;
+    padding-right: 30px;
+    margin: auto;
+}
+
+.ads-con a {
+    display: block;
+    width: 1230px;
+    overflow: hidden;
+}
+
+.ads-con img {
+    margin-left: -180px;
+}
+/* 广告结束 */
 
 .main-end {
     width: 100%;

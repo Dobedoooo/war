@@ -10,18 +10,24 @@
             padding: 0;
         }
 
+        body {
+            height: 2000px;
+            overflow-x: hidden;
+        }
+
         .container {
             width: 100px;
             height: 100px;
             background-color: crimson;
             position: absolute;
+            cursor: pointer;
+            /* transition: all .2s; */
         }
 
         .silence {
             color: #fff;
             float: right;
             margin-right: 10px;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -148,27 +154,65 @@
     </script> -->
     <script>
         var div = document.querySelector('.container');
-        var shut = document.querySelector('.slience');
+        var shut = document.querySelector('.silence');
         var speedX = 10;
         var speedY = 10;
-
         function move() {
+            if(document.documentElement.clientHeight < div.offsetTop + div.offsetHeight) {
+                div.style.top = (document.documentElement.clientHeight - div.offsetHeight) + 'px';
+                speedY = -speedY;
+            } else if (div.offsetTop < 0) {
+                div.style.top = '0px';
+                speedY = -speedY;
+            } else if (document.documentElement.clientWidth < div.offsetLeft + div.offsetWidth) {
+                div.style.left = (document.documentElement.clientWidth - div.offsetWidth) + 'px';
+                speedX = -speedX;
+            } else if(div.offsetLeft < 0) {
+                div.style.left = '0px';
+                speedX = -speedX;
+            }
             offsetX = div.offsetLeft + speedX;
             offsetY = div.offsetTop + speedY;
-
-            if() {
-                
-            }
-
             div.style.left = offsetX + 'px';
             div.style.top = offsetY + 'px';
         }
 
-        // setInterval(move, 50);
+        var t = setInterval(move, 50);
 
-        // shut.onclick = function() {
+        div.onmouseover = function() {
+            clearInterval(t);
+        }
 
-        // }
+        div.onmouseout = function() {
+            t = setInterval(move, 50);
+        }
+
+        var flag = true;
+        shut.onclick = function() {
+            if(flag) {
+                div.onmouseout = null;
+                div.style.height = '20px';
+                this.innerHTML = '播放'
+                backTop = div.offsetTop;
+                backLeft = div.offsetLeft;
+                console.log(backTop, backLeft);
+                div.style.top = (document.documentElement.clientHeight - div.offsetHeight - 20) + 'px';
+                div.style.left = (document.documentElement.clientWidth - div.offsetWidth - 20) + 'px';
+                flag = false;
+            } else {
+                div.onmouseout = function() {
+                    t = setInterval(move, 50);
+                }
+                div.style.height = '100px';
+                div.style.top = backTop + 'px';
+                div.style.left = backLeft + 'px';
+                this.innerHTML = '关闭'
+                flag = true;
+            }
+            
+        }
+            
+        
     </script>
 </body>
 </html>

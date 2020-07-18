@@ -15,19 +15,121 @@
         <div class="header-con">
             <div class="left-con clearfix">
                 <a href="https://www.battlenet.com.cn/zh/" class="header-logo"></a>
-                <a class="game" href="javascript:;">
+                <a class="game high-light" href="javascript:;">
                     <span>游戏</span><div class="header-angle-down"></div>
                 </a>
                 <a href="">商城</a>
                 <a href="">新闻</a>
-                <a href="">
+                <a href="javascript:;" class="game">
                     <span>电子竞技</span><div class="header-angle-down"></div>
                 </a>
                 <a href="">暴雪嘉年华</a>
             </div>
-            
+            <div class="right-con">
+                <a href="javascript:;">支持</a>
+                <a href="javascript:;" class="pass">
+                    <span>你的通行证</span><div class="header-angle-down"></div>
+                </a>
+            </div>
         </div>
     </header>
     <!-- 头部结束 -->
+    <!-- 固定导航开始 -->
+    <nav class="fixed-nav clearfix">
+        <div class="nav-lft">
+            <a href="javascript:;" class="nav-logo"></a>
+            <a href="javascript:;">
+                <span>游戏</span><div></div>
+            </a>
+            <a href="javascript:;">英雄</a>
+            <a href="javascript:;">
+                <span>活动</span><div></div>
+            </a>
+            <a href="javascript:;">视频图片</a>
+            <a href="javascript:;">
+                <span>新闻</span><div></div>
+            </a>
+            <a href="javascript:;">下载</a>
+            <a href="javascript:;">
+                <span>电子竞技</span><div></div>
+            </a>
+            <a href="javascript:;">
+                <span>社区</span><div></div>
+            </a>
+        </div>
+        <div class="nav-rt">
+            <a href="">购买</a>
+        </div>
+    </nav>
+    <!-- 固定导航结束 -->
+    <!-- video开始 -->
+    <div class="video-con">
+        <video class="video" loop autoplay>
+            <source src="https://overwatch.nosdn.127.net/1/assets/img/pages/home/anniversary/header.webm" type="video/webm">
+        </video>
+        <div class="title">
+            <img src="https://overwatch.nosdn.127.net/1/assets/img/pages/home/logo_new_0321.png" class="title-logo">
+            <div class="title-link-con">
+                <a href="javascript:;" class="game-intro">游戏介绍</a>
+                <a href="javascript:;" class="game-buy">立即购买</a>
+            </div>
+        </div>
+        <a href="javascript:;" class="video-ctrl">
+            <span class="video-ctrl-icon"></span>
+            <span class="video-ctrl-text">暂停</span>
+        </a>
+    </div>
+    <!-- video结束 -->
+    <script>
+        //固定导航条 宽度变100% 贴合视口上缘 v1.0
+        var nav = document.querySelector('.fixed-nav');
+        document.onscroll = function() {
+            if(document.documentElement.scrollTop > 80) {
+                nav.style.width = '100%';
+                nav.style.top = '0px';
+                nav.style.left = '0px';
+            } else {
+                nav.style.width = '1600px';
+                nav.style.top = '80px';
+                nav.style.left = '151.5px';
+            }
+        }
+        //done
+
+        //视频暂停/播放v1.0
+        var btn = document.querySelector('.video-ctrl');
+        var btnIcon = document.querySelector('.video-ctrl-icon');
+        var btnText = document.querySelector('.video-ctrl-text');
+        var video = document.querySelector('video');
+        btn.onclick = function() {
+            if(video.paused) {
+                btnIcon.style.backgroundPosition = '0 0';
+                btnText.innerHTML = '暂停';
+                video.play();
+            } else {
+                btnIcon.style.backgroundPosition = '0 -32px';
+                video.pause();
+                btnText.innerHTML = '播放';
+            }
+        }
+        //done
+
+        // 点击头部 “游戏” 出现下拉框v1.0
+        var gameBtns = document.querySelectorAll('.game');
+        var angles = document.querySelectorAll('.header-angle-down');
+        var flag = true;
+        for(let i = 0; i < gameBtns.length; i++) {
+            gameBtns[i].onclick = function() {
+                if(flag) {
+                    angles[i].classList.add('active');
+                    flag = false;
+                } else {
+                    angles[i].classList.remove('active');
+                    flag = true;
+                }
+            }
+        }
+        
+    </script>
 </body>
 </html>

@@ -5,6 +5,7 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 62.5% !important;
 }
 
 body {
@@ -21,6 +22,9 @@ body {
 header {
     width: 100%;
     background-color: rgba(0, 0, 0, .7);
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    position: relative;
+    z-index: 95;
 }
 
 .header-con {
@@ -35,7 +39,6 @@ header {
     line-height: 40px;
     font-size: 15px;
     color: rgba(255, 255, 255, .7);
-    margin-right: 30px;
     transition: all .2s;
 }
 
@@ -43,8 +46,25 @@ header {
     color: #fff;
 }
 
+.left-con {
+    float: left;
+}
+
 .left-con a {
     float: left;
+    margin-right: 30px;
+}
+
+.right-con {
+    float: right;
+}
+
+.right-con a {
+    float: left;
+}
+
+.pass {
+    margin-left: 30px;
 }
 
 .header-logo {
@@ -56,7 +76,7 @@ header {
     background-position: -18px -75px;
 }
 
-a.game {
+a.high-light {
     color: #fff;
     text-shadow: 0 0 15px #fff, 0 0 30px rgba(255,255,255,.3);
 }
@@ -70,4 +90,191 @@ a.game {
     background-repeat: no-repeat;
     margin-left: 2px;
 }
+
+.active {
+    background-position-y: -145px;
+}
 /* 头部结束 */
+
+/* 固定导航开始 */
+.fixed-nav {
+    width: 1600px;
+    margin: auto;
+    height: 48px;
+    position: fixed;
+    top: 80px;
+    left: 151.5px;
+    background-color: #f2f1ed;
+    transition: all .1s;
+    z-index: 96;
+}
+
+.fixed-nav a {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #4b535d;
+    letter-spacing: .05em;
+    border-right: 1px solid #e5e3dc;
+}
+
+.nav-lft {
+    height: 100%;
+    float: left;
+    display: flex;
+    line-height: initial;
+}
+
+.nav-lft a {
+    transition: background .2s;
+}
+
+.nav-lft a:hover {
+    background-color: #353c42;
+    color: #ff9c00;
+}
+
+.nav-lft a div {
+    width: 14px;
+    height: 8px;
+    background: url(https://overwatch.nosdn.127.net/1/assets/img/icons/menus/nav_arrow.png);
+    background-position: 0 0;
+    margin: 4px 0 0 8px;
+}
+
+.nav-lft a:hover div {
+    background-position: 0 -8px;
+}
+
+.nav-rt {
+    float: right;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-rt a {
+    font-weight: 700;
+    color: #fff;
+    background-color: #f89e35;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 40px;
+    border: none;
+}
+
+a.nav-logo {
+    width: 53px;
+    height: 48px;
+    border: 1px solid #4b535d;
+    background: url(https://overwatch.nosdn.127.net/1/assets/img/logos/nav_logo_new.jpg);
+    background-repeat: no-repeat;
+    background-size: 53px 96px;
+}
+/* 固定导航结束 */
+
+/* video开始 */
+.video-con {
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+}
+
+.video-con::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(180deg, transparent, transparent 56%, rgba(12, 11, 14, .62) 91%, rgba(12, 11, 14, .91));
+    background-repeat: no-repeat;
+}
+
+.video {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: -100px;
+}
+
+.title {
+    position: absolute;
+    z-index: 96;
+    bottom: 238px;
+    left: 50%;
+    margin: auto;
+    transform: translate(-50%, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-logo {
+    width: 70vmin;
+    margin-left: 2vmin;
+}
+
+.title-link-con {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin-top: 22px;
+}
+
+.game-intro, .game-buy {
+    width: 200px;
+    text-align: center;
+    padding: 10px 45px;
+    color: #fff;
+    border: 3px solid #00a5e2;
+    background-color: #00a5e2;
+    border-radius: 2px;
+    letter-spacing: .025em;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin: 0 10px;
+    transition: all .2s;
+}
+
+.game-intro:hover {
+    background-color: #0cbdff;
+    border-color: transparent;
+}
+
+.game-buy {
+    border-color: #ff9c00;
+    background-color: #ff9c00;
+}
+
+.game-buy:hover {
+    background-color: #ffb033;
+    border-color: transparent;
+}
+
+.video-ctrl {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    transform: translateX(-760px);
+    font-size: 1.6rem;
+    color: #fff;
+    z-index: 96;
+}
+
+.video-ctrl-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    background: url(https://overwatch.nosdn.127.net/1/assets/img/icons/menus/video_control_icon.png) no-repeat 0 0;
+}
+/* video结束 */

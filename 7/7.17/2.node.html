@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="existDiv">已有的div</div>
+    <span class="existSpan">已有的span</span>
+    <script>
+        //操作页面内不存在的元素（添加 删除。。。）
+
+        /* 
+            1.动态的添加元素 两步执行 
+        */
+        var div = document.createElement('div');
+        div.innerHTML = '新的元素'
+        div.style.cssText = 'width: 200px; height: 200px; background-color: crimson; color: #fff'
+        // var div1 = document.querySelector('.exist');
+        // 父元素.appendChild(子元素)
+        // 除了 document document.body 其他的元素都需要用相应的方法进行获取
+            // document.body.appendChild(div);
+        // 父元素.insertBefore(要插入的元素， 要插入元素之前的元素)
+            // document.body.insertBefore(div, div1);
+
+        // 创建新的属性
+            var span = document.createElement('span');
+            // var newAttr = document.createAttribute('newAttr');
+            // newAttr.nodeValue = 'AttrVal';
+            // span.setAttributeNode(newAttr);
+            // document.body.appendChild(span);
+            // 或
+            // span.setAttribute('newAttr', 'val')
+            // document.body.appendChild(span);
+
+        //创建文本节点
+            // var text = document.createTextNode('文本节点');
+            // span.appendChild(text);
+            // 或
+            // span.innerHTML = '文本节点';
+
+        /*
+            2.动态的删除元素
+            父元素.removeChild(要删除的元素)
+        */
+            // var div1 = document.querySelector('.exist');
+            // document.body.removeChild(div1);
+
+        /*
+            3.替换一个元素
+            父元素.replaceChild(替换的元素, 被替换的元素)
+        */
+            // var div1 = document.querySelector('.existDiv');
+            // var span1 = document.querySelector('.existSpan');
+            // var ul = document.createElement('ul');
+            // document.body.replaceChild(ul, div1);
+
+        /*
+            4.克隆一个元素
+            对象.cloneNode([true]) 克隆自身（不包括子元素） [全部克隆(包括子元素)]
+        */
+            // var div1 = document.querySelector('.existDiv');
+            // var div2 = div1.cloneNode(true);
+            // document.body.appendChild(div2);
+    </script>
+</body>
+</html>

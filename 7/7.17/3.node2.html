@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <span class="one">1</span>
+        <span class="two">
+            <a href="">2</a>
+            <a href="">2</a>
+            <a href="">2</a>
+            <a href="">2</a>
+        </span>
+        <span class="three">3</span>
+    </div>
+    <!-- 注释 -->
+    <script>
+        /*
+            HTML 文档中的节点
+            中文名称    节点名称(nodeName)    节点值(nodeValue)  节点类型(nodeType)
+            元素节点    标签名大写            null               1
+            属性节点    属性名                属性值             2
+            文本节点    #text                文本内容            3
+            注释节点    #comment             注释内容            4
+            document
+
+            节点关系 父节点 子节点 兄弟节点
+        */
+        var two = document.querySelector('.two');
+        // 获取父元素
+        // 对象.parentNode 对象.parentElement
+        console.log(two.parentElement.AttrbuteNodes);
+
+        //获取所有子节点(包含空白文本（换行）)
+            // console.log(two.childNodes);
+        //获取所有子元素（不包含空白文本）
+            // console.log(two.children);
+        //获取第一个子节点/元素
+            // console.log(two.firstChild);
+            // console.log(two.firstElementChild);
+
+        // 获取兄弟节点/元素
+            // console.log(two.previousSibling);
+            // console.log(two.previousElementSibling);
+            // console.log(two.nextSibling);
+            // console.log(two.nextElementSibling);
+
+        // 注释节点
+        console.log(two.parentElement.nextSibling.nextSibling.nodeName);
+    </script>
+</body>
+</html>
