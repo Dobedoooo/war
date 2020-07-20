@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用轮播图对象</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner"></div>
+    <script src="./轮播图对象.js"></script>
+    <script>
+        var container = '.banner';
+        var layout = {
+            imgs: [
+                'https://img.alicdn.com/tfs/TB1ftPuNLb2gK0jSZK9XXaEgFXa-1130-500.jpg_q100.jpg_.webp', 
+                'https://aecpm.alicdn.com/simba/img/TB1W4nPJFXXXXbSXpXXSutbFXXX.jpg', 
+                'https://img.alicdn.com/tps/i4/TB1123zw4n1gK0jSZKPSutvUXXa.jpg', 
+                'https://img.alicdn.com/simba/img/TB17QoNyHj1gK0jSZFOSuw7GpXa.jpg', 
+                'https://img.alicdn.com/imgextra/i4/50/O1CN01e8JC3I1CEwPmm7z2J_!!50-0-luban.jpg_q100.jpg_.webp', 
+                'https://img.alicdn.com/imgextra/i3/2/O1CN01qKitMJ1BsxP4k4fDo_!!2-0-luban.jpg_q100.jpg_.webp'
+            ],
+            imgColor: ['#F24117', '#E8E8E8', '#fff', '#E8E8E8', '#F64704', '#DD0070'],
+            links: ['javascript:;', 'javascript:;', 'javascript:;', 'javascript:;', 'javascript:;', 'javascript:;'],
+            imgSize: [1130, 500],
+            btnColor: 'rgba(0, 0, 0, .4)',
+            btnActive: '#fff',
+            activeOpacity: .7,
+            btnPos: ['center', '38']
+        }
+        var opts = {
+            time: 3,
+            gap: .7,
+            runStyle: 'ease-out'
+        }
+        var wheel = new Carousel(container, layout, opts);
+    </script>
+</body>
+</html>
