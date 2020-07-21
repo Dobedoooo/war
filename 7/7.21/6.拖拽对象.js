@@ -23,13 +23,12 @@ Drag.prototype = {
         this.opts.yBoundaryStart = opts.yBoundaryStart;
         this.opts.yBoundaryEnd = opts.yBoundaryEnd;
     },
-    dragable() {
+    dragable(callback) {
         var dragObj = this.dragObj;
         var opts = this.opts;
         dragObj.onmousedown = function(ev_1) {
             var previousLeft = dragObj.offsetLeft;
             var previousTop = dragObj.offsetTop;
-            console.log(opts);
             document.onmousemove = function(ev_2) {
                 var yDisplacement = ev_2.clientY - (ev_1.clientY - previousTop);
                 var xDisplacement = ev_2.clientX - (ev_1.clientX - previousLeft);
@@ -66,6 +65,9 @@ Drag.prototype = {
         document.onmouseup = function() {
             dragObj.style.zIndex = 1;
             document.onmousemove = null;
+            if(callback) {
+                callback.call(dragObj);
+            }
         }
     }
 }

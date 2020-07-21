@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芜湖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+
+        .container {
+            width: 850px;
+            height: 520px;
+            margin: 50px 0 0 500px ;
+            position: relative;
+        }
+
+        .bg-img {
+            float: left;
+            position: relative;
+            width: 420px;
+            height: 420px;
+            border: 1px solid #999;
+        }
+
+        .bg-img img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .con {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 10;
+            opacity: 0;
+            cursor: move;
+        }
+
+        .magnifier {
+            width: 220px;
+            height: 220px;
+            position: absolute;
+            background-image: url(https://img-tmdetail.alicdn.com/tps/i4/T12pdtXaldXXXXXXXX-2-2.png);
+            display: none;
+            z-index: 1;
+        }
+
+        .sm-img {
+            position: absolute;
+            bottom: 0;
+            width: 420px;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .sm-img img {
+            border: 2px solid transparent;
+            float: left;
+            cursor: pointer;
+        }
+
+        .window {
+            float: right;
+            width: 420px;
+            height: 420px;
+            border: 1px solid #333;
+            display: none;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .window img {
+            opacity: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bg-img">
+            <div class="con"></div>
+            <div class="magnifier"></div>
+            <img src="https://img.alicdn.com/imgextra/i3/1695300927/O1CN01Y8rjQ31IiblTenXV0-1695300927.jpg_430x430q90.jpg" style="opacity: 1;">
+            <img src="https://img.alicdn.com/imgextra/i4/1695300927/O1CN01al7E5T1Iibjm3ErAa_!!1695300927.jpg_430x430q90.jpg">
+            <img src="https://img.alicdn.com/imgextra/i4/1695300927/O1CN01al7E5T1Iibjm3ErAa_!!1695300927.jpg_430x430q90.jpg">
+            <img src="https://img.alicdn.com/imgextra/i4/1695300927/O1CN01uZXuLo1IibjwpKwoK_!!1695300927.jpg_430x430q90.jpg">
+            <img src="https://img.alicdn.com/imgextra/i4/1695300927/O1CN01uRttll1IibjwpLcO1_!!1695300927.jpg_430x430q90.jpg">
+        </div>
+        <ul class="sm-img">
+            <li><img src="https://img.alicdn.com/imgextra/i3/1695300927/O1CN01Y8rjQ31IiblTenXV0-1695300927.jpg_60x60q90.jpg"></li>
+            <li><img src="//img.alicdn.com/imgextra/i4/1695300927/O1CN01al7E5T1Iibjm3ErAa_!!1695300927.jpg_60x60q90.jpg"></li>
+            <li><img src="//img.alicdn.com/imgextra/i4/1695300927/O1CN01al7E5T1Iibjm3ErAa_!!1695300927.jpg_60x60q90.jpg"></li>
+            <li><img src="//img.alicdn.com/imgextra/i4/1695300927/O1CN01uZXuLo1IibjwpKwoK_!!1695300927.jpg_60x60q90.jpg"></li>
+            <li><img src="//img.alicdn.com/imgextra/i4/1695300927/O1CN01uRttll1IibjwpLcO1_!!1695300927.jpg_60x60q90.jpg"></li>
+        </ul>
+        <div class="window">
+            <div class="inner">
+                <img src="https://img.alicdn.com/imgextra/i3/1695300927/O1CN01Y8rjQ31IiblTenXV0-1695300927.jpg">
+                <img src="https://img.alicdn.com/imgextra/i4/1695300927/O1CN01al7E5T1Iibjm3ErAa_!!1695300927.jpg">
+                <img src="https://img.alicdn.com/imgextra/i4/1695300927/O1CN01al7E5T1Iibjm3ErAa_!!1695300927.jpg">
+                <img src="https://img.alicdn.com/imgextra/i4/1695300927/O1CN01uZXuLo1IibjwpKwoK_!!1695300927.jpg">
+                <img src="https://img.alicdn.com/imgextra/i4/1695300927/O1CN01uRttll1IibjwpLcO1_!!1695300927.jpg">
+            </div>
+        </div>
+    </div>
+    <script src="./6.拖拽对象.js"></script>
+    <script>
+        var sm_imgs = document.querySelectorAll('.sm-img img');
+        var bg_imgs = document.querySelectorAll('.bg-img img');
+        var div = document.querySelector('.magnifier');
+        var bg_shows = document.querySelectorAll('.inner img');
+        // console.log(sm_imgs);
+        // console.log(bg_imgs);
+        var num = 0;
+        for (let index = 0; index < sm_imgs.length; index++) {
+            sm_imgs[index].onmouseover = function() {
+                for(var i = 0; i < sm_imgs.length; i++) {
+                    bg_imgs[i].style.opacity = 0;
+                    sm_imgs[i].style.border = '2px solid transparent';
+                }
+                bg_imgs[index].style.opacity = 1;
+                num = index;
+                sm_imgs[index].style.border = '2px solid #333';
+            }
+        }
+
+        var outer = document.querySelector('.container')
+        var bg_img = document.querySelector('.bg-img');
+        var win = document.querySelector('.window');
+        var bg_show = document.querySelector('.inner');
+        var con = document.querySelector('.con');
+        bg_img.onmouseover = function() {
+            div.style.display = 'block';
+            win.style.display = 'block';
+        }
+
+        bg_img.onmouseout = function() {
+            div.style.display = 'none';
+            win.style.display = 'none';
+        }
+
+        // console.log(outer.offsetTop);
+        con.onmousemove = function(eve) {
+            var y =  eve.clientY - outer.offsetTop - bg_img.offsetTop - div.offsetHeight / 2;
+            var x =  eve.clientX - outer.offsetLeft - bg_img.offsetLeft - div.offsetWidth / 2;
+            if(x < 0) {
+                x = 0;
+            }
+            if(x > bg_img.offsetWidth - div.offsetWidth) {
+                x = bg_img.offsetWidth - div.offsetWidth;
+            }
+            if(y < 0) {
+                y = 0;
+            }
+            if(y > bg_img.offsetHeight - div.offsetHeight) {
+                y = bg_img.offsetHeight - div.offsetHeight;
+            }
+            div.style.top = y + 'px';
+            div.style.left = x + 'px';
+            eve.preventDefault();
+            var percentX= x / (con.offsetWidth - div.offsetWidth);
+            var percentY= y / (con.offsetHeight - div.offsetHeight);
+            for(var j = 0; j < bg_imgs.length; j++) {
+                bg_shows[j].style.opacity = 0;
+                bg_shows[num].style.opacity = 1;
+                bg_shows[num].style.left = - percentX * (bg_shows[j].offsetWidth - win.offsetWidth) + "px";
+                bg_shows[num].style.top = - percentY * (bg_shows[j].offsetHeight - win.offsetHeight) + "px";
+            }
+            
+        }
+    </script>
+</body>
+</html>
