@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <script>
+        // 事件对象
+        // 用来记录事件发生时一些详细信息
+        // 事件对象在事件处理函数的第一个参数
+
+        /* 鼠标事件的事件对象
+            1.鼠标相对于屏幕的距离 ev.screenX ev.screenY
+            2.鼠标相对于浏览器的距离 clientX clientY
+            3.相对于事件源的距离 offsetX offsetY
+            4.事件源 target
+        */
+        var div = document.querySelector('.one');
+        div.onclick = function(ev) {
+            console.log(ev.offsetX);
+        }
+    </script>
+</body>
+</html>

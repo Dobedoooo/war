@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.one {
+			width: 200px;
+			height: 200px;
+			background-color: crimson;
+		}
+	</style>
+</head>
+<body>
+	<div class="one"></div>
+	<script>
+		/*
+			事件 鼠标事件 键盘事件 浏览器自带时间
+		*/
+
+		/*
+			鼠标事件
+			click 单击
+			dblclick 双击
+			mouseover 移入
+			mouseout 移出
+			mousedown 按下
+			mouseup 抬起
+
+			右键事件（兼容性问题）
+			滚轮事件（兼容性问题）
+
+			键盘事件
+			keydown
+			keyup
+			keypress 只能触发数字字母符号
+
+			浏览器自带的时间
+			onload
+			onscroll
+
+			事件的构成
+			1.目标对象（事件源）
+			2.事件
+			3.事件处理程序
+			4.事件对象（事件发生的详细信息）
+
+			如何注册一个事件（3种）
+			1.直接量
+			2.标准方式
+			3.内联
+		*/
+		var div = document.querySelector('.one');
+		// 1.直接量 给对象添加了一个特殊的方法
+			// div.onclick = function() {
+			//     alert(1);
+			// }
+		// 点击时调用 也可以直接调用
+			// div.onclick();
+
+		// 2.标准方式
+		// 第三个参数 boolean 默认 false 面试/笔试会考 true/false 区别
+			// div.addEventListener('click', function() {
+			//     alert(1);
+			// });
+
+		// 3.内联 js用法不多见 vue多见
+			// <div class="one" onclick="alert(1)"></div>
+			// 或
+			// <div class="one" onclick="func()"></div>
+			// function func() {
+			//     alert(1);
+			// }
+		/*
+			两种注册事件方式的优劣性
+			1.通过直接量的方式定义事件，同一事件只能有同一个事件处理程序，否则会覆盖
+			2.通过标准方式注册事件可以让同一事件执行不同的事件处理程序
+			3.通过定义直接量的方式注册事件,可以直接通过 直接量=null 的方式注销事件
+			4.通过标准方式定义的事件，通过 removeEventListener 注销事件 但必须在注册时传入函数名
+		*/
+			// div.onclick = function() {
+			// 	alert(1);
+			// }
+			// div.onclick = function() {
+			// 	alert(2);
+			// }
+
+			// div.addEventListener('click', function() {console.log(1)});
+			// div.addEventListener('click', function() {console.log(2)});
+		// 事件注销
+			// div.onclick = function() {
+			// 	alert(1);
+			// 	div.onclick = null;
+			// }
+
+				// function func() {
+				// 	alert(1);
+				// 	div.removeEventListener('click', func);
+				// }
+				// div.addEventListener('click', func);
+	</script>
+</body>
+</html>

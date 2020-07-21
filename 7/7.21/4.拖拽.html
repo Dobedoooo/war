@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .one, .two, .three, .four, .five {
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+            position: absolute;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 100px;
+            color: #fff;
+            line-height: 2;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">1</div>
+    <div class="two">1</div>
+    <div class="three">1</div>
+    <div class="four">1</div>
+    <div class="five">1</div>
+    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis aut laboriosam. Dolorum atque error eligendi nostrum ad at totam, iusto expedita, rerum accusamus tempore! Libero suscipit in distinctio recusandae?</span>
+    <script>
+        // 1
+        var div = document.querySelectorAll('div');
+        for (let index = 0; index < div.length; index++) {
+            div[index].onmousedown = function(ev) {
+                var previousLeft =  ev.target.offsetLeft;
+                var previousTop =  ev.target.offsetTop;
+                document.onmousemove = function(eve) {
+                    div[index].style.zIndex = 9999;
+                    div[index].style.top = eve.clientY - (ev.clientY - previousTop) + 'px';
+                    div[index].style.left = eve.clientX - (ev.clientX - previousLeft) + 'px';
+                    // 取消浏览器默认行为
+                    eve.preventDefault();
+                }
+            }
+            document.onmouseup = function() {
+                for (let i = 0; i < div.length; i++) {
+                    div[i].style.zIndex = 1;
+                }
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .one {
+            width: 500px;
+            height: 400px;
+            border: 1px solid #333;
+            margin: 200px 0 0 200px;
+            position: relative;
+        }
+
+        .two {
+            width: 100px;
+            height: 100px;
+            background-color: crimson;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        <div class="two"></div>
+    </div>
+    <script src="./6.拖拽对象.js"></script>
+    <script>
+        var divDragable = new Drag('.two', {
+            effectiveX: true,
+            effectiveY: true,
+            xBoundaryStart: 0,
+            xBoundaryEnd: 400,
+            yBoundaryStart: 0,
+            yBoundaryEnd: 300,
+        });
+        // var div = document.querySelector('.two');
+        // div.onmousedown = function(ev) {
+        //     var previousLeft =  ev.target.offsetLeft;
+        //     var previousTop =  ev.target.offsetTop;
+        //     document.onmousemove = function(eve) {
+        //         div.style.zIndex = 9999;
+        //         div.style.top = eve.clientY - (ev.clientY - previousTop) + 'px';
+        //         div.style.left = eve.clientX - (ev.clientX - previousLeft) + 'px';
+        //         // 取消浏览器默认行为
+        //         eve.preventDefault();
+        //     }
+        // }
+        // document.onmouseup = function() {
+        //     div.style.zIndex = 1;
+        //     document.onmousemove = null;
+        // }
+    </script>
+</body>
+</html>
