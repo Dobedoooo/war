@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            方法是谁的，this就指向谁
+
+            call() 回调 改变this指针
+        */
+        function func() {
+            this.that = this;
+            console.log(this); //指向Window
+            console.log(this.that); //指向Window
+        }
+        // func(); 相当于 window.func();
+        func();
+    </script>
+</body>
+</html>
