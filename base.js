@@ -14,9 +14,6 @@
  * @param {number} opts.gap 动画时长(s)
  * @param {String} opts.runStyle 轮播缓动方式
  */
-
-
-
 function carousel(container, layout = {
     imgs: [],
     imgColor: [],
@@ -199,5 +196,16 @@ function carousel(container, layout = {
         btns[index].onmouseout = function() {
             t = setInterval(change, time * 1000);
         }
+    }
+}
+/**
+ * 批量添加事件
+ * @param {Object} collection 要注册事件的对象集合
+ * @param {String} eventName 事件名
+ * @param {Function} eventFunc 事件处理程序
+ */
+function add_event_in_bulk(collection, eventName, eventFunc) {
+    for(let index = 0; index < collection.length; index++) {
+        collection[index].addEventListener(eventName, eventFunc);
     }
 }
