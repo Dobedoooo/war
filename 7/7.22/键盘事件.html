@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.onkeydown = function(ev) {
+            // 键盘码 ASCII码 which.keyCode
+            // 空格 32 回车 13 左上右下 37 38 39 40
+            // console.log(ev.which);
+                // console.log(String.fromCharCode(ev.keyCode));
+            
+            // 监控特殊功能键
+            // ctrlKey altKey shiftKey
+            console.log(ev.which)
+        }
+
+        // document.onkeyup = function() {
+        //     console.log('up');
+        // }
+
+        // document.onkeypress = function() {
+        //     console.log('press');
+        // }
+    </script>
+</body>
+</html>

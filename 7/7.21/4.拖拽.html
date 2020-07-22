@@ -30,28 +30,45 @@
     <div class="four">1</div>
     <div class="five">1</div>
     <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis aut laboriosam. Dolorum atque error eligendi nostrum ad at totam, iusto expedita, rerum accusamus tempore! Libero suscipit in distinctio recusandae?</span>
+    <script src="../../base.js"></script>
     <script>
         // 1
         var div = document.querySelectorAll('div');
-        for (let index = 0; index < div.length; index++) {
-            div[index].onmousedown = function(ev) {
-                var previousLeft =  ev.target.offsetLeft;
-                var previousTop =  ev.target.offsetTop;
-                document.onmousemove = function(eve) {
-                    div[index].style.zIndex = 9999;
-                    div[index].style.top = eve.clientY - (ev.clientY - previousTop) + 'px';
-                    div[index].style.left = eve.clientX - (ev.clientX - previousLeft) + 'px';
-                    // 取消浏览器默认行为
-                    eve.preventDefault();
-                }
+        add_event_in_bulk(div, 'mousedown', function(ev) {
+            var that = this;
+            var previousLeft =  ev.target.offsetLeft;
+            var previousTop =  ev.target.offsetTop;
+            document.onmousemove = function(eve) {
+                that.style.zIndex = 9999;
+                that.style.top = eve.clientY - (ev.clientY - previousTop) + 'px';
+                that.style.left = eve.clientX - (ev.clientX - previousLeft) + 'px';
+                // 取消浏览器默认行为
+                eve.preventDefault();
             }
-            document.onmouseup = function() {
-                for (let i = 0; i < div.length; i++) {
-                    div[i].style.zIndex = 1;
-                }
-                document.onmousemove = null;
-            }
-        }
+        });
+        add_event_in_bulk(div, 'mouseup', function(){
+            this.style.zIndex = 1;
+            document.onmousemove = null;
+        })
+        // for (let index = 0; index < div.length; index++) {
+        //     div[index].onmousedown = function(ev) {
+        //         var previousLeft =  ev.target.offsetLeft;
+        //         var previousTop =  ev.target.offsetTop;
+        //         document.onmousemove = function(eve) {
+        //             div[index].style.zIndex = 9999;
+        //             div[index].style.top = eve.clientY - (ev.clientY - previousTop) + 'px';
+        //             div[index].style.left = eve.clientX - (ev.clientX - previousLeft) + 'px';
+        //             // 取消浏览器默认行为
+        //             eve.preventDefault();
+        //         }
+        //     }
+        //     document.onmouseup = function() {
+        //         for (let i = 0; i < div.length; i++) {
+        //             div[i].style.zIndex = 1;
+        //         }
+        //         document.onmousemove = null;
+        //     }
+        // }
     </script>
 </body>
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.one {
+			width: 200px;
+			height: 200px;
+			border: 1px solid #333;
+		}
+
+		.two {
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="one">
+		<div class="two">
+			<span></span>
+		</div>
+	</div>
+	<script>
+		// window.onload
+		// window.addEventListener('load', function(){})
+		// window.addEventListener('DOMContentLoaded', (event) => {
+		//   console.log('DOM fully loaded and parsed');
+		// });
+
+		// for( let i = 0; i < 1000000000; i++)
+		// {} // 这段同步脚本将会延迟DOM解析,
+		//    // 所以DOMContentLoaded事件将会延迟执行.
+
+		/*
+		复习：
+			文档流 浏览器渲染html的顺序
+			程序执行流程 顺序 选择 循环
+			作用域链
+			原型链
+
+		事件流 事件执行的流程
+			冒泡型事件流 默认事件流 由最特定的事件源向外扩散 子元素触发事件，父元素必定会接收到
+            有麻烦有好处
+			
+      	捕获型事件流(效率慢) 从外向内 document -> ... -> 事件源 只能由标准方式设置事件 addEventListener 第三个参数设置为 true
+
+     	 */
+
+		// 解决事件流带来的问题
+		// 1.判断
+		var one = document.querySelector('.one');
+		var two = document.querySelector('.two');
+		one.onmouseover = function (ev) {
+			if(!one.contains(ev.fromElement)) {
+				console.log('over');
+			}
+		}
+		one.onmouseout = function(ev) {
+			if(!one.contains(ev.toElement)) {
+				console.log('out!');
+			}
+		}
+
+		// 2. 为平级元素设置事件
+	</script>
+</body>
+
+</html>

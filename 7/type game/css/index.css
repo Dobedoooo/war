@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'SourceHanSansCN-Regular';
+    src: url('../font/SourceHanSansCN-Regular.ttf');
+}
+
+body {
+    color: #ddd;
+    font-family: 'SourceHanSansCN-Regular';
+    overflow: hidden;
+}
+
+.con {
+    /* width: 120rem; */
+    /* height: 58rem; */
+    border: 1px solid #333;
+    position: relative;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.con img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: all .3s;
+}
+
+.interface, .pause {
+    width: 500px;
+    height: 309px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 24px;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .1);
+    z-index: 2;
+    transition: all .3s;
+}
+
+.pause {
+    width: 529px;
+    height: 329px;
+    filter: blur(20px);
+    opacity: 0;
+    z-index: 1;
+}
+
+.pause .start {
+    cursor: default;
+}
+
+.title {
+    font-size: 60px;
+    margin-top: 60px;
+}
+
+.start {
+    display: inline-block;
+    margin-top: 80px;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.interface:hover {
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.settings {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.score, .life {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 16px;
+    position: absolute;
+    bottom: 20px;
+    transition: all .2s ease-out;
+    text-align: center;
+    line-height: 3;
+    z-index: 10;
+    font-size: 18px;
+}
+
+.score div, .life div {
+    line-height: 1;
+}
+
+.score {
+    /* right: 20px; */
+    right: -110px;
+}
+
+.life {
+    /* right: 140px; */
+    right: -110px;
+}
+
+.pre-animate {
+    width: 350px;
+    height: 200px;
+    /* background-color: #000; */
+    position: absolute;
+    top: -200px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    /* display: none; */
+    text-align: center;
+    font-size: 190px;
+    transition: all .3s;
+    filter: blur(20px);
+}
+
+.scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+}
+
+.text {
+    font-size: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: all .3s;
+    opacity: 0;
+}
+
+.text kbd {
+    background-color: #fff;
+    color: #000;
+    border-radius: 3px;
+}
