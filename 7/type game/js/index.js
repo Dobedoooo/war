@@ -120,7 +120,7 @@ startBtn.onclick = function () {
                                 width: 500px;
                                 height: 309px;
                             `;
-                            back.style.filter = 'blur(5px) brightness(0.7)';
+                            // back.style.filter = 'blur(5px) brightness(0.7)';
                             pauseBtn.style.cursor = 'pointer';
                             back.style.transform = 'scale(1.1)';
                         }
@@ -134,7 +134,7 @@ startBtn.onclick = function () {
                         pause.style.filter = 'blur(20px)';
                         pause.style.opacity = 0;
                         pauseBtn.style.cursor = 'default';
-                        back.style.filter = 'none';
+                        // back.style.filter = 'none';
                         back.style.transform = 'none';
                         document.onkeydown = down;
                     }
