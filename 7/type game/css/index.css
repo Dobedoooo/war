@@ -27,7 +27,7 @@ body {
     transition: all .3s;
 }
 
-.interface, .pause {
+.interface, .pause, .set-pannel {
     width: 500px;
     height: 309px;
     position: absolute;
@@ -42,6 +42,7 @@ body {
     background-color: rgba(255, 255, 255, .1);
     z-index: 2;
     transition: all .3s;
+    transform-origin: 466px 34px;
 }
 
 .pause {
@@ -51,6 +52,47 @@ body {
     opacity: 0;
     z-index: 1;
     background-color: rgba(255, 255, 255, .2);
+}
+
+.set-pannel {
+    /* margin: 20px; */
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(.2);
+    z-index: 1;
+}
+
+.back {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+}
+
+.speed, .char-num, .set-btns {
+    margin: 0 auto;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    justify-content: space-around;
+}
+
+.speed, .char-num {
+    height: 110px;
+}
+
+.set-btns { 
+    height: 70px;
+}
+
+.speed input, .char-num input{
+    width: 250px;
+}
+
+.rule, .positive {
+    cursor: pointer;
+    font-size: 25px;
 }
 
 .pause .start {
@@ -73,16 +115,21 @@ body {
     background-color: rgba(255, 255, 255, .23);
 }
 
-.interface:hover {
-    background-color: rgba(255, 255, 255, .3);
+.interface:hover, .set-pannel:hover {
+    background-color: rgba(255, 255, 255, .2);
 }
 
-.settings {
+.settings, .back {
     position: absolute;
     top: 20px;
     right: 20px;
     font-size: 25px;
     cursor: pointer;
+    /* z-index: 4; */
+}
+
+.settings i, .back i {
+    transition: all .3s;
 }
 
 .score, .life {

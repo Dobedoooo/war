@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../reset200802.css">
     <link rel="stylesheet" href="./fontawsome/css/all.css">
     <link rel="stylesheet" href="./css/index.css">
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
 </head>
 <body>
     <div class="con">
@@ -23,6 +23,23 @@
         <div class="pause">
             <div class="title">游戏暂停</div>
             <span class="start">继续</span>
+        </div>
+        <div class="set-pannel">
+            <div class="back" title="返回主菜单"><i class="fa fa-times-circle"></i></div>
+            <div class="speed">
+                <i class="fa fa-bolt"></i>
+                <form action="#" name="game_data" id="game_data">
+                    <input type="range" name="spd" min="1" max="10" value="5" form="game_data">
+                </form>
+            </div>
+            <div class="char-num">
+                <i class="fa fa-sort-amount-up-alt"></i>
+                <input type="range" name="num" min="1" max="10" value="5" form="game_data">
+            </div>
+            <div class="set-btns">
+                <div class="rule">游戏规则</div>
+                <div class="positive">确定</div>
+            </div>
         </div>
         <div class="score">得分<div id="scoreVal">0</div></div>
         <div class="life">生命值<div id="lifeVal">100</div></div>

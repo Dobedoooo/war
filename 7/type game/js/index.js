@@ -8,6 +8,9 @@ con.style.cssText = `
 var back = con.querySelector('img');
 var interface = con.querySelector('.interface');
 var pause = con.querySelector('.pause');
+var setPannel = con.querySelector('.set-pannel');
+var closeSetPannel = setPannel.querySelector('.back');
+var setData = setPannel.querySelector('.positive');
 var startBtn = interface.querySelector('.start');
 var pauseBtn = pause.querySelector('.start');
 var settingsBtn = interface.querySelector('.settings');
@@ -25,12 +28,53 @@ var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
 
 var speed = 100;
 var boxs = [];
-
-interface.onclick = function () {
-    this.style.background = 'rgba(255, 255, 255, .3)';
-    this.ontransitionend = function () {
-        this.style.background = 'rgba(255, 255, 255, .2)';
+var rotateNum = 1;
+interface.onclick = function (ev) {
+    if(ev.target == settingsBtn.firstElementChild) {
+        ev.target.style.transform = `rotate(${-180 * rotateNum}deg)`;
+        rotateNum++;
+        setPannel.style.cssText = `
+            transform: scale(1);
+            opacity: 1;
+            z-index: 4;
+        `;
+        this.style.cssText = `
+            opacity: 0;
+            transform: scale(.2);
+        `;
+    } else if(ev.target == this) {
+        this.style.background = 'rgba(255, 255, 255, .3)';
+        this.ontransitionend = function () {
+            this.style.background = '';
+        }
     }
+}
+
+closeSetPannel.onclick = function() {
+    this.style.transform = `rotate(${-180 * rotateNum}deg)`;
+    setPannel.style.cssText = `
+        transform: scale(.2);
+        opacity: 0;
+        z-index: 1;
+    `;
+    interface.style.cssText = `
+        opacity: 1;
+        transform: scale(1);
+    `;
+}
+
+setData.onclick = function() {
+    setPannel.style.cssText = `
+        // transform-origin: 360px 260px;
+        transform: scale(.2);
+        opacity: 0;
+        z-index: 1;
+    `;
+    interface.style.cssText = `
+        // transform-origin: 360px 260px;
+        transform: scale(1);
+        opacity: 1;
+    `;
 }
 
 function append() {
