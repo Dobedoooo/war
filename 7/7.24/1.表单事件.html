@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form1" name="form1">
+        男：<input type="radio" name="gender" value="man">
+        女：<input type="radio" name="gender" value="woman">
+        <br>
+        <input type="checkbox" name="more[]" value="one">one
+        <input type="checkbox" name="more[]" value="two">two
+        <input type="checkbox" name="more[]" value="three">three
+        <br>
+        <select name="select">
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+        </select>
+    </form>
+    <script>
+        // onfocus onblur
+        // onchange 更多用在单选/多选按钮上
+        // oninput
+        // 
+        var gender = document.form1.gender;
+        // console.log(gender[0])
+        gender.forEach((value, indexed) => {
+            value.onchange = function() {
+                console.log(value.value);
+            }
+        });
+        document.form1.more[].forEach((value, index) => {
+            value.onchange = function() {
+                console.log(value.value);
+                console.log(document.form1.more.value);
+            }
+        });
+        document.form1.select.onchange = function() {
+            console.log(document.form1.select.value);
+            // 获得下标
+            // console.log(document.form1.select.selectedIndex);
+        }
+    </script>
+</body>
+</html>

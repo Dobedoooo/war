@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>useless</title>
+    <style>
+        body {
+            margin: 0;
+            color: #333;
+        }
+
+        .btn {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 61.8px;
+            height: 61.8px;
+            background-color: crimson;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 40px;
+            cursor: pointer;
+            line-height: 55px;
+            transition: all .3s;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, .7);
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">+</div>
+    <script src="./动态表格.js"></script>
+    <script>
+        var btn = document.querySelector('.btn');
+        var table = new Table(btn, document.body, btn);
+    </script>
+</body>
+</html>

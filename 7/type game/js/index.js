@@ -19,6 +19,11 @@ var life = con.querySelector('.life');
 var scoreVal = document.getElementById('scoreVal');
 var lifeVal = document.getElementById('lifeVal');
 var text = con.querySelector('.text');
+// 规则面板
+var rulePannel = con.querySelector('.rule-pannel');
+// '好的' 按钮
+var know = rulePannel.querySelector('.understood');
+var ruleBtn = setPannel.querySelector('.rule');
 // 获取游戏场景
 var scene = document.querySelector('.scene');
 // 开始动画场景
@@ -50,6 +55,80 @@ interface.onclick = function (ev) {
     }
 }
 
+var spdBar = document.game_data.spd;
+var spdSet = setPannel.querySelector('.spd-value');
+var numBar = document.game_data.num;
+spdBar.onmousedown = function() {
+    spdSet.style.cssText = `
+        background: rgba(255, 255, 255, .15);
+        border-radius: 12px;
+        width: 200px;
+        height: 50px;
+        top: -180px;
+        color: #ddd;
+    `;
+    spdSet.innerHTML = `掉落速度：${spdBar.value}`;
+}
+spdBar.oninput = function() {
+    // console.log(spdBar.value);
+    spdSet.innerHTML = `掉落速度：${spdBar.value}`;
+}
+spdBar.onmouseup = function() {
+    setTimeout(() => {
+        spdSet.style.cssText = `
+            top: -10px;
+        `;    
+    }, 300);
+    
+}
+
+numBar.onmousedown = function() {
+    spdSet.style.cssText = `
+        background: rgba(255, 255, 255, .15);
+        border-radius: 12px;
+        width: 200px;
+        height: 50px;
+        top: -180px;
+        color: #ddd;
+    `;
+    spdSet.innerHTML = `掉落数量：${numBar.value}`;
+}
+numBar.oninput = function() {
+    spdSet.innerHTML = `掉落数量：${numBar.value}`;
+}
+numBar.onmouseup = function() {
+    setTimeout(() => {
+        spdSet.style.cssText = `
+            top: -10px;
+        `;    
+    }, 300);
+    
+}
+
+ruleBtn.onclick = function() {
+    rulePannel.style.cssText = `
+        transform: scale(1);
+        opacity: 1;
+        z-index: 4;
+    `;
+    setPannel.style.cssText = `
+        transform: scale(.2);
+        opacity: 0;
+        z-index: 1;
+    `;
+}
+
+know.onclick = function() {
+    rulePannel.style.cssText = `
+        transform: scale(.2);
+    `;
+    setPannel.style.cssText = `
+        transform: scale(1);
+        opacity: 1;
+        z-index: 4;
+    `;
+}
+
 closeSetPannel.onclick = function() {
     this.style.transform = `rotate(${-180 * rotateNum}deg)`;
     setPannel.style.cssText = `
@@ -63,15 +142,14 @@ closeSetPannel.onclick = function() {
     `;
 }
 
+// 确定按钮点击事件
 setData.onclick = function() {
     setPannel.style.cssText = `
-        // transform-origin: 360px 260px;
         transform: scale(.2);
         opacity: 0;
         z-index: 1;
     `;
     interface.style.cssText = `
-        // transform-origin: 360px 260px;
         transform: scale(1);
         opacity: 1;
     `;
@@ -110,6 +188,7 @@ startBtn.onclick = function () {
     interface.style.filter = 'blur(20px)';
     interface.style.opacity = 0;
     text.style.opacity = 1;
+    setPannel.style.display = 'none';
     setTimeout(() => {
         interface.style.width = '500px';
         interface.style.height = '309px';

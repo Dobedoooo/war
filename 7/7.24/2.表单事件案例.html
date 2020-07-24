@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="form">
+        数量：<input type="number" name="count" min="0" value="1">
+        <br>
+        单价：<select name="select">
+            <option>100</option>
+            <option>200</option>
+            <option>300</option>
+        </select>
+        <br>
+        总价：<span></span>
+    </form>
+    <script>
+        var count = document.form.count;
+        var price = document.form.select;
+        var total = document.querySelector('span');
+        total.innerHTML = count.value * price.value;
+        count.onchange = function() {
+            total.innerHTML = count.value * price.value;
+        }
+        price.onchange = function() {
+            total.innerHTML = count.value * price.value;
+        }
+    </script>
+</body>
+</html>

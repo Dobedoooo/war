@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则匹配</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <style>
+        form {
+            margin-top: 50px;
+        }
+
+        html, body {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        button {
+            margin-right: 10px;
+            width: 80px;
+        }
+
+        .result {
+            margin: 20px 0 0 0;
+            border: 1px solid #333;
+            width: 200px;
+            padding: 8px;
+            border-radius: 3px;
+            display: none;
+        }
+
+        #input {
+            letter-spacing: 1.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <form action="" class="" name="form" id="form">
+                <div class="form-group">
+                    <label for="input">正则：</label>
+                    <input type="text" class="form-control" id="input" name="input" autocomplete="off" value="//">
+                </div>
+                <div class="form-group">
+                    <label for="string">字符串：</label>
+                    <textarea name="string" class="form-control" id="string" cols="30" rows="3"></textarea>
+                </div>
+                <button form="form" type="submit" class="btn btn-primary sub" name="submit">匹配</button>
+                <button form="form" type="reset" class="btn btn-primary res" name="reset">清空</button>
+                <button class="btn btn-primary" name="phoneNum">手机号</button>
+                <button class="btn btn-primary" name="IDNum">身份证号</button>
+            </form>
+            <div class="result"></div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <script>
+        var regStr = document.form.input;
+        var str = document.form.string;
+        var submitBtn = document.form.submit;
+        var clearBtn = document.form.reset;
+        var rst = document.querySelector('.result');
+        var pNum = document.form.phoneNum;
+        var IDNum = document.form.IDNum;
+        var flag;
+        // console.log(reg);
+        regStr.focus();
+        setTimeout(() => {
+            regStr.setSelectionRange(1, 1)
+        }, 10);
+        regStr.onfocus = function() {
+            if(regStr.value == '//') {
+                setTimeout(() => {
+                    regStr.setSelectionRange(1, 1)
+                }, 10);
+            };
+        }
+        submitBtn.onclick = function(ev) {
+            ev.preventDefault();
+            if(str.value == '') {
+                console.error('未输入字符串');
+                return;
+            }
+            var reg = eval(regStr.value);
+            flag = reg.test(str.value);
+            rst.style.display = 'block'
+            if(flag) {
+                submitBtn.classList.remove('btn-primary');
+                submitBtn.classList.remove('btn-danger');
+                submitBtn.classList.add('btn-success');
+                var result = reg.exec(str.value);
+                rst.innerHTML = `
+                    匹配成功
+                    <br>
+                    匹配的字符串：'${result[0]}'
+                    <br>
+                    匹配的位置：${result.index}
+                `;
+            } else {
+                submitBtn.classList.remove('btn-primary');
+                submitBtn.classList.remove('btn-success');
+                submitBtn.classList.add('btn-danger');
+                rst.innerHTML = '匹配失败';
+            }
+        }
+        clearBtn.onclick = function() {
+            rst.innerHTML = '';
+            rst.style.display = 'none';
+            if(flag) {
+                submitBtn.classList.add('btn-primary');
+                submitBtn.classList.remove('btn-success');
+            } else {
+                submitBtn.classList.add('btn-primary');
+                submitBtn.classList.remove('btn-danger');
+            }
+            regStr.focus();
+            setTimeout(() => {
+                regStr.setSelectionRange(1, 1)
+            }, 10);
+        }
+        IDNum.onclick = function(ev) {
+            ev.preventDefault();
+            regStr.value = `/^[1-6][1-7]\\d{4}(19|20)\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|(10|20|30|31))\\d{3}[0-9Xx]$/`;
+        }
+        pNum.onclick = function(ev) {
+            ev.preventDefault();
+            regStr.value = '/^1[3-9][0-9]{9}$/';
+        }
+        regStr.onkeydown = function(ev) {
+            // ( 57 ) 48 [ 219 ] 221 { }
+            // console.log(ev.keyCode);
+            if(ev.keyCode == '219') {
+                setTimeout(() => {
+                    regStr.value += ']';
+                }, 10);
+                
+            }
+        }
+    </script>
+</body>
+</html>

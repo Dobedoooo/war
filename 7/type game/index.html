@@ -4,26 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>打字游戏v1.0</title>
-    <link rel="stylesheet" href="../../base.css">
-    <link rel="stylesheet" href="../../reset200802.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/reset200802.css">
     <link rel="stylesheet" href="./fontawsome/css/all.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
 </head>
 <body>
     <div class="con">
-            <img src="./img/back.png">
-            <div class="interface">
+        <img src="./img/back.png">
+        <!-- 主菜单 -->
+        <div class="interface">
             <div class="title">打字游戏</div>
             <span class="start" title="开始游戏">开始游戏</span>
             <div class="settings" title="设置">
                 <i class="fa fa-cog"></i>
             </div>
         </div>
+        <!-- 暂停面板 -->
         <div class="pause">
             <div class="title">游戏暂停</div>
             <span class="start">继续</span>
         </div>
+        <!-- 设置面板 -->
         <div class="set-pannel">
             <div class="back" title="返回主菜单"><i class="fa fa-times-circle"></i></div>
             <div class="speed">
@@ -31,6 +34,7 @@
                 <form action="#" name="game_data" id="game_data">
                     <input type="range" name="spd" min="1" max="10" value="5" form="game_data">
                 </form>
+                <div class="spd-value"></div>
             </div>
             <div class="char-num">
                 <i class="fa fa-sort-amount-up-alt"></i>
@@ -41,10 +45,21 @@
                 <div class="positive">确定</div>
             </div>
         </div>
+        <!-- 游戏规则面板 -->
+        <div class="rule-pannel">
+            <h1>规则说明</h1>
+            <p>屏幕上方会出现字母滑块，你可以设置滑块的速度和同时出现的数量，点击键盘相应按键消除滑块，消除一块得1分，未及时消除而使滑块到达屏幕底部自动消失，同时生命值-2，生命值小于90游戏结束，祝你好运。对了，不要想着暂停观察，就这样吧。</p>
+            <div class="understood">好的。</div>
+        </div>
+        <!-- 计分板 -->
         <div class="score">得分<div id="scoreVal">0</div></div>
+        <!-- 生命值 -->
         <div class="life">生命值<div id="lifeVal">100</div></div>
+        <!-- 开场动画 -->
         <div class="pre-animate"></div>
+        <!-- 游戏场景 -->
         <div class="scene"></div>
+        <!-- 暂停提示 -->
         <div class="text">按 <kbd>space</kbd> 暂停游戏<br>暂停惩罚：字母下移</div>
     </div>
     <script src="./js/index.js"></script>
