@@ -27,7 +27,7 @@ body {
     transition: all .3s;
 }
 
-.interface, .pause, .set-pannel, .rule-pannel {
+.interface, .pause, .set-pannel, .rule-pannel, .over {
     width: 500px;
     height: 309px;
     position: absolute;
@@ -53,6 +53,7 @@ body {
     transform: scale(.2);
     transform-origin: 165px 255px;
     opacity: 0;
+    display: none;
 }
 
 .rule-pannel h1 {
@@ -69,6 +70,15 @@ body {
     cursor: pointer;
     width: 80px;
     margin: 35px auto;
+}
+
+.author {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 12px;
+    text-decoration: underline;
+    color: #ddd;
 }
 
 .pause {
@@ -122,7 +132,7 @@ body {
     height: 0px;
     top: -10px;
     overflow: hidden;
-    transition: all .3s;
+    transition: all .5s;
     color: transparent;
     padding-top: 15px;
 }
@@ -139,6 +149,7 @@ body {
 .title {
     font-size: 60px;
     margin-top: 60px;
+    cursor: default;
 }
 
 .start {
@@ -169,34 +180,28 @@ body {
     transition: all .3s;
 }
 
+/* 生命值、计分板开始 */
 .score, .life {
     width: 100px;
     height: 100px;
     background-color: rgba(255, 255, 255, .1);
     border-radius: 16px;
     position: absolute;
-    bottom: 20px;
+    top: 20px;
     transition: all .2s ease-out;
     text-align: center;
     line-height: 3;
-    z-index: 10;
+    z-index: 1;
     font-size: 18px;
+    right: -110px;
 }
 
 .score div, .life div {
     line-height: 1;
 }
+/* 生命值、计分板结束 */
 
-.score {
-    /* right: 20px; */
-    right: -110px;
-}
-
-.life {
-    /* right: 140px; */
-    right: -110px;
-}
-
+/* 开场动画 */
 .pre-animate {
     width: 350px;
     height: 200px;
@@ -214,6 +219,7 @@ body {
     filter: blur(20px);
 }
 
+/* 游戏场景 */
 .scene {
     width: 100%;
     height: 100%;
@@ -221,17 +227,28 @@ body {
     display: none;
 }
 
-.text {
-    font-size: 20px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    transition: all .3s;
-    opacity: 0;
+/* 游戏结束面板 */
+.over {
+    /* margin: 0; */
+    /* display: block; */
+    display: none;
+    z-index: 1;
+    filter: blur(20px);
+    transform-origin: 250px 168px;
 }
 
-.text kbd {
-    background-color: #fff;
-    color: #000;
-    border-radius: 3px;
+.btn-group {
+    margin-top: 20px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.return, .restart {
+    cursor: pointer;
+    font-size: 25px;
+    width: 140px;
+    line-height: 2.5;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>经典脸滚键盘v1.0</title>
+    <title>经典脸滚键盘</title>
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/reset200802.css">
     <link rel="stylesheet" href="./fontawsome/css/all.css">
@@ -32,13 +32,13 @@
             <div class="speed">
                 <i class="fa fa-bolt"></i>
                 <form action="#" name="game_data" id="game_data">
-                    <input type="range" name="spd" min="1" max="10" value="5" form="game_data">
+                    <input type="range" name="spd" min="1" max="10" value="1" form="game_data">
                 </form>
                 <div class="spd-value"></div>
             </div>
             <div class="char-num">
                 <i class="fa fa-sort-amount-up-alt"></i>
-                <input type="range" name="num" min="1" max="10" value="5" form="game_data">
+                <input type="range" name="num" min="1" max="10" value="1" form="game_data">
             </div>
             <div class="set-btns">
                 <div class="rule">游戏规则</div>
@@ -49,6 +49,7 @@
         <div class="rule-pannel">
             <h1>规则说明</h1>
             <p>屏幕上方会出现字母滑块，你可以设置滑块的速度和同时出现的数量，点击键盘相应按键消除滑块，消除一块得1分，未及时消除而使滑块到达屏幕底部自动消失，同时生命值-2，生命值小于90游戏结束，祝你好运。对了，不要想着暂停观察，就这样吧。</p>
+            <a href="https://github.com/Dobedoooo" target="_blank" class="author">Power by dobedoo</a>
             <div class="understood">好的。</div>
         </div>
         <!-- 计分板 -->
@@ -59,8 +60,14 @@
         <div class="pre-animate"></div>
         <!-- 游戏场景 -->
         <div class="scene"></div>
-        <!-- 暂停提示 -->
-        <div class="text">按 <kbd>space</kbd> 暂停游戏<br>暂停惩罚：字母下移</div>
+        <!-- 游戏结束 -->
+        <div class="over">
+            <div class="title">游戏结束</div>
+            <div class="btn-group">
+                <div class="return">返回主菜单</div>
+                <div class="restart">再来一把。</div>    
+            </div>
+        </div>
     </div>
     <script src="./js/index.js"></script>
 </body>
