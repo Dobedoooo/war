@@ -245,7 +245,8 @@ function append(num=numAtOnce) {
             position: absolute;
             top: 20px;
             left: ${Math.random() * 1840}px;
-            // transition: all 1s;
+            z-index: 9999;
+            cursor: default;
         `;
         var currentLtr = Math.floor(Math.random() * letters.length);
         var letter = letters[currentLtr];

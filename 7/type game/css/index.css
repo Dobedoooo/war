@@ -43,6 +43,8 @@ body {
     z-index: 2;
     transition: all .3s;
     transform-origin: 466px 34px;
+    transform: translate3d(0, 0, 0);
+    backdrop-filter: blur(5px);
 }
 
 .rule-pannel {
@@ -194,6 +196,7 @@ body {
     z-index: 1;
     font-size: 18px;
     right: -110px;
+    backdrop-filter: blur(10px);
 }
 
 .score div, .life div {
