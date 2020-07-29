@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d拼接轮播图</title>
+    <link rel="shortcut icon" href="../type game/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../fontawsome/css/all.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .scene {
+            perspective: 2000px;
+        }
+        .box {
+            width: 1000px;
+            height: 448px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .box .item {
+            width: 100%;
+            height: 25%;
+            transition: all 1s ease;
+            transform-style: preserve-3d;
+            position: relative;
+            transform-origin: center center -10px;
+        }
+
+        .item div {
+            position: absolute;
+        }
+
+        .back {
+            width: 100%;
+            height: 100%;
+            transform: translateZ(-20px) rotate(180deg);
+        }
+
+        .top {
+            height: 20px;
+            width: 100%;
+            background-color: #ccc;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+
+        .bottom {
+            height: 20px;
+            width: 100%;
+            background-color: #ccc;
+            bottom: 0;
+            transform-origin: bottom;
+            transform: rotateX(90deg);
+        }
+
+        .front {
+            width: 100%;
+            height: 112.5px;
+            transform: translateZ(0px);
+        }
+
+        .one .front {
+            background-image: url(./1.png);
+            background-position: 0 0;
+        }
+
+        .two .front {
+            background-image: url(./1.png);
+            background-position: 0 337.5px;
+        }
+
+        .three .front {
+            background-image: url(./1.png);
+            background-position: 0 225px;
+        }
+        .four .front {
+            background-image: url(./1.png);
+            background-position: 0 112.5px;
+
+        }
+
+        .one .back {
+            background-image: url(./2.png);
+            background-position: 0 0;
+        }
+
+        .two .back {
+            background-image: url(./2.png);
+            background-position: 0 337.5px;
+        }
+
+        .three .back {
+            background-image: url(./2.png);
+            background-position: 0 225px;
+        }
+        .four .back {
+            background-image: url(./2.png);
+            background-position: 0 112.5px;
+
+        }
+        .btn-left, .btn-right {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 210px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, .5);
+            z-index: 4;
+            border-radius: 50%;
+            color: #f1f1f1;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .btn-right {
+            left: auto;
+            right: 10px;
+        }
+
+        .box:hover .btn-left, .box:hover .btn-right {
+            opacity: 1;
+        }
+
+        .box:hover .btns {
+            opacity: 1;
+        }
+
+        .btns {
+            position: absolute;
+            z-index: 4;
+            height: 12px;
+            width: 90px;
+            bottom: 10px;
+            left: 405px;
+            display: flex;
+            justify-content: space-around;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .btn {
+            height: 12px;
+            width: 12px;
+            background-color: #f1f1f1;
+            float: left;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="box">
+            <div class="btn-left"><i class="fa fa-angle-left"></i></div>
+            <div class="btn-right"><i class="fa fa-angle-right"></i></div>
+            <div class="btns">
+                <div class="btn" style="background-color: #000000;"></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
+            </div>
+            <div class="item one">
+                <div class="front"></div>
+                <div class="left"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="item two" style="z-index: 2;">
+                <div class="front"></div>
+                <div class="left"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="item three" style="z-index: 1;">
+                <div class="front"></div>
+                <div class="left"></div>
+                <div class="back"></div>
+                <div class="right"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="item four">
+                <div class="front"></div>
+                <div class="left"></div>
+                <div class="back"></div>
+                <div class="top"></div>
+                <div class="right"></div>
+                <div class="bottom"></div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/base.js"></script>
+    <script>
+
+        var items = document.querySelectorAll('.item');
+        var lftBtn = document.querySelector('.btn-left');
+        var rtBtn = document.querySelector('.btn-right');
+        var btns = document.querySelectorAll('.btn');
+        var fronts = document.querySelectorAll('.front');
+        var backs = document.querySelectorAll('.back');
+        var angle = 0;
+
+        for (let index = 0; index < btns.length; index++) {
+            btns[index].onclick = function() {
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].style.background = '#f1f1f1';
+                }
+                this.style.background = '#000';
+                var now = Math.abs(angle / 180 % 3);
+                angle += 180 * (index - now); 
+                var current = Math.abs(angle / 180 % 3);
+                if(current == 0) {
+                    fronts[0].style.cssText = `
+                        background-image: url(./1.png);
+                        background-position: 0 0;
+                    `;
+                    fronts[1].style.cssText = `
+                        background-image: url(./1.png);
+                        background-position: 0 337.5px;
+                    `;
+                    fronts[2].style.cssText = `
+                        background-image: url(./1.png);
+                        background-position: 0 225px;
+                    `;
+                    fronts[3].style.cssText = `
+                        background-image: url(./1.png);
+                        background-position: 0 112.5px;
+                    `;
+                }
+                if(current == 2) {
+                    fronts[0].style.cssText = `
+                        background-image: url(./3.png);
+                        background-position: 0 0;
+                    `;
+                    fronts[1].style.cssText = `
+                        background-image: url(./3.png);
+                        background-position: 0 337.5px;
+                    `;
+                    fronts[2].style.cssText = `
+                        background-image: url(./3.png);
+                        background-position: 0 225px;
+                    `;
+                    fronts[3].style.cssText = `
+                        background-image: url(./3.png);
+                        background-position: 0 112.5px;
+                    `;
+                }
+                items[0].style.transform = 'rotateX('+ angle +'deg)';
+                setTimeout(() => {
+                    items[1].style.transform = 'rotateX('+ angle +'deg)';
+                    setTimeout(() => {
+                        items[2].style.transform = 'rotateX('+ angle +'deg)';
+                        setTimeout(() => {
+                            items[3].style.transform = 'rotateX('+ angle +'deg)';
+                        }, 200);
+                    }, 200);
+                }, 200);
+            }
+            
+        }
+        lftBtn.onclick = function() {
+            angle -= 180;
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].style.background = '#f1f1f1';
+            }
+            var current = Math.abs(angle / 180 % 3);
+            btns[current].style.background = '#000';
+            if(current == 0) {
+                backs[0].style.cssText = `
+                    background-image: url(./1.png);
+                    background-position: 0 0;
+                `;
+                backs[1].style.cssText = `
+                    background-image: url(./1.png);
+                    background-position: 0 337.5px;
+                `;
+                backs[2].style.cssText = `
+                    background-image: url(./1.png);
+                    background-position: 0 225px;
+                `;
+                backs[3].style.cssText = `
+                    background-image: url(./1.png);
+                    background-position: 0 112.5px;
+                `;
+            }
+            
+            if(current == 2) {
+                fronts[0].style.cssText = `
+                    background-image: url(./3.png);
+                    background-position: 0 0;
+                `;
+                fronts[1].style.cssText = `
+                    background-image: url(./3.png);
+                    background-position: 0 337.5px;
+                `;
+                fronts[2].style.cssText = `
+                    background-image: url(./3.png);
+                    background-position: 0 225px;
+                `;
+                fronts[3].style.cssText = `
+                    background-image: url(./3.png);
+                    background-position: 0 112.5px;
+                `;
+            }
+            items[0].style.transform = 'rotateX('+ angle +'deg)';
+            setTimeout(() => {
+                items[1].style.transform = 'rotateX('+ angle +'deg)';
+                setTimeout(() => {
+                    items[2].style.transform = 'rotateX('+ angle +'deg)';
+                    setTimeout(() => {
+                        items[3].style.transform = 'rotateX('+ angle +'deg)';
+                    }, 200);
+                }, 200);
+            }, 200);
+        }
+
+        rtBtn.onclick = function() {
+            angle += 180;
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].style.background = '#f1f1f1';
+            }
+            var current = Math.abs(angle / 180 % 3);
+            btns[current].style.background = '#000';
+            if(current == 0) {
+                fronts[0].style.cssText = `
+                    background-image: url(./1.png);
+                    background-position: 0 0;
+                `;
+                fronts[1].style.cssText = `
+                    background-image: url(./1.png);
+                    background-position: 0 337.5px;
+                `;
+                fronts[2].style.cssText = `
+                    background-image: url(./1.png);
+                    background-position: 0 225px;
+                `;
+                fronts[3].style.cssText = `
+                    background-image: url(./1.png);
+                    background-position: 0 112.5px;
+                `;
+            }
+            if(current == 2) {
+                fronts[0].style.cssText = `
+                    background-image: url(./3.png);
+                    background-position: 0 0;
+                `;
+                fronts[1].style.cssText = `
+                    background-image: url(./3.png);
+                    background-position: 0 337.5px;
+                `;
+                fronts[2].style.cssText = `
+                    background-image: url(./3.png);
+                    background-position: 0 225px;
+                `;
+                fronts[3].style.cssText = `
+                    background-image: url(./3.png);
+                    background-position: 0 112.5px;
+                `;
+            }
+            items[0].style.transform = 'rotateX('+ angle +'deg)';
+            setTimeout(() => {
+                items[1].style.transform = 'rotateX('+ angle +'deg)';
+                setTimeout(() => {
+                    items[2].style.transform = 'rotateX('+ angle +'deg)';
+                    setTimeout(() => {
+                        items[3].style.transform = 'rotateX('+ angle +'deg)';
+                    }, 200);
+                }, 200);
+            }, 200);
+        }
+    </script>
+</body>
+</html>
