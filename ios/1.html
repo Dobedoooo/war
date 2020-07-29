@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        .pause {
+            width: 76px;
+            height: 76px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: background-color .3s ease;
+        }
+
+        .pause img {
+            width: 34px;
+            height: 40px;
+            transition: transform .2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="pause">
+        <img src="./img/pause.png">
+    </div>
+    <script>
+        var pauseBtnCon = document.querySelector('.pause');
+        var pauseBtn = pauseBtnCon.querySelector('img');
+        var flag = true;
+        pauseBtn.onmousedown = function() {
+            pauseBtn.style.transform = 'scale(.9)';
+            pauseBtnCon.style.background = '#c1bbb9';
+        }
+        pauseBtn.onmouseup = function() {
+            if(flag) {
+                pauseBtn.src = './img/start.png';
+                flag = false;
+            } else {
+                pauseBtn.src = './img/pause.png';
+                flag = true;
+            }
+            pauseBtn.style.transform = 'scale(1)';
+            pauseBtnCon.style.background = 'none';
+        }
+    </script>
+</body>
+</html>   

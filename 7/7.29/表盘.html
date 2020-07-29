@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var Clock = function(container) {
+            this.container = container;
+            // 创建表盘
+            this.createContainer();
+            // 运动
+            this.run();
+        }
+
+        Clock.prototype = {
+            createContainer() {
+                // 外部容器
+                var con = document.createElement('div');
+                con.style.cssText = `
+                    width: 500px;
+                    height: 500px;
+                    background-color: crimson;
+                    margin: 50px auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 20px;
+                `;
+                // 表盘
+                var circle = document.createElement('div');
+                circle.style.cssText = `
+                    width: 450px;
+                    height: 450px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    position: relative;
+                `;
+                // 刻度
+                for (let index = 0; index < 60; index++) {
+                    var scale = document.createElement('div');
+                    scale.style.cssText = `
+                        width: 2px;
+                        position: absolute;
+                        left: 224px;
+                        background-color: #333;
+                        transform-origin: 1px 225px;
+                        transform: rotate(${index * 6}deg);
+                    `;
+                    if(index % 5 == 0) {
+                        scale.style.height = '18px';
+                    } else {
+                        scale.style.height = '10px';
+                    }
+                    circle.appendChild(scale);
+                }
+                for (let index = 0; index < 12; index++) {
+                    var scaleText = document.createElement('span');
+                    scaleText.style.cssText = `
+                        position: absolute;
+                        left: ${218 + 190 * Math.sin(30 * index * Math.PI / 180)}px;
+                        top: ${20 + 190 - 190 * Math.cos(30 * index * Math.PI / 180)}px;
+                    `;
+                    scaleText.innerHTML = index+12>12?index:index+12;
+                    circle.appendChild(scaleText);
+                }
+                // 中心
+                var center = document.createElement('div');
+                center.style.cssText = `
+                    width: 10px;
+                    height: 10px;
+                    background-color: #000;
+                    position: absolute;
+                    top: 220px;
+                    left: 220px;
+                    border-radius: 50%;
+                `;
+                // 表针
+                this.hour = document.createElement('div');
+                this.minutes = document.createElement('div');
+                this.second = document.createElement('div');
+                this.second.style.cssText = `
+                    width: 2px;
+                    height: 180px;
+                    position: absolute;
+                    top: 75px;
+                    left: 224px;
+                    background-color: #333;
+                    transform-origin: 1px 150px;
+                `;
+                this.minutes.style.cssText = `
+                    width: 4px;
+                    height: 140px;
+                    position: absolute;
+                    top: 85px;
+                    left: 223px;
+                    background-color: #333;
+                    transform-origin: 2px 140px;
+                `;
+                this.hour.style.cssText = `
+                    width: 6px;
+                    height: 120px;
+                    position: absolute;
+                    top: 105px;
+                    left: 222px;
+                    background-color: #333;
+                    transform-origin: 3px 120px;
+                `;
+                circle.appendChild(this.hour);
+                circle.appendChild(this.minutes);
+                circle.appendChild(this.second);
+                circle.appendChild(center);
+                con.appendChild(circle);
+                this.container.appendChild(con);
+            },
+            run() {
+                var that = this;
+                function move() {
+                    var time = new Date();
+                    var currentHour = time.getHours()>12?time.getHours()-12:time.getHours();
+                    var currentMinute = time.getMinutes();
+                    var currentSecond = time.getSeconds();
+                    var rotateSecond = currentSecond * 6;
+                    var rotateMinute = currentMinute * 6 + rotateSecond / 360 * 6;
+                    var rotateHour = currentHour * 30 + (rotateMinute / 360 * 30);
+                    that.second.style.transform = `rotate(${rotateSecond}deg)`;
+                    that.minutes.style.transform = `rotate(${rotateMinute}deg)`;
+                    that.hour.style.transform = `rotate(${rotateHour}deg)`;
+                }
+                move();
+                setInterval(move, 1000);
+            }
+        }
+        var clk = new Clock(document.body);
+    </script>
+</body>
+</html>

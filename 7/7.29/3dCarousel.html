@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d轮播图</title>
+    <link rel="shortcut icon" href="../type game/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../fontawsome/css/all.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        .scene {
+            perspective: 800px;
+        }
+
+        .con {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            position: relative;
+            transition: transform .5s ease;
+            transform-style: preserve-3d;
+        }
+
+        .con img {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            cursor: grab;
+            -webkit-user-drag: none;
+        }
+
+        img:first-child {
+            transform: translateZ(150px);
+        }
+
+        img:nth-child(2) {
+            /* transform-origin: 0 bottom; */
+            transform: translateY(150px) rotateX(-90deg);
+        }
+
+        img:nth-child(3) {
+            transform: translateZ(-150px) rotate(180deg);
+        }
+
+        img:nth-child(4) {
+            transform: translateY(-150px) rotateX(90deg);
+        }
+
+        .btn-left, .btn-right {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 710px;
+            top: 200px;
+            border-radius: 50%;
+            cursor: pointer;
+            text-align: center;
+            line-height: 18px;
+            color: #333;
+        }
+
+        .btn-right {
+            left: 1180px;
+        }
+
+        .btns {
+            width: 300px;
+            height: 20px;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btns div {
+            width: 20px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, .6);
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+         <div class="con" style="transform: translate(0deg);">
+            <img src="https://www.17sucai.com/preview/1/2014-02-13/HexaFlip/images/5.jpg">
+            <img src="https://www.17sucai.com/preview/1/2014-02-13/HexaFlip/images/6.jpg">
+            <img src="https://www.17sucai.com/preview/1/2014-02-13/HexaFlip/images/1.jpg">
+            <img src="https://www.17sucai.com/preview/1/2014-02-13/HexaFlip/images/2.jpg">
+        </div>
+    </div>
+        <div class="btn-left"><i class="fa fa-angle-left"></i></div>
+        <div class="btn-right"><i class="fa fa-angle-right"></i></div>
+        <div class="btns">
+            <div style="background: #333;"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    <script src="../../js/base.js"></script>
+    <script>
+        var con = document.querySelector('.con');
+        var leftBtn = document.querySelector('.btn-left');
+        var rightBtn = document.querySelector('.btn-right');
+        var btns = document.querySelectorAll('.btns div');
+        
+        var angle = 0;
+        var t = setInterval(carousel, 3000);
+
+        function carousel() {
+            angle += 90;
+            con.style.transform = `rotateX(${angle}deg)`;
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].style.background = '#ccc';
+            }
+            var current = Math.abs(angle / 90 % 4);
+            btns[current].style.background = '#333';
+        }
+        add_event_in_bulk(btns, 'mouseover', () => {
+            clearInterval(t);
+        })
+        add_event_in_bulk(btns, 'mouseout', () => {
+            t = setInterval(carousel, 3000);
+        })
+        for (let index = 0; index < btns.length; index++) {
+            const element = btns[index];
+            element.onclick = function() {
+                for(var i = 0; i < btns.length; i++) {
+                    btns[i].style.background = '#ccc';
+                }
+                btns[index].style.background = '#333';
+                var now = Math.abs(angle / 90 % 4);
+                angle += 90 * (index - now);
+                con.style.transform = `rotateX(${angle}deg)`;
+            }
+        }
+        leftBtn.onclick = function() {
+            angle += -90;
+            con.style.transform = `rotateX(${angle}deg)`;
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].style.background = '#ccc';
+            }
+            var current = Math.abs(angle / 90 % 4);
+            btns[current].style.background = '#333';
+        }
+        leftBtn.onmouseover = function() {
+            clearInterval(t);
+        }
+        leftBtn.onmouseout = function() {
+            t = setInterval(carousel, 3000);
+        }
+        rightBtn.onclick = function() {
+            angle += 90;
+            con.style.transform = `rotateX(${angle}deg)`;
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].style.background = '#ccc';
+            }
+            var current = angle / 90 % 4;
+            btns[current].style.background = '#333';
+        }
+        rightBtn.onmouseover = function() {
+            clearInterval(t);
+        }
+        rightBtn.onmouseout = function() {
+            t = setInterval(carousel, 3000);
+        }
+        var imgs = document.querySelectorAll('img');
+        add_event_in_bulk(imgs, 'mouseover', () => {
+            clearInterval(t);
+        })
+        add_event_in_bulk(imgs, 'mouseout', () => {
+            t = setInterval(carousel, 3000);
+        })
+        add_event_in_bulk(imgs, 'mousedown', function(eve) {
+            var that = this;
+            this.style.cursor = 'grabbing';
+            clearInterval(t);
+            document.onmousemove = function(ev) {
+                var offsetY = ev.clientY - eve.clientY;
+                if(offsetY > 0) {
+                    down(offsetY);
+                } else {
+                    up(-offsetY);
+                }
+                // con.style.transform = `rotateX(${-}deg)`;
+            }
+            document.onmouseup = function(ev) {
+                that.style.cursor = 'grab';
+                var offsetY = ev.clientY - eve.clientY;
+                if(offsetY > 0) {
+                    down1(offsetY);
+                } else {
+                    up1(-offsetY);
+                }
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        });
+        function down(offset) {
+            con.style.transiton = 'none';
+            con.style.transform = `rotateX(${angle - offset / 370 * 90}deg)`;
+        }
+        function up(offset) {
+            con.style.transiton = 'none';
+            con.style.transform = `rotateX(${angle + offset / 370 * 90}deg)`;
+        }
+        function down1(offset) {
+            con.style.transiton = 'transform .5s ease';
+            con.style.transform = `rotateX(${angle}deg)`;
+            if(offset > 120) {
+                angle -= 90;
+                con.style.transform = `rotateX(${angle}deg)`;
+            }
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].style.background = '#ccc';
+            }
+            var current = Math.abs(angle / 90 % 4);
+            btns[current].style.background = '#333';
+        }
+        function up1(offset) {
+            con.style.transiton = 'transform .5s ease';
+            con.style.transform = `rotateX(${angle}deg)`;
+            if(offset > 120) {
+                angle += 90;
+                con.style.transform = `rotateX(${angle}deg)`;
+            }
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].style.background = '#ccc';
+            }
+            var current = Math.abs(angle / 90 % 4);
+            btns[current].style.background = '#333';
+        }
+    </script>
+</body>
+</html>

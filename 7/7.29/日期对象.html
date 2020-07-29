@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="dead"></div>
+    <div class="time"></div>
+    <script>
+        var time = document.querySelector('.time');
+        var dead = document.querySelector('.dead');
+        var deadLine = new Date(2020, 7, 1, 10, 10, 20);
+        dead.innerHTML = '秒杀截至：2020年 8月 1日 10时 10分 10秒';
+        // console.log(deadLine)
+        // var date = new Date();
+        // var year = date.getFullYear();
+        // var month = date.getMonth();
+        // var day = date.getDate();
+        // var hours = date.getHours();
+        // var minutes = date.getMinutes();
+        // var seconds = date.getSeconds();
+        var gap = deadLine.getTime() - Date.now();
+        var totalSeconds = 0;
+        var currentSeconds = 0;
+        var totalMinutes = 0;
+        var currentMinutes = 0;
+        var totalHours = 0;
+        var currentHours = 0;
+        var totalDays = 0;
+        var currentDays = 0;
+        function func() {
+            gap = deadLine.getTime() - Date.now();
+            totalSeconds = parseInt(gap / 1000);
+            currentSeconds = totalSeconds % 60;
+            totalMinutes = parseInt(totalSeconds / 60); 
+            currentMinutes = totalMinutes % 60;
+            totalHours = parseInt(totalMinutes / 60);
+            currentHours = totalHours % 24;
+            totalDays = parseInt(totalHours / 24);
+            time.innerHTML = '倒计时：' + totalDays + '天' + currentHours + '时' + currentMinutes + '分' + currentSeconds + '秒';
+        }
+        func();
+        setInterval(func, 1000);
+    </script>
+</body>
+</html>
