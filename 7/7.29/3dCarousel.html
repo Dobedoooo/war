@@ -112,7 +112,13 @@
         
         var angle = 0;
         var t = setInterval(carousel, 3000);
+        window.onblur = function() {
+            clearInterval(t)
+        }
 
+        window.onfocus = function() {
+            t = setInterval(3000, carousel);
+        }
         function carousel() {
             angle += 90;
             con.style.transform = `rotateX(${angle}deg)`;
