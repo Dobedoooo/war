@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /* 插件机制 
+            本身提供基础功能，提供插件的接口，动态扩容本身的功能
+            原理 -> 拷贝 深拷贝/浅拷贝
+        */
+       var a = 123;
+       var b = a;
+       a = 234;
+       // a = 234    b = 123 传值
+       var a = [1, 2, 3]
+       var b = a;
+       a.push(4);
+       // a[1, 2, 3, 4]  b[1, 2, 3, 4] 传址
+       // 基础类型赋值 传值 / 复杂类型 传址
+    </script>
+</body>
+</html>

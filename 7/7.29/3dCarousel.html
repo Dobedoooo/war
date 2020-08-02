@@ -111,11 +111,14 @@
         var btns = document.querySelectorAll('.btns div');
         
         var angle = 0;
+            console.log('事件开始');
         var t = setInterval(carousel, 3000);
         window.onblur = function() {
+            console.log('事件结束');
             clearInterval(t)
         }
         window.onfocus = function() {
+            console.log('事件开始');
             t = setInterval(3000, carousel);
         }
         function carousel() {
@@ -128,9 +131,11 @@
             btns[current].style.background = '#333';
         }
         add_event_in_bulk(btns, 'mouseover', () => {
+            console.log('事件结束');
             clearInterval(t);
         })
         add_event_in_bulk(btns, 'mouseout', () => {
+            console.log('事件开始');
             t = setInterval(carousel, 3000);
         })
         for (let index = 0; index < btns.length; index++) {
@@ -154,11 +159,17 @@
             var current = Math.abs(angle / 90 % 4);
             btns[current].style.background = '#333';
         }
-        leftBtn.onmouseover = function() {
-            clearInterval(t);
+        leftBtn.onmouseover = function(ev) {
+            if(!leftBtn.contains(ev.fromElement)) {
+                console.log('事件结束');
+                clearInterval(t);
+            }
         }
-        leftBtn.onmouseout = function() {
-            t = setInterval(carousel, 3000);
+        leftBtn.onmouseout = function(ev) {
+            if(!leftBtn.contains(ev.toElement)) {
+                console.log('事件开始');
+                t = setInterval(carousel, 3000);
+            }
         }
         rightBtn.onclick = function() {
             angle += 90;
@@ -169,17 +180,25 @@
             var current = angle / 90 % 4;
             btns[current].style.background = '#333';
         }
-        rightBtn.onmouseover = function() {
-            clearInterval(t);
+        rightBtn.onmouseover = function(ev) {
+            if(!rightBtn.contains(ev.fromElement)) {
+                console.log('事件结束');
+                clearInterval(t);
+            }
         }
-        rightBtn.onmouseout = function() {
-            t = setInterval(carousel, 3000);
+        rightBtn.onmouseout = function(ev) {
+            if(!rightBtn.contains(ev.toElement)) {
+                console.log('事件开始');
+                t = setInterval(carousel, 3000);
+            }
         }
         var imgs = document.querySelectorAll('img');
         add_event_in_bulk(imgs, 'mouseover', () => {
+            console.log('事件结束');
             clearInterval(t);
         })
         add_event_in_bulk(imgs, 'mouseout', () => {
+            console.log('事件开始');
             t = setInterval(carousel, 3000);
         })
         add_event_in_bulk(imgs, 'mousedown', function(eve) {

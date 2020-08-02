@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="../type game/favicon.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 800px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.querySelector('.box');
+        // 容器宽高
+        var boxWidth = box.offsetWidth;
+        var boxHeight = box.offsetHeight;
+        var num = 4;
+        var boxCon = [];
+        // 前 5 后 2 左 1 右 3
+        for (let index = 0; index < num; index++) {
+            var scene = document.createElement('div');
+            scene.style.cssText = `
+                width: 100%;
+                height: ${boxHeight / num}px;
+                perspective: 800px;
+            `;
+            var con = document.createElement('div');
+            con.style.cssText = `
+                width: 100%;
+                height: 100%;
+                transform-style: preserve-3d;
+                position: relative;
+                transform-origin: center center ${-boxWidth / 2}px;
+            `;
+            for (let i = 0; i < 6; i++) {
+                var face = document.createElement('div');
+                face.style.cssText = `
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                `;
+                // 上
+                if(i == 0) {
+                    face.style.transformOrigin = 'top';
+                    face.style.transform = 'rotateX(-90deg)';
+                    face.style.width = boxWidth + "px";
+                    face.style.height = boxWidth + "px";
+                    face.style.background = '#000';
+                } else if(i == 1) { // 左
+                    face.style.transformOrigin = 'left';
+                    face.style.transform = 'rotateY(90deg)';
+                    face.style.width = boxWidth + "px";
+                    face.style.height = boxHeight / 4 + "px";
+                    face.style.background = `url(./1.png) no-repeat 0 ${-boxHeight / num * index}px`;
+                } else if(i == 2) { // 后
+                    face.style.transform = 'translateZ(-' + boxWidth + 'px)';
+                    face.style.width = boxWidth + "px";
+                    face.style.height = boxHeight / 4 + "px";
+                    face.style.background = `url(./2.png) no-repeat 0 ${-boxHeight / num * index}px`;
+                } else if(i == 3) { // 右
+                    face.style.transformOrigin = 'right';
+                    face.style.transform = 'rotateY(-90deg)';
+                    face.style.width = boxWidth + 'px';
+                    face.style.height = boxHeight / 4 + 'px';
+                    face.style.background = `url(./3.png) no-repeat 0 ${-boxHeight / num * index}px`;
+                } else if(i == 4) { // 下
+                    face.style.top = - (boxWidth - boxHeight / 4) + 'px';
+                    face.style.transformOrigin = 'bottom center';
+                    face.style.transform = 'rotateX(90deg)';
+                    face.style.width = boxWidth + "px";
+                    face.style.height = boxWidth + "px";
+                    face.style.background = '#000';
+                } else if(i == 5) { // 前
+                    face.style.width = boxWidth + "px";
+                    face.style.height = boxHeight / 4 + "px";
+                    face.style.background = `url(./1.png) no-repeat 0 ${-boxHeight / num * index}px`;
+                }
+
+                con.appendChild(face);
+            }
+            scene.appendChild(con);
+            boxCon.push(con);
+            box.appendChild(scene);
+        }
+
+        var angle = 0;
+        var t = setInterval(() => {
+            angle += 90;
+            for (let index = 0; index < boxCon.length; index++) {
+                boxCon[index].style.transition = 'transform 1s ease ' + index * 0.2 + 's';
+                boxCon[index].style.transform = 'rotateY(' + angle + 'deg)';
+            }
+        }, 3000)
+    </script>
+</body>
+</html>

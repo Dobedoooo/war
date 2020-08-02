@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="asd"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script src="./myjQuery.js"></script>
+    <script>
+        // 1.传入选择器
+        // 2.传入dom对象
+        // 3.传入函数
+        // 4.传入标签
+        // 传入函数
+        $(function() {
+            // 传入选择器
+            // $('div').css({
+            //     width: 200,
+            //     height: 200,
+            //     background: 'crimson',
+            // }).html(456).attr('aa', 'bb').click(function() {
+            //     // 传入 this 原生的dom对象
+            //     // this.style.background = '#000';
+            //     // 改写之后
+            //     $(this).css('background', '#000');
+            // });
+
+            $('<div>').appendTo(document.body).html(23);
+            $(document.body).append('div').html(2323);
+        });
+        
+    </script>
+</body>
+</html>
