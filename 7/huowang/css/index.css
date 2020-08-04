@@ -1,300 +1,4 @@
-body {
-    height: 2000px;
-}
 
-/* 头部开始 */
-header {
-    width: 100%;
-    height: 97px;
-    position: relative;
-    z-index: 1;
-    transition: all  .5s .5s;
-}
-
-.header-con {
-    width: 1241px;
-    height: 82px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.logo {
-    width: 162px;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    position: absolute;
-    z-index: 1;
-}
-
-.nav {
-    float: right;
-    margin-top: 44px;
-    position: relative;
-    z-index: 2;
-}
-
-.nav ul {
-    display: inline-block;
-    vertical-align: top;
-    font-size: 0;
-    transition: .5s .35s;
-}
-
-.nav li {
-    display: inline-block;
-    margin-right: 45px;
-    line-height: normal;
-    vertical-align: top;
-}
-
-.nav li:hover a {
-    color: #dd000b;
-}
-
-.nav li:hover a::before {
-    width: 100%;
-    transition: .3s;
-}
-
-.nav li:hover a::after {
-    width: 100%;
-    transition: 0s .3s;
-}
-
-.nav li:last-child {
-    margin-right: 50px;
-}
-
-.nav li a::before {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    bottom: -11px;
-    width: 0;
-    height: 2px;
-    background: #dd000b;
-    transition: 0s;
-}
-
-.nav li a::after {
-    content: ' ';
-    position: absolute;
-    right: 0;
-    bottom: -11px;
-    width: 0;
-    height: 2px;
-    background: #dd000b;
-    transition: .3s;
-}
-
-.nav a {
-    color: #666;
-    font-size: 14px;
-    position: relative;
-    transition: .3s;
-}
-
-.nav form {
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 2px;
-}
-
-.active a{
-    color: #dd000b;
-}
-
-.active a::before, .active a::after {
-    width: 100% !important;
-}
-
-.nav-list-con {
-    width: 100%;
-    height: 229px;
-    position: absolute;
-    top: 0;
-    transition: .8s;
-    transform: translate(0, -97px);
-    visibility: hidden;
-}
-
-.product, .service, .culture, .media, .join, .shop {
-    width: 1241px;
-    height: 132px;
-    top: 97px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    font-size: 0;
-    transition: .3s;
-    opacity: 0;
-}
-
-.nav-list-con img, .middle-nav img {
-    transition: opacity .6s;
-}
-
-.img-replace {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    opacity: 0;
-}
-
-.nav-list-con ul, .middle-nav ul {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.nav-list-con li, .middle-nav li {
-    width: 12.5%;
-    height: 100%;
-    position: relative;
-}
-
-.nav-list-con li:not(:first-of-type)::before {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    background: #eaeaea;
-}
-
-.on-move .nav-list-con li::before {
-    height: 57px;
-}
-
-.nav-list-con li:hover .text-con, .middle-nav li:hover .text-con {
-    color: #dd000b;
-}
-
-.nav-list-con li a, .middle-nav li a {
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    font-size: 14px;
-    color: #959595;
-}
-
-.text-con {
-    display: flex;
-    justify-content: center;
-    transition: .3s;
-}
-
-.img-con {
-    position: relative;
-    width: 100%;
-    height: 64px;
-    margin-top: 30px;
-}
-
-.img-con img {
-    display: block;
-    margin: 0 auto;
-}
-
-form {
-    width: 16px;
-    height: 19px;
-    position: relative;
-}
-
-form::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    right: 0;
-    width: 0;
-    height: 1px;
-    background: #ea363f;
-    transition: .5s .2s;
-}
-
-form img {
-    transition: .5s .2s;
-}
-
-.search-box {
-    position: absolute;
-    top: -1px;
-    right: 25px;
-}
-
-.search-box input {
-    border: none;
-    background-color: transparent;
-    font-size: 14px;
-    color: #666;
-    width: 0px;
-    opacity: 0;
-    transition: .5s .2s;
-}
-
-.search-box-close {
-    position: absolute;
-    top: 0;
-    right: -24px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    visibility: hidden;
-    opacity: 0;
-    transition: .5s .2s;
-}
-
-.search-box-close::before,
-.search-box-close::after {
-    content: ' ';
-    position: absolute;
-    top: 9px;
-    width: 24px;
-    height: 2px;
-    background: #c8c8c8;
-    transition: .5s .2s;
-}
-
-.on-search .nav ul {
-    opacity: 0;
-    visibility: hidden;
-    transition: .3s;
-}
-
-.on-search form::after {
-    width: 243px;
-}
-
-.on-search form img {
-    transform: translate(-225px);
-}
-
-.on-search input {
-    opacity: 1;
-    width: 180px;
-    transform: .4s;
-}
-
-.on-search .search-box-close {
-    opacity: 1;
-    visibility: visible;
-}
-
-.on-search .search-box-close::before {
-    transform: rotate(45deg);
-}
-.on-search .search-box-close::after {
-    transform: rotate(-45deg);
-}
-/* 头部结束 */
 
 /* 主体开始 */
 main {
@@ -303,17 +7,7 @@ main {
     background-color: #f1f1f1;
 }
 
-.banner {
-    width: 100%;
-    height: 792px;
-    position: relative;
-    top: -97px;
-}
 
-.banner img {
-    width: 100%;
-    vertical-align: middle;
-}
 
 .middle-nav {
     background-color: #fff;
@@ -392,13 +86,13 @@ main {
     margin-bottom: 154px;
 }
 
-.other-img.letmove, .top-img.letmove-top {
+.letmove, .letmove-top {
     opacity: 0;
     transition: box-shadow .8s .05s, opacity .6s, transform 1.2s;
     transform: translateY(14px);
 }
 
-.other-img.move, .top-img.move {
+.move {
     opacity: 1;
     transform: translate(0);
 }
@@ -801,6 +495,7 @@ main {
 .new-detail {
     line-height: 12px;
     font-size: 12px;
+    color: #999;
 }
 
 .new-detail span {
@@ -863,6 +558,22 @@ main {
     display: inline-block;
     position: relative;
     font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.news-list h1::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -14px;
+    width: 50%;
+    height: 1px;
+    background-color: #ee3b44;
+    transition: width .6s .05s;  
+}
+
+.news-list:hover h1::after {
+    width: 100%;
 }
 
 .news-list h1 a {
@@ -872,4 +583,148 @@ main {
 .news-list .news-more {
     float: right;
 }
+
+.swiper-container {
+    overflow: hidden;
+}
+
+.news-list .swiper-wrapper {
+    height: 255px;
+}
+
+.swiper-slide {
+    padding: 20px 0 21px 0;
+    border-bottom: 1px solid #e5e5e5;
+    height: 85px !important;
+}
+
+.swiper-slide h3 {
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.swiper-slide h3 a {
+    color: #666;
+    transition: color .3s;
+}
+
+.swiper-slide h3 a:hover {
+    color: #dd000b;
+}
+
+.need-con {
+    width: 1241px;
+    margin: auto;
+    padding: 68px 0 74px 0;
+}
+
+.need-con h1 {
+    text-align: center;
+    margin-bottom: 64px;
+    line-height: 28px;
+    color: #666;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.need-link-con {
+    display: flex;
+    justify-content: space-between;
+}
+
+.need-item {
+    display: block;
+    width: 296px;
+    height: 137px;
+    box-sizing: content-box;
+    border: 1px solid #d4d4d4;
+    background-color: #fff; 
+    text-align: center;
+    position: relative;
+    transition: .6s .05s;
+    overflow: hidden;
+}
+
+.need-item > img {
+    margin: 25px 0 25px 0;
+}
+
+.need-item p {
+    position: relative;
+    font-size: 15px;
+    color: #999;
+    transition: color .5s;
+}
+
+.need-item:hover .need-img-h img {
+    opacity: 1;
+}
+
+.need-item:hover p {
+    color: #fff;
+}
+
+.need-img-h {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.need-img-h img {
+    opacity: 0;
+    margin: 25px 0 25px 0;
+    transition: opacity .5s;
+}
+
+.hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .5s, transform 1s .1s;
+    transform: scale(1.2);
+}
+
+.need-item:hover .hover {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.need-item.letmove:nth-child(1) {
+    transform: translateY(40px);
+    transition: box-shadow .6s .05s, opacity .6s .2s, transform 1.2s .2s;
+    opacity: 0;
+}
+
+.need-item.letmove:nth-child(2) {
+    transform: translateY(40px);
+    transition: box-shadow .6s .05s, opacity .6s .4s, transform 1.2s .4s;
+    opacity: 0;
+}
+
+.need-item.letmove:nth-child(3) {
+    transform: translateY(40px);
+    transition: box-shadow .6s .05s, opacity .6s .6s, transform 1.2s .6s;
+    opacity: 0;
+}
+
+.need-item.letmove:nth-child(4) {
+    transform: translateY(40px);
+    transition: box-shadow .6s .05s, opacity .6s .8s, transform 1.2s .8s;
+    opacity: 0;
+}
+
+.need-item.letmove.move {
+    transform: translate(0);
+    opacity: 1;
+}
 /* 主体结束 */
+
+

@@ -1,0 +1,263 @@
+
+/* 主体开始 */
+
+.letmove {
+    opacity: 0;
+    transition: opacity .6s, transform 1.2s;
+    transform: translateY(14px);
+}
+
+.move {
+    opacity: 1;
+    transform: translate(0);
+}
+
+main {
+    width: 100%;
+}
+
+.bread-crumbs {
+    width: 100%;
+    margin-top: 19px;
+}
+
+.bread-crumbs .container {
+    padding: 0 15px;
+    box-sizing: content-box;
+    color: #999;
+    font-size: 0;
+}
+
+.bread-crumbs .container a {
+    font-size: 14px;
+    color: #999;
+    transition: color .3s;
+}
+
+.bread-crumbs .container span {
+    font-size: 14px;
+    margin: 0 8px;
+}
+
+.bread-crumbs .container a:hover {
+    color: #ee4049;
+}
+
+.middle-nav {
+    background-color: #fff;
+    width: 1241px;
+    height: 132px;
+    position: relative;
+    margin: 50px auto 63px;
+    font-size: 0;
+    transition: opacity .6s, transform 1.2s;
+    opacity: 0;
+    transform: translateY(10px);
+    box-shadow: 0 10px 20px 0 #f2f2f2;
+}
+
+.middle-nav.move {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.middle-nav li {
+    transition: opacity 1s, transform 1.2s;
+    transform: translateX(20px);
+    /* opacity: 0; */
+}
+
+.middle-nav li .middle-item-2 {
+    transition: opacity 1s .1s, transform 1.2s .1s;
+}
+
+.middle-nav li.middle-item-3 {
+    transition: opacity 1s .2s, transform 1.2s .2s;
+}
+
+.middle-nav li.middle-item-4 {
+    transition: opacity 1s .3s, transform 1.2s .3s;
+}
+
+.middle-nav li.middle-item-5 {
+    transition: opacity 1s .4s, transform 1.2s .4s;
+}
+
+.middle-nav li.middle-item-6 {
+    transition: opacity 1s .5s, transform 1.2s .5s;
+}
+
+.middle-nav li.middle-item-7 {
+    transition: opacity 1s .6s, transform 1.2s .6s;
+}
+
+.middle-nav li.middle-item-8 {
+    transition: opacity 1s .7s, transform 1.2s .7s;
+}
+
+.middle-nav.move li {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+.middle-nav li:not(:first-of-type)::before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 57px;
+    background: #eaeaea;
+}
+
+.all-key {
+    width: 100%;
+    margin: 76px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.all-key a {
+    border: 1px solid #e1e1e1;
+    border-radius: 50px;
+    font-size: 14px;
+    background-color: #ea363f;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.products {
+    width: 100%;
+    padding-bottom: 120px;
+}
+
+.products-con {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 55px;
+}
+
+.products-con li {
+    width: 390px;
+    margin-bottom: 55px;
+}
+
+.product-img {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.product-img img {
+    transition: transform .7s .03s;
+}
+
+.product-img:hover img {
+    transform: scale(1.09);
+}
+
+.product-desc {
+    font-size: 14px;
+}
+
+.product-desc a {
+    color: #999;
+    transition: color .3s;
+}
+
+.product-desc a:hover, .product-desc a:hover strong {
+    color: #dd000b;
+}
+
+.product-desc a strong {
+    font-size: 18px;
+    margin-right: 16px;
+    color: #333;
+    transition: color .3s;
+}
+
+.product-desc article {
+    position: relative;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #e1e1e1;
+}
+
+.product-desc article::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    z-index: 3;
+    width: 0;
+    height: 1px;
+    background: #ee3d46;
+    transition: width .5s .05s;
+}
+
+.products-con li:hover article::before {
+    width: 100%;
+}
+
+.product-desc article p {
+    font-size: 12px;
+    padding: 4px 0 4px 24px;
+    color: #999;
+    line-height: 16px;
+    position: relative;
+}
+
+.product-desc article p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    border: 1px solid #ee3d46;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.page-ctrl {
+    display: flex;
+    justify-content: center;
+}
+
+.page-ctrl ul {
+    display: flex;
+    font-size: 0;
+}
+
+.page-ctrl li {
+    margin: 0 5px;
+    width: 37px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #e1e1e1;
+    font-size: 16px;
+    transition: .3s;
+    text-align: center;
+    color: #777777;
+    cursor: pointer;
+}
+
+.page-ctrl li a {
+    color: #777777;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.page-ctrl li.selected {
+    border: 1px solid #ee3b44;
+    color: #fff;
+    background-color: #ee3b44;
+    border-radius: 4px;
+}
+
+.page-ctrl li.selected a {
+    color: #fff;
+}
+/* 主体结束 */
