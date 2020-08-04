@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script src="../../js/jquery-3.5.1.min.js"></script>
+    <script src="../../js/hammer.min.js"></script>
+    <script>
+        var div = document.querySelector('div');
+        var div2 = $('div')[0];
+        // console.log(div == div2);
+        var hammer = new Hammer(div2);
+        hammer.on('panstart', () => {
+
+        });
+        hammer.on('panleft', function (e) {
+            console.log(e)
+        });
+        hammer.on('panright', () => {
+
+        })
+    </script>
+</body>
+</html>

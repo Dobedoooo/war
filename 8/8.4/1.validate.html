@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/jquery-3.5.1.min.js"></script>
+    <script src="../../js/jquery.validate.min.js"></script>
+</head>
+<body>
+    <form action="" id="form1">
+        <label for="username">用户名</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="pass">密码</label>
+        <input type="password" name="password" id="pass">
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        $(document).ready(function () {
+            $('#form1').validate({
+                rules: {
+                    username: 'required',
+                    password: {
+                        required: true,
+                        minlength: 2
+                    }
+                },
+                messages: {
+                    username: '用户名不能为空'
+                }
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/hammer.min.js"></script>
+    <script src="../../js/jquery-3.5.1.min.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            background-color: #ccc;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 38.2%;
+            position: relative;
+        }
+
+        .swiper-wrapper {
+            width: 500%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .swiper-slide {
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .swiper-slide:first-child {
+            background-color: #1abc9c;
+        }
+
+        .swiper-slide:nth-child(2) {
+            background-color: #2ecc71;
+        }
+
+        .swiper-slide:nth-child(3) {
+            background-color: #1abc9c;
+        }
+
+        .swiper-slide:nth-child(4) {
+            background-color: #3498db;
+        }
+
+        .swiper-slide:nth-child(5) {
+            background-color: #9b59b6;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+        </div>
+        
+    </div>
+    <script>
+        
+        /*
+            移动端可以触发鼠标事件，pc端触发不了触摸事件
+            在移动端 无论有没有触摸事件处理程序，都会先执行触摸事件，鼠标事件会有200ms延迟
+        */
+
+        var obj = document.querySelector('.swiper-wrapper');
+        var hammerTime = new Hammer(obj);
+
+        var startX = 0;
+
+        hammerTime.on('panstart', (ev) => {
+            startX = obj.offsetLeft;
+            obj.style.transition = 'none';
+            // console.log(startX);
+        });
+
+        hammerTime.on('panleft', (ev) => {
+            obj.style.left = `${startX + ev.deltaX}px`;
+            // console.log(ev)
+        });
+
+        hammerTime.on('panright', (ev) => {
+            obj.style.left = `${startX + ev.deltaX}px`;
+        });
+
+        var num = 0;
+        var clientW = document.documentElement.offsetWidth; 
+        hammerTime.on('panend', (ev) => {
+            obj.style.transition = 'all .5s ease';
+            if(ev.distance < 200) {
+                obj.style.left = `${-num * clientW}px`;
+            }
+            else {
+                if(ev.offsetDirection == 2) {
+                    num++;
+                    if(num > 4) {
+                        num = 4;
+                    }
+                } else if(ev.offsetDirection == 4) {
+                    num--;
+                    if(num < 0) {
+                        num = 0;
+                    }
+                }
+                obj.style.left = -num * clientW + 'px';
+            }
+        })
+
+        // var swiper = new Swiper('.swiper-container');
+    </script>
+</body>
+</html>
