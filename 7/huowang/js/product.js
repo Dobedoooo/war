@@ -1,6 +1,5 @@
 $(function () {
 
-    $('.middle-nav li:eq(0)').hover(() => {}, () => {});
     $('.middle-nav li:eq(0)').find('img').css('opacity', 0);
     $('.middle-nav li:eq(0)').find('.img-replace').css('opacity', 1);
     $('.middle-nav li:eq(0)').find('a').css('color', '#dd000b');

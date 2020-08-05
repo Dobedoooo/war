@@ -5,6 +5,23 @@ document.onselectstart=new Function("event.returnValue=false");
 $(function () {
     console.log('dobedoo222@gmail.com');
 
+    // 鼠标移入切换图片 鼠标移出恢复
+    function over() {
+        $(this.children[0].firstElementChild.children[0]).css('opacity', 0);
+        $(this.children[0].firstElementChild.children[1]).css('opacity', 1);
+    }
+    function out() {
+        $(this.children[0].firstElementChild.children[0]).css('opacity', 1);
+        $(this.children[0].firstElementChild.children[1]).css('opacity', 0);
+    }
+    $('.product li').hover(over, out);
+    $('.service li').hover(over, out);
+    $('.culture li').hover(over, out);
+    $('.media li').hover(over, out);
+    $('.shop li').hover(over, out);
+
+
+
     // 侧边导航
     $('.top').hover(function () {
             // over

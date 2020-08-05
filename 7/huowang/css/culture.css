@@ -1,0 +1,269 @@
+
+
+.header {
+    position: absolute;
+    z-index: 9999;
+}
+
+/* 顶部导航 */
+.top-nav {
+    width: 100%;
+    height: 90px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 9999;
+    box-shadow: 0 0 15px 0 #ddd;
+    transition: .6s .05s;
+    top: -90px;
+}
+
+.top-nav.on {
+    top: 0;
+}
+
+.top-nav ul {
+    margin-top: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.top-nav ul li {
+    margin: 0 34px;
+    font-size: 16px;
+    position: relative;
+}
+
+.top-nav ul li:first-child ~ li::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 37px;
+    left: -34px;
+    top: 50%;
+    background-color: #e1e1e1;
+    transform: translateY(-50%);
+}
+
+.top-nav ul li a {
+    color: #666;
+    transition: .3s;
+}
+
+.top-nav-img {
+    position: relative;
+}
+
+.top-nav-img img {
+    transform: scale(.8);
+    transition: .3s;
+}
+
+.top-nav-img-h {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: .3s;
+}
+
+.top-nav ul li:hover a, .selected span {
+    color: #dd000b;
+}
+
+.top-nav ul li:hover .top-nav-img > img, .selected .top-nav-img > img {
+    opacity: 0;
+}
+
+.top-nav ul li:hover .top-nav-img-h, .selected .top-nav-img-h {
+    opacity: 1;
+}
+
+
+/* banner */
+.culture-banner {
+    overflow: hidden;
+    position: relative;
+    height: 758px;
+    text-align: center;
+}
+
+.culture-banner.letmove::before {
+    transform: translate(-50%, -50%) scale(1.35);
+    opacity: 0;
+}
+
+.culture-banner.move::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.banner-1::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(http://www.huowang.com.cn/static/home/images/culture-banner-1.jpg);
+    background-repeat: no-repeat;
+    background-size: 1920px 758px;
+    background-position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: transform 8s, opacity 2.5s;
+}
+
+.banner-desc {
+    transition: opacity 1.2s .5s, transform 1.2s .5s;
+}
+
+.letmove .banner-desc {
+    transform: translateY(35px);
+    opacity: 0;
+}
+
+.move .banner-desc {
+    transform: translate(0);
+    opacity: 1;
+}
+
+.culture-banner h2 {
+    padding-top: 323px;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 85px;
+    position: relative;
+}
+
+.culture-banner h2::after {
+    content: '';
+    position: absolute;
+    bottom: -27px; 
+    left: 50%;
+    width: 40px;
+    height: 2px;
+    background-color: #999;
+    transform: translateX(-50%);
+}
+
+.culture-banner p {
+    font-size: 18px;
+    color: #555;
+}
+
+.point {
+    width: 1400px;
+    padding: 97px 0 47px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.point-item {
+    width: 25%;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.point-item.letmove .point-item-img,
+.point-item.letmove .point-item-desc {
+    transform: translateY(35px);
+    opacity: 0;
+}
+
+.point-item.move .point-item-img,
+.point-item.move .point-item-desc {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.point-item-img {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #e1e1e1;
+    margin-bottom: 34px;
+    width: 104px;
+    height: 104px;
+    line-height: 104px;
+    border-radius: 50%;
+    transition: .3s, transform 1s, opacity 1s;
+}
+
+.point-item-desc {
+    transition: transform 1s .2s, opacity 1s .2s;
+}
+
+.point-item-desc h1 {
+    line-height: normal;
+    margin-bottom: 27px;
+    position: relative;
+    font-size: 24px;
+    color: #222222;
+}
+
+.point-item-desc h1::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 1px;
+    background-color: #e1e1e1;
+}
+
+.point-item-desc p {
+    line-height: 24px;
+    font-size: 14px;
+    color: #777777;
+}
+
+.point-item:hover .point-item-img {
+    background-color: #ee3b44;
+    border-color: #ee3b44;
+}
+
+.point-item:hover img {
+    filter: brightness(200%);
+}
+
+.banner-2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(http://www.huowang.com.cn/static/home/images/culture-banner-2.jpg);
+    background-repeat: no-repeat;
+    background-size: 1920px 758px;
+    background-position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: transform 8s, opacity 2.5s;
+}
+
+.banner-2 h2 {
+    padding-top: 230px;
+}
+
+.banner-3::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(http://www.huowang.com.cn/static/home/images/culture-banner-3.jpg);
+    background-repeat: no-repeat;
+    background-size: 1920px 758px;
+    background-position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: transform 8s, opacity 2.5s;
+}
+
+.banner-3 h2 {
+    padding-top: 200px;
+}
