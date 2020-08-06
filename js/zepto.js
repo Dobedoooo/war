@@ -1469,7 +1469,7 @@ function(a) {
           b.y2 = s.pageY,
           q += Math.abs(b.x1 - b.x2),
           r += Math.abs(b.y1 - b.y2)
-      }).on("touchend MSPointerUp pointerup", function(f) {
+      }).on("touchend MSPointerUp", function(f) {
           if ((t = n(f, "up")) && !m(f))
               return;
           k(),

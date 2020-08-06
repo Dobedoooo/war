@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        .one {
+            width: 750px;
+            height: 100px;
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        物理像素
+            屏幕真实像素点
+        逻辑像素
+            屏幕中看到的像素点
+
+        pc端 物理像素: 逻辑像素 = 1:1 ,移动端不是
+     -->
+     <div class="one"></div>
+     <script>
+         console.log(window.devicePixelRatio)
+     </script>
+</body>
+</html>

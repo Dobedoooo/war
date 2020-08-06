@@ -1,0 +1,156 @@
+/* 公共样式 */
+html {
+    scroll-behavior: smooth;
+    font-size: 13.3333333vw;
+}
+
+* {
+    text-decoration: none;
+    box-sizing: border-box;
+    
+}
+
+.clearfix::before,
+.clearfix::after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+img {
+    vertical-align: middle;
+}
+
+header {
+    width: 100%;
+    height: 1.5rem;
+    position: relative;
+    transition: .6s .05s;
+}
+
+.logo {
+    position: absolute;
+    left: 0.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo img {
+    width: 2.4rem;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.4rem;
+    height: 0.375rem;
+    width: 0.48rem;
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    flex-wrap: wrap;
+}
+
+.nav-btn div {
+    width: 100%;
+    height: 0.0396rem;
+    background-color: #cf131c;
+    transition: .6s;
+    transform-origin: right center   0;
+}
+
+.top-nav {
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    height: 0;
+    overflow: hidden;
+    transition: height .6s .05s ease-out;
+}
+
+.top-nav ul {
+    padding: 0.44rem;
+    font-size: 0.32rem;
+}
+
+.top-nav ul li {
+    border-bottom: 1px solid #e6e6e5;
+}
+
+.top-nav dt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #444444;
+    line-height: normal;
+    padding-bottom: .3rem;
+}
+
+.top-nav li:not(:first-of-type) dt {
+    padding-top: .24rem;
+}
+
+.secondary {
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: .6s;
+    height: 0;
+    z-index: 1;
+}
+
+.secondary dd {
+    box-sizing: content-box;
+    width: 50%;
+    border-bottom: 1px solid #e6e6e5;
+    padding: 0 0 0.1rem 0;
+    height: 1.04rem;
+    margin-bottom: 0.24rem;
+}
+
+dd a {
+    display: block;
+    color: #666;
+}
+
+.top-nav-img {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
+
+.secondary dd img {
+    transform: scale(.7);
+}
+
+.secondary-2  {
+    background-color: #fff;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    height: 0;
+    transition: .6s;
+}
+
+.secondary-2 dd {
+    padding: 0 0 .24rem 0;
+    margin-bottom: .24rem;
+    text-indent: .48rem;
+    border-bottom: 1px solid #e6e6e5;
+}
+
+.banner {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: -1;
+}
+
+.banner img {
+    width: 100%;
+    position: absolute;
+}
