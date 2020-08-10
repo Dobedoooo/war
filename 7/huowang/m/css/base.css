@@ -21,11 +21,20 @@ img {
     vertical-align: middle;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+body {
+    background-color: #f1f1f1;
+    overflow-x: hidden;
+}
+
 header {
     width: 100%;
     height: 1.5rem;
     position: relative;
-    transition: .6s .05s;
+    transition: .4s .05s;
 }
 
 .logo {
@@ -66,7 +75,8 @@ header {
     background-color: #fff;
     height: 0;
     overflow: hidden;
-    transition: height .6s .05s ease-out;
+    transition: height .4s .05s ease-out;
+    z-index: 1;
 }
 
 .top-nav ul {
@@ -143,14 +153,78 @@ dd a {
     border-bottom: 1px solid #e6e6e5;
 }
 
-.banner {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    z-index: -1;
+.fix-bar {
+    position: fixed;
+    right: 0;
+    transform: translateY(-25%);
+    bottom: 8%;
+    transition: 1.2s .05s;
+    z-index: 9999;
 }
 
-.banner img {
+.fix-bar.on {
+    transform: translateY(0);
+}
+
+.fix-bar.on .call {
+    transform: translateY(0);
+}
+
+.call, .top {
+    display: block;
+    position: relative;
+    width: .88rem;
+    height: .88rem;
+    text-align: center;
+    line-height: .7rem;
+}
+
+.call img, .top img {
+    transform: scale(.75);
+}
+
+.call {
+    transform: translateY(100%);
+    z-index: 2;
+    background-color: #ee3b44;
+    transition: .7s .05s;
+}
+
+.call:hover {
+    background-color: #d42f38;
+}
+
+.top {
+    border: 1px solid #e1e1e1;
+    background-color: #fff;
+    transition: .3s;
+}
+
+.top img {
+    transition: .3s;
+}
+
+footer {
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: .48rem;
+}
+
+footer p, .power a {
+    text-align: center;
     width: 100%;
-    position: absolute;
+    font-size: .26rem;
+    color: #7f7f7f;
+    margin-bottom: .24rem;
+}
+
+.power a {
+    color: #c2c2c2;
+}
+
+.qrcode {
+    width: 100%;
+    text-align: center;
+    margin-bottom: .48rem;
 }

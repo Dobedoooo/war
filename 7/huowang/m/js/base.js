@@ -1,21 +1,22 @@
 $(function () {
-    $.each($('img'), function (indexInArray, valueOfElement) { 
-        if(valueOfElement.getBoundingClientRect().top < $(window).height()) {
-            $(valueOfElement).attr('src', $(valueOfElement).attr('data-src'));
-        } 
-    });
 
     var wdTop = 0;
 
+    var winH = $(window).height();
+
     $(window).scroll(function () { 
 
-        wdTop = $(window).scrollTop() + $(window).height();
+        if($(window).scrollTop() > winH / 2) {
+            $('.fix-bar').addClass('on');
+        } else {
+            $('.fix-bar').removeClass('on');
+        }
 
-        $.each($('img'), function (indexInArray, valueOfElement) {
-            if(valueOfElement.getBoundingClientRect().top < wdTop + 10) {
-                $(valueOfElement).attr('src', $(valueOfElement).attr('data-src'));
-            }
-        });
+    });
+
+    // zepto 设置滚动条位置需为window设置，document会报错
+    $('.top').click(function (e) { 
+        $(window).scrollTop(0);
     });
 
     var flag = true;
@@ -46,7 +47,7 @@ $(function () {
             $('.nav-btn div:nth-child(3)').css('transform', 'rotate(0deg)');
             $('header').css({
                 background: '',
-                transition: '.3s .7s',
+                transition: '.3s .5s',
             })
             $('.top-nav').css({
                 height: 0,

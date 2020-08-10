@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>正在跳转。。。</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <style>
+        /* .title {
+            text-align: center;
+        } */
+        .container {
+            width: 100%;
+            border: 1px solid crimson;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
+            <div class="container">
+                <h3 class="title">
+                    <?php echo $title?>
+                </h3>
+                <p>即将跳转，倒计时<span>3</span>秒</p>
+                <p>
+                倒计时完成未跳转，请点击<a href="">这里</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-4"></div>
+    </div>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script>
+        var num = 3;
+        setInterval(function () {
+            num--;
+            if(num < 0) {
+                return;
+            } else {
+                $('span').html(num);
+            }
+            
+        }, 1000)
+    </script>
+</body>
+</html>

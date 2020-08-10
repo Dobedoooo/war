@@ -1,0 +1,18 @@
+/* 公共样式 */
+html {
+    scroll-behavior: smooth;
+    font-size: 13.3333333vw;
+}
+
+* {
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.clearfix::before,
+.clearfix::after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
