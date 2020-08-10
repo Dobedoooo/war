@@ -30,5 +30,16 @@ $(function () {
                 $(this).addClass('move');
             }
         });
+
+        // idea
+        if($('.idea-title').offset().top < wdTop) {
+            $('.idea-title').addClass('move');
+        }
+
+        $.each($('.idea-list li'), function (indexInArray, valueOfElement) { 
+            if($(this).offset().top < wdTop) {
+                $(this).addClass('move');
+            }
+        });
     });
 });

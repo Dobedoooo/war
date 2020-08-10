@@ -267,3 +267,84 @@
 .banner-3 h2 {
     padding-top: 200px;
 }
+
+.culture-idea {
+    padding: 115px 0 41px;
+}
+
+.idea-title {
+    margin-bottom: 142px;
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    position: relative;
+    transition: transform 1s, opacity 1s;
+}
+
+.idea-title.letmove {
+    opacity: 0;
+    transform: translateY(35px);
+}
+
+.idea-title.move {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.idea-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.idea-list li {
+    width: 25%;
+    margin-bottom: 117px;
+    display: flex;
+    justify-content: center;
+}
+
+.idea-img {
+    width: 33px;
+    margin-right: 20px;
+    transition: transform 1s, opacity 1s;
+    padding-top: 4px;
+}
+
+.idea-list li.letmove .idea-img, .idea-list li.letmove .idea-desc{
+    opacity: 0;
+    transform: translateX(35px);
+}
+
+.idea-list li.move .idea-img, .idea-list li.move .idea-desc{
+    opacity: 1;
+    transform: translate(0);
+}
+
+.idea-desc {
+    transition: transform 1s .2s, opacity 1s .2s;
+}
+
+.idea-desc h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+.idea-title::after {
+    content: '';
+    position: absolute;
+    bottom: -27px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: #999999;
+
+}
+
+.idea-desc p {
+    font-size: 14px;
+    color: #999999;
+}
