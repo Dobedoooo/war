@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="./table.css">
+    <link rel="stylesheet" href="../fontawsome/css/all.css">
+    <title>表儿格</title>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div href="javascript:;" class="btn1">+</div>
+    <div class="row">
+        <div class="col-xs-3">
+        </div>
+        <div class="col-xs-6">
+            <table class="table ">
+                <caption>一个表格</caption>
+                <thead>
+                    <th>#</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>班级</th>
+                    <th class="">操作</th>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td class="index"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a href="del.php?id=" class="btn btn-danger delete">删除</a>
+                            <a href="javascript:;" class="btn btn-warning modify">修改</a>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+    <div class="col-xs-2 adjust">
+        <div class="container">
+            <form action="#" class="form-horizontal" name="add">
+                <div class="form-group">
+                    <label for="name" class="col-xs-3 control-label">姓名</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" id="name" name="name" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="col-xs-3 control-label">年龄</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" id="age" name="age" autocomplete="off">  
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gender" class="col-xs-3 control-label">性别</label>
+                    <div class="col-xs-9">
+                        <select name="gender" id="gender" class=" form-control">
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="class" class="col-xs-3 control-label">班级</label>
+                    <div class="col-xs-9">
+                        <select name="class" id="class" class="form-control">
+                            <option value="A01">A01</option>
+                            <option value="A02">A02</option>
+                            <option value="A03">A03</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success col-xs-offset-5 add">提交</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-xs-2 adjust2">
+        <div class="container">
+            <div class="close"><i class="fa fa-times-circle"></i></div>
+            <form action="" class="form-horizontal" name="modify">
+                <div class="form-group">
+                    <label for="name" class="col-xs-3 control-label">姓名</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" id="name" name="name" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="col-xs-3 control-label">年龄</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" id="age" name="age" autocomplete="off">  
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gender" class="col-xs-3 control-label">性别</label>
+                    <div class="col-xs-9">
+                        <select name="gender" id="gender" class=" form-control">
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="class" class="col-xs-3 control-label">班级</label>
+                    <div class="col-xs-9">
+                        <select name="class" id="class" class="form-control">
+                            <option value="A01">A01</option>
+                            <option value="A02">A02</option>
+                            <option value="A03">A03</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-success col-xs-offset-5 add2">提交</button>
+            </form>
+        </div>
+    </div>
+    <div class="del-success"><i class="fa fa-check-circle"></i> 删除成功</div>
+    <div class="del-fail"><i class="fa fa-exclamation-circle"></i> 删除失败</div>
+    <div class="add-success"><i class="fa fa-check-circle"></i> 添加成功</div>
+    <div class="add-fail"><i class="fa fa-exclamation-circle"></i> 添加失败</div>
+    <div class="modify-success"><i class="fa fa-exclamation-circle"></i> 修改成功</div>
+    <div class="modify-fail"><i class="fa fa-exclamation-circle"></i> 修改失败</div>
+    <div class="name-rpt"><i class="fa fa-exclamation-triangle"></i> 姓名重复</div>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="demo.js"></script>
+    <script src="./validate.js"></script>
+</body>
+</html>

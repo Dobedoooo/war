@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <stu>
+        <name>张三</name>
+        <age>12</age>
+        <gender>1</gender>
+        <class>A01</class>
+    </stu>
+    <stu>
+        <name>李四</name>
+        <age>22</age>
+        <gender>0</gender>
+        <class>A02</class>
+    </stu>
+    <stu>
+        <name>七七</name>
+        <age>22</age>
+        <gender>0</gender>
+        <class>A02</class>
+    </stu>
+</root>

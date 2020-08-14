@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <stu>
+        <name>张三</name>
+        <age>12</age>
+        <gender>男</gender>
+    </stu>
+    <stu>
+        <name>李四</name>
+        <age>12</age>
+        <gender>男</gender>
+    </stu>
+    <stu>
+        <name>王五</name>
+        <age>12</age>
+        <gender>男</gender>
+    </stu>
+    <stu>
+        <name>赵六</name>
+        <age>12</age>
+        <gender>男</gender>
+    </stu>
+    <stu>
+        <name>七七</name>
+        <age>12</age>
+        <gender>男</gender>
+    </stu>
+</root>

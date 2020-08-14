@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <img src="./1.gif">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <table class="table">
+            <thead>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+    <div class="col-sm-3"></div>
+    <script src="./ajax.js"></script>
+    <script>
+        $(function () {
+            // var table = $('tbody')[0];
+            // var ajax = new XMLHttpRequest();
+            // // ajax.responseType = 'json';
+            // ajax.onreadystatechange = function () {
+            //     if(ajax.readyState == 4) {
+            //         if(ajax.status == 200) {
+            //             // var dom = ajax.responseXML;
+            //             // var stus = dom.getElementsByTagName('stu');
+            //             // // console.log(stus)
+            //             // for (let index = 0; index < stus.length; index++) {
+            //             //     var tr = document.createElement('tr'); 
+            //             //     var name = document.createElement('td');
+            //             //     var age = document.createElement('td');
+            //             //     var gender = document.createElement('td');
+            //             //     name.innerHTML = stus[index].getElementsByTagName('name')[0].innerHTML;
+            //             //     age.innerHTML = stus[index].getElementsByTagName('age')[0].innerHTML;
+            //             //     gender.innerHTML = stus[index].getElementsByTagName('gender')[0].innerHTML;
+            //             //     tr.appendChild(name)
+            //             //     tr.appendChild(age)
+            //             //     tr.appendChild(gender)
+            //             //     table.appendChild(tr);
+            //             // }
+            //             // console.log(ajax.response)
+            //         }
+            //     }
+            // }
+
+            // ajax.onload = function (param) {
+            //     console.log(ajax.response)
+            // }
+            // ajax.open('get', 'data.xml');
+            // ajax.send();
+            ajax({
+                type: 'post',
+                url: 'xxx',
+                data: {id: 1, name: 2},
+                dataType: '',
+                success() {
+
+                },
+                error() {
+
+                }
+            })
+        });
+    </script>
+</body>
+</html>

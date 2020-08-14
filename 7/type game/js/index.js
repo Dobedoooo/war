@@ -335,7 +335,7 @@ function game() {
                                 opacity: 1;
                                 width: 500px;
                                 height: 309px;
-                                z-index: 4;
+                                z-index: 5;
                             `;
                             // back.style.filter = 'blur(5px) brightness(0.7)';
                             pauseBtn.style.cursor = 'pointer';

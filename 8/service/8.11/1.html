@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid crimson;
+        }
+    </style>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            
+
+            $('button').click(function (e) { 
+                // 创建一个对象，让对象去发起请求,获取数据 get post put delete
+                var ajax = new XMLHttpRequest();
+                // 五个参数 method: string, url: string, async: boolean, username?: string, password?: string
+                ajax.open('get', '2.html');
+
+                ajax.send();
+
+                // ajax.readyState
+                // 1 已经告知ajax相应的地址和传递的方式
+                // 2 信息已经发送
+                // 3 请求的服务器存在
+                // 4 数据已经获取，能安全完整的返回(不确定)
+                // ajax.status == 200 说明数据已经安全返回（确定）
+
+                ajax.onreadystatechange = function () {
+                    if(ajax.readyState == 4) {
+                        if(ajax.status == 200) {
+                            $('div').append(ajax.response);
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    我是ajax
+    <a href="2.html">ajax1</a>
+    <button>获取ajax1</button>
+    <div></div>
+</body>
+</html>
