@@ -422,7 +422,7 @@
     /* 动画完成时的状态 */
     animation-fill-mode: ;
     /* 动画播放状态
-    	pause
+    	paused
     	running
     */
     animation-play-state: ;

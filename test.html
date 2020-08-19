@@ -4,51 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .bar {
+            width: 200px;
+            height: 15px;
+            /* background-color: #000000; */
+            margin: 100px auto;
+            border-radius: 25px;
+            box-sizing: border-box;
+            border: 1px solid #000000;
+        }
+
+        .inner {
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            border-radius: 25px;
+            transform-origin: left;
+            animation: progress 2s ease-out;
+        }
+
+        @keyframes progress {
+            0% {
+                transform: scaleX(0);
+            }
+            /* 20% {
+                width: 20%;
+            }
+            40% {
+                width: 40%;
+            }
+            60% {
+                width: 60%;
+            }
+            80% {
+                width: 80%;
+            } */
+            100% {
+                transform: scaleX(1);
+            }
+        }
+    </style>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-            </tr>
-        </thead>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-        </tr>
-    </table>
+    <div class="bar">
+        <div class="inner">
+
+        </div>
+    </div>
     <script>
-        var table = document.querySelector('table');
-        var tbody = table.firstElementChild;
-        console.log(tbody.children);
     </script>
 </body>
 </html>
