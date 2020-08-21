@@ -37,7 +37,7 @@
 
     // 以下为网路路径
     // 主机地址
-    define('HOST_ADD', 'http://'.$_SERVER['HTTP_HOST'].'/');
+    define('HOST_ADD', 'http://'.$_SERVER['HTTP_HOST']);
 
     // 入口文件地址
     define('ENTRY_ADD', HOST_ADD.$_SERVER['SCRIPT_NAME']);
@@ -61,11 +61,24 @@
     define('IMG_ADD', STATIC_ADD.'img/');
 
     // 路由
-    require_once 'route.class.php';
+    require_once LIB_PATH.'route.class.php';
+
+    // 配置项
+    $config = include_once APP_NAME.'config.php';
+
+    // 主类
+    // include_once LIB_PATH.'main.class.php';
 
     // 模板引擎
-    require_once 'tplEngine.class.php';
-    // require_once 'smarty/Smarty.class.php';
+    // require_once 'tplEngine.class.php';
+    require_once LIB_PATH.'smarty/Smarty.class.php';
+
+    spl_autoload_register('autoLoad');
+
+    function autoLoad($className) {
+        // echo MAIN_PATH.str_replace('\\', DIRECTORY_SEPARATOR, $className).'.class.php';
+        include_once MAIN_PATH.str_replace('\\', DIRECTORY_SEPARATOR, $className).'.class.php';
+    }
 
     $router = new \lib\route();
 

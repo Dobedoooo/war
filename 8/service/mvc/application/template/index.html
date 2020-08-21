@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>这是首页</p>
+    <p>这是首页2</p>
     {foreach $data as $v}
     <ul>
         <li>Name: {$v['name']}</li>
@@ -17,6 +17,7 @@
             女
             {/if}
         </li>
+        <li><a href="index.php/index/index/del">删除</a></li>
     </ul>
     {/foreach}
     <a href="index.php/teach/log/add">添加日志</a>

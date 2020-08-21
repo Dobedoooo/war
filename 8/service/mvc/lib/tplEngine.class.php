@@ -67,24 +67,34 @@
             }, $loopHead);
 
             // 解析条件头
-            $reg4 = '//';
+            $reg4 = '/\{if([^\}]*)\}/';
             
-            $conditionTail = preg_replace_callback($reg4, function() {
-
+            $conditionHead = preg_replace_callback($reg4, function($val) {
+                return '<?php if('.$val[1].') { ?>';
             }, $loopTail);
-        
-            return $loopTail;
+
+            // 解析条件尾
+            $reg5 = '/\{\/if\}/';
+            $conditionTail = preg_replace_callback($reg5, function() {
+                return '<?php } ?>';
+            }, $conditionHead);
+            
+            // 解析分支
+            $reg6 = '/\{else\}/';
+            $branch = preg_replace_callback($reg6, function() {
+                return '<?php } else{ ?>';
+            }, $conditionTail);
+
+            return $branch;
             
         }
 
         // 显示
         function display($file) {
-            $result = $this->compile($file);
-
             // basename
-            $output = $this->compileDir.basename($file, '.html').'.php';
+            $output = $this->compileDir.basename($file).'.php';
 
-            file_put_contents($output, $result);
+            $input = $this->templateDir.$file;
 
             /**
              * $k = 'name';
@@ -95,7 +105,15 @@
                 $$k = $v;
             }
 
-            require_once $output;
+            if(is_file($output) && filemtime($output) > filemtime($input)) {
+                require_once $output;
+            } else {
+                $result = $this->compile($file);
+
+                file_put_contents($output, $result);
+    
+                require_once $output;
+            }
         }
 
         // 分配变量

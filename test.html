@@ -1,61 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+ <html lang="en">
+    <head>
+    <meta charset="utf-8">
     <style>
-        body {
-            margin: 0;
-        }
-        .bar {
-            width: 200px;
-            height: 15px;
-            /* background-color: #000000; */
-            margin: 100px auto;
-            border-radius: 25px;
-            box-sizing: border-box;
-            border: 1px solid #000000;
+        .father {
+            /* height: 10px; */
+            transition: all .5s;
+            border: 1px solid crimson;
         }
 
-        .inner {
-            width: 100%;
-            height: 100%;
-            background-color: #000000;
-            border-radius: 25px;
-            transform-origin: left;
-            animation: progress 2s ease-out;
+        .father:hover {
+            height: 200px;
         }
 
-        @keyframes progress {
-            0% {
-                transform: scaleX(0);
-            }
-            /* 20% {
-                width: 20%;
-            }
-            40% {
-                width: 40%;
-            }
-            60% {
-                width: 60%;
-            }
-            80% {
-                width: 80%;
-            } */
-            100% {
-                transform: scaleX(1);
-            }
+        button {
+            position: absolute;
+            bottom: 0;
         }
     </style>
-</head>
-<body>
-    <div class="bar">
-        <div class="inner">
+    </head>
+    <body>
+        <div class="father">
 
         </div>
-    </div>
-    <script>
-    </script>
-</body>
-</html>
+        <button>添加</button>
+        <script src="./js/jquery-3.5.1.min.js"></script>
+        <script>
+            $('button').click(function (e) { 
+                e.preventDefault();
+                var child = $('<p>芜湖</p>');
+                $('.father').append(child);
+            });
+        </script>
+    </body>
+ </html>

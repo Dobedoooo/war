@@ -17,4 +17,13 @@
     height: 50px;
     margin: 100px auto;
     position: relative;
+    transform: translateX(22.5px);
+}
+
+.con3 {
+    width: 45px;
+    margin: 100px auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
 }

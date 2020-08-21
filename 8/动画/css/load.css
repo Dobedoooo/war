@@ -6,7 +6,7 @@
     display: block;
     height: 100%;
     width: 8px;
-    background-color: crimson;
+    background-color: #333;
     transform: scaleY(.7);
     border-radius: 2px;
 }
@@ -145,5 +145,29 @@
     }
     100% {
         background-color: #f1f1f1;        
+    }
+}
+
+/* triDot */
+.triDot-loading {
+    display: inline-block;
+    background-color: #ccc;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+@keyframes triDotLoading {
+    0% {
+        background-color: #333;
+    }
+    33.333333% {
+        background-color: #333;            
+    }
+    66.666666%{
+        background-color: #ccc;        
+    }
+    100% {
+        background-color: #ccc;        
     }
 }
