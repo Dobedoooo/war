@@ -1,7 +1,13 @@
-.form-border.init {
-    height: 324px;
-}
 
 .form-border.move {
-    height: 275px;
+    height: 325px !important;
+}
+
+.form-border.end {
+    height: auto !important;
+}
+
+.verify-img {
+    border-radius: 4px;
+    overflow: hidden;
 }

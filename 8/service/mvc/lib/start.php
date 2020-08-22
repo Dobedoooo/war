@@ -33,6 +33,12 @@
 
     // smarty
     define('SMARTY_PATH', LIB_PATH.'smarty'.DIRECTORY_SEPARATOR);
+
+    // 静态文件目录
+    define('STATIC_PATH', APP_NAME.'static'.DIRECTORY_SEPARATOR);
+
+    // 字体目录
+    define('FONT_PATH', STATIC_PATH.'font'.DIRECTORY_SEPARATOR);
     // 以上为本地路径
 
     // 以下为网路路径
@@ -56,6 +62,9 @@
 
     // js地址
     define('JS_ADD', STATIC_ADD.'js/');
+
+    // 字体地址
+    define('FONT_ADD', STATIC_ADD.'font/');
 
     // 图片地址
     define('IMG_ADD', STATIC_ADD.'img/');

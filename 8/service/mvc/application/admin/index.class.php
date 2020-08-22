@@ -5,6 +5,7 @@
 
     use \lib\smarty;
     use \lib\db;
+    use \lib\verify;
 
     class index{
         function undyne() {
@@ -13,13 +14,12 @@
 
             $smarty = $smart->smarty;
 
-            $signal = false;
-
             if(!empty($_GET)) {
-                $signal = true;
+                $smarty->assign('height', $_GET['h']);
+            } else {
+                $smarty->assign('height', 'auto');
             }
 
-            $smarty->assign('signal', $signal);
 
             $smarty->display('admin/login.html');
         }
@@ -30,7 +30,7 @@
             $pass = $_POST['pass'];
 
             if(strlen($name) < 5 || empty($pass)) {
-                echo '嘿嘿';
+                echo '你小子干啥呢';
                 return;
             }
 
@@ -52,6 +52,7 @@
                 echo '登录';
             }
 
+            $db->close();
 
         }
 
@@ -61,7 +62,11 @@
 
             $reg = isset($_GET['reg'])?$_GET['reg']:'0';
 
+            $height = isset($_GET['h'])?$_GET['h']:'0';
+
             $smart->smarty->assign('reg', $reg);
+
+            $smart->smarty->assign('height', $height);
 
             $smart->smarty->display('admin/reg.html');
         }
@@ -103,6 +108,7 @@
 
         // 远程验证
         function check() {
+
             $name = $_POST['name'];
 
             $database = new db;
@@ -118,5 +124,27 @@
             } else {
                 echo 'false';
             }
+        }
+
+        function verify() {
+
+            $verifyImg = new verify;
+
+            $verifyImg->height = 35;
+
+            $verifyImg->width = 165;
+
+            $verifyImg->fontFile = 'D:\fullstack\8\service\mvc\application\static\font\SanFranciscoDisplay-Regular-2.ttf';
+
+            // echo $verifyImg->fontFile;
+
+            $verifyImg->fontSize = array(
+                'min'=>16,
+                'max'=>25,
+            );
+
+            $verifyImg->out();
+
+            setcookie('verify', $verifyImg->str);
         }
     }

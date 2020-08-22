@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
     font-family: PingFang;
     src: url(../font/PingFang\ Medium.ttf);
-}
+} */
 
 html {
     scroll-behavior: smooth;
@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    font-family: PingFang;
+    font-family: PingFang SC;
 }
 
 .col-sm-offset-3 h3 {

@@ -21,30 +21,52 @@
                 <form action="/mvc/index.php/admin/index/login" method="POST" class="form-horizontal" id="login">
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-2">用户名</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <input type="text" placeholder="用户名" name="name" id="name" class="form-control" autocomplete="off" autofocus>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="pass" class="control-label col-sm-2">密码</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <input type="password" name="pass" id="pass" class="form-control" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="verifyCode" class="control-label col-sm-2">验证码</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="verifyCode" autocomplete="off" placeholder="验证码" name="verify">
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="verify-img">
+                                <img src="http://localhost/mvc/index.php/admin/index/verify" alt="验证码" onclick="this.src = 'http:\/\/localhost/mvc/index.php/admin/index/verify?' + Math.random()" title="点击切换">
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10 col-sm-offset-2">
                             <button type="submit" class="btn btn-primary">登录</button>
-                            <span class="col-sm-offset-1">没有账号？<a href="/mvc/index.php/admin/index/reg?reg=1">注册</a></span>
+                            <span class="col-sm-offset-1">没有账号？<a href="/mvc/index.php/admin/index/reg" id="getHeight">注册</a></span>
                         </div>
                     </div>
+                    
                 </form>
             </div>
         </div>
     </div>
-    {if $signal}
+    {if $height != 0}
     <script>
-        $('.form-border').addClass('init');
+        $('.form-border').css({
+            height: '{$height}px',
+        });
     </script>
     {/if}
+    <script>
+        // 获取当前时间
+        // var date = new Date();
+        // var time = date.getTime() + 1000 * 10;
+        // date.setTime(time);
+        // domain 作用域名 path 作用路径 expires 过期时间
+        // document.cookie = 'name=zhangsan';
+    </script>
 </body>
 </html>

@@ -2,10 +2,14 @@ body {
     
 }
 
-.form-border.init-login {
+/* .form-border.init-login {
     height: 275px;
-}
+} */
 
 .form-border.move {
-    height: 324px;
+    height: 324px !important;
+}
+
+.form-border.end {
+    height: auto !important;
 }

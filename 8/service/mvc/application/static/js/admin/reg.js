@@ -41,4 +41,15 @@ $(function () {
     });
     
     $('.form-border').addClass('move');
+
+    setTimeout(() => {
+        $('.form-border').addClass('end');
+    }, 400);
+
+    $('#getHeight').click(function (e) { 
+        // e.preventDefault();
+        var height = $('.form-border').height() + 32;
+        var href = $(this).attr('href') + '?h=' + height;
+        $(this).attr('href', href);
+    });
 });

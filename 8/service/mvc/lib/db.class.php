@@ -30,4 +30,8 @@
         // function query($sql) {
         //     $this->db->
         // }
+
+        function close() {
+            mysqli_close($this->db);
+        }
     }

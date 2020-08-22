@@ -1,1 +1,6 @@
-// magic_quote_sys
+转义引号 （防止SQL注入/）
+magic_quote_sys
+
+
+时区
+date.timezone = 
