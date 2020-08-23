@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     // 记录一个口令
     define('MVC', true);
     // 应用文件夹 

@@ -8,6 +8,8 @@
     use \lib\verify;
 
     class index{
+
+        // 后台登陆页
         function undyne() {
 
             $smart = new smarty;
@@ -20,14 +22,18 @@
                 $smarty->assign('height', 'auto');
             }
 
-
             $smarty->display('admin/login.html');
         }
 
-        // 登录
+        // 登录逻辑
         function login() {
             $name = $_POST['name'];
             $pass = $_POST['pass'];
+
+            // if($_POST['verify'] != $_SESSION['verify']) {
+            //     echo '验证码有误';
+            //     return;
+            // }
 
             if(strlen($name) < 5 || empty($pass)) {
                 echo '你小子干啥呢';
@@ -49,7 +55,9 @@
             if($result->num_rows < 1) {
                 echo '用户名或密码错误';
             } else {
-                echo '登录';
+                $_SESSION['login'] = 'yes';
+                $_SESSION['user'] = $name;
+                header('location:/mvc/index.php/admin/index/home');
             }
 
             $db->close();
@@ -71,7 +79,7 @@
             $smart->smarty->display('admin/reg.html');
         }
 
-        // 添加用户
+        // 注册逻辑
         function addUser() {
             $name = $_POST['name'];
             $pass = $_POST['pass'];
@@ -106,7 +114,7 @@
             }
         }
 
-        // 远程验证
+        // 注册用户名远程验证
         function check() {
 
             $name = $_POST['name'];
@@ -126,6 +134,7 @@
             }
         }
 
+        // 验证码
         function verify() {
 
             $verifyImg = new verify;
@@ -145,6 +154,25 @@
 
             $verifyImg->out();
 
-            setcookie('verify', $verifyImg->str);
+            // setcookie('verify', $verifyImg->str);
+            $_SESSION['verify'] = $verifyImg->str;
+        }
+
+        // 后台首页
+        function home() {
+
+            if(isset($_SESSION['login']) && $_SESSION['login'] == 'yes') {
+
+                $smart = new smarty;
+
+                $smarty = $smart->smarty;
+
+                $smarty->assign('user', $_SESSION['user']);
+
+                $smarty->display('admin/home.html');
+
+            } else {
+                header('location:/mvc/index.php/admin');
+            }
         }
     }

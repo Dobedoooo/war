@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-22 03:20:51
+/* Smarty version 3.1.34-dev-7, created on 2020-08-23 03:17:05
   from 'D:\fullstack\8\service\mvc\application\template\admin\login.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f408f13696fc9_43803386',
+  'unifunc' => 'content_5f41dfb1155380_50511725',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '97d9373129e3666b608b8abb8ba9dd4d6c324d4d' => 
     array (
       0 => 'D:\\fullstack\\8\\service\\mvc\\application\\template\\admin\\login.html',
-      1 => 1598066337,
+      1 => 1598152624,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f408f13696fc9_43803386 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f41dfb1155380_50511725 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -61,19 +61,19 @@ base.js"><?php echo '</script'; ?>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-2">用户名</label>
                         <div class="col-sm-9">
-                            <input type="text" placeholder="用户名" name="name" id="name" class="form-control" autocomplete="off" autofocus>
+                            <input type="text" placeholder="用户名" name="name" id="name" class="form-control" autocomplete="off" autofocus value="admin">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="pass" class="control-label col-sm-2">密码</label>
                         <div class="col-sm-9">
-                            <input type="password" name="pass" id="pass" class="form-control" placeholder="密码">
+                            <input type="password" name="pass" id="pass" class="form-control" placeholder="密码" value="admin">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="verifyCode" class="control-label col-sm-2">验证码</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="verifyCode" autocomplete="off" placeholder="验证码" name="verify">
+                            <input type="text" class="form-control" id="verifyCode" autocomplete="off" placeholder="验证码已禁用" name="verify" disabled>
                         </div>
                         <div class="col-sm-4">
                             <div class="verify-img">

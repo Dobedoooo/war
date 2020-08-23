@@ -3,8 +3,6 @@
 
     class smarty {
 
-        public $smarty;
-
         function __construct() {
 
             global $config;
@@ -25,6 +23,7 @@
             $smart->setCompileDir($cacheDir);
 
             $this->smarty = $smart;
+
         }
 
         // function assign($attr, $val) {

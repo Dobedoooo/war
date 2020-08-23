@@ -1,0 +1,107 @@
+
+html {
+}
+
+body {
+}
+
+header {
+    width: 100%;
+    height: 90px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #dfdfdf;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .2);
+    position: relative;
+}
+
+.lft-header {
+    padding: 20px 0 0 30px;
+}
+
+.logo {
+    font-family: Ping Fang SC;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.title {
+    font-size: 25px;
+    line-height: 60px;
+    margin-left: 20px;
+}
+
+.rt-header {
+    font-size: 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.head-shot {
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.triangle {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+main {
+    width: 100%;
+    height: 879px;
+}
+
+nav {
+    height: 100%;
+    width: 250px;
+    background-color: #fafafa;
+    border-right: 1px solid #ddd;
+
+}
+
+nav ul {
+    padding-top: 15px;
+}
+
+nav li {
+    font-size: 16px;
+    padding: 15px 0 15px 30px;
+    display: flex;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    transition: all .3s;
+    cursor: default;
+}
+
+.list-icon {
+    width: 25px;
+}
+
+.fa-project-diagram {
+    font-size: 15px;
+}
+
+nav li:hover {
+    border-color: #dfdfdf;
+    background-color: #f6f6f6;
+    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+}
+
+.author {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+
+.author span {
+    margin-left: 2px;
+    font-size: 12px;
+}

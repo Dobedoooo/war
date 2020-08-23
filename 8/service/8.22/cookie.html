@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 既能获取cookie 也能设置 cookie
+
+        // var date = new Date();
+
+        // date.setTime(date.getTime() + 1000 );
+
+        // document.cookie = 'name=zhangsan;expires=' + date.toUTCString();
+
+        /*
+            麻烦
+            封装
+        */
+
+        function setCookie(attribute, value, duration='session') {
+            var expires = '';
+
+            if(duration != 'session') {
+
+                var date = new Date();
+
+                date.setTime(date.getTime() + 1000 * duration);
+
+                expires = date.toUTCString();
+
+            } else {
+
+                expires = duration;
+
+            }
+            document.cookie = `${attribute}=${value};expires=${expires}`; 
+        }
+
+        setCookie('name', 'lisi', '1');
+
+
+    </script>
+</body>
+</html>

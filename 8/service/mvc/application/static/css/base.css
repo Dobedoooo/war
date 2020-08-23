@@ -1,7 +1,3 @@
-/* @font-face {
-    font-family: PingFang;
-    src: url(../font/PingFang\ Medium.ttf);
-} */
 
 html {
     scroll-behavior: smooth;
@@ -10,19 +6,4 @@ html {
 
 body {
     font-family: PingFang SC;
-}
-
-.col-sm-offset-3 h3 {
-    padding: 20px 0;
-}
-
-.form-border {
-    margin-top: 100px;
-    padding-bottom: 30px;
-    background-color: #fafafa;
-    border: 1px solid #f2f2f2;
-    border-radius: 10px;
-    transition: height .3s ease-out;
-    box-shadow: 0 0 20px 2px rgba(0, 0, 0, .2);
-    overflow: hidden;
 }
