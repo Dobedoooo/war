@@ -6,16 +6,32 @@
     }
 
     class verify {
-        public $type = 'png';
-        public $width = 160;
-        public $height = 50;
-        public $num = 4;
-        public $seed = 'abcdefhjkmnprstuvwxyzABCDEFGHIJKMLNOPQRSTUVWXYZ345678';
-        public $fontSize = array('min'=>20, 'max'=>35);
-        public $fontAngle = array('min'=>-15, 'max'=>15);
-        public $lineNum = array('min'=>2, 'max'=>6);
-        public $pixelNum = array('min'=>20, 'max'=>60);
-        public $fontFile = '';
+
+        function __construct() {
+
+            global $config;
+
+            $this->type = isset($config['verify']['type'])?$config['verify']['type']:'png';
+
+            $this->width = isset($config['verify']['width'])?$config['verify']['width']:160;
+
+            $this->height = isset($config['verify']['height'])?$config['verify']['height']:50;
+
+            $this->num = isset($config['verify']['num'])?$config['verify']['num']:4;
+
+            $this->seed = isset($config['verify']['seed'])?$config['verify']['seed']:'abcdefhjkmnprstuvwxyzABCDEFGHIJKMLNOPQRSTUVWXYZ345678';
+
+            $this->fontSize = isset($config['verify']['fontSize'])?$config['verify']['fontSize']:array('min'=>20, 'max'=>35);
+
+            $this->fontAngle = isset($config['verify']['fontAngle'])?$config['verify']['fontAngle']:array('min'=>-15, 'max'=>15);
+
+            $this->lineNum = isset($config['verify']['lineNum'])?$config['verify']['lineNum']:array('min'=>2, 'max'=>6);
+
+            $this->pixelNum = isset($config['verify']['pixelNum'])?$config['verify']['pixelNum']:array('min'=>20, 'max'=>60);
+
+            $this->fontFile = isset($config['verify']['fontFile'])?$config['verify']['fontFile']:'D:\fullstack\8\service\mvc\application\static\font\SanFranciscoDisplay-Regular-2.ttf';
+
+        }
 
         private function createCanvas() {
 

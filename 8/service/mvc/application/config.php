@@ -12,4 +12,16 @@
             'compileDIr' => COMPILE_PATH,
             'cacheDir' => CACHE_PATH,
         ),
+        'verify' => array(
+            'type' => 'png',
+            'width' => 165,
+            'height' => 35,
+            'num' => 4,
+            'seed' => 'abcdefhjkmnprstuvwxyzABCDEFGHIJKMLNOPQRSTUVWXYZ345678',
+            'fontSize' => array('min'=>16, 'max'=>25),
+            'fontAngle' => array('min'=>-15, 'max'=>15),
+            'lineNum' => array('min'=>2, 'max'=>6),
+            'pixelNum' => array('min'=>20, 'max'=>60),
+            'isCheck' => false,
+        ),
     );

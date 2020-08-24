@@ -30,10 +30,20 @@
             $name = $_POST['name'];
             $pass = $_POST['pass'];
 
-            // if($_POST['verify'] != $_SESSION['verify']) {
-            //     echo '验证码有误';
-            //     return;
-            // }
+            global $config;
+
+            if($config['verify']['isCheck']) {
+
+                if($_POST['verify'] != $_SESSION['verify']) {
+
+                    echo '验证码有误';
+
+                    return;
+
+                }
+
+            }
+            
 
             if(strlen($name) < 5 || empty($pass)) {
                 echo '你小子干啥呢';
@@ -139,23 +149,11 @@
 
             $verifyImg = new verify;
 
-            $verifyImg->height = 35;
-
-            $verifyImg->width = 165;
-
-            $verifyImg->fontFile = 'D:\fullstack\8\service\mvc\application\static\font\SanFranciscoDisplay-Regular-2.ttf';
-
-            // echo $verifyImg->fontFile;
-
-            $verifyImg->fontSize = array(
-                'min'=>16,
-                'max'=>25,
-            );
-
             $verifyImg->out();
 
             // setcookie('verify', $verifyImg->str);
             $_SESSION['verify'] = $verifyImg->str;
+
         }
 
         // 后台首页

@@ -1,5 +1,10 @@
 <?php
     namespace lib;
+
+    if(!defined('MVC')) {
+        die('访问路径不合法');
+    }
+
     class db {
 
         public $db;
