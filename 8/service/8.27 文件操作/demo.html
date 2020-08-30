@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 上传文件必须是post -->
+    <form action="upload.class.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <button type="submit">提交</button>
+    </form>
+    <br />
+<font size='1'><table class='xdebug-error xe-notice' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Notice: Trying to get property 'path' of non-object in D:\fullstack\8\service\mvc\application\admin\content.class.php on line <i>139</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0001</td><td bgcolor='#eeeeec' align='right'>411584</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='D:\fullstack\8\service\mvc\index.php' bgcolor='#eeeeec'>...\index.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0002</td><td bgcolor='#eeeeec' align='right'>413352</td><td bgcolor='#eeeeec'>require_once( <font color='#00bb00'>'D:\fullstack\8\service\mvc\lib\start.php'</font> )</td><td title='D:\fullstack\8\service\mvc\index.php' bgcolor='#eeeeec'>...\index.php<b>:</b>20</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0006</td><td bgcolor='#eeeeec' align='right'>451072</td><td bgcolor='#eeeeec'>lib\route->run(  )</td><td title='D:\fullstack\8\service\mvc\lib\start.php' bgcolor='#eeeeec'>...\start.php<b>:</b>94</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>4</td><td bgcolor='#eeeeec' align='center'>0.1325</td><td bgcolor='#eeeeec' align='right'>506328</td><td bgcolor='#eeeeec'>content->upload(  )</td><td title='D:\fullstack\8\service\mvc\lib\route.class.php' bgcolor='#eeeeec'>...\route.class.php<b>:</b>63</td></tr>
+</table></font>
+
+</body>
+</html>

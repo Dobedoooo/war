@@ -74,7 +74,6 @@
 
     // 配置项
     $config = include_once APP_NAME.'config.php';
-
     // 主类
     // include_once LIB_PATH.'main.class.php';
 

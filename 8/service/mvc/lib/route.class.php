@@ -62,16 +62,16 @@
                             // 执行方法
                             $obj->$method();
                         } else {
-                            die('Method Not Found');
+                            die('Method Not Found:'.self::$action);
                         }
                     } else {
-                        die('Class Not Found');
+                        die('Class Not Found:'.self::$control);
                     }
                 } else {
-                    die('File Not Found');
+                    die('File Not Found:'.$controlPath);
                 }
             } else {
-                die('Module Not Found');
+                die('Module Not Found:'.$modulePath);
             }
         }
     }

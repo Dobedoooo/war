@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{CSS_ADD}bootstrap.css">
     <link rel="stylesheet" href="{CSS_ADD}base.css">
     <link rel="stylesheet" href="{CSS_ADD}admin/login.css">
+    <link rel="stylesheet" href="{CSS_ADD}fontawsome/css/all.min.css">
+    <link rel="shortcut icon" href="{IMG_ADD}favicon.png" type="image/x-icon">
     <script src="{JS_ADD}jquery-3.5.1.min.js"></script>
     <script src="{JS_ADD}jquery.validate.min.js"></script>
     <script src="{JS_ADD}admin/login.js"></script>
@@ -22,19 +24,19 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-2">用户名</label>
                         <div class="col-sm-9">
-                            <input type="text" placeholder="用户名" name="name" id="name" class="form-control" autocomplete="off" autofocus value="admin">
+                            <input type="text" placeholder="请输入用户名" name="name" id="name" class="form-control" autocomplete="off" autofocus>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="pass" class="control-label col-sm-2">密码</label>
                         <div class="col-sm-9">
-                            <input type="password" name="pass" id="pass" class="form-control" placeholder="密码" value="admin">
+                            <input type="password" name="pass" id="pass" class="form-control" placeholder="请输入密码">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="verifyCode" class="control-label col-sm-2">验证码</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="verifyCode" autocomplete="off" placeholder="验证码已禁用" name="verify" disabled>
+                            <input type="text" class="form-control" id="verifyCode" autocomplete="off" placeholder="请输入验证码" name="verify" style="transition: all .3s;">
                         </div>
                         <div class="col-sm-4">
                             <div class="verify-img">
@@ -47,6 +49,10 @@
                             <button type="submit" class="btn btn-primary">登录</button>
                             <span class="col-sm-offset-1">没有账号？<a href="/mvc/index.php/admin/index/reg" id="getHeight">注册</a></span>
                         </div>
+                    </div>
+                    <div class="triggle">
+                        <label for="triggle">调试模式</label>
+                        <i class="fa fa-toggle-off text-muted" id="triggle"></i>
                     </div>
                     
                 </form>

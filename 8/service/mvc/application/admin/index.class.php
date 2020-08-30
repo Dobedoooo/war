@@ -29,9 +29,8 @@
         function login() {
             $name = $_POST['name'];
             $pass = $_POST['pass'];
-
             global $config;
-
+            
             if($config['verify']['isCheck']) {
 
                 if($_POST['verify'] != $_SESSION['verify']) {
@@ -43,7 +42,41 @@
                 }
 
             }
-            
+
+            if(strlen($name) < 5 || empty($pass)) {
+                echo '你小子干啥呢';
+                return;
+            }
+
+            $database = new db;
+
+            $db = $database->db;
+
+            $db->query('set names utf8');
+
+            $encrypt = md5(md5($pass));
+
+            $sql = "select * from user where name = '$name' and pass = '$encrypt'";
+
+            $result = $db->query($sql);
+
+            if($result->num_rows < 1) {
+                echo '用户名或密码错误';
+            } else {
+                $_SESSION['login'] = 'yes';
+                $_SESSION['user'] = $name;
+                header('location:/mvc/index.php/admin/index/home');
+            }
+
+            $db->close();
+
+        }
+
+        // 
+        function loginWithoutVerify() {
+            $name = $_POST['name'];
+            $pass = $_POST['pass'];
+            global $config;
 
             if(strlen($name) < 5 || empty($pass)) {
                 echo '你小子干啥呢';
@@ -172,5 +205,17 @@
             } else {
                 header('location:/mvc/index.php/admin');
             }
+        }
+
+        // 退出登录
+        function signOut() {
+
+            unset($_SESSION['login']);
+            
+            unset($_SESSION['user']);
+
+            session_destroy();
+
+            header('location:/mvc/index.php/admin');
         }
     }

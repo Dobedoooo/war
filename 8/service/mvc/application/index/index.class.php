@@ -7,12 +7,107 @@
      * 后台管理：广义 一个应用服务器部分的内容；狭义 一个应用的管理中心
      */
 
+     /**
+      * 标准的前端显示逻辑
+      * 导航（栏目）-> 分类页 -> 列表页 -> 详情页
+      */
+
+    use \lib\smarty;
+    use \lib\db;
+
     class index {
+
+        function __construct() {
+
+            $smart = new smarty;
+
+            $this->smarty = $smart->smarty;
+
+            $database = new db;
+
+            $this->db = $database->db;
+
+            $this->db->query('set names utf8');
+        }
+
+        private function getHeader() {
+
+            $result = $this->db->query("SELECT `id`, `name`, `temp`, `isshow` FROM colm WHERE pid = 0");
+
+            // 顶级栏目数据
+            $data = array();
+
+            $pid = array();
+
+            while($row = $result->fetch_assoc()) {
+
+                $data[] = $row;
+
+            }
+
+            $data_2 = array();
+
+            foreach($data as $k=>$v) {
+
+                $result_2 = $this->db->query('SELECT `id`, `name`, `temp`, `isshow` FROM colm WHERE pid ='.$v['id']);
+
+                while($row_2 = $result_2->fetch_assoc()) {
+
+                    // 将不同分类的子栏目装载到对应的下标
+                    $data_2[$v['id']][] = $row_2;
+                }
+
+            }
+
+            $this->smarty->assign('subHeader', $data_2);
+            $this->smarty->assign('header', $data);
+
+        }
+
         function undyne() {
 
-            echo 'Welcome';
+            $this->getHeader();
 
-            // $engine = new engine();
+            $this->smarty->display('index/index.html');
+
+            mysqli_close($this->db);
+
+            
+        }
+
+        function diversion() {
+
+            $cid = $_GET['cid'];
+
+            $result = $this->db->query("SELECT * FROM colm WHERE id = ".$cid);
+
+            $row = $result->fetch_assoc();
+
+            $this->getHeader();
+
+            if($cid == 1) {
+                
+                $product = array();
+
+                $result_2 = $this->db->query("SELECT `id`, `pid`, `proname`, `proid`, `prodesc1`, `prodesc2`, `prodesc3`, `protemp`, `proimgurl` FROM product WHERE pid = 7");
+
+                while($row_2 = $result_2->fetch_assoc()) {
+
+                    $product[] = $row_2;
+
+                }
+
+                ;
+                
+                $this->smarty->assign('product', $product);
+
+            }
+
+            $this->smarty->display('index/'.$row['temp'].'.html');
+
+        }
+
+        // $engine = new engine();
 
             // $engine->setTemplateDir(TEMPLATE_PATH);
 
@@ -53,10 +148,5 @@
 
             // $engine->display('index.html');
             // $smarty->display('index.html');
-        }
-
-        function del() {
-            echo '删除';
-        }
     }
 ?>

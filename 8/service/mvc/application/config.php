@@ -22,6 +22,6 @@
             'fontAngle' => array('min'=>-15, 'max'=>15),
             'lineNum' => array('min'=>2, 'max'=>6),
             'pixelNum' => array('min'=>20, 'max'=>60),
-            'isCheck' => false,
+            'isCheck' => true,
         ),
     );

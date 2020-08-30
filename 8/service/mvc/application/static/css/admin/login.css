@@ -26,3 +26,26 @@
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, .2);
     overflow: hidden;
 }
+
+.triggle {
+    position: absolute;
+    left: 360px;
+    bottom: 53px;
+    display: flex;
+    align-items: center;
+}
+
+.triggle label {
+    margin: 0;
+}
+
+.triggle i {
+    font-size: 22px;
+    margin-left: 5px;
+    transition: all .3s;
+    /* color: ; */
+}
+
+.triggle i.on {
+    color: #27ae60 !important;
+}

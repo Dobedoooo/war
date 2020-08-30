@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-24 14:42:56
+/* Smarty version 3.1.34-dev-7, created on 2020-08-29 10:27:18
   from 'D:\fullstack\8\service\mvc\application\template\admin\colinfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f43d1f0b3df41_98721134',
+  'unifunc' => 'content_5f4a2d8633d444_44522617',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c1a53f234e5454745a2a45520862b500f28defd7' => 
     array (
       0 => 'D:\\fullstack\\8\\service\\mvc\\application\\template\\admin\\colinfo.html',
-      1 => 1598280006,
+      1 => 1598696740,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f43d1f0b3df41_98721134 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4a2d8633d444_44522617 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -49,17 +49,85 @@ jquery.validate.min.js"><?php echo '</script'; ?>
  src="<?php echo JS_ADD;?>
 admin/colinfo.js"><?php echo '</script'; ?>
 >
+    <?php echo '<script'; ?>
+ src="<?php echo JS_ADD;?>
+base.js"><?php echo '</script'; ?>
+>
 </head>
 <body>
+    <div class="top">
+        <div class="add-show btn btn-default">添加顶级栏目</div>
+    </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8">
-                <form class="form-inline" id="addTopCol">
-                    <div class="form-group">
-                        <label for="topCol">新增顶级栏目</label>
-                            <input type="text" class="form-control" placeholder="请输入顶级栏目名称" id="topCol" autocomplete="off" name="name">
+            <!-- 添加表单 -->
+            <div class="add-form default-box form-move">
+                <form class="" id="addTopCol">
+                    <h4>添加顶级栏目</h4>
+                    <div class="form-group col-sm-12">
+                        <label for="topCol">栏目名称</label>
+                            <input type="text" class="form-control" placeholder="请输入栏目名称" id="topCol" autocomplete="off" name="name">
                     </div>
-                    <button type="submit" class="btn btn-default">添加</button>
+                    <input type="hidden" name="pid" id="hiddenPid">
+                    <div class="form-group col-sm-6">
+                        <label for="isshow">栏目在导航</label>
+                        <select name="isshow" id="isshow" class="form-control">
+                            <option value="1">在导航可见</option>
+                            <option value="0">在导航不可见</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="temp">使用模板</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="temp" name="temp" placeholder="请输入模板名称">
+                            <div class="input-group-addon">.html</div>   
+                        </div>
+
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="desc">栏目描述</label>
+                        <textarea name="desc" id="desc" placeholder="请输入栏目描述" class="form-control"></textarea>
+                    </div>
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary" id="topColSubmit"><span>添加</span><i class="fa"></i></button>
+
+                    </div>
+                </form>
+            </div>
+            <!-- 变更表单 -->
+            <div class="modify-form default-box form-move">
+                <form action="" id="modify">
+                    <h4>详细信息</h4>
+                    <div class="form-group col-sm-12">
+                        <label for="moname">栏目名称</label>
+                        <input type="text" class="form-control" name="moname" id="moname">
+                    </div>
+                    <input type="hidden" name="mocid" id="mocid">
+                    <div class="form-group col-sm-6">
+                        <label for="moisshow">栏目在导航</label>
+                        <select name="moisshow" id="moisshow" class="form-control">
+                            <option value="1">在导航可见</option>
+                            <option value="0">在导航不可见</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="motemp">使用模板</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="motemp" name="motemp" placeholder="请输入模板名称">
+                            <div class="input-group-addon">.html</div>   
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="modesc">栏目描述</label>
+                        <textarea name="modesc" id="modesc" placeholder="请输入栏目描述" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="super">父栏目</label>
+                        <select name="super" id="super" class="form-control"></select>
+                    </div>
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary" id="modifyCol"><span>变更</span><i class="fa"></i></button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -69,8 +137,10 @@ admin/colinfo.js"><?php echo '</script'; ?>
                     <thead>
                         <tr>
                             <th>层级</th>
-                            <th>分类名称</th>
-                            <th>操作</th>
+                            <th>栏目名称</th>
+                            <th>栏目可见</th>
+                            <th>栏目模板</th>
+                            <th>可执行操作</th>
                         </tr>
                     </thead>
                     <tbody id="column-content">
@@ -87,30 +157,9 @@ admin/colinfo.js"><?php echo '</script'; ?>
             </div>
         </div>
     </div>
-    <div class="notice add-success text-success"><i class="fa fa-check-circle"></i> 添加成功</div>
-    <div class="notice modify-success text-success"><i class="fa fa-check-circle"></i> 变更成功</div>
     <div class="notice del-success text-success"><i class="fa fa-check-circle"></i> 删除成功</div>
-    <div class="notice add-fail  text-danger"><i class="fa fa-exclamation-circle"></i> 添加失败</div>
-    <div class="notice modify-fail  text-danger"><i class="fa fa-exclamation-circle"></i> 变更失败</div>
     <div class="notice del-fail text-danger"><i class="fa fa-exclamation-circle"></i> 删除失败</div>
-    <div class="sub form-show">
-        <form action="" id="addSub">
-            <div class="form-group">
-                <label for="subname">子栏目名称</label>
-                <input type="text" class="form-control" id="subname" placeholder="请输入子栏目名称" autocomplete="off" name="subname">
-            </div>
-            <div class="form-group">
-                <label for="super">所属父栏目</label>
-                <input type="text" name="belong" id="super" class="form-control" readonly></input>
-            </div>
-            <button type="submit" class="btn btn-primary">添加</button>
-        </form>
-    </div>
-    <div class="modify form-show">
-        <form action="" id="modifyCol">
-            m
-        </form>
-    </div>
+    <!-- 遮罩 -->
     <div class="cover"></div>
 </body>
 </html><?php }

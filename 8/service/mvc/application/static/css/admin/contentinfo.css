@@ -1,0 +1,111 @@
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.top {
+    background-color: #fdfdfd;
+    width: 100%;
+    height: 76px;
+    position: fixed;
+    z-index: 1;
+    border-bottom: 1px solid #f0f0f0;
+    box-shadow: 0 0 2px  rgba(0, 0, 0, .2);
+}
+
+.add-show {
+    margin: 20px 0 20px 250px;
+    z-index: 9999;
+}
+
+.add, .show {
+    width: 1000px;
+    position: fixed;
+    top: 5px;
+    left: 250px;
+    transform: translate(0, -850px);
+    opacity: 0.8;
+    padding: 30px;
+    transition: transform .4s, opacity .3s;
+    overflow-y: scroll;
+    max-height: 830px;
+}
+
+.add.on, .show.on {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+.table th:last-child {
+    width: 22%;
+}
+
+.container {
+    padding-top: 85px;
+}
+
+#preview, #showpreview {
+    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+    width: 200px;
+    border-radius: 5px;
+    margin: 10px 0 10px 480px;
+    display: none;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+#preview:hover, #showpreview:hover {
+    box-shadow: 0 0 15px  rgba(0, 0, 0, .4);
+    filter: brightness(70%);
+}
+
+.img-name, .show-img-name {
+    margin-left: 480px;
+}
+
+form button, #submit, #showsubmit {
+    transition: all .3s;
+}
+
+#upload, #showupload {
+    margin-top: 25px;
+}
+
+.notice {
+    font-size: 18px;
+    position: fixed;
+    right: -300px;
+    top: 100px;
+    width: 250px;
+    height: 75px;
+    background-color: #f6f6f6;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+    opacity: 0;
+}
+
+.notice i {
+    margin-right: 7px;
+}
+
+.notice.on {
+    transform: translateX(-380px);
+    opacity: 1;
+    z-index: 9;
+}
+
+.disable {
+    pointer-events: none;
+}

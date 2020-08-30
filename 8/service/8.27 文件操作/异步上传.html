@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fontawsome/css/all.css">
+    <style>
+        body {
+            /* height: 2000px; */
+        }
+        /* 滚动条整体宽度 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* 滚动条滑槽样式 */
+        ::-webkit-scrollbar-track {
+            /* box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+            /* border-radius: 8px; */
+        }
+        /* 滚动条样式 */
+        ::-webkit-scrollbar-thumb {
+            border-right: 2px solid #fff;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.6);
+            /* box-shadow: inset 0 0 6px rgba(0,0,0,0.5); */
+            margin-right: 11px;
+        }
+        ::-webkit-scrollbar-thumb:hover{
+            background: rgba(0,0,0,0.7);
+        }
+        ::-webkit-scrollbar-thumb:active{
+            background: rgba(0,0,0,0.8);
+        }
+        /* 浏览器失焦的样式 */
+        ::-webkit-scrollbar-thumb:window-inactive {
+            /* background: rgba(255,0,0,0.4); */
+        }
+
+        i {
+            color: rgba(0, 0, 0, .6);
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="form">
+        文件：<input type="file" name="file" id="file"  style="display: none;">
+        <button id="upload" type="submit">上传</button>
+    </form>
+    <i class="fa fa-bomb"></i>
+    <button id="transport" >另一个按钮</button>
+    <img id="preview" src="" width="200" style="border-radius: 5px;"></img>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script>
+        
+        $(function () {
+            $('body').click(function (e) { 
+                e.preventDefault();
+                $('#transport').attr('disabled', '');
+                console.log(1);
+            });
+            //
+            $('#file').change(function (e) { 
+                e.preventDefault();
+                $('#preview').attr('src', URL.createObjectURL($(this)[0].files[0]));
+            });
+
+            // showImg($('#file')[0], 'preview');
+
+            $('#transport').click(function (e) { 
+                e.preventDefault();
+                $('#file').click();
+            });
+
+            $('#form').validate({
+                rules: {
+                    file: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    file: {
+                        required: '请选择文件',
+                    }
+                },
+                submitHandler: function() {
+                    var files = $('#file').prop('files');
+
+                    var data = new FormData();
+
+                    data.append('file', files[0]);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "upload.php",
+                        data: data,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            // console.log(response);
+                            $('body').append(response);
+                        }
+                    });
+                }
+            });
+
+            $('#file').on('input', function () {
+                console.log($(this).prop('files')[0]['name']);
+            });
+
+        });
+
+    </script>
+    <script>
+        var str = 'http://localhost/mvc/upload\asd.jpg'.replace('/\\/', '\\\\');
+        console.log(str);
+    </script>
+</body>
+</html>

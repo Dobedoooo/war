@@ -1,0 +1,59 @@
+<!-- 头部开始 -->
+<header>
+    <div class="header-con">
+        <a class="logo" href="javascript:;">
+                <img src="" data-src="http://www.huowang.com.cn/static/home/images/top-logo.png">
+        </a>
+        <nav class="nav">
+            <ul>
+                <li class="active"><a href="/mvc/index.php/">首页</a></li>
+                {foreach $header as $v}
+                    {if $v['isshow'] == 1}
+                        <li cid="{$v['id']}"><a href="/mvc/index.php/index/index/diversion?cid={$v['id']}">{$v['name']}</a></li>
+                    {/if}
+                {/foreach}
+            </ul>
+            <form action="#">
+                <img src="" data-src="http://www.huowang.com.cn/static/home/images/top-search.png">
+                <div class="search-box">
+                    <input type="text" placeholder="请输入产品名称" name="keyword" autocomplete="off">
+                    <div class="search-box-close"></div>
+                </div>
+            </form>
+        </nav>
+    </div>
+    <div class="nav-list-con">
+        {foreach $subHeader as $k2=>$v2}
+            <nav pid="{$k2}" class="subnav">
+                <ul>
+                    {foreach $v2 as $v3}
+                        {if $v3['isshow'] == 1}
+                        <li cid="{$v3['id']}">
+                            <a href="{$v3['temp']}">
+                                <div class="img-con">
+                                    <img src="" data-src="http://www.huowang.com.cn/static/home/images/pro-img-3.png">
+                                    <img class="img-replace" src="" data-src="http://www.huowang.com.cn/static/home/images/pro-img-h-3.png">
+                                </div>
+                                <div class="text-con">
+                                    <span>{$v3['name']}</span>
+                                </div>
+                            </a>
+                        </li>
+                        {/if}
+                    {/foreach}
+                </ul>
+            </nav>
+        {/foreach}
+            
+    </div>
+    <div class="fix-bar">
+        <a href="javascript:;" class="call">
+            <img src="" data-src="http://www.huowang.com.cn/static/home/images/fix-bar-call.png">
+        </a>
+        <a href="javascript:;" class="top">
+            <img src="" data-src="http://www.huowang.com.cn/static/home/images/fix-bar-top.png">
+            <img class="img-replace" src="" data-src="http://www.huowang.com.cn/static/home/images/fix-bar-top-h.png">
+        </a>
+    </div>
+</header>
+<!-- 头部结束 -->

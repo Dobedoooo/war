@@ -6,4 +6,8 @@
     // echo crypt('1', '223');
 
     //
-    echo sha1('1');
+    // echo sha1('1');
+
+    $str = 'http://localhost/mav/upload/asd/asd.jpg';
+
+    echo str_replace('\\', '/', $str);

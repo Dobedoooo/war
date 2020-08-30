@@ -30,4 +30,33 @@ $(function () {
         var href = $(this).attr('href');
         $(this).attr('href', href + '?h=' + height);
     });
+
+    var flag = false;
+    $('#triggle').click(function (e) { 
+        e.preventDefault();
+        if(flag) {
+ 
+            $('#login').attr('action', '/mvc/index.php/admin/index/login');
+            $('#triggle').addClass('fa-toggle-off');
+            $('#triggle').removeClass('fa-toggle-on');
+            $('#triggle').removeClass('on');
+            $('#login input').val('');
+            $('#verifyCode').removeAttr('disabled');
+            $('#verifyCode').attr('placeholder', '请输入验证码');
+            flag = false;
+
+        } else {
+            $('#login').attr('action', '/mvc/index.php/admin/index/loginWithoutVerify');
+            $('#triggle').addClass('fa-toggle-on');
+            $('#triggle').removeClass('fa-toggle-off');
+            $('#triggle').addClass('on');
+            $('#pass').val('admin');
+            $('#name').val('admin');
+            $('#verifyCode').attr('disabled', '');
+            $('#verifyCode').attr('placeholder', '验证码已禁用');
+            flag = true;
+            
+        }
+        
+    });
 });
