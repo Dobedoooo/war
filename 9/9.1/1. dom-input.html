@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="helloWorld">
+    <h1>helloWorld</h1>
+    <script>
+        let inputEle = document.querySelector('input');
+        let h1 = document.querySelector('h1');
+
+        inputEle.oninput = function() {
+            h1.innerText = this.value.trim();
+        }
+    </script>
+</body>
+</html>

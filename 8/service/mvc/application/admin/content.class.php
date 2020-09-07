@@ -7,6 +7,7 @@
     use \lib\smarty;
     use \lib\db;
     use \lib\upload;
+    use \lib\page;
 
     class content {
 
@@ -25,12 +26,22 @@
 
         }
 
-        // 获取内容
-        function getContent() {
+        // 显示内容
+        function contentInfo() {
 
-            $result = $this->db->query("SELECT `product`.`id`, `product`.`pid`, `product`.`proname`, `product`.`proid`, `product`.`protemp`,  `colm`.`name` FROM colm RIGHT JOIN product ON `colm`.`id` = `product`.pid");
+            $sql = "SELECT `product`.`id`, `product`.`pid`, `product`.`proname`, `product`.`proid`, `product`.`protemp`,  `colm`.`name` FROM colm RIGHT JOIN product ON `colm`.`id` = `product`.pid";
 
-            $data = [];
+            $page = new page;
+
+            $page->total = $this->db->query($sql)->num_rows;
+
+            $str = $page->show();
+
+            $sql.=$page->limit;
+
+            $result = $this->db->query($sql);
+
+            $data = array();
 
             while($row = $result->fetch_assoc()) {
 
@@ -38,20 +49,12 @@
 
             }
 
-            mysqli_close($this->db);
-
-            return $data;
-
-        }
-
-        // 显示内容
-        function contentInfo() {
-
-            $data = $this->getContent();
-
             $this->smarty->assign('data', $data);
+            $this->smarty->assign('page', $str);
 
             $this->smarty->display('admin/contentinfo.html');
+
+            mysqli_close($this->db);
 
         }
 
@@ -185,6 +188,44 @@
                 echo 0;
             }
 
+        }
+
+        // 搜索
+        function search() {
+
+            $sql = "SELECT `product`.`id`, `product`.`pid`, `product`.`proname`, `product`.`proid`, `product`.`protemp`,  `colm`.`name` FROM colm RIGHT JOIN product ON `colm`.`id` = `product`.pid WHERE 1=1";
+
+            // 筛选
+            if(isset($_GET['filter']) && !empty($_GET['filter'])) {
+                $sql.=" and colm.id = ".$_GET['filter'];
+            }
+
+            // 关键字
+            // if(isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+            //     $sql.=" and product.proname = ".$_GET['keyword'];
+            // }
+
+            // 编号
+            if(isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+                $sql.=" and product.proid like '%".$_GET['keyword']."%'";
+            }
+
+            // 倒序
+            if(isset($_GET['reverse']) && !empty($_GET['reverse'])) {
+                $sql.=" order by product.id desc";
+            }
+
+            $result = $this->db->query($sql);
+
+            $data = array();
+
+            while($row = $result->fetch_assoc()) {
+
+                $data[] = $row;
+
+            }
+
+            echo json_encode($data);
         }
 
     }

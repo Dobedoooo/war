@@ -4,15 +4,7 @@ $(function () {
             name: {
                 required: true,
                 minlength: 5,
-                remote: {
-                    url: '/mvc/index.php/admin/index/check',
-                    type: 'post',
-                    data: {
-                        username: function() {
-                            return $('input[name=name]').val();
-                        }
-                    }
-                }
+                remote: '/mvc/index.php/admin/index/check',
             },
             pass: {
                 required: true,

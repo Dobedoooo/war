@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>组件通信</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../8/动画/css/load.css">
+    <script src="../../js/vue.js"></script>
+    <style>
+        td {
+            vertical-align: middle !important;
+        }
+        .loading {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 200px auto;
+            width: 45px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <loading :show="isShow"></loading>
+        <div v-if="students.length">
+            <my-table :studata="students" :thead="tableHead"></my-table>
+        </div>
+    </div>
+    <!-- 加载动画模板 -->
+    <template id="loading">
+        <div class="loading" v-show="show">
+            <div class="load1"></div>
+            <div class="load2"></div>
+            <div class="load3"></div>
+            <div class="load4"></div>
+        </div>
+    </template>
+    <!-- 表格模板 -->
+    <template id="mytable">
+        <table class="table table-bordered">
+            <thead>
+                <th v-for="item in thead"> {{item}} </th>
+                <th>操作</th>
+            </thead>
+            <tbody>
+                <tr v-for="student in myStudents">
+                    <td v-for="item in thead">
+                        {{ student[item] }}
+                    </td>
+                    <td><button class="btn btn-danger">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+    <script>
+        // 注册加载动画组件
+        var a = Vue.component('loading', {
+            props: ['show'],
+            template: '#loading',
+        })
+
+        Vue.component('my-table', {
+            props: ['studata', 'thead'],
+            template: '#mytable',
+            data() {
+                return {
+                    myStudents : [],
+                } 
+            },
+            mounted() {
+                this.myStudents = JSON.parse(JSON.stringify(this.studata));
+
+            },
+            methods: {
+
+            }
+        })
+
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                students: [],
+                tableHead: ['id', 'name', 'gender', 'age'],
+                isShow: false,
+            },
+            method: {
+
+            },
+            created() {
+                this.isShow = true;
+            },
+            mounted() {
+                let st = localStorage.getItem('students');
+                setTimeout(() => {
+                    this.isShow = false;
+                    this.students = JSON.parse(st);
+                }, 800);
+            }
+
+        })
+    </script>
+</body>
+</html>

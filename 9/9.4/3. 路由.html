@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Vue-router</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/vue-router.js"></script>
+</head>
+<body>
+    <!-- 1. 路由和组件映射
+        2. 组件显示位置
+    -->
+    <div id="app">
+        <router-link to="/">首页</router-link>
+        <router-link to="/list">列表</router-link>
+        <router-link to="/detail">详情</router-link>
+        <router-link to="/detail/2">动态详情 {{$route.params.id}} </router-link>
+        <router-link to="/main">主界面</router-link>
+        <button @click="goHome" class="btn btn-success">首页</button>
+        <!-- 指定组件出口（组件渲染位置） -->
+        <router-view></router-view>
+    </div>
+    <script>
+        // 1 定义页面组件
+        const index = {template: '<div>首页</div>'};
+        const list = {template: '<div>列表</div>'};
+        const detail = {template: '<div>详情</div>'};
+        const detail1 = {template: '<div>动态详情</div>'};
+        const main = {template: `<div>主界面
+                <router-link to="/main/cate">分类</router-link>
+                <router-link to="/main/goods">商品</router-link>
+                <router-link :to="{name: 'cate'}">分类命名路由</router-link>
+                <router-link :to="{name: 'goods'}">商品命名路由</router-link>
+                <router-view></router-view>
+            </div>`}
+        const cate = {template: '<div>分类管理</div>'}
+        const goods = {template: '<div>商品管理</div>'}
+
+        // 2 定义路由
+        const routers = [
+            {path: '/', component: index},
+            {path: '/list', component: list},
+            {path: '/detail', component: detail},
+            {path: '/detail/:id', component: detail1},
+            {
+                path: '/main', component: main,
+                children: [
+                    {path: 'cate', component: cate, name: "cate"},
+                    {path: 'goods', component: goods, name: "goods"},
+                ]
+            },
+        ];
+
+        // 3 创建 router 实例
+        const router = new VueRouter({
+            routes: routers,
+        });
+
+        new Vue({
+            // 4 挂载到Vue实例
+            el: '#app',
+            router: router,
+            methods: {
+                goHome() {
+                    this.$router.go('/')
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="msg" type="text" />
+        {{msg}}
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello'
+            },
+            beforeCreate() {
+                console.log('beforeCreate');
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.msg);
+            },
+            created() {
+                console.log('created');
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.msg);
+            },
+            beforeMount() {
+                console.log('beforeMount');
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.msg);
+            },
+            mounted() {
+                console.log('mounted');
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.msg);
+            },
+            beforeUpdate() {
+                console.log('beforeUpdate');
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.msg);
+            },
+            updated() {
+                console.log('updated');
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.msg);
+            },
+            beforeDestory() {
+                console.log('beforeDestory');
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.msg);
+            },
+            destory() {
+                console.log('destory');
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.msg);
+            }
+        })
+
+    </script>
+</body>
+</html>

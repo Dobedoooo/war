@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>计算属性</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <dl>
+            <dt></dt>
+            <dd>
+                {{msg}}
+            </dd>
+            <dd>
+                {{msg.toUpperCase()}}
+            </dd>
+            <dd>
+                {{msg.charAt(0).toUpperCase() + msg.substring(1)}}
+            </dd>
+            <dd>
+                {{msg.split('').reverse().join('')}}
+            </dd>
+            <dd>
+                {{reverseString}}
+            </dd>
+            <dd>
+                长度 {{msg.length}} {{msgLength}}
+            </dd>
+        </dl>
+        
+        
+        
+    </div>
+    <script>
+        /*
+
+        */
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'helloworld'
+            },
+            // '计算'属性
+            computed: {
+                reverseString() {
+                    let str = this.msg.split('').reverse().join('');
+                    return str;
+                },
+                msgLength() {
+                    return this.msg.length;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

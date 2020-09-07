@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../fontawsome/css/all.css">
     <style>
         body {
-            /* height: 2000px; */
+            height: 2000px;
         }
         /* 滚动条整体宽度 */
         ::-webkit-scrollbar {
@@ -41,16 +41,24 @@
         i {
             color: rgba(0, 0, 0, .6);
         }
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid crimson;
+            position: relative;
+        }
+
     </style>
 </head>
 <body>
-    <form action="" id="form">
+    <!-- <form action="" id="form">
         文件：<input type="file" name="file" id="file"  style="display: none;">
         <button id="upload" type="submit">上传</button>
     </form>
     <i class="fa fa-bomb"></i>
     <button id="transport" >另一个按钮</button>
-    <img id="preview" src="" width="200" style="border-radius: 5px;"></img>
+    <img id="preview" src="" width="200" style="border-radius: 5px;"></img> -->
+    <div id="div"></div>
     <script src="../js/jquery-3.5.1.min.js"></script>
     <script src="../js/jquery.validate.min.js"></script>
     <script>
@@ -117,6 +125,23 @@
     <script>
         var str = 'http://localhost/mvc/upload\asd.jpg'.replace('/\\/', '\\\\');
         console.log(str);
+
+
+    </script>
+    <script>
+        var left = 0;
+        var div = document.getElementById('div');
+        div.addEventListener('mousewheel', function(e) {
+            e.preventDefault();
+            if (e.wheelDelta > 0) { 
+                left = left + 5;
+                $('#div').css('left', left);
+            }  
+            if (e.wheelDelta < 0) { 
+                left = left - 5;
+                $('#div').css('left', left);
+            }
+        });
     </script>
 </body>
 </html>

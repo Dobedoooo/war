@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>样式绑定</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        爱好：
+        <label>
+            <input type="checkbox" value="basketball" v-model="fav">
+            篮球
+        </label>
+    
+        <label>
+            <input type="checkbox" value="read" v-model="fav">
+            阅读
+        </label>
+    
+        <label>
+            <input type="checkbox" value="film" v-model="fav">
+            电影
+        </label>
+        <hr>
+        {{fav}}
+    </div>
+    <div id="app2">
+        城市：
+        <select v-model="city">
+            <option disabled value="">请选择</option>
+            <option :value="v" v-for="v in citys">{{v}}</option>
+        </select>
+        <hr>
+        <p>当前选中：{{city}}</p>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                fav:[]
+            }
+        })
+        new Vue({
+            el:"#app2",
+            data:{
+                citys:['北京','上海','杭州','深圳','西安','武汉'],
+                city:''
+            }
+        })
+    </script>
+   
+</body>
+</html>

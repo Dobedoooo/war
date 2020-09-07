@@ -111,6 +111,22 @@
         内容 -->
     <div class="top">
         <button class="add-show btn btn-default" disabled>添加产品</button>
+        <form class="form-inline col-sm-offset-1" id="search">
+            <div class="form-group">
+                <label for="filter">筛选</label>
+                <select name="filter" id="filter" class="form-control">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="keyword">编号</label>
+                <input type="text" class="form-control" placeholder="请输入产品编号" autocomplete="off" name="keyword" id="keyword">
+            </div>
+            <div class="form-group">
+                <label for="reverse">倒序</label>
+                <input type="checkbox" name="reverse" id="reverse">
+            </div>
+            <button class="btn btn-default" id="searchsubmit">查询</button>
+        </form>
     </div>
     <div class="cover"></div>
     <div class="add default-box">
@@ -196,6 +212,11 @@
                         {/foreach}
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 page">
+                {$page}
             </div>
         </div>
     </div>

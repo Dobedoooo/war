@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Vue</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <input v-model="msg" type="text" />
+        <h1>{{ msg }}</h1> -->
+        <!-- v-html v-text` -->
+        <ul>
+            <li> {{msg}} </li>
+            <!-- v-text -->
+            <h4>v-text</h4>
+            <li v-text="msg"></li>
+            <li v-text="skills"></li>
+            <li v-text="html"></li>
+            <!-- v-html 能识别标签 -->
+            <h4>v-html</h4>
+            <li v-html="html"></li>
+        </ul>
+        <!-- v-model -->
+        <h4>v-model</h4>
+        <input v-model="msg" type="text" />
+        <h4>v-once</h4>
+        <p v-once> {{ msg }} </p>
+        <!-- v-if v-show -->
+        <ul>
+            <h4>v-show</h4>
+            <!-- false时 将元素display: none -->
+            <li v-show="flag" style="width: 300px;height: 300px;background-color: crimson;"></li>
+            <!-- false时 将元素注释掉 -->
+            <li v-if="false" style="width: 300px;height: 300px;background-color: crimson;"></li>
+            <li v-else style="width: 300px;height: 300px;background-color: #17d4a5;"></li>
+        </ul>
+        <!-- v-for -->
+        <ul>
+            <h4>v-for</h4>
+            <li v-for="(skill, index) in skills" :key="skill.id">
+                {{ index }} {{ skill }}
+            </li>
+            <li v-for="(person, key, index) in persons">
+                {{ index }} {{ key }} {{ person }}
+            </li>
+            <li v-for="student in students" :key="student.id">
+                {{ student.name }} {{ student.age }}
+            </li>
+        </ul>
+        <!-- v-bind 绑定属性 -->
+        <h4>v-bind</h4>
+        <!-- 动态跳到指定的地方 -->
+        <a href="https://baidu.com" target="__blank">百度</a>
+        <input v-model="url" type="text" />
+        <a v-bind:href="url">百度</a>
+        <!-- v-bind 缩写 -->
+        <a :href="url"></a>
+        <!-- v-on 绑定事件 -->
+        <!-- 复习 事件三要素 事件源 事件 事件处理函数 -->
+        <h4>v-on</h4>
+        <button v-on:click="fn">按钮</button>
+        <!-- v-on 缩写 -->
+        <button @click="fn">button</button>
+    </div>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                age: 20,
+                flag: false,
+                skills: ['HTML', 'CSS', 'JS', 'PHP', 'Vue'],
+                persons: {
+                    name: 'zhangsan',
+                    age: 20,
+                },
+                students: [
+                    {name: 'zhangsan', age:20},
+                    {name: 'lisi', age:20},
+                    {name: 'wangwu', age:20},
+                ],
+                html: '<i>斜</i>',
+                true: false,
+                url: 'https://www.baidu.com'
+            },
+            methods: {
+                fn() {
+                    console.log(1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

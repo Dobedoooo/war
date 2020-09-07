@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-30 09:28:48
+/* Smarty version 3.1.34-dev-7, created on 2020-08-31 07:35:41
   from 'D:\fullstack\8\service\mvc\application\template\admin\login.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f4b71502c4a20_49929234',
+  'unifunc' => 'content_5f4ca84de5a936_00071229',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '97d9373129e3666b608b8abb8ba9dd4d6c324d4d' => 
     array (
       0 => 'D:\\fullstack\\8\\service\\mvc\\application\\template\\admin\\login.html',
-      1 => 1598779726,
+      1 => 1598859341,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f4b71502c4a20_49929234 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4ca84de5a936_00071229 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -93,7 +93,9 @@ base.js"><?php echo '</script'; ?>
                     </div>
                     <div class="triggle">
                         <label for="triggle">调试模式</label>
-                        <i class="fa fa-toggle-off text-muted" id="triggle"></i>
+                        <div class="switch" id="triggle">
+                            <div class="circle"></div>
+                        </div>
                     </div>
                     
                 </form>

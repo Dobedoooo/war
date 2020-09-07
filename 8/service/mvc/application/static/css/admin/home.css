@@ -123,7 +123,7 @@ nav li:hover, .box div:hover {
 .author {
     position: absolute;
     left: 10px;
-    bottom: 8px;
+    top: 910px;
 }
 
 .author span {

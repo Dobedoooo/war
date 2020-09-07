@@ -38,14 +38,3 @@
 .triggle label {
     margin: 0;
 }
-
-.triggle i {
-    font-size: 22px;
-    margin-left: 5px;
-    transition: all .3s;
-    /* color: ; */
-}
-
-.triggle i.on {
-    color: #27ae60 !important;
-}

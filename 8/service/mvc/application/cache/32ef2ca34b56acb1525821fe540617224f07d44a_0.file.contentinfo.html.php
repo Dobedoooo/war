@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-30 08:10:31
+/* Smarty version 3.1.34-dev-7, created on 2020-08-31 09:30:13
   from 'D:\fullstack\8\service\mvc\application\template\admin\contentinfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f4b5ef7e23de0_14219753',
+  'unifunc' => 'content_5f4cc32550e686_38510583',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '32ef2ca34b56acb1525821fe540617224f07d44a' => 
     array (
       0 => 'D:\\fullstack\\8\\service\\mvc\\application\\template\\admin\\contentinfo.html',
-      1 => 1598774572,
+      1 => 1598866195,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f4b5ef7e23de0_14219753 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4cc32550e686_38510583 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -156,6 +156,22 @@ tinymce/tinymce.min.js"><?php echo '</script'; ?>
         内容 -->
     <div class="top">
         <button class="add-show btn btn-default" disabled>添加产品</button>
+        <form class="form-inline col-sm-offset-1" id="search">
+            <div class="form-group">
+                <label for="filter">筛选</label>
+                <select name="filter" id="filter" class="form-control">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="keyword">编号</label>
+                <input type="text" class="form-control" placeholder="请输入产品编号" autocomplete="off" name="keyword" id="keyword">
+            </div>
+            <div class="form-group">
+                <label for="reverse">倒序</label>
+                <input type="checkbox" name="reverse" id="reverse">
+            </div>
+            <button class="btn btn-default" id="searchsubmit">查询</button>
+        </form>
     </div>
     <div class="cover"></div>
     <div class="add default-box">
@@ -255,6 +271,12 @@ $_smarty_tpl->tpl_vars['v']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 page">
+                <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+
             </div>
         </div>
     </div>

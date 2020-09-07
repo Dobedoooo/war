@@ -31,32 +31,59 @@ $(function () {
         $(this).attr('href', href + '?h=' + height);
     });
 
-    var flag = false;
-    $('#triggle').click(function (e) { 
+    // 开关
+    $('.switch').css({
+        width: '30px',
+        height: '19px',
+        border: '1px solid #ccc',
+        background: '#ccc',
+        'border-radius': '10px',
+        display: 'flex',
+        'align-items': 'center',
+        transition : 'all .3s',
+        'margin-left': '5px',
+        cursor: 'pointer',
+    });
+    $('.switch .circle').css({
+        width: '15px',
+        height: '15px',
+        background: '#fff',
+        'border-radius': '50%',
+        'margin-left': '1px',
+        transition: 'all .3s',
+    });
+    var switch_flag = false;
+    $('.switch').click(function (e) { 
         e.preventDefault();
-        if(flag) {
- 
+        if(switch_flag) {
+            $('.switch').css({
+                background: '#ccc',
+                'border-color': '#ccc',
+            });
+            $('.switch .circle').css({
+                transform: 'translateX(0px)',
+            });
             $('#login').attr('action', '/mvc/index.php/admin/index/login');
-            $('#triggle').addClass('fa-toggle-off');
-            $('#triggle').removeClass('fa-toggle-on');
-            $('#triggle').removeClass('on');
             $('#login input').val('');
             $('#verifyCode').removeAttr('disabled');
             $('#verifyCode').attr('placeholder', '请输入验证码');
-            flag = false;
 
+            switch_flag = false;
         } else {
+            $('.switch').css({
+                background: '#27ae60',
+                'border-color': '#27ae60',
+            });
+            $('.switch .circle').css({
+                transform: 'translateX(11px)',
+            });
             $('#login').attr('action', '/mvc/index.php/admin/index/loginWithoutVerify');
-            $('#triggle').addClass('fa-toggle-on');
-            $('#triggle').removeClass('fa-toggle-off');
-            $('#triggle').addClass('on');
             $('#pass').val('admin');
             $('#name').val('admin');
             $('#verifyCode').attr('disabled', '');
             $('#verifyCode').attr('placeholder', '验证码已禁用');
-            flag = true;
-            
+
+            switch_flag = true;
         }
-        
     });
 });

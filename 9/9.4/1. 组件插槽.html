@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>组件插槽slot</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/vue.js"></script>
+    <style>
+        .panel {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <panel :type="panelType">
+            <!-- 组件内嵌套内容会被放在 <slot> 标签对中 -->
+                <!-- v-slot 简写为 # -->
+            <template v-slot:header="props">
+                <div class="panel-heading">
+                    panel-heading {{props.title}} {{props.count}}
+                </div>
+            </template>
+            <template #body>
+                <div class="panel-body">
+                    panel-body
+                </div>
+            </template>
+            <template v-slot:footer>
+                <div class="panel-footer">
+                    panel-footer
+                </div>
+            </template>
+        </panel>
+    </div>
+    <template id="panel">
+        <div :class="['panel', 'panel-'+type]">
+            <slot name="header" :title="msg" :count='10'></slot>
+            <slot name="body">默认插槽</slot>
+            <slot name="footer"></slot>
+        </div>
+    </template>
+    <script>
+        Vue.component('panel', {
+            template: '#panel',
+            props: {
+                type: {
+                    type: String,
+                    default: 'primary',
+                }
+            },
+            data() {
+                return {
+                    count: 20,
+                    msg: 'hello world'
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                panelType: 'danger',
+            }
+        })
+    </script>
+</body>
+</html>

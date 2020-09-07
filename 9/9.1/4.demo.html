@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>学生管理</title>
+    <link rel="stylesheet" href="../../css/reset200802.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../8/动画/css/load.css">
+    <script src="../../js/vue.js"></script>
+    <style>
+        td {
+            vertical-align: middle !important;
+        }
+        .student-box, .modify-box {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .loading {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 200px auto;
+            width: 45px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        MVVM
+        数据驱动
+     -->
+    <div class="container" id="app">
+        <div class="loading" v-show="isShowLoading">
+            <div class="load1"></div>
+            <div class="load2"></div>
+            <div class="load3"></div>
+            <div class="load4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-2">
+                <button @click="showStudentBox" class="btn btn-default">添加</button>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="姓名" autocomplete="off" v-model="searchStudents.name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="年龄" autocomplete="off" v-model="searchStudents.age">
+                    </div>
+                    <button class="btn btn-default" @click.prevent="filter">Search</button>
+                </form>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <table class="table">
+                    <caption>学生信息( {{studentsLength}} 条)</caption>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            <th>班级</th>
+                            <th>专业</th>
+                            <th>学号</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- index 行号 -->
+                        <tr v-for="(student, index) in students" :class="[index % 2 ? 'success' : 'info']">
+                            <td> {{student.id}} </td>
+                            <td> {{student.name}} </td>
+                            <td> {{student.gender=='male'?'男':'女'}} </td>
+                            <td> {{student.age}} </td>
+                            <td> {{student.classes}} </td>
+                            <td> {{student.major}} </td>
+                            <td> {{student.number}} </td>
+                            <td> <a href="javascript:;" class="btn btn-info" @click="modify(student.id)">变更</a> <a href="javascript:;" class="btn btn-danger" @click="delStudent(student.id)">删除</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="student-box col-lg-3" v-show="isshow" style="display: none;">
+            <form>
+                <div class="from-group">
+                    <label for="">姓名</label>
+                    <input autocomplete="off" v-once type="text" class="form-control" v-model="student.name" name="name">
+                </div>
+                <div class="from-group">
+                    <label for="sex1">男</label>
+                    <input type="radio" name="sex" id="sex1" value="male" v-model="student.gender">
+                    <label for="sex2">女</label>
+                    <input type="radio" name="sex" id="sex2" value="famale" v-model="student.gender">
+                </div>
+                <div class="from-group">
+                    <label for="">年龄</label>
+                    <input autocomplete="off" type="text" class="form-control" v-model="student.age" name="age">
+                </div>
+                <div class="from-group">
+                    <label for="">班级</label>
+                    <input autocomplete="off" type="text" class="form-control" v-model="student.classes" name="class">
+                </div>
+                <div class="from-group">
+                    <label for="">专业</label>
+                    <input autocomplete="off" type="text" class="form-control" v-model="student.major" name="major">
+                </div>
+                <div class="from-group">
+                    <label for="">学号</label>
+                    <input autocomplete="off" type="text" class="form-control" v-model="student.number" name="number">
+                </div>
+                <div class="form-group">
+                </div>
+                <button class="btn btn-success" @click.prevent="addStudent">添加</button>
+                <button class="btn btn-warning" @click.prevent="hideStudentBox">取消</button>
+            </form>
+        </div>
+        <div class="modify-box col-lg-3" v-show="isshow2" style="display: none;">
+            <form>
+                <div class="from-group">
+                    <label for="">姓名</label>
+                    <input autocomplete="off" type="text" class="form-control" name="name" v-model="student1.name">
+                </div>
+                <div class="from-group">
+                    <label for="msex1">男</label>
+                    <input type="radio" name="sex" id="msex1" value="male" v-model="student1.gender">
+                    <label for="msex2">女</label>
+                    <input type="radio" name="sex" id="msex2" value="famale" v-model="student1.gender">
+                </div>
+                <div class="from-group">
+                    <label for="">年龄</label>
+                    <input autocomplete="off" type="text" class="form-control" v-model="student1.age">
+                </div>
+                <div class="from-group">
+                    <label for="">班级</label>
+                    <input autocomplete="off" type="text" class="form-control" v-model="student1.classes">
+                </div>
+                <div class="from-group">
+                    <label for="">专业</label>
+                    <input autocomplete="off" type="text" class="form-control" v-model="student1.major">
+                </div>
+                <div class="from-group">
+                    <label for="">学号</label>
+                    <input autocomplete="off" type="text" class="form-control" v-model="student1.number">
+                </div>
+                <div class="form-group">
+                </div>
+                <button class="btn btn-success" @click.prevent="modifyStudent(student1.id)">变更</button>
+                <button class="btn btn-warning" @click.prevent="hideStudentBox">取消</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let students  = [
+                    {id: 1, name: '张三', gender: 'male', age: '22', classes: 'A01', major: '软件工程', number: '171301011'},
+                    {id: 3, name: '李四', gender: 'male', age: '22', classes: 'A01', major: '软件工程', number: '171301011'},
+                    {id: 5, name: '王五', gender: 'male', age: '22', classes: 'A01', major: '软件工程', number: '171301011'},
+                    {id: 8, name: '老六', gender: 'male', age: '22', classes: 'A01', major: '软件工程', number: '171301011'},
+                    {id: 11, name: '七七', gender: 'male', age: '21', classes: 'A01', major: '软件工程', number: '171301011'},
+                ];
+        let vue = new Vue({
+            el: '#app',
+            data: {
+                isshow2: false,
+                isshow: false,
+                student: {id: '', name: '', gender: '', age: '', classes: '', major: '', number: ''},
+                student1: {id: '', name: '', gender: '', age: '', classes: '', major: '', number: ''},
+                students: [],
+                searchStudents: {name: '', age: ''},
+                isShowLoading: false,
+            },
+            methods: {
+                addStudent(e) {
+                    // e.preventDefault();
+                    this.student.id = this.insertId();
+                    let student = Object.assign({}, this.student);
+                    this.students.push(student);
+                    this.isshow = false;
+                },
+                delStudent(id) {
+                    // console.log(id);
+                    this.students.forEach((value, index) => {
+                        if(value.id == id) {
+                            this.students.splice(index, 1);
+                        }
+                    });
+                },
+                showStudentBox() {
+                    this.isshow = true;
+                },
+                hideStudentBox() {
+                    this.isshow = false;
+                    this.isshow2 = false;
+                },
+                insertId() {
+                    let id = 1;
+
+                    if(this.students.length) {
+
+                        let student = this.students[this.students.length - 1];
+
+                        id = student.id + 1;
+
+                    }
+
+                    return id;                    
+
+                },
+                modify(id) {
+                    // console.log(id);
+                    let student = {};
+                    this.students.forEach(element => {
+                        if(element.id == id) {
+                            student = Object.assign({}, element)
+                        }
+                    });
+                    this.isshow2 = true;
+                    this.student1 = student;
+                },
+                modifyStudent(id) {
+                    this.students.forEach((value, index) => {
+                        if(value.id == id) {
+                            this.students.splice(index, 1, this.student1);
+                        }
+                    });
+                    this.isshow2 = false;
+                },
+                filter() {
+                    let {name, age} = this.searchStudents;
+                    if(name && age) {
+                        this.students = students;
+                        this.students = this.students.filter(ele => {
+                            return ele.name.includes(name) && ele.age == age;
+                        })
+                    } else if(name && !age) {
+                        this.students = students;
+                        this.students = this.students.filter(ele => {
+                            return ele.name.includes(name);
+                        })
+                    } else if(age && !name) {
+                        this.students = students;
+                        this.students = this.students.filter(ele => {
+                            return ele.age == age;
+                        })
+                    } else if(!name && !age){
+                        this.students = students;
+                    }
+                    
+                }
+            },
+            created() {
+                this.isShowLoading = true;
+            },
+            mounted() {
+                let t = setTimeout(() => {
+                    clearTimeout(t);
+                    this.isShowLoading = false;
+                    let st = localStorage.getItem('students');
+                    this.students = st ? JSON.parse(st) : students;
+                    !st && localStorage.setItem('students', JSON.stringify(students));
+                }, 200);
+                
+            },
+            computed: {
+                studentsLength() {
+                    return this.students.length;
+                }
+            }
+            
+        });
+    </script>
+</body>
+</html>

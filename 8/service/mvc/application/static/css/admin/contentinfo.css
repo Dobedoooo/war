@@ -18,11 +18,18 @@ body {
     z-index: 1;
     border-bottom: 1px solid #f0f0f0;
     box-shadow: 0 0 2px  rgba(0, 0, 0, .2);
+    display: flex;
+    align-items: center;
+}
+
+.top .form-group {
+    margin-right: 8px;
 }
 
 .add-show {
     margin: 20px 0 20px 250px;
     z-index: 9999;
+    float: left;
 }
 
 .add, .show {
@@ -49,6 +56,7 @@ body {
 
 .container {
     padding-top: 85px;
+    height: 100%;
 }
 
 #preview, #showpreview {
@@ -108,4 +116,14 @@ form button, #submit, #showsubmit {
 
 .disable {
     pointer-events: none;
+}
+
+#search {
+    float: left;
+    font-size: 15px;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
 }

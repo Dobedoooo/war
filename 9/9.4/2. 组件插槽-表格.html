@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-table :studata="students" :thead="tableHead">
+            <template #id="prop">
+                <cell field="id" :student="prop.student"></cell>
+            </template>
+            <template #name="prop">
+                <cell field="name" :student="prop.student"></cell>
+            </template>
+            <template #gender="prop">
+                <cell field="gender" :student="prop.student"></cell>
+            </template>
+            <template #age="prop">
+                <cell field="age" :student="prop.student"></cell>
+            </template>
+            <template #classes="prop">
+                <cell field="classes" :student="prop.student"></cell>
+            </template>
+        </my-table>
+    </div>
+    <!-- 表格模板 -->
+    <template id="table">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th v-for="item in thead"> {{item}} </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="student in studata">
+                    <td v-for="(key, value) in thead">
+                        <slot :name="value" :student="student"></slot>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+    <!-- 单元格模板 -->
+    <template id="cell">
+        <div> {{student[field]}} </div>
+    </template>
+    <script>
+        Vue.component('my-table', {
+            template: '#table',
+            props: {
+                studata: {
+                    type: Array,
+                    required: true,
+                },
+                thead: {
+                    type: Object,
+                    required: true,
+                }
+            },
+        });
+
+        Vue.component('cell', {
+            template: '#cell',
+            props: {
+                field: {
+                    type: String,
+                    required: true,
+                },
+                student: {
+                    type: Object,
+                    required: true,
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                students: [],
+                tableHead: {
+                    id: 'ID',
+                    name: '姓名',
+                    gender: '性别',
+                    age: '年龄',
+                    classes: '班级',
+                },
+            },
+            methods: {
+                initStudent() {
+                    let students = localStorage.getItem('students');
+                    this.students = JSON.parse(students);
+                }
+            },
+            mounted() {
+                this.initStudent();
+            }
+        })
+    </script>
+</body>
+</html>

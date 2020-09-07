@@ -160,7 +160,7 @@
         // 注册用户名远程验证
         function check() {
 
-            $name = $_POST['name'];
+            $name = $_GET['name'];
 
             $database = new db;
 

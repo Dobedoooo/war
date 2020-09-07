@@ -1,5 +1,19 @@
 $(function () {
 
+
+    // 搜索下拉框
+    $.ajax({
+        type: "get",
+        url: "/mvc/index.php/admin/content/getCol",
+        success: function (response) {
+
+            $('#filter').empty();
+
+            $('#filter').append(response);
+
+        }
+    });
+
     setTimeout(() => {
         $('.show-btn').removeAttr('disabled');
         $('.show-btn').removeClass('disable');
@@ -399,5 +413,42 @@ $(function () {
         }
     });
 
+    // 搜索框表单提交
+    $('#searchsubmit').click(function(e) {
+        e.preventDefault();
+        var data = $('#search').serialize();
+        console.log(data);
+
+        $.ajax({
+            type: "get",
+            url: "/mvc/index.php/admin/content/search",
+            data: data,
+            dataType: "json",
+            success: function (response) {
+                
+                $('#content').empty();
+
+                console.log(response);
+
+                for (let index = 0; index < response.length; index++) {
+                    const element = response[index];
+                    $('#content').append(`
+                        <tr>
+                            <td pid="${element['pid']}">${element['name']}</td>
+                            <td>${element['proname']}</td>
+                            <td>${element['proid']}</td>
+                            <td>${element['protemp']}</td>
+                            <td>
+                                <a href="javascript:;" id="${element['id']}" class="btn btn-success show-btn">查看内容</a>
+                                <a href="javascript:;" id="${element['id']}" class="btn btn-danger del-btn">删除</a>
+                            </td>
+                        </tr>
+                    `);
+                }
+
+            }
+        });
+
+    })
 
 });

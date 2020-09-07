@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>组件化</title>
+    <script src="../../js/vue.js"></script>
+    <style>
+        [id] {
+            width: 50%;
+            border-right: 2px solid crimson;
+            float: left;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>App</h1>
+        <my-title></my-title>
+        <my-header></my-header>
+    </div>
+    <div id="app1">
+        <h1>App1</h1>
+        <my-title></my-title>
+        <my-title></my-title>
+        <my-script></my-script>
+        <my-template></my-template>
+        <table>
+            <tr>
+                <my-title></my-title>
+            </tr>
+        </table>
+    </div>
+    <script type="script/x-template" id="myscript">
+        <div>
+            <h1>script模板</h1>
+        </div>
+    </script>
+    <template id="mytemplate">
+        <div>
+            <h1>template模板</h1>
+        </div>
+    </template>
+    <script>
+        /*
+            1. 组件 vue实例
+            2. html标签的扩展（自定义的标签）
+            3. 组成： 模板（内容，样式） 数据 逻辑
+        */
+        // 全局组件
+        Vue.component('my-title', {
+            template: '<h1>自定义组件</h1>',
+        });
+
+        Vue.component('my-script', {
+            template: '#myscript',
+        })
+
+        Vue.component('my-template', {
+            template: '#mytemplate'
+        })
+        var vue = new Vue({
+            el: '#app',
+            components: {
+                'my-header': {
+                    template: '<h5>my-header</h5>'
+                } 
+            }
+        });
+
+        let app1 = new Vue({
+            el: '#app1'
+        })
+    </script>
+</body>
+</html>
