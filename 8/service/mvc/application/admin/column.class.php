@@ -88,19 +88,20 @@
 
                 while($row_2 = $result_2->fetch_assoc()) {
                     $visible_2 = $row_2['isshow']==1?'可见':'不可见';
+
                     $str.='
-                    <tr>
-                        <td>2</td>
-                        <td>∟'.$row_2['name'].'</td>
-                        <td>'.$visible_2.'</td>
-                        <td>'.$row_2['temp'].'</td>
-                        <td>
-                            <a href="javascript:;" cid="'.$row_2['id'].'" class="btn btn-default subshow disabled">添加子栏目</a>
-                            <a href="javascript:;" cid="'.$row_2['id'].'" class="btn btn-danger delCol">删除</a>
-                            <a href="javascript:;" cid="'.$row_2['id'].'" class="btn btn-warning modifylink">详细信息</a>
-                        </td>
-                    </tr>
-                ';
+                        <tr>
+                            <td>2</td>
+                            <td>∟'.$row_2['name'].'</td>
+                            <td>'.$visible_2.'</td>
+                            <td>'.$row_2['temp'].'</td>
+                            <td>
+                                <a href="javascript:;" cid="'.$row_2['id'].'" class="btn btn-default subshow disabled">添加子栏目</a>
+                                <a href="javascript:;" cid="'.$row_2['id'].'" class="btn btn-danger delCol">删除</a>
+                                <a href="javascript:;" cid="'.$row_2['id'].'" class="btn btn-warning modifylink">详细信息</a>
+                            </td>
+                        </tr>
+                    ';
                 }
             }
         }
@@ -118,7 +119,9 @@
 
             $desc = $_GET['desc'];
 
-            $this->db->query("INSERT INTO colm (`name`, `pid`, `isshow`, `temp`, `desc`) VALUES ('$name', '$pid', '$isshow', '$temp', '$desc')");
+            $img = $_GET['url'];
+
+            $this->db->query("INSERT INTO colm (`name`, `pid`, `isshow`, `temp`, `desc`, `img`) VALUES ('$name', '$pid', '$isshow', '$temp', '$desc', '$img')");
 
             if($this->db->affected_rows > 0) {
 
@@ -146,6 +149,13 @@
             $this->db->query("delete from colm where id = '$cid'");
 
             if($this->db->affected_rows > 0) {
+
+                $result = $this->db->query("SELECT id FROM product WHERE pid = ".$cid);
+
+                if($result->fetch_assoc() > 0) {
+                    $this->db->query("DELETE FROM product WHERE pid = ".$cid);
+                }
+
                 echo 1;
             } else {
                 echo 0;
@@ -189,11 +199,14 @@
     
                 $desc = $row['desc'];
     
+                $img = $row['img'];
+
                 $info = array(
                     'name' => $name,
                     'isshow' => $isshow,
                     'temp' => $temp,
                     'desc' => $desc,
+                    'url' => $img,
                 );
     
                 $super = array();
@@ -241,7 +254,9 @@
 
             $desc = $_GET['modesc'];
 
-            $this->db->query("update colm set `name` = '$name', `pid` = '$pid', `isshow` = '$isshow', `temp` = '$temp', `desc` = '$desc' where id = '$cid'");
+            $img = $_GET['url'];
+
+            $this->db->query("update colm set `name` = '$name', `pid` = '$pid', `isshow` = '$isshow', `temp` = '$temp', `desc` = '$desc', `img` = '$img' where id = '$cid'");
 
             if($this->db->affected_rows > 0) {
 

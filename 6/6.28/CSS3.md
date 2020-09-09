@@ -417,7 +417,7 @@
     	infinite 无限次
     */
     animation-iteration-count: ; 
-    /*  */
+    /* 方向 */
     animation-direction: ;
     /* 动画完成时的状态 */
     animation-fill-mode: ;

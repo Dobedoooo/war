@@ -75,7 +75,7 @@ $(function () {
                         $('#desc').val('');
 
                         $('#topCol').blur();
-                        
+
                     } else {
 
                         $('#topColSubmit span').html('错误 ');
@@ -117,6 +117,18 @@ $(function () {
 
     reset('#addTopCol', 'add');
     reset('#modify', 'm');
+
+    $('#addTopCol :input').on('input', function () {
+        console.log(1);
+        $('#topColSubmit').removeClass('btn-success');
+        $('#topColSubmit').removeClass('btn-danger');
+        $('#topColSubmit').addClass('btn-primary');
+
+        $('#topColSubmit i').removeClass('fa-check');
+        $('#topColSubmit i').removeClass('fa-exclamation');
+
+        $('#topColSubmit span').html('添加');
+    });
 
     // 删除栏目
     $('#column-content').on('click', '.delCol', function () {
@@ -185,6 +197,11 @@ $(function () {
         $('.modify-form').removeClass('on');
         $('.cover').removeClass('on');
         $('.add-form').removeClass('on');
+
+        $('.show-img-name').html('');
+
+        $('#showpreview').attr('src', '');
+        $('#showpreview').attr('title', '');
     });
 
     // 显示变更表单
@@ -197,6 +214,18 @@ $(function () {
         var select = $('#super');
 
         $('#super').empty();
+
+        $('#modifyCol span').html('变更 ');
+        $('#showupload span').html('上传图片');
+
+        $('#modifyCol, #showupload').removeClass('btn-success');
+        $('#modifyCol, #showupload').removeClass('btn-danger');
+        $('#modifyCol').addClass('btn-primary');
+        $('#showupload').addClass('btn-default');
+        
+
+        $('#modifyCol i, #showupload i').removeClass('fa-check');
+        $('#modifyCol i, #showupload i').removeClass('fa-exclamation');
 
         $.ajax({
             type: "get",
@@ -211,6 +240,8 @@ $(function () {
                     $('#moisshow').val(response['info']['isshow']);
                     $('#motemp').val(response['info']['temp']);
                     $('#modesc').val(response['info']['desc']);
+                    $('#showurl').val(response['info']['url']);
+                    $('#showpreview').attr('src', response['info']['url'])
 
                     if(response['super'] == 0) {
 
@@ -273,12 +304,12 @@ $(function () {
 
                         $('#column-content').append(response);
 
-                        $('#modify button span').html('成功 ');
+                        $('#modifyCol span').html('成功 ');
 
-                        $('#modify button').removeClass('btn-primary');
-                        $('#modify button').addClass('btn-success');
+                        $('#modifyCol').removeClass('btn-primary');
+                        $('#modifyCol').addClass('btn-success');
 
-                        $('#modify button i').addClass('fa-check');
+                        $('#modifyCol i').addClass('fa-check');
 
                         isAlone();
 
@@ -322,4 +353,157 @@ $(function () {
     }
 
     isAlone();
+
+    // 成功状态
+    function success(btnId){
+        $('#' + btnId).removeClass('btn-default');
+        $('#' + btnId).removeClass('btn-primary');
+        $('#' + btnId).removeClass('btn-danger');
+        $('#' + btnId).addClass('btn-success');
+        $('#' + btnId + ' span').html('成功');
+        $('#' + btnId + ' i').removeClass('fa-exclamation');
+        $('#' + btnId + ' i').addClass('fa-check');
+        $('#' + btnId).css('pointer-events', 'none');
+    }
+
+    // 失败
+    function fail(btnId){
+        $('#' + btnId).removeClass('btn-default');
+        $('#' + btnId).removeClass('btn-primary');
+        $('#' + btnId).removeClass('btn-success');
+        $('#' + btnId).addClass('btn-danger');
+        $('#' + btnId + ' span').html('错误');
+        $('#' + btnId + ' i').removeClass('fa-check');
+        $('#' + btnId + ' i').addClass('fa-exclamation');
+    }
+
+    // 清空状态
+    function clear(btnId, holder) {
+        $('#' + btnId).removeClass('btn-default');
+        $('#' + btnId).removeClass('btn-primary');
+        $('#' + btnId).removeClass('btn-success');
+        $('#' + btnId).removeClass('btn-danger');
+        $('#' + btnId + ' span').html(holder);
+        $('#' + btnId + ' i').removeClass('fa-check');
+        $('#' + btnId + ' i').removeClass('fa-exclamation');
+        $('#' + btnId).css('pointer-events', 'auto');
+    }
+
+    // 选择文件
+    $('.choose').click(function (e) { 
+        e.preventDefault();
+        $('#img').click();
+        clear('upload', '上传图片');
+        $('#upload').addClass('btn-default');
+    });
+    $('.showchoose').click(function (e) { 
+        e.preventDefault();
+        $('#showimg').click();
+        clear('showupload', '上传图片');
+        $('#showupload').addClass('btn-default');
+    });
+
+    // 激活上传按钮 预览
+    $('.add-form').on('input', '#img', function () {
+
+        $('#upload').removeAttr('disabled');
+
+        // console.log($('#img')[0].files[0]['name']);
+
+        $('.img-name').html($('#img')[0].files[0]['name']);
+        $('#preview').attr('src', URL.createObjectURL($(this)[0].files[0]));
+        $('#preview').attr('title', '点击删除');
+    });
+    $('#showImg').on('input', '#showimg', function () {
+        $('#showupload').removeAttr('disabled');
+        $('#showpreview').css('display', 'inline-block');
+        $('.show-img-name').html($('#showimg')[0].files[0]['name']);
+        $('#showpreview').attr('src', URL.createObjectURL($(this)[0].files[0]));
+        $('#showpreview').attr('title', '点击删除');
+    });
+
+    // 移除预览
+    function removeImg() {
+        $('#preview, #showpreview').attr('src', '');
+        $('#preview, #showpreview').removeAttr('title');
+        $('#upload, #showupload').attr('disabled', '');
+        $('.img-name, .show-img-name').html('');
+    }
+
+    // 删除选择的文件
+    $('#preview').click(function (e) { 
+        e.preventDefault();
+        removeImg();
+    });
+    $('#showpreview').click(function(e) {
+        removeImg();
+    })
+
+    // 上传图片
+    $('#upload').click(function (e) { 
+        e.preventDefault();
+        
+        var img = $('#img').prop('files');
+
+        var data = new FormData();
+
+        data.append('file', img[0]);
+
+        $.ajax({
+            type: "POST",
+            url: "/mvc/index.php/admin/content/upload",
+            data: data,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                
+                if(response != 0) {
+
+                    $('#url').attr('value', 'http://localhost/mvc/' + response);
+                    // console.log(response);
+                    success('upload');
+
+                } else {
+                    fail('upload');
+                }
+
+            
+            }
+        });
+
+    });
+    $('#showupload').click(function (e) { 
+        e.preventDefault();
+        
+        var img = $('#showimg').prop('files');
+
+        var data = new FormData();
+
+        data.append('file', img[0]);
+
+        $.ajax({
+            type: "POST",
+            url: "/mvc/index.php/admin/content/upload",
+            data: data,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                
+                if(response != 0) {
+
+                    $('#showurl').attr('value', 'http://localhost/mvc/' + response.replace('/\\/', '/'));
+
+                    success('showupload');
+
+                } else {
+                    fail('showupload');
+                }
+
+            
+            }
+        });
+
+    });
 });

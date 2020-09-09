@@ -358,7 +358,6 @@ $(function () {
                 $('#showurl').val(response['result']['proimgurl']);
                 $('#showdetail').val(response['result']['prodetail']);
                 $('#showpreview').attr('src', response['result']['proimgurl']);
-                $('#showpreview').css('display', 'inline-block');
 
                 // console.log(typeof response['options']);
                 // console.log(response);

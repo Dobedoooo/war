@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-29 10:27:18
+/* Smarty version 3.1.34-dev-7, created on 2020-09-07 11:15:35
   from 'D:\fullstack\8\service\mvc\application\template\admin\colinfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f4a2d8633d444_44522617',
+  'unifunc' => 'content_5f561657a87ea1_13825831',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c1a53f234e5454745a2a45520862b500f28defd7' => 
     array (
       0 => 'D:\\fullstack\\8\\service\\mvc\\application\\template\\admin\\colinfo.html',
-      1 => 1598696740,
+      1 => 1599477326,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f4a2d8633d444_44522617 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f561657a87ea1_13825831 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -69,6 +69,7 @@ base.js"><?php echo '</script'; ?>
                             <input type="text" class="form-control" placeholder="请输入栏目名称" id="topCol" autocomplete="off" name="name">
                     </div>
                     <input type="hidden" name="pid" id="hiddenPid">
+                    <input type="hidden" name="url" id="url">
                     <div class="form-group col-sm-6">
                         <label for="isshow">栏目在导航</label>
                         <select name="isshow" id="isshow" class="form-control">
@@ -82,17 +83,28 @@ base.js"><?php echo '</script'; ?>
                             <input type="text" class="form-control" id="temp" name="temp" placeholder="请输入模板名称">
                             <div class="input-group-addon">.html</div>   
                         </div>
-
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <label for="desc">栏目描述</label>
-                        <textarea name="desc" id="desc" placeholder="请输入栏目描述" class="form-control"></textarea>
-                    </div>
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary" id="topColSubmit"><span>添加</span><i class="fa"></i></button>
-
                     </div>
                 </form>
+                <form action="" id="addImg" class="form-inline">
+                    <div class="file-style col-sm-2">
+                        <label for="img">栏目图片</label>
+                        <input type="file" name="img" id="img" style="display: none;">
+                        <div class="new-style">
+                            <button class="choose btn btn-default">选择文件</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-default" id="upload" disabled><span>上传图片</span> <i class="fa"></i></button>
+                </form>
+                <div class="img-name"></div>
+                <img src="" id="preview">
+                <div class="form-group col-sm-12">
+                    <label for="desc">栏目描述</label>
+                    <textarea name="desc" id="desc" placeholder="请输入栏目描述" class="form-control" form="addTopCol"></textarea>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" id="topColSubmit" form="addTopCol"><span>添加</span><i class="fa"></i></button>
+
+                </div>
             </div>
             <!-- 变更表单 -->
             <div class="modify-form default-box form-move">
@@ -103,6 +115,7 @@ base.js"><?php echo '</script'; ?>
                         <input type="text" class="form-control" name="moname" id="moname">
                     </div>
                     <input type="hidden" name="mocid" id="mocid">
+                    <input type="hidden" name="url" id="showurl">
                     <div class="form-group col-sm-6">
                         <label for="moisshow">栏目在导航</label>
                         <select name="moisshow" id="moisshow" class="form-control">
@@ -118,17 +131,31 @@ base.js"><?php echo '</script'; ?>
                         </div>
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="modesc">栏目描述</label>
-                        <textarea name="modesc" id="modesc" placeholder="请输入栏目描述" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group col-sm-6">
                         <label for="super">父栏目</label>
                         <select name="super" id="super" class="form-control"></select>
                     </div>
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary" id="modifyCol"><span>变更</span><i class="fa"></i></button>
-                    </div>
+                   
                 </form>
+                <form action="" id="showImg" class="form-inline">
+                    <div class="file-style col-sm-2">
+                        <label for="showimg">产品图片</label>
+                        <input type="file" name="img" id="showimg" style="display: none;">
+                        <div class="new-style">
+                            <button class="showchoose btn btn-default">选择文件</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-default" id="showupload" disabled><span>上传图片</span> <i class="fa"></i></button>
+                </form>
+                <div class="show-img-name"></div>
+                <img src="" id="showpreview">
+                <div class="form-group col-sm-12">
+                    <label for="modesc">栏目描述</label>
+                    <textarea name="modesc" id="modesc" placeholder="请输入栏目描述" class="form-control" form="modify"></textarea>
+                </div>
+                
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" id="modifyCol" form="modify"><span>变更</span><i class="fa"></i></button>
+                </div>
             </div>
         </div>
         <div class="row">

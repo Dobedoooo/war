@@ -78,10 +78,6 @@ body {
     margin-right: 7px;
 }
 
-.modify {
-    /* display: none; */
-}
-
 .form-show {
     width: 380px;
     padding: 30px;
@@ -116,6 +112,37 @@ body {
     z-index: 4;
 }
 
-form button {
+button {
     transition: all .3s;
+}
+
+#upload, #showupload {
+    margin-top: 25px;
+}
+
+#preview, #showpreview {
+    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+    width: 150px;
+    border-radius: 5px;
+    margin: 10px 0 10px 15px;
+    display: inline-block;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+#showpreview {
+    margin-left: 335px;
+}
+
+#preview:hover, #showpreview:hover {
+    box-shadow: 0 0 15px  rgba(0, 0, 0, .4);
+    filter: brightness(70%);
+}
+
+.img-name {
+    margin-left: 15px;
+}
+
+.show-img-name {
+    margin-left: 335px;
 }
