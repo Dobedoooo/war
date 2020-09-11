@@ -42,32 +42,32 @@
 
             $str = '';
 
-            $str.="<a requestAddr='{$this->fullPath}0'>[首页]</a>";
+            $str.="<a href='{$this->fullPath}0' page='0'>首页</a>";
 
-            $pre = $this->currentPage-1>0?$this->currentPage-1>0:0;
+            $pre = $this->currentPage-1>0?$this->currentPage-1:0;
 
-            $str.="<a requestAddr='{$this->fullPath}$pre'>[上一页]</a>";
+            $str.="<a href='{$this->fullPath}$pre' page='$pre'>上页</a>";
 
-            $start = $this->currentPage - floor($this->pages / 2) < 0?$this->currentPage:$this->currentPage - floor($this->pages / 2);
+            $start = $this->currentPage - floor($this->pages / 2) < 0?0:$this->currentPage - floor($this->pages / 2);
 
-            $end = $this->currentPage + $this->pages > ($this->total / $this->pages)?($this->total / $this->pages):$this->currentPage + $this->pages;
+            $end = $start + $this->pages > \ceil($this->total / $this->nums)?\ceil($this->total / $this->nums):$start + $this->pages;   
 
-            for ($i=$start; $i <= $end; $i++) { 
+            for ($i=$start; $i < $end; $i++) { 
                 # code...
                 $num = $i + 1;
                 if($i == $this->currentPage) {
                     $style = 'style=color: red';
                 }
-                $str.="<a requestAddr='{$this->fullPath}$i'>[{$num}]</a>";
+                $str.="<a href='{$this->fullPath}$i' page='$i'>{$num}</a>";
             }
 
-            $next = $this->currentPage + 1 > floor($this->total/$this->nums)-1?floor($this->total/$this->nums)-1:$this->currentPage + 1;
+            $next = $this->currentPage + 1 > floor($this->total/$this->nums)?floor($this->total/$this->nums) - 1:$this->currentPage + 1;
 
-            $str.="<a requestAddr='{$this->fullPath}$next'>[下一页]</a>";
+            $str.="<a href='{$this->fullPath}$next' page='$next'>下页</a>";
 
-            $last = floor($this->total/$this->nums)-1;
+            $last = floor($this->total/$this->pages);
 
-            $str.="<a requestAddr='{$this->fullPath}$last'>[尾页]</a>";
+            $str.="<a href='{$this->fullPath}$last' page='$last'>尾页</a>";
 
             $this->limit = " LIMIT ".($this->currentPage * $this->nums).",".$this->nums; 
 

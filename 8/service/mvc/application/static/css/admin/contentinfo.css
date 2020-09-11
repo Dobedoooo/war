@@ -127,3 +127,33 @@ form button, #submit, #showsubmit {
     display: flex;
     justify-content: center;
 }
+
+.page a {
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: #f6f6f6;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page a:link, .page a:hover, .page a:visited, .page a:active {
+    text-decoration: none;
+}
+
+.page a:hover {
+    background-color: #dfdfdf;
+}
+
+.load-con {
+    width: 45px;
+    height: 50px;
+    top: 350px;
+    left: 600px;
+    position: absolute;
+    transform: translateX(22.5px);
+}

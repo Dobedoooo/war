@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{CSS_ADD}bootstrap.css">
     <link rel="stylesheet" href="{CSS_ADD}admin/contentinfo.css">
     <link rel="stylesheet" href="{CSS_ADD}fontawsome/css/all.min.css">
+    <link rel="stylesheet" href="{CSS_ADD}admin/load.css">
+    <script src="{JS_ADD}admin/load.js"></script>
     <script src="{JS_ADD}base.js"></script>
     <script src="{JS_ADD}jquery-3.5.1.min.js"></script>
     <script src="{JS_ADD}jquery.validate.min.js"></script>
@@ -106,6 +108,10 @@
     </script>
 </head>
 <body>
+    <!-- 加载动画 -->
+    <div class="load-con">
+
+    </div>
     <!-- 指定所属栏目
         标题
         内容 -->
@@ -198,25 +204,13 @@
                         </tr>
                     </thead>
                     <tbody id="content">
-                        {foreach $data as $v}
-                            <tr>
-                                <td pid="{$v['pid']}">{$v['name']}</td>
-                                <td>{$v['proname']}</td>
-                                <td>{$v['proid']}</td>
-                                <td>{$v['protemp']}</td>
-                                <td>
-                                    <a href="javascript:;" id="{$v['id']}" class="btn btn-success show-btn disable" disabled>查看内容</a>
-                                    <a href="javascript:;" id="{$v['id']}" class="btn btn-danger del-btn">删除</a>
-                                </td>
-                            </tr>
-                        {/foreach}
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-8 page">
-                {$page}
+                
             </div>
         </div>
     </div>
@@ -278,5 +272,9 @@
     </div>
     <div class="notice del-success text-success"><i class="fa fa-check-circle"></i> 删除成功</div>
     <div class="notice del-fail text-danger"><i class="fa fa-exclamation-circle"></i> 删除失败</div>
+    <script>
+        // 加载动画
+        rotateLoad('.load-con');
+    </script>
 </body>
 </html>

@@ -1,0 +1,173 @@
+
+
+/*  */
+
+.load1, .load2, .load3, .load4 {
+    display: block;
+    height: 100%;
+    width: 8px;
+    background-color: #333;
+    transform: scaleY(.7);
+    border-radius: 2px;
+}
+
+.load1 {
+    animation: loading1 1s infinite;
+}
+
+.load2 {
+    animation: loading2 1s infinite; 
+}
+
+.load3 {
+    animation: loading3 1s infinite; 
+}
+
+.load4 {
+    animation: loading4 1s infinite; 
+}
+
+@keyframes loading1 {
+    0% {
+        transform: scaleY(.7);
+    }
+    25% {
+        transform: scaleY(1.4);
+    }
+    50% {
+        transform: scaleY(.7);
+    }
+    100% {
+        transform: scaleY(.7);
+    }
+}
+
+@keyframes loading2 {
+    0% {
+        transform: scaleY(.7);
+    }
+    10% {
+        transform: scaleY(.7);
+    }
+    35% {
+        transform: scaleY(1.4);
+    }
+    60% {
+        transform: scaleY(.7);
+    }
+    100% {
+        transform: scaleY(.7);
+    }
+}
+
+@keyframes loading3 {
+    0% {
+        transform: scaleY(.7);
+    }
+    20% {
+        transform: scaleY(.7);
+    }
+    45% {
+        transform: scaleY(1.4);
+    }
+    70% {
+        transform: scaleY(.7);
+    }
+    100% {
+        transform: scaleY(.7);
+    }
+}
+
+@keyframes loading4 {
+    0% {
+        transform: scaleY(.7);
+    }
+    30% {
+        transform: scaleY(.7);
+    }
+    55% {
+        transform: scaleY(1.4);
+    }
+    80% {
+        transform: scaleY(.7);
+    }
+    100% {
+        transform: scaleY(.7);
+    }
+}
+
+/* rotateLoading */
+.rotate-loading {
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: #f1f1f1;
+    transform-origin: 2px 19px;
+}
+
+@keyframes rotateLoading {
+    0% {
+        background-color: #333;
+    }
+    8.33333% {
+        background-color: #444;
+    }
+    16.666666% {
+        background-color: #555;
+    }
+    24.999999% {
+        background-color: #666;
+    }
+    33.333332% {
+        background-color: #777;
+    }
+    41.666665% {
+        background-color: #888;
+    }
+    49.999998% {
+        background-color: #999;
+    }
+    58.333331% {
+        background-color: #aaa;
+    }
+    66.666664% {
+        background-color: #bbb;        
+    }
+    74.999997% {
+        background-color: #ccc;            
+    }
+    83.333333% {
+        background-color: #ddd;
+    }
+    91.666666% {
+        background-color: #eee;
+    }
+    100% {
+        background-color: #f1f1f1;        
+    }
+}
+
+/* triDot */
+.triDot-loading {
+    display: inline-block;
+    background-color: #ccc;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+@keyframes triDotLoading {
+    0% {
+        background-color: #333;
+    }
+    33.333333% {
+        background-color: #333;            
+    }
+    66.666666%{
+        background-color: #ccc;        
+    }
+    100% {
+        background-color: #ccc;        
+    }
+}

@@ -1,6 +1,5 @@
 $(function () {
 
-
     // 搜索下拉框
     $.ajax({
         type: "get",
@@ -416,18 +415,20 @@ $(function () {
     $('#searchsubmit').click(function(e) {
         e.preventDefault();
         var data = $('#search').serialize();
-        console.log(data);
+        // console.log(data);
 
         $.ajax({
             type: "get",
-            url: "/mvc/index.php/admin/content/search",
+            url: "/mvc/index.php/admin/content/getContent",
             data: data,
             dataType: "json",
-            success: function (response) {
+            success: function (res) {
                 
+                var response = res['data'];
+
                 $('#content').empty();
 
-                console.log(response);
+                // console.log(response);
 
                 for (let index = 0; index < response.length; index++) {
                     const element = response[index];
@@ -448,6 +449,90 @@ $(function () {
             }
         });
 
-    })
+    });
+
+    // 请求数据
+    function getData() {
+
+        $.ajax({
+            type: "get",
+            url: "/mvc/index.php/admin/content/getContent",
+            dataType: "json",
+            success: function (res) {
+    
+                var pageInfo = res['str'];
+
+                $('.page').append(pageInfo);
+
+                var response = res['data'];
+
+                response.forEach(element => {
+                    
+                    var tr = `<tr>
+                        <td pid="${element['pid']}">${element['name']}</td>
+                        <td>${element['proname']}</td>
+                        <td>${element['proid']}</td>
+                        <td>${element['protemp']}</td>
+                        <td>
+                            <a href="javascript:;" id="${element['id']}" class="btn btn-success show-btn disable" disabled>查看内容</a>
+                            <a href="javascript:;" id="${element['id']}" class="btn btn-danger del-btn">删除</a>
+                        </td>
+                    </tr>`;
+    
+                    $('.load-con').css('display', 'none');
+
+                    $('#content').append(tr);
+    
+                });
+    
+            }
+        });
+
+    }
+
+    getData();
+
+    // 分页
+    $('.page').on('click', 'a', function (e) {
+        
+        e.preventDefault();
+
+        var that = this;
+
+        $.ajax({
+            type: "get",
+            url: "/mvc/index.php/admin/content/getContent",
+            data: 'page=' + $(that).attr('page'),
+            dataType: "json",
+            success: function (res) {
+
+                var response = res['data'];
+
+                $('#content').empty();
+
+                // console.log(response);
+
+                for (let index = 0; index < response.length; index++) {
+                    const element = response[index];
+                    $('#content').append(`
+                        <tr>
+                            <td pid="${element['pid']}">${element['name']}</td>
+                            <td>${element['proname']}</td>
+                            <td>${element['proid']}</td>
+                            <td>${element['protemp']}</td>
+                            <td>
+                                <a href="javascript:;" id="${element['id']}" class="btn btn-success show-btn">查看内容</a>
+                                <a href="javascript:;" id="${element['id']}" class="btn btn-danger del-btn">删除</a>
+                            </td>
+                        </tr>
+                    `);
+                }
+
+
+
+            }
+        });
+
+    });
 
 });

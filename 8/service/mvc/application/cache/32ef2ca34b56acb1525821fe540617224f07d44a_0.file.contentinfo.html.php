@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-07 09:23:01
+/* Smarty version 3.1.34-dev-7, created on 2020-09-10 12:00:40
   from 'D:\fullstack\8\service\mvc\application\template\admin\contentinfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f55fbf56fe954_74429610',
+  'unifunc' => 'content_5f5a1568077e99_49523163',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '32ef2ca34b56acb1525821fe540617224f07d44a' => 
     array (
       0 => 'D:\\fullstack\\8\\service\\mvc\\application\\template\\admin\\contentinfo.html',
-      1 => 1599469761,
+      1 => 1599739238,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f55fbf56fe954_74429610 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f5a1568077e99_49523163 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -37,6 +37,12 @@ bootstrap.css">
 admin/contentinfo.css">
     <link rel="stylesheet" href="<?php echo CSS_ADD;?>
 fontawsome/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo CSS_ADD;?>
+admin/load.css">
+    <?php echo '<script'; ?>
+ src="<?php echo JS_ADD;?>
+admin/load.js"><?php echo '</script'; ?>
+>
     <?php echo '<script'; ?>
  src="<?php echo JS_ADD;?>
 base.js"><?php echo '</script'; ?>
@@ -151,6 +157,10 @@ tinymce/tinymce.min.js"><?php echo '</script'; ?>
 >
 </head>
 <body>
+    <!-- 加载动画 -->
+    <div class="load-con">
+
+    </div>
     <!-- 指定所属栏目
         标题
         内容 -->
@@ -243,40 +253,13 @@ tinymce/tinymce.min.js"><?php echo '</script'; ?>
                         </tr>
                     </thead>
                     <tbody id="content">
-                        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'v');
-$_smarty_tpl->tpl_vars['v']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['v']->value) {
-$_smarty_tpl->tpl_vars['v']->do_else = false;
-?>
-                            <tr>
-                                <td pid="<?php echo $_smarty_tpl->tpl_vars['v']->value['pid'];?>
-"><?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
-</td>
-                                <td><?php echo $_smarty_tpl->tpl_vars['v']->value['proname'];?>
-</td>
-                                <td><?php echo $_smarty_tpl->tpl_vars['v']->value['proid'];?>
-</td>
-                                <td><?php echo $_smarty_tpl->tpl_vars['v']->value['protemp'];?>
-</td>
-                                <td>
-                                    <a href="javascript:;" id="<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
-" class="btn btn-success show-btn disable" disabled>查看内容</a>
-                                    <a href="javascript:;" id="<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
-" class="btn btn-danger del-btn">删除</a>
-                                </td>
-                            </tr>
-                        <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-8 page">
-                <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
-
+                
             </div>
         </div>
     </div>
@@ -338,6 +321,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </div>
     <div class="notice del-success text-success"><i class="fa fa-check-circle"></i> 删除成功</div>
     <div class="notice del-fail text-danger"><i class="fa fa-exclamation-circle"></i> 删除失败</div>
+    <?php echo '<script'; ?>
+>
+        // 加载动画
+        rotateLoad('.load-con');
+    <?php echo '</script'; ?>
+>
 </body>
 </html><?php }
 }
