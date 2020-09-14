@@ -1,0 +1,22 @@
+@import "base";
+@import "mixin";
+
+.chess {
+    @include centerMiddle;
+    width: 2 * $r * $num;
+    height: 2 * $r * $num;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    > .row {
+        position: absolute;
+        width: 2 * $r * ($num - 1);
+        height: 1px;
+        background-color: #333333;
+        left: $r;
+    }
+    @for $i from 1 to 13 {
+        > .row:nth-child(#{$i}) {
+            top: ($i * 2 - 1) * $r;
+        }
+    }
+}

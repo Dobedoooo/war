@@ -1,7 +1,64 @@
-body {
+html, body {
     /* color: crimson; */
+    width: 100%;
+    height: 100%;
+}
+
+section#app {
+    width: 100%;
+    height: 100%;
 }
 
 td {
 vertical-align: middle !important;
+}
+
+.operate {
+    width: 16.6%;
+}
+
+.add-form {
+    width: 400px;
+    /* height: 400px; */
+    position: absolute;
+    border: 1px solid #dfdfdf;
+    background-color: #f6f6f6;
+    padding: 25px 10px;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.15s;
+    /* filter: blur(10px); */
+}
+
+.add-form.on {
+    z-index: 9;
+    display: block;
+    opacity: 1;
+    /* filter: blur(0); */
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.15s;
+    backdrop-filter: blur(0px);
+}
+
+.cover.on {
+    z-index: 8;
+    display: block;
+    opacity: 1;
+    backdrop-filter: blur(1px);
+}
+
+button {
+    transition: all .2s;
 }

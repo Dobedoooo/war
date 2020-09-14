@@ -1,0 +1,62 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: crimson;
+}
+
+div {
+  width: 300px;
+  height: 200px;
+}
+
+.btn {
+  padding: 2px;
+  background-color: #fff;
+  color: #fff;
+}
+
+.btn-success {
+  background: bisque;
+  color: #fff;
+}
+
+nav {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: crimson;
+  border-left: 1px solid red;
+}
+
+.puma {
+  background: url(./images/puma.png);
+}
+
+.sea-slug {
+  background: url(./images/sea-slug.png);
+}
+
+.egret {
+  background: url(./images/egret.png);
+}
+
+.salamander {
+  background: url(./images/salamander.png);
+}
+
+.item-4 {
+  width: 8em;
+}
+
+.item-3 {
+  width: 6em;
+}
+
+.item-2 {
+  width: 4em;
+}
+
+.item-1 {
+  width: 2em;
+}

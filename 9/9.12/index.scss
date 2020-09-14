@@ -1,0 +1,55 @@
+@import "base";
+
+$color: red;
+$width: 300px;
+div {
+    width: $width;
+    height: 200px;
+}
+
+.btn {
+    padding: 2px;
+    background-color: #fff;
+    color: #fff;
+    &-success {
+        background: bisque;
+        color: #fff;
+    }
+}
+
+nav {
+    border: {
+      top: {
+        width: 1px;
+        style: solid;
+        color: crimson;
+      }
+      left: 1px solid red;
+    }
+  }
+
+  
+  // for 循环值
+// @for $i from 1 to 13 {
+//     .col-lg-#{$i} {
+//         width: $i / 12 * 100%;
+//     }
+// }
+
+$list: puma, sea-slug, egret, salamander;
+
+// each 遍历数组
+@each $var in $list {
+    .#{$var} {
+        background: url(./images/#{$var}.png);
+    }
+}
+
+// while
+$i: 4;
+@while $i > 0 {
+    .item-#{$i} {
+        width: 2em * $i;
+    }
+    $i: $i - 1;
+}

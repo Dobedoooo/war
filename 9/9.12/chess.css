@@ -1,0 +1,66 @@
+.chess {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background-color: #f6f6f6;
+  border-radius: 10px;
+}
+
+.chess > .row {
+  position: absolute;
+  width: 570px;
+  height: 1px;
+  background-color: #333333;
+  left: 15px;
+}
+
+.chess > .row:nth-child(1) {
+  top: 15px;
+}
+
+.chess > .row:nth-child(2) {
+  top: 45px;
+}
+
+.chess > .row:nth-child(3) {
+  top: 75px;
+}
+
+.chess > .row:nth-child(4) {
+  top: 105px;
+}
+
+.chess > .row:nth-child(5) {
+  top: 135px;
+}
+
+.chess > .row:nth-child(6) {
+  top: 165px;
+}
+
+.chess > .row:nth-child(7) {
+  top: 195px;
+}
+
+.chess > .row:nth-child(8) {
+  top: 225px;
+}
+
+.chess > .row:nth-child(9) {
+  top: 255px;
+}
+
+.chess > .row:nth-child(10) {
+  top: 285px;
+}
+
+.chess > .row:nth-child(11) {
+  top: 315px;
+}
+
+.chess > .row:nth-child(12) {
+  top: 345px;
+}
