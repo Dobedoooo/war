@@ -1,0 +1,9 @@
+{
+    "db": {
+        "host": "49.234.98.39",
+        "user": "root",
+        "password": "dobedoo",
+        "database": "learnNode",
+        "port": "3306"
+    }
+}
