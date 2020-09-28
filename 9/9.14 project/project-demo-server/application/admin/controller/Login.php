@@ -9,6 +9,7 @@
     class Login extends Controller {
 
         /**
+         * 登录
          * 1.验证权限
          * 2.验证请求方式
          * 3.接收前台数据
@@ -36,7 +37,7 @@
             // 验证
             $validate = \validate('Login');
 
-            $flag = $validate->check($data);
+            $flag = $validate->scene('login')->check($data);
 
             if(!$flag) {
 
@@ -78,7 +79,7 @@
                     $payload = [
                         'id' => $user['id'],
                         'username' => $user['username'],
-                        // 头像 在token里没用 在 :73 使用
+                        // 头像 在token里没用 在 :93 使用
                         'avatar' => $user['avatar']
                     ];
 
@@ -109,6 +110,82 @@
                     'code' => 404,
                     'status' => 'error',
                     'msg' => '用户不存在'
+                ]);
+
+            }
+
+        }
+
+        /**
+         * 修改密码
+         * 1.验证权限
+         * 2.验证请求方式
+         * 3.接收数据
+         * 4.数据格式验证
+         * 5.校验原密码是否正确
+         * 6.校验新密码与原密码是否相等
+         * 7.修改
+         */
+        public function changePass() {
+
+            // 验证权限
+            \checkToken();
+
+            // 验证请求方式
+            if(!$this->request->isPost()) {
+
+                return json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => '请求方式错误'
+                ]);
+
+            }
+
+            // 获取数据
+            $data = $this->request->post();
+
+            // 验证数据格式
+            $validate = \validate('login');
+
+            $flag = $validate->scene('changePass')->check($data);
+
+            if(!$flag) {
+
+                return json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => $validate->getError()
+                ]);
+
+            }
+            
+            // 校验原密码是否正确
+            $record = Db::table('user')->where(['id' => $data['uid']])->find();
+
+            $password = \encode($data['oldpass']);
+
+            if($record['password'] != $password) {
+
+                return \json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => '原密码错误'
+                ]);
+
+            }
+            
+            // 修改
+            $result = Db::table('user')->where(['id' => $data['uid']])->update([
+                'password' => \encode($data['newpass'])
+            ]);
+            
+            if($result) {
+
+                return json([
+                    'code' => 200,
+                    'status' => 'success',
+                    'msg' => '密码修改成功,请重新登录'
                 ]);
 
             }

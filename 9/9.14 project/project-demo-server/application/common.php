@@ -71,3 +71,10 @@
         request()->username = $result['username'];
 
     }
+
+    // 加密
+    function encode($pass) {
+
+        return crypt($pass, \config('salt'));
+
+    }

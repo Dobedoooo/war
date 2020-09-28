@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-31 07:35:41
+/* Smarty version 3.1.34-dev-7, created on 2020-09-26 00:30:53
   from 'D:\fullstack\8\service\mvc\application\template\admin\login.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f4ca84de5a936_00071229',
+  'unifunc' => 'content_5f6e8bbd8fa8f3_56872167',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '97d9373129e3666b608b8abb8ba9dd4d6c324d4d' => 
     array (
       0 => 'D:\\fullstack\\8\\service\\mvc\\application\\template\\admin\\login.html',
-      1 => 1598859341,
+      1 => 1601080251,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f4ca84de5a936_00071229 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f6e8bbd8fa8f3_56872167 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -58,9 +58,9 @@ base.js"><?php echo '</script'; ?>
 </head>
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row">huo
             <div class="col-sm-6 col-sm-offset-3 form-border">
-                <h3 class="text-center">后台管理</h3>
+                <h3 class="text-center">火王🔥后台管理</h3>
                 <form action="/mvc/index.php/admin/index/login" method="POST" class="form-horizontal" id="login">
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-2">用户名</label>

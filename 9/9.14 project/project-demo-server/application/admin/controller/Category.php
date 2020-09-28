@@ -103,9 +103,129 @@
             $category = Db::table('category')->field('cid, cname, cdesc')->where($where)->limit($limit)->page($page)->select();
 
             $count = Db::table('category')->where($where)->count();
-            
-            var_dump($category);
-            var_dump($count);
+
+            return json([
+                'code' => 200,
+                'status' => 'success',
+                'data' => [
+                    'categories' => $category,
+                    'count' => $count
+                ]
+            ]);
         }
 
+        // 删
+        public function delete() {
+
+            // 验证请求方式
+            if(!$this->request->isGet()) {
+
+                return json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => '请求方式错误'
+                ]);
+
+            }
+
+            $cid = $this->request->param()['cid'];
+
+            $result = Db::table('category')->where('cid', $cid)->delete();
+
+            if($result) {
+
+                return json([
+                    'code' => 200,
+                    'status' => 'success',
+                    'msg' => '删除分类成功'
+                ]);
+
+            } else {
+
+                return json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => '删除分类失败',
+                ]);
+
+            }
+
+        }
+
+        // 改
+        public function update() {
+            
+            // 验证请求方式
+            if(!$this->request->isGet()) {
+
+                return json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => '请求方式错误'
+                ]);
+
+            }
+
+            $category = $this->request->param();
+
+            $result = Db::table('category')->where('cid', $category['cid'])->update([
+                'cname' => $category['cname'],
+                'cdesc' => $category['cdesc']
+            ]);
+
+            if($result) {
+
+                return json([
+                    'code' => 200,
+                    'status' => 'success',
+                    'msg' => '变更成功'
+                ]);
+
+            } else {
+
+                return json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => '变更失败'
+                ]);
+
+            }
+
+        }
+
+        // 查询分类名
+        public function getCname() {
+
+            if(!$this->request->isGet()) {
+
+                return json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => '请求方式错误'
+                ]);
+
+            }
+
+            $result = Db::table('category')->field('cid, cname')->select();
+
+            if($result) {
+
+                return json([
+                    'code' => 200,
+                    'status' => 'success',
+                    'msg' => '查询成功',
+                    'data' => $result
+                ]);
+
+            } else {
+
+                return json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'msg' => '未知错误',
+                ]);
+
+            }
+
+        }
     }

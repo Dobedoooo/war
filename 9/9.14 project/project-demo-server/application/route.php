@@ -9,6 +9,10 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
+use think\Route;
+
+Route::resource('admin/Homestay', 'admin/Homestay');
+
 return [
     '__pattern__' => [
         'name' => '\w+',

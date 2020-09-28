@@ -64,7 +64,7 @@ body {
     width: 200px;
     border-radius: 5px;
     margin: 10px 0 10px 480px;
-    display: none;
+    /* display: none; */
     transition: all .3s;
     cursor: pointer;
 }

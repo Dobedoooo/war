@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-10 10:50:39
+/* Smarty version 3.1.34-dev-7, created on 2020-09-25 10:45:27
   from 'D:\fullstack\8\service\mvc\application\template\admin\home.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f5a04ff87c141_61583820',
+  'unifunc' => 'content_5f6dca47158e45_08960295',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6aad809aa5fcbeb813042df0ebe19d40ac9c3ed8' => 
     array (
       0 => 'D:\\fullstack\\8\\service\\mvc\\application\\template\\admin\\home.html',
-      1 => 1599734256,
+      1 => 1601030725,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f5a04ff87c141_61583820 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f6dca47158e45_08960295 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -56,7 +56,7 @@ base.js"><?php echo '</script'; ?>
     <header>
         <div class="lft-header pull-left">
             <div class="logo pull-left text-muted">LOGO</div>
-            <div class="title pull-right text-primary">某平台后台管理系统</div>
+            <div class="title pull-right text-primary">火王后台管理系统</div>
         </div>
         <div class="rt-header pull-right">
             <a href="/mvc/index.php/index" style="margin-right: 10px;" target="__blank">去前台</a>

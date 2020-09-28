@@ -44,7 +44,7 @@
             }
 
             if(strlen($name) < 5 || empty($pass)) {
-                echo '你小子干啥呢';
+                echo '未知错误';
                 return;
             }
 
@@ -79,7 +79,7 @@
             global $config;
 
             if(strlen($name) < 5 || empty($pass)) {
-                echo '你小子干啥呢';
+                echo '未知错误';
                 return;
             }
 
@@ -210,10 +210,13 @@
         // 退出登录
         function signOut() {
 
-            unset($_SESSION['login']);
+            // 清空值
+            $_SESSION = array();
+            // unset($_SESSION['login']);
             
-            unset($_SESSION['user']);
+            // unset($_SESSION['user']);
 
+            // 注销session id
             session_destroy();
 
             header('location:/mvc/index.php/admin');

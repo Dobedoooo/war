@@ -11,7 +11,7 @@
             'cdesc' => 'require|chsAlphaNum',
         ];
 
-        protected $messages = [
+        protected $message = [
             'cname.require' => '分类名称为必填项',
             'cname.chsAlphaNum' => '分类名称只能包含字母、数字或汉字',
             'cdesc.require' => '分类描述为必填项',

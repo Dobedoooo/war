@@ -4,14 +4,13 @@
             <el-form ref="form" :model="loginForm" label-width="80px" status-icon :rules="rules">
                 <h2>登录</h2>
                 <el-form-item label="用户名" prop="username">
-                    <el-input v-model="loginForm.username" type="text" placeholder="请输入用户名"></el-input>
+                    <el-input autofocus v-model="loginForm.username" type="text" placeholder="请输入用户名"></el-input>
                 </el-form-item>
                 <el-form-item label="密码" prop="password">
                     <el-input v-model="loginForm.password" type="password" placeholder="请输入密码"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click.prevent="onSubmit('form')">登录</el-button>
-                    <el-button type="default" @click.prevent="sign">注册</el-button>
+                    <el-button :loading="loading" class="submit" type="primary" @click.prevent="onSubmit('form')">登录</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -42,16 +41,17 @@ export default {
             }
         };
         return {
+            loading: false,
             loginForm: {
                 username: '',
                 password: '',
             },
             rules: {
                 password: [
-                    { validator: checkPassword },
+                    { validator: checkPassword, trigger: 'blur'},
                 ],
                 username: [
-                    { validator: checkUserName },
+                    { validator: checkUserName, trigger: 'blur'},
                 ],
             }
         }
@@ -66,6 +66,8 @@ export default {
 
                 // 验证成功时向服务器发送消息
                 if(valid) {
+
+                    this.loading = true;
 
                     // 涉及到跨域(域名跨域名，域名跨ip，相同ip端口号跨端口号) 同源协议(协议、域名、端口号都一样)
                     /**
@@ -94,6 +96,11 @@ export default {
                             // 将返回的token存入session
                             sessionStorage.setItem('token', res.data.token);
 
+                            // 将user信息存入session
+                            sessionStorage.setItem('username', res.data.user.username);
+                            sessionStorage.setItem('avatar', res.data.user.avatar);
+                            sessionStorage.setItem('uid', res.data.user.id)
+
                             // 从哪来回哪去 没有redirect查询字符串就默认为home
                             let redirect = this.$route.query.from || 'home';
 
@@ -106,6 +113,8 @@ export default {
                                 type: res.data.status,
                             });
 
+                            this.loading = false;
+
                         } else {
 
                             this.$message({
@@ -113,10 +122,13 @@ export default {
                                 type: res.data.status,
                             });
 
+                            this.loading = false;
                         }
 
-                    }).catch(err => {
-                        console.log(err);
+                    }).catch(() => {
+
+                        this.loading = false;
+
                     })
 
                     // this.$router.push('/'); 编程式导航 <router-link> 声明式导航
@@ -126,7 +138,9 @@ export default {
                         message: '未知错误',
                         type: 'error',
                     });
-                    return false;
+                    
+                    this.loading = false;
+
                 }
             })
         }
@@ -158,5 +172,24 @@ export default {
     }
     .login-content:hover {
         border: 1px solid #C0C4CC;
+    }
+
+    .submit, .submit:active {
+        font-size: 14px;
+        background-color: rgb(84,92,100);
+        border: 1px solid rgb(84,92,100);
+        box-shadow: none;
+        border-radius: 4px;
+        color: #f1f1f1;
+        cursor: pointer;
+        padding: 12px 20px;
+        line-height: 1;
+        transition: background .3s;
+    }
+
+    .submit:hover, .submit:focus {
+        color: #f1f1f1;
+        background-color: rgb(67,74,80);
+        border-color: rgb(67,74,80);
     }
 </style>

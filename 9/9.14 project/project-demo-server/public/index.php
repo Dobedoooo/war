@@ -12,8 +12,12 @@
 // [ 应用入口文件 ]
 
 header('Access-Control-Allow-Origin:*');
-header('Access-Comtrol-Allow-Methods:PUT, POST, GET, DELETE, OPTIONS');
-header("Access-Control-Allow-Headers: Origin, X-Requested-With,Authorization,Content-Type,RetryAfter,retry-after,Accept, token");
+header('Access-Control-Allow-Methods:PUT, POST, GET, DELETE, OPTIONS');
+header("Access-Control-Allow-Headers: Origin, X-Requested-With,Authorization,Content-Type,RetryAfter,retry-after,Accept, token, retry-after");
+
+if($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    exit();
+}
 
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');

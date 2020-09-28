@@ -240,8 +240,17 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
-
+    // 盐
     'salt'          => 'dobedoo',
+    // 默认密码
     'defaultPass'   => 'defualtPass',
+    // 
     'jwtkey'        => 'dobedoo',
+    // 状态码
+    'code'          => [
+        'success'   => 200,
+        'error'     => 404
+    ],
+    // 默认单页记录数
+    'limit'         => 10,
 ];

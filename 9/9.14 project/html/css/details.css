@@ -1,5 +1,166 @@
 
+@font-face {
+    font-family: "PingFang SC Bold";
+    src: url(../font/PINGFANG\ BOLD.TTF);
+}
+
+@font-face {
+    font-family: "SanFrancisco Display Bold";
+    src: url(../font/SANFRANCISCODISPLAY-BOLD-4.TTF);
+}
+
+/* 头部开始 */
+header {
+    width: 100%;
+}
 
 .banner img {
     width: 100%;
+}
+
+/* 1rem =50px */
+.header-con {
+    width: 6.38rem;
+    position: fixed;
+    top: 1.14rem;
+    left: .56rem;
+    z-index: 9999;
+    line-height: 0;
+}
+
+.back {
+    float: left;
+}
+
+.back img {
+    height: .21rem;
+    margin-top: .12rem;
+}
+
+.share, .comment {
+    float: right;
+}
+
+.share img {
+    width: .41rem;
+}
+
+.comment img {
+    width: .36rem;
+    margin-left: .32rem;
+}
+/* 头部结束 */
+
+/* 主体开始 */
+.container {
+    width: 6.38rem;
+    margin: auto;
+}
+
+.topic {
+    position: relative;
+}
+
+.title {
+    font-size: .4rem;
+    font-family: PingFang SC Bold;
+    margin-top: .49rem;
+    float: left;
+}
+
+.rank {
+    width: .97rem;
+    height: .97rem;
+    border-radius: .1rem;
+    box-shadow: 0 .06rem .15rem 0px rgba(0, 0, 0, .2);
+    float: right;
+    margin-top: .6rem;
+    text-align: center;
+    position: relative;
+}
+
+.rank .num {
+    font-size: .4009rem;
+    font-family: SanFrancisco Display Bold;
+    width: 100%;
+    /* line-height: 1; */
+    margin-top: 0.15rem;
+}
+
+.dots {
+    line-height: 0;
+    height: auto;
+    padding-left: .34rem;
+    margin-top: .16rem;
+}
+
+.dots span {
+    float: left;
+    margin-right: .06rem;
+    width: 0.06rem;
+    height: 0.06rem;
+    background-color: #eb666b;
+    border-radius: 50%;
+}
+
+.subscript {
+    position: absolute;
+    top: -.12rem;
+    right: 0;
+    width: .58rem;
+    height: 0.22rem;
+    background-image: url(../img/corner.png);
+    background-size: 100%;
+}
+
+.tag {
+    color: #fff;
+    font-size: .2rem;
+    position: absolute;
+    top: 1.19rem;
+}
+
+.tag-1, .tag-2 {
+    display: inline-block;
+    line-height: 0.38rem;
+    padding: 0 .17rem 0 .1rem;
+    /* line-height: 1; */
+    border-top-right-radius: .19rem;
+    border-bottom-right-radius: .19rem;
+    border-top-left-radius: .04rem;
+    border-bottom-left-radius: .04rem;
+}
+
+.tag-1 {
+    background-color: #f9aa00;
+    margin-right: .4rem;
+}
+
+.tag-2 {
+    background-color: #eb666b;
+}
+
+.config {
+    margin-top: .4rem;
+    padding-left: .23rem;
+    width: 100%;
+    height: 1.14rem;
+    background-color: rgba(246, 246, 246, .4);
+    border-radius: .03rem;
+    line-height: 1;
+    color: rgba(0, 0, 0, .4);
+    flex-wrap: wrap;
+}
+
+.config-item {
+    float: left;
+    margin-top: .25rem;
+    width: 1.98rem !important;
+    font-size: .2rem;
+    font-family: PingFang SC Bold;
+    height: .23rem;
+}
+
+.config-item img {
+    width: 0.22rem;
 }
