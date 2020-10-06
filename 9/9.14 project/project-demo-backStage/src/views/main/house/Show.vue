@@ -46,8 +46,8 @@
                 </el-table-column>
                 <el-table-column label="操作">
                      <template slot-scope="scope">
-                        <el-button size="medium" type="warning"><router-link :to="{name: 'editHouse', params: {hid: scope.row.hid}}">变更</router-link></el-button>
-                        <el-button size="medium" @click="onDelete(scope.row.hid)" type="danger">删除</el-button>
+                        <router-link class="operating" :to="{name: 'editHouse', params: {hid: scope.row.hid}}"><el-button size="medium" type="warning">变更</el-button></router-link>
+                        <el-button size="medium" style="margin-left: 10px;" @click="onDelete(scope.row.hid)" type="danger">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -161,7 +161,8 @@ export default {
 
                 this.$notify({
                     type: res.status,
-                    title: res.msg,
+                    message: res.msg,
+                    title: '消息',
                 });
 
                 this.initHomestay();
@@ -182,4 +183,5 @@ export default {
 .htag {
     margin-left: 0 !important;
 }
+
 </style>

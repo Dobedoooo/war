@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Detail from '../views/detail/Detail.vue';
-import 'u-reset.css';
+import 'u-reset.css';   
 
 Vue.use(VueRouter)
 
@@ -23,7 +22,10 @@ const routes = [
   {
     path: '/detail',
     name: 'detail',
-    component: Detail,
+    component: () => import(/* webpackChunkName: "about" */ '../views/detail/Detail.vue'),
+    meta: {
+      title: '民宿详情'
+    }
   }
 ]
 

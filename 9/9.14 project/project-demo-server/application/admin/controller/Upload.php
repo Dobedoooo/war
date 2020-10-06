@@ -12,7 +12,7 @@
 
             if($file) {
 
-                $info = $file->move(ROOT_PATH.'public'.DS.'uploads');
+                $info = $file->validate(['size' => 200 * 1024, 'ext' => 'jpg,png,webp,jpeg'])->move(ROOT_PATH.'public'.DS.'uploads');
 
                 if($info) {
 

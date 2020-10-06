@@ -141,10 +141,6 @@ export default {
                     // this.$router.push('/'); 编程式导航 <router-link> 声明式导航
                 // 验证失败
                 } else {
-                    this.$message({
-                        message: '未知错误',
-                        type: 'error',
-                    });
                     
                     this.loading = false;
 

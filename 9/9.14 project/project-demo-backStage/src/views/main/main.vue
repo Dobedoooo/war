@@ -180,6 +180,12 @@ export default {
 
 			this.$router.push({path: '/login'});
 
+			this.$notify({
+				title: '消息',
+				type: 'success',
+				message: '退出登录成功'
+			})
+
 		},
 
 		// 显示修改密码面板

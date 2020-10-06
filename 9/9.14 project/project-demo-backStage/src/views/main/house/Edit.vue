@@ -1,5 +1,5 @@
 <template>
-    <div class="outer">
+    <div class="outer" v-loading='isShow'>
         <div class="top"></div>
         <div class="addHouseForm">
             <el-form :model="house" :rules="rules" ref="addHouseForm" v-if="house">
@@ -87,6 +87,7 @@ export default {
             province: [],
             categories: [],
             uploadurl: base.URL + '/admin/Upload/index',
+            isShow: false,
         }
     },
     created () {},
@@ -140,13 +141,19 @@ export default {
     methods: {
         initHomestay(hid) {
 
+            this.isShow = true;
+
             homestayRead(hid).then(res => {
 
                 this.house = res.data;
 
+                this.isShow = false;
+
             }).catch(err => {
 
                 console.log(err);
+
+                this.isShow = false;
 
             });
 

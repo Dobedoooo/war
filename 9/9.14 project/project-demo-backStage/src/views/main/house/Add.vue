@@ -42,21 +42,24 @@
                 <el-form-item label="详细地址" class="addr" prop="haddr">
                     <el-input placeholder="请输入民宿详细地址" v-model="house.haddr"></el-input>
                 </el-form-item>
-                <!-- <el-form-item label="缩略图" class="thumb">
-                    <el-upload :action="uploadurl" :show-file-list="false" :on-success="handleThumbSuccess" class="thumb-uploader" name="img">
-                        <img :src="house.hthumb" v-if="house.hthumb" class="thumb-img">
-                        <i class="el-icon-plus thumb-uploader-icon"></i>
+                <div class="thumb">
+                    <label>缩略图</label>
+                    <div slot="tip" class="tip">只能上传jpg/png/webp文件，且不超过200kb</div>
+                    <el-upload :action="uploadurl" class="thumb-uploader" :show-file-list="false" :on-success="handleThumbSuccess" :before-upload="handleThumbBeforeUpload">
+                        <div class="thumb-img-container" v-if="house.hthumb">
+                            <img :src="IMGURL + house.hthumb" v-if="house.hthumb" class="thumb-img">
+                        </div>
+                        <i v-else class="el-icon-plus thumb-uploader-icon"></i>
                     </el-upload>
-                </el-form-item> -->
-                <label class="thumb">缩略图</label>
-                <el-upload :action="uploadurl" class="thumb-uploader" :show-file-list="false" :on-success="handleThumbSuccess">
-                    <img :src="house.hthumb" v-if="house.hthumb" class="thumb-img">
-                    <i v-else class="el-icon-plus thumb-uploader-icon"></i>
-                </el-upload>
-                <el-form-item label="轮播图" class="banner"></el-form-item>
-                    <!-- <el-upload :auto-upload="false" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+                </div>
+                
+                <div class="banner">
+                    <label>轮播图</label>
+                    <div slot="tip" class="tip">只能上传三张jpg/png/webp文件，且不超过200kb</div>
+                    <el-upload :action="uploadurl" class="thumb-uploader" list-type="picture-card" :on-success="handleBannerSuccess" :before-upload="handleThumbBeforeUpload" multiple :limit="3" :on-remove="handleBannerRemove" :on-preview="handleBannerPreview">
                         <i class="el-icon-plus"></i>
-                    </el-upload> -->
+                    </el-upload>
+                </div>
                 <el-form-item label="民宿详情" prop="hdetail" class="detail">
                    <rich-text @rich-change="setField" field="hdetail"></rich-text>
                 </el-form-item>
@@ -67,8 +70,10 @@
                     <el-button :loading="loading" class="submit" @click="onSubmit">提交</el-button>
                 </el-form-item>
             </el-form>
-            <!-- <el-dialog visible="dialog"></el-dialog> -->
         </div>
+        <el-dialog :visible.sync="bannerPreviewVisible" style="z-index: 9999999999999;">
+            <img width="100%" :src="bannerPreviewPath" alt="1">
+        </el-dialog>
     </div>
     
 </template>
@@ -81,6 +86,7 @@ import RichText from '@/components/rich-text/RichText';
 import city from '@/lib/city';
 
 export default {
+    name: 'add',
     components: {
         RichText,
     },
@@ -161,6 +167,10 @@ export default {
             },
             loading: false,
             province: [],
+            IMGURL: base.IMGURL,
+            bannerArr: [],
+            bannerPreviewVisible: false,
+            bannerPreviewPath: '',
         }
     },
     created () {},
@@ -227,32 +237,21 @@ export default {
 
         },
 
-        onSubmit() {
-            
-            this.loading = true;
+        onSubmit() {    
 
             this.$refs['addHouseForm'].validate(valid => {
 
                 if(valid) {
 
+                    this.loading = true;
+
                     instance.post('/admin/Homestay', this.house).then(res => {
 
-                        if(res.code == 200) {
-
-                            this.$message({
-                                'message': res.msg,
-                                'type': res.status
-                            })
-
-
-                        } else {
-
-                            this.$message({
-                                'message': res.msg,
-                                'type': res.status
-                            })
-
-                        }
+                        this.$notify({
+                            'title': '消息',
+                            'type': res.status,
+                            message: res.msg,
+                        })
 
                         this.loading = false;
 
@@ -262,20 +261,106 @@ export default {
 
                     })
 
+                } else {
+
+                    this.loading = false;
+
                 }
 
             })
 
         },
 
+        // 上传缩略图成功
         handleThumbSuccess(res) {
             
             if(res.code === 200) {
 
-                this.house.hthumb = base.IMGURL + res.imgpath;
+                this.house.hthumb = res.imgpath;
+
+                this.$notify({
+                    type: res.status,
+                    title: '消息',
+                    message: res.msg
+                })
 
             }
 
+        },
+
+        // 上传轮播图
+        handleBannerSuccess(res) {
+
+            if(res.code == 200) {
+
+                this.$notify({
+                    type: res.status,
+                    title: '消息',
+                    message: res.msg
+                });
+
+                this.bannerArr.push(res.imgpath);
+
+                this.house.hbanner = this.bannerArr.join(',');
+
+            }
+
+        },
+
+        // 删除轮播图
+        handleBannerRemove(file) {
+
+            let url = file.response.imgpath;
+
+            this.bannerArr = this.bannerArr.filter(el => el!=url);
+
+            this.house.hbanner = this.bannerArr.join(',');
+
+        },
+
+        // 预览轮播图
+        handleBannerPreview(file) {
+
+            this.bannerPreviewPath = this.IMGURL + file.response.imgpath;
+
+            this.bannerPreviewVisible = true;
+
+        },
+
+        //
+        handleThumbBeforeUpload(file) {
+
+            let {size, type} = file;
+
+            let maxSize = 200 * 1024;
+            let typeArr = ['image/jpg', 'image/png', 'image/jpeg', 'image/webp'];
+
+            let sizeFlag = false, typeFlag = false;
+
+            sizeFlag = size < maxSize;
+            typeFlag = typeArr.some(el => el == type);
+
+            if(!sizeFlag) {
+
+                this.$notify({
+                    type: 'error',
+                    title: '错误',
+                    message: '上传图片大小不能超过200kb'
+                })
+
+            }
+
+            if(!typeFlag) {
+
+                this.$notify({
+                    type: 'error',
+                    title: '错误',
+                    message: '上传图片格式只能为jpg,jpeg,png,webp'
+                })
+
+            }
+
+            return typeFlag && sizeFlag;
         },
 
         // 父子组件通信
@@ -316,13 +401,12 @@ export default {
     display: table;
     clear: both;
 }
-.thumb-uploader .el-upload {
+.el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    float: left;
   }
   .thumb-uploader .el-upload:hover {
     border-color: #409EFF;
@@ -335,9 +419,12 @@ export default {
     line-height: 178px;
     text-align: center;
   }
-  .thumb-img {
+  .thumb-img-container {
     width: 178px;
     height: 178px;
+  }
+  .thumb-img {
+      width: 100%;
     display: block;
   }
   .thumb-uploader-icon{
@@ -411,10 +498,14 @@ export default {
         width: 100%;
     }
     
-    .thumb {
+    .thumb, .banner {
         font-size: 14px;
         color: #606266;
         line-height: 40px;
+    }
+
+    .tip {
+        color: #999;
     }
 </style>
 

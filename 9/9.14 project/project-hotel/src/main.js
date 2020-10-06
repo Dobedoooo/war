@@ -2,15 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from '@/store';
-import { Swipe, SwipeItem, Image as VanImage } from 'vant';
+import { Swipe, SwipeItem, Image as VanImage, Tab, Tabs } from 'vant';
 import 'vant/lib/index.css'
-import vconsole from 'vconsole';
+// import vconsole from 'vconsole';
 
-new vconsole;
+// new vconsole;
 
 Vue.use(Swipe);
 Vue.use(SwipeItem);
 Vue.use(VanImage);
+Vue.use(Tab);
+Vue.use(Tabs);
 
 Vue.config.productionTip = false
 
