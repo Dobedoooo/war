@@ -4,9 +4,9 @@ namespace app\index\controller;
 
 use think\Controller;
 use think\Request;
-use think\Db;
+use think\JWT;
 
-class Detail extends Controller
+class Login extends Controller
 {
     public $code;
 
@@ -26,6 +26,7 @@ class Detail extends Controller
     public function index()
     {
         //
+        
     }
 
     /**
@@ -47,6 +48,43 @@ class Detail extends Controller
     public function save(Request $request)
     {
         //
+        $data = $this->request->post();
+
+        // 验证数据
+
+        // 检索数据库
+        $model = model('User');
+
+        $result = $model->queryOne(['phone' => $data['phone']]);
+
+        if($result) {
+
+            $payload = [
+                'uid' => $result['uid'],
+                'phone' => $data['phone'],
+            ];
+
+            // 签发token
+            $token = JWT::getToken($payload, \config('jwtkey'));
+
+            return json([
+                'code' => $this->code['success'],
+                'status' => 'success',
+                'token' => $token,
+                'msg'=> '登录成功',
+                'data' => $result
+            ]);
+
+        } else {
+
+            return json([
+                'code' => $this->code['success'],
+                'status' => 'fail',
+                'msg' => '手机号不存在'
+            ]);
+
+        }
+
     }
 
     /**
@@ -58,37 +96,6 @@ class Detail extends Controller
     public function read($id)
     {
         //
-
-        // recommend 查出除了 $id 外最新的四个
-        $recommendWhere = [
-            'hid' => ['<>', $id],
-        ];
-
-        try {
-            
-            $homeStay = Db::table('homestay')->where(['hid' => $id])->find();
-            
-            $recommend = Db::table('homestay')->where($recommendWhere)->order('htime', 'desc')->limit(0, 4)->field('hid, hthumb, hname, hprice, hrank, harea, hcity')->select();
-            
-        } catch (Exception $e) {
-            
-            return json([
-                'code' => $this->code['error'],
-                'status' => 'fail',
-                'msg' => '服务器错误'
-            ]);
-
-        }
-
-
-        return json([
-            'code' => $this->code['success'],
-            'status' => 'success',
-            'data' => [
-                'homeStay' => $homeStay,
-                'recommend' => $recommend
-            ],
-        ]);
     }
 
     /**

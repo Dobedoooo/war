@@ -86,9 +86,6 @@ router.beforeEach((to, from, next) => {
         next();
     }
 
-    // console.log('to\n' ,to);
-    // console.log('from\n', from);
-
 });
 
 export default router;

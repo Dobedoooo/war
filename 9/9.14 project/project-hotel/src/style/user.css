@@ -1,0 +1,283 @@
+body,ul,li{
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang-SC-Heavy";
+    letter-spacing: 0.01rem;
+    list-style: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+/* 头部开始 */
+.header{
+    width: 100%;
+    height: 4.37rem;
+    position: relative;
+}
+
+.avatar{
+    width: 1.38rem;
+    height: 1.38rem;
+    border-radius: 50%;
+    background-color: #ececec;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1.53rem;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+.avatar img{
+    width: 1.3rem;
+    height: 1.3rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -0.65rem;
+    top: 50%;
+    margin-top: -0.65rem;
+}
+
+.uname{
+    width: 100%;
+    height: 0.32rem;
+    position: absolute;
+    top: 3rem;
+    font-size: 0.32rem;
+    text-align: center;
+}
+
+.vipcenter{
+    width: 6.38rem;
+    height: 0.55rem;
+    background-color: #3e3e3e;
+    position: absolute;
+    left: 0.56rem;
+    right: 0.56rem;
+    bottom: 0;
+    border-radius: 0.1rem 0.1rem 0 0;
+}
+
+.viplogo{
+    width: 0.25rem;
+    height: 0.27rem;
+    position: absolute;
+    top: 0.16rem;
+    left: 0.24rem;
+    float: left;
+}
+
+.viplogo img{
+    width: 0.25rem;
+    height: 0.27rem;
+    position: absolute;
+}
+
+.viptitle{
+    font-size: 0.26rem;
+    color: rgb(249,188,128);
+    float: left;
+    margin-left: 0.67rem;
+    margin-top: 0.1rem;
+    opacity: 0.85;
+}
+
+.vipname span{
+    font-size: 0.2rem;
+    color: #fff;
+    float: right;
+    margin-right: 0.08rem;
+    margin-top: 0.12rem;
+}
+
+.vipname img{
+    width: 0.09rem;
+    height: 0.16rem;
+    float: right;
+    margin-right: 0.26rem;
+    margin-top: 0.22rem;
+}
+
+.info{
+    width: 0.35rem;
+    height: 0.35rem;
+    position: absolute;
+    top:1.22rem;
+    right: 0.56rem;
+}
+
+.info img{
+    width: 0.4rem;
+    height: 0.4rem;
+    position: absolute;
+}
+
+/* 我的订单开始 */
+.order{
+    width: 6.38rem;
+    height: 3.14rem;
+    margin: 0 auto;
+    margin-top: 0.4rem;
+    border-radius: 0.08rem;
+    box-shadow: 0 0.01rem 0.3rem rgba(242,242,242,0.75);
+    position: relative;
+}
+
+.ordertitle span{
+    font-size: 0.32rem;
+    color: #000;
+    opacity: .85;
+    position: absolute;
+    top: 0.2rem;
+    left: 0.24rem;
+    font-family: "PingFang-SC-Bold"
+}
+
+.view span{
+    font-size: 0.26rem;
+    float: right;
+    color: #000;
+    opacity: .4;
+    margin-top: 0.24rem;
+    margin-right: 0.07rem;
+}
+
+.view img{
+    width: 0.09rem;
+    height: 0.16rem;
+    float: right;
+    margin-right: 0.25rem;
+    margin-top: 0.33rem;
+}
+
+.line{
+    width: 5.9rem;
+    height: 0.02rem;
+    background-color: #000;
+    opacity: 0.03;
+    position: absolute;
+    top: 0.78rem;
+    left: 0.24rem;
+}
+
+.ordermenu ul{
+    width: 100%;
+    height: 2.34rem;
+    position: absolute;
+    bottom: 0;
+}
+
+.ordermenu li{
+    width: 1.595rem;
+    height: 100%;
+    float: left;
+}
+
+.ordermenu img{
+    width: 1.06rem;
+    height: 1.06rem;
+    margin-top: 0.4rem;
+    margin-left: 0.25rem;
+    float: left;
+}
+
+.orderbtn{
+    width: 100%;
+    height: 0.88rem;
+    text-align: center;
+    float: left;
+    font-size: 0.26rem;
+    color: #000;
+    opacity: 0.85;
+    padding-top: 0.31rem;
+}
+
+
+/* 菜单栏开始 */
+.menu{
+    width: 100%;
+    height: 5.27rem;
+    padding: 0.635rem 0;
+}
+
+.menu ul{
+    width: 100%;
+    height: 4rem;
+}
+
+.menu li{
+    width: 100%;
+    height: 0.8rem;
+    position: relative;
+}
+
+.menu img{
+    width: 0.15rem;
+    height: 0.15rem;
+    position: absolute;
+    left: 0.56rem;
+    top: 50%;
+    margin-top: -0.075rem;
+    float: left;
+}
+
+.menu span{
+    font-size: 0.32rem;
+    color: #000;
+    opacity: .8;
+    float: left;
+    margin-left: 0.95rem;
+    margin-top: 0.2rem;
+}
+
+/* 提交按钮开始 */
+.btn{
+    width: 6.12rem;
+    height: 0.7rem;
+    background-color: rgb(235,102,107);
+    margin: 0 auto;
+    box-shadow: 0 0.06rem 0.15rem rgba(204,100,100,0.5);
+    border-radius: 0.08rem;
+    text-align: center;
+}
+
+.btn span{
+    font-size: 0.32rem;
+    color: #fff;
+    display: block;
+    line-height: 0.7rem;
+    align-content: center;
+}
+
+/* 底部开始 */
+.bottom{
+    width: 100%;
+    height: 1.67rem;
+    margin-top: 0.7rem;
+    box-shadow: 0 -0.01rem 0.3rem 0 rgba(242,242,242,0.75);
+}
+
+.bottom li{
+    width: 33.33%;
+    height: 1.67rem;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+
+.bottom img{
+    width: 0.38rem;
+    height: 0.38rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -0.19rem;
+    top:0.13rem;
+}
+
+.bottom span{
+    font-size: 0.24rem;
+    color: rgb(235,102,107);
+    opacity: .3;
+}

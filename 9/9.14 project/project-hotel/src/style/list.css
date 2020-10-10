@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+    padding: 3.2rem .56rem 0;
+    width: 100%;
+    font-family: PingFang SC Bold;
+}
+
+.container::before {
+    content: "";
+    display: block;
+    width: 6.38rem;
+    height: .8rem;
+    background-color: #fff;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+}
+
+header {
+    position: fixed;
+    top: .8rem;
+    left: .56rem;
+    width: 6.38rem;
+    height: 2.1rem;
+    background-color: #fff;
+    z-index: 9999;
+}
+
+.search-box {
+    width: 100%;
+    height: 1.2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-icon {
+    width: 0.12rem;
+    height: 0.21rem;
+}
+
+.input-box {
+    width: 5.2rem;
+    height: .6rem;
+    border-radius: .1rem;
+    background-color: rgba(0, 0, 0, .02);
+    line-height: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .25rem;
+    position: relative;
+    color: rgba(0, 0, 0, .8);
+}
+
+.input-box input {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    font-size: .26rem;
+}
+
+.input-box input::placeholder {
+    color: rgba(0, 0, 0, .2);
+}
+
+.input-box span {
+    font-size: .26rem;
+    color: rgba(0, 0, 0, .8);
+}
+
+.input-box span::before {
+    content: "";
+    position: absolute;
+    width: .02rem;
+    height: .53rem;
+    background-color: #f2f2f2;  
+    top: 0.035rem;
+    left: 01rem;
+}
+
+.voice-icon {
+    width: 0.32rem;
+    height: 0.15rem;
+}
+
+.locate-icon {
+    width: 0.22rem;
+    height: .35rem;
+}
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .26rem;
+    color: rgba(0, 0, 0, .8);
+    height: .8rem;
+}
+
+.filter-item {
+    width: 1.34rem;
+    height: 0.63rem;
+    padding: 0 .29rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: .32rem;
+    transition: all .3s;
+}
+
+.filter-item.active {
+    background-color: #eb666e;
+    color: #fafafa;
+    box-shadow: 0 .12rem .3rem 0 rgba(235, 102, 107, 0.5);
+}
+
+.filter-item.active i {
+    color: #fafafa;
+}
+
+.filter-item i {
+    font-size: .16rem;
+    color: #bfbfbf;
+    transform: rotate(180deg);
+}
+
+.recommend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

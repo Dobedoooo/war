@@ -14,6 +14,9 @@ use think\Route;
 Route::resource('admin/Homestay', 'admin/Homestay');
 Route::resource('index/Index', 'index/Index');
 Route::resource('index/detail', 'index/Detail');
+Route::resource('index/list', 'index/Lists');
+Route::resource('index/user', 'index/User');
+Route::resource('index/login', 'index/Login');
 
 return [
     '__pattern__' => [
